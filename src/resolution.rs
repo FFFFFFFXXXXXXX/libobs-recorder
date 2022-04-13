@@ -39,6 +39,7 @@ impl Resolution {
     }
 }
 
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub struct Size {
     width: u32,
     height: u32,
@@ -48,10 +49,10 @@ impl Size {
     pub fn new(width: u32, height: u32) -> Self {
         Size { width, height }
     }
-    pub fn get_width(&self) -> u32 {
+    pub fn width(&self) -> u32 {
         self.width
     }
-    pub fn get_height(&self) -> u32 {
+    pub fn height(&self) -> u32 {
         self.height
     }
 }

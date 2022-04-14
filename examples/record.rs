@@ -14,11 +14,10 @@ fn main() {
 
     // SETTINGS 1
     let mut settings = RecorderSettings::new();
-    settings.set_window_title(
-        "League of Legends (TM) Client:RiotWindowClass:League of Legends.exe".to_string(),
-    );
+    settings
+        .set_window_title("League of Legends (TM) Client:RiotWindowClass:League of Legends.exe");
     settings.set_input_resolution(Resolution::_1440p);
-    settings.set_output_path("C:/Users/Felix/Videos/Test1.mp4".to_string());
+    settings.set_output_path("C:/Users/Felix/Videos/Test1.mp4");
     settings.set_cqp(Cqp::new(16));
     recorder.configure(settings).unwrap();
 
@@ -37,7 +36,7 @@ fn main() {
 
     // SETTINGS 2
     let mut settings = RecorderSettings::new();
-    settings.set_output_path("C:/Users/Felix/Videos/Test2.mp4".to_string());
+    settings.set_output_path("C:/Users/Felix/Videos/Test2.mp4");
     settings.set_input_resolution(libobs_recorder::resolution::Resolution::_1080p);
     settings.set_output_resolution(libobs_recorder::resolution::Resolution::_1440p);
     settings.set_framerate(Framerate::new(45));
@@ -59,7 +58,7 @@ fn main() {
 
     // SETTINGS 3
     let mut settings = RecorderSettings::new();
-    settings.set_output_path("C:/Users/Felix/Videos/Test3.mp4".to_string());
+    settings.set_output_path("C:/Users/Felix/Videos/Test3.mp4");
     settings.set_framerate(Framerate::new(60));
     settings.set_cbr(Cbr::mbit(20));
     settings.record_audio(true);

@@ -5,11 +5,8 @@ impl Framerate {
     pub fn new(framerate: u32) -> Self {
         Self(framerate)
     }
-    pub fn default() -> Self {
-        Framerate(30)
-    }
-    pub fn is_default(&self) -> bool {
-        self.0 == 30
+    pub fn is_set(&self) -> bool {
+        self.0 > 0
     }
 }
 

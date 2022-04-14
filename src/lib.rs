@@ -1,32 +1,30 @@
 extern crate libobs_sys;
-use std::{ffi::CStr, ptr::null_mut};
-
-use cqp::Cqp;
-use get::Get;
 use libobs_sys::{
     base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path,
     obs_audio_encoder_create, obs_audio_info, obs_encoder, obs_encoder_release,
-    obs_encoder_set_audio, obs_encoder_set_video, obs_get_audio, obs_get_video, obs_initialized,
-    obs_load_all_modules, obs_log_loaded_modules, obs_output, obs_output_create,
+    obs_encoder_set_audio, obs_encoder_set_video, obs_encoder_update, obs_get_audio, obs_get_video,
+    obs_initialized, obs_load_all_modules, obs_log_loaded_modules, obs_output, obs_output_create,
     obs_output_release, obs_output_set_audio_encoder, obs_output_set_video_encoder,
-    obs_output_start, obs_output_stop, obs_post_load_modules, obs_reset_audio, obs_reset_video,
-    obs_set_output_source, obs_shutdown, obs_source, obs_source_create, obs_source_release,
-    obs_source_remove, obs_startup, obs_video_encoder_create, obs_video_info,
-    speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_DEFAULT,
-    video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT,
-    video_scale_type_VIDEO_SCALE_BILINEAR, OBS_VIDEO_SUCCESS,
+    obs_output_start, obs_output_stop, obs_output_update, obs_post_load_modules, obs_reset_audio,
+    obs_reset_video, obs_set_output_source, obs_shutdown, obs_source, obs_source_create,
+    obs_source_release, obs_source_remove, obs_source_update, obs_startup,
+    obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO, va_list,
+    video_colorspace_VIDEO_CS_DEFAULT, video_format_VIDEO_FORMAT_NV12,
+    video_range_type_VIDEO_RANGE_DEFAULT, video_scale_type_VIDEO_SCALE_BILINEAR, OBS_VIDEO_SUCCESS,
 };
 
-use bitrate::Bitrate;
+use std::{ffi::CStr, ptr::null_mut};
+
 use framerate::Framerate;
+use get::Get;
 use obs_data::ObsData;
+use rate_control::{Cbr, Cqp};
 use resolution::{Resolution, Size};
 
-pub mod bitrate;
-pub mod cqp;
 pub mod framerate;
 mod get;
 mod obs_data;
+pub mod rate_control;
 pub mod resolution;
 
 const DEBUG: bool = true;
@@ -40,10 +38,13 @@ const LIBOBS_DATA_PATH: &str = "./data/libobs/";
 const PLUGIN_BIN_PATH: &str = "./obs-plugins/64bit/";
 const PLUGIN_DATA_PATH: &str = "./data/obs-plugins/%module%/";
 
-const DEFAULT_WIDTH: u32 = 1920;
-const DEFAULT_HEIGHT: u32 = 1080;
+const DEFAULT_RESOLUTION: Resolution = Resolution::_1080p;
 
 const DEFAULT_FRAMERATE: u32 = 30;
+
+const VIDEO_CHANNEL: u32 = 0;
+const AUDIO_CHANNEL: u32 = 1;
+const AUDIO_ENCODER_INDEX: usize = 0;
 
 unsafe extern "C" fn log_handler(
     _lvl: ::std::os::raw::c_int,
@@ -52,17 +53,17 @@ unsafe extern "C" fn log_handler(
     _p: *mut ::std::os::raw::c_void,
 ) {
     if DEBUG {
-        dbg!(CStr::from_ptr(msg));
+        //dbg!(CStr::from_ptr(msg));
     }
 }
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct RecorderSettings {
     window_title: Option<String>,
-    input_resolution: Resolution,
-    output_resolution: Resolution,
+    input_resolution: Option<Resolution>,
+    output_resolution: Option<Resolution>,
     framerate: Framerate,
-    bitrate: Bitrate,
+    bitrate: Cbr,
     cqp: Cqp,
     record_audio: bool,
     output_path: Option<String>,
@@ -72,11 +73,11 @@ impl RecorderSettings {
     pub fn new() -> Self {
         RecorderSettings {
             window_title: None,
-            input_resolution: Resolution::_1080p,
-            output_resolution: Resolution::_1080p,
-            framerate: Framerate::default(),
-            bitrate: Bitrate::kbit(0),
-            cqp: Cqp::new(13),
+            input_resolution: None,
+            output_resolution: None,
+            framerate: Framerate::new(0),
+            bitrate: Cbr::kbit(0),
+            cqp: Cqp::new(0),
             record_audio: true,
             output_path: None,
         }
@@ -85,15 +86,15 @@ impl RecorderSettings {
         self.window_title = Some(window_title);
     }
     pub fn set_output_resolution(&mut self, resolution: Resolution) {
-        self.output_resolution = resolution;
+        self.output_resolution = Some(resolution);
     }
     pub fn set_input_resolution(&mut self, resolution: Resolution) {
-        self.input_resolution = resolution;
+        self.input_resolution = Some(resolution);
     }
     pub fn set_framerate(&mut self, framerate: Framerate) {
         self.framerate = framerate;
     }
-    pub fn set_bitrate(&mut self, bitrate: Bitrate) {
+    pub fn set_cbr(&mut self, bitrate: Cbr) {
         self.bitrate = bitrate;
     }
     pub fn set_cqp(&mut self, cqp: Cqp) {
@@ -108,13 +109,16 @@ impl RecorderSettings {
 }
 
 pub struct Recorder {
-    video_source: Option<*mut obs_source>,
-    audio_source: Option<*mut obs_source>,
-    video_encoder: Option<*mut obs_encoder>,
-    audio_encoder: Option<*mut obs_encoder>,
-    output: Option<*mut obs_output>,
+    video_source: *mut obs_source,
+    video_encoder: *mut obs_encoder,
+    audio_source: *mut obs_source,
+    audio_encoder: *mut obs_encoder,
+    output: *mut obs_output,
     configured: bool,
     recording: bool,
+    input_resolution: Resolution,
+    output_resolution: Resolution,
+    framerate: Framerate,
 }
 
 impl Recorder {
@@ -140,123 +144,175 @@ impl Recorder {
                 obs_log_loaded_modules();
             }
 
-            let size = Size::new(DEFAULT_WIDTH, DEFAULT_HEIGHT);
             let framerate = Framerate::new(DEFAULT_FRAMERATE);
-            Self::reset_video(size, size, framerate)?;
+            Self::reset_video(
+                DEFAULT_RESOLUTION.get_size(),
+                DEFAULT_RESOLUTION.get_size(),
+                framerate,
+            )?;
             Self::reset_audio()?;
 
             obs_post_load_modules();
-        }
 
-        Ok(Recorder {
-            video_source: None,
-            audio_source: None,
-            video_encoder: None,
-            audio_encoder: None,
-            output: None,
-            configured: false,
-            recording: false,
-        })
+            // SETUP NEW VIDEO SOURCE/ENCODER
+            let video_source = {
+                let mut data = ObsData::new();
+                data.set_string("capture_mode", "any_fullscreen");
+                data.set_bool("capture_cursor", true);
+
+                obs_source_create(
+                    get.c_str("game_capture"),
+                    get.c_str(""),
+                    data.get_ptr(),
+                    null_mut(),
+                )
+            };
+
+            let video_encoder = obs_video_encoder_create(
+                get.c_str("amd_amf_h264"),
+                get.c_str(""),
+                null_mut(),
+                null_mut(),
+            );
+
+            // SETUP NEW AUDIO SOURCE/ENCODER
+            let audio_source = obs_source_create(
+                get.c_str("wasapi_output_capture"),
+                get.c_str(""),
+                null_mut(),
+                null_mut(),
+            );
+            let audio_encoder = obs_audio_encoder_create(
+                get.c_str("ffmpeg_aac"),
+                get.c_str(""),
+                null_mut(),
+                0,
+                null_mut(),
+            );
+
+            // SETUP NEW OUTPUT
+            let output = obs_output_create(
+                get.c_str("ffmpeg_muxer"),
+                get.c_str(""),
+                null_mut(),
+                null_mut(),
+            );
+
+            obs_encoder_set_video(video_encoder, obs_get_video());
+            obs_encoder_set_audio(audio_encoder, obs_get_audio());
+
+            obs_set_output_source(VIDEO_CHANNEL, video_source);
+            obs_output_set_video_encoder(output, video_encoder);
+            obs_set_output_source(AUDIO_CHANNEL, audio_source);
+            obs_output_set_audio_encoder(output, audio_encoder, AUDIO_ENCODER_INDEX);
+
+            Ok(Recorder {
+                video_source,
+                video_encoder,
+                audio_source,
+                audio_encoder,
+                output,
+                configured: false,
+                recording: false,
+                input_resolution: DEFAULT_RESOLUTION,
+                output_resolution: DEFAULT_RESOLUTION,
+                framerate,
+            })
+        }
     }
 
     pub fn configure(&mut self, settings: RecorderSettings) -> Result<(), String> {
+        if DEBUG {
+            println!("Configure before: {}", unsafe { bnum_allocs() });
+        }
         if self.recording {
             return Err(String::from(
                 "error: cannot change configuration while recording",
             ));
         }
-        if settings.window_title.is_none() || settings.output_path.is_none() {
-            return Err(String::from(
-                "error: it is required to set a window title and an output path",
-            ));
-        }
-
-        // REMOVE OLD SOURCES/ENCODERS
-        self.release_all();
 
         // RESET VIDEO
-        let input_size = settings.input_resolution.get_size();
-        let output_size = settings.output_resolution.get_size();
-        Self::reset_video(input_size, output_size, settings.framerate)?;
+        if settings.input_resolution.is_some()
+            || settings.output_resolution.is_some()
+            || settings.framerate.is_set()
+        {
+            let input_size = if let Some(resolution) = settings.input_resolution {
+                self.input_resolution = resolution;
+                resolution.get_size()
+            } else {
+                self.input_resolution.get_size()
+            };
+            let output_size = if let Some(resolution) = settings.output_resolution {
+                self.output_resolution = resolution;
+                resolution.get_size()
+            } else {
+                self.output_resolution.get_size()
+            };
+            let framerate = if settings.framerate.is_set() {
+                self.framerate = settings.framerate;
+                settings.framerate
+            } else {
+                self.framerate
+            };
+            Self::reset_video(input_size, output_size, framerate)?;
+            unsafe { obs_encoder_set_video(self.video_encoder, obs_get_video()) };
+        }
 
-        let mut get = Get::new();
         unsafe {
-            // SETUP NEW VIDEO SOURCE/ENCODER
-            let video_source = {
+            // UPDATE VIDEO SOURCE
+            if let Some(window_title) = settings.window_title {
                 let mut data = ObsData::new();
                 data.set_string("capture_mode", "window");
-                data.set_string("window", settings.window_title.unwrap());
+                data.set_string("window", window_title);
 
-                obs_source_create(
-                    get.c_str("game_capture"),
-                    get.c_str(""),
-                    data.get_obs_data(),
-                    null_mut(),
-                )
-            };
-            obs_set_output_source(0, video_source);
-            self.video_source = Some(video_source);
+                obs_source_update(self.video_source, data.get_ptr());
+            }
 
-            let video_encoder = {
+            // UPDATE VIDEO ENCODER
+            {
                 let mut data = ObsData::new();
-                data.set_string("rate_control", "CBR");
-                data.set_int("bitrate", settings.bitrate);
+                // Static Properties
+                data.set_int("Usage", 0);
+                data.set_int("Profile", 100);
+                // Picture Control Properties
+                data.set_double("KeyframeInterval", 2.0);
+                data.set_int("BFrame.Pattern", 0);
+                if settings.bitrate.is_set() {
+                    data.set_int("RateControlMethod", 3);
+                    data.set_int("Bitrate.Target", settings.bitrate);
+                    data.set_int("FillerData", 1);
+                    data.set_int("VBVBuffer", 1);
+                    data.set_int("VBVBuffer.Size", settings.bitrate);
+                } else if settings.cqp.is_set() {
+                    data.set_int("RateControlMethod", 0);
+                    data.set_int("QP.IFrame", settings.cqp);
+                    data.set_int("QP.PFrame", settings.cqp);
+                    data.set_int("QP.BFrame", settings.cqp);
+                    data.set_int("VBVBuffer", 1);
+                    data.set_int("VBVBuffer.Size", 100000);
+                }
+                if settings.bitrate.is_set() || settings.cqp.is_set() {
+                    obs_encoder_update(self.video_encoder, data.get_ptr());
+                }
+            }
 
-                let encoder_settings = if settings.bitrate.is_valid() {
-                    data.get_obs_data()
-                } else {
-                    null_mut()
-                };
-
-                obs_video_encoder_create(
-                    get.c_str("amd_amf_h264"),
-                    get.c_str(""),
-                    encoder_settings,
-                    null_mut(),
-                )
-            };
-            obs_encoder_set_video(video_encoder, obs_get_video());
-            self.video_encoder = Some(video_encoder);
-
-            // SETUP NEW AUDIO SOURCE/ENCODER
+            // UPDATE AUDIO
             if settings.record_audio {
-                let audio_source = obs_source_create(
-                    get.c_str("wasapi_output_capture"),
-                    get.c_str(""),
-                    null_mut(),
-                    null_mut(),
-                );
-                obs_set_output_source(1, audio_source);
-                self.audio_source = Some(audio_source);
-
-                let audio_encoder = obs_audio_encoder_create(
-                    get.c_str("ffmpeg_aac"),
-                    get.c_str(""),
-                    null_mut(),
-                    0,
-                    null_mut(),
-                );
-                obs_encoder_set_audio(audio_encoder, obs_get_audio());
-                self.audio_encoder = Some(audio_encoder);
+                obs_set_output_source(AUDIO_CHANNEL, self.audio_source);
+            } else {
+                obs_set_output_source(AUDIO_CHANNEL, null_mut());
             }
 
-            // SETUP NEW OUTPUT
-            let output = {
+            // UPDATE OUTPUT
+            if let Some(output_path) = settings.output_path {
                 let mut data = ObsData::new();
-                data.set_string("path", settings.output_path.unwrap());
-                obs_output_create(
-                    get.c_str("ffmpeg_muxer"),
-                    get.c_str(""),
-                    data.get_obs_data(),
-                    null_mut(),
-                )
-            };
-
-            obs_output_set_video_encoder(output, self.video_encoder.unwrap());
-            if let Some(ae) = self.audio_encoder {
-                obs_output_set_audio_encoder(output, ae, 0);
+                data.set_string("path", output_path);
+                obs_output_update(self.output, data.get_ptr());
             }
-            self.output = Some(output);
+        }
+
+        if DEBUG {
+            println!("Configure after: {}", unsafe { bnum_allocs() });
         }
 
         self.configured = true;
@@ -264,11 +320,13 @@ impl Recorder {
     }
 
     pub fn start_recording(&mut self) -> bool {
-        if self.recording || !self.configured || self.output.is_none() {
+        if DEBUG {
+            println!("Recording Start: {}", unsafe { bnum_allocs() });
+        }
+        if self.recording || !self.configured {
             return false;
         }
-
-        if unsafe { obs_output_start(self.output.unwrap()) } {
+        if unsafe { obs_output_start(self.output) } {
             self.recording = true;
         }
         self.recording
@@ -278,40 +336,12 @@ impl Recorder {
         if !self.recording {
             return false;
         }
-
-        unsafe { obs_output_stop(self.output.unwrap()) }
+        unsafe { obs_output_stop(self.output) }
         self.recording = false;
-        self.recording
-    }
-
-    fn release_all(&mut self) {
-        unsafe {
-            // video
-            if let Some(source) = self.video_source {
-                obs_source_remove(source);
-                obs_source_release(source);
-                self.video_source = None;
-            }
-            if let Some(encoder) = self.video_encoder {
-                obs_encoder_release(encoder);
-                self.video_encoder = None;
-            }
-            // audio
-            if let Some(source) = self.audio_source {
-                obs_source_remove(source);
-                obs_source_release(source);
-                self.audio_source = None;
-            }
-            if let Some(encoder) = self.audio_encoder {
-                obs_encoder_release(encoder);
-                self.audio_encoder = None;
-            }
-            // output
-            if let Some(out) = self.output {
-                obs_output_release(out);
-                self.output = None;
-            }
+        if DEBUG {
+            println!("Recording Stop: {}", unsafe { bnum_allocs() });
         }
+        true
     }
 
     fn reset_video(
@@ -360,8 +390,18 @@ impl Recorder {
 
 impl Drop for Recorder {
     fn drop(&mut self) {
-        self.release_all();
         unsafe {
+            // video
+            obs_source_remove(self.video_source);
+            obs_source_release(self.video_source);
+            obs_encoder_release(self.video_encoder);
+            // audio
+            obs_source_remove(self.audio_source);
+            obs_source_release(self.audio_source);
+            obs_encoder_release(self.audio_encoder);
+            // output
+            obs_output_release(self.output);
+
             obs_shutdown();
             if DEBUG {
                 println!("{}", bnum_allocs());

@@ -27,7 +27,10 @@ mod obs_data;
 pub mod rate_control;
 pub mod resolution;
 
+#[cfg(feature = "debug")]
 const DEBUG: bool = true;
+#[cfg(not(feature = "debug"))]
+const DEBUG: bool = false;
 
 #[cfg(target_os = "windows")]
 const GRAPHICS_MODULE: &str = "libobs-d3d11.dll";

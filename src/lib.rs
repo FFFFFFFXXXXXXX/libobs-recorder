@@ -82,8 +82,8 @@ impl RecorderSettings {
             output_path: None,
         }
     }
-    pub fn set_window_title(&mut self, window_title: String) {
-        self.window_title = Some(window_title);
+    pub fn set_window_title<S: Into<String>>(&mut self, window_title: S) {
+        self.window_title = Some(window_title.into());
     }
     pub fn set_output_resolution(&mut self, resolution: Resolution) {
         self.output_resolution = Some(resolution);
@@ -103,8 +103,8 @@ impl RecorderSettings {
     pub fn record_audio(&mut self, record_audio: bool) {
         self.record_audio = record_audio;
     }
-    pub fn set_output_path(&mut self, output_path: String) {
-        self.output_path = Some(output_path);
+    pub fn set_output_path<S: Into<String>>(&mut self, output_path: S) {
+        self.output_path = Some(output_path.into());
     }
 }
 

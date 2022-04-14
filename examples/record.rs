@@ -7,6 +7,59 @@ use libobs_recorder::{
 };
 
 fn main() {
+    {
+        let mut recorder = Recorder::create().unwrap();
+
+        println!("RECORDING 1");
+
+        // SETTINGS 1
+        let mut settings = RecorderSettings::new();
+        settings.set_window_title(
+            "League of Legends (TM) Client:RiotWindowClass:League of Legends.exe",
+        );
+        settings.set_input_resolution(Resolution::_1440p);
+        settings.set_output_path("C:/Users/Felix/Videos/Test1.mp4");
+        settings.set_cqp(Cqp::new(16));
+        recorder.configure(settings).unwrap();
+
+        std::thread::sleep(std::time::Duration::from_secs(5));
+
+        // RECORD 1
+        if recorder.start_recording() {
+            std::thread::sleep(std::time::Duration::from_secs(5));
+            dbg!(recorder.stop_recording());
+        } else {
+            println!("error starting recorder");
+        }
+    }
+
+    {
+        let mut recorder = Recorder::create().unwrap();
+
+        println!("RECORDING 1");
+
+        // SETTINGS 1
+        let mut settings = RecorderSettings::new();
+        settings.set_window_title(
+            "League of Legends (TM) Client:RiotWindowClass:League of Legends.exe",
+        );
+        settings.set_input_resolution(Resolution::_1440p);
+        settings.set_output_path("C:/Users/Felix/Videos/Test2.mp4");
+        settings.set_cqp(Cqp::new(16));
+        recorder.configure(settings).unwrap();
+
+        std::thread::sleep(std::time::Duration::from_secs(5));
+
+        // RECORD 1
+        if recorder.start_recording() {
+            std::thread::sleep(std::time::Duration::from_secs(5));
+            dbg!(recorder.stop_recording());
+        } else {
+            println!("error starting recorder");
+        }
+    }
+    return;
+
     // RECORDER
     let mut recorder = Recorder::create().unwrap();
 

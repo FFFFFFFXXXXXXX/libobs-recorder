@@ -119,6 +119,7 @@ pub struct Recorder {
     input_resolution: Resolution,
     output_resolution: Resolution,
     framerate: Framerate,
+    shutdown: bool,
 }
 
 impl Recorder {
@@ -217,6 +218,7 @@ impl Recorder {
                 input_resolution: DEFAULT_RESOLUTION,
                 output_resolution: DEFAULT_RESOLUTION,
                 framerate,
+                shutdown: false,
             })
         }
     }
@@ -225,9 +227,9 @@ impl Recorder {
         if DEBUG {
             println!("Configure before: {}", unsafe { bnum_allocs() });
         }
-        if self.recording {
+        if self.recording || self.shutdown {
             return Err(String::from(
-                "error: cannot change configuration while recording",
+                "error: cannot change configuration while recording or after shutdown",
             ));
         }
 
@@ -323,7 +325,7 @@ impl Recorder {
         if DEBUG {
             println!("Recording Start: {}", unsafe { bnum_allocs() });
         }
-        if self.recording || !self.configured {
+        if self.shutdown || self.recording || !self.configured {
             return false;
         }
         if unsafe { obs_output_start(self.output) } {
@@ -333,7 +335,7 @@ impl Recorder {
     }
 
     pub fn stop_recording(&mut self) -> bool {
-        if !self.recording {
+        if self.shutdown || !self.recording {
             return false;
         }
         unsafe { obs_output_stop(self.output) }
@@ -342,6 +344,30 @@ impl Recorder {
             println!("Recording Stop: {}", unsafe { bnum_allocs() });
         }
         true
+    }
+
+    pub fn shutdown(&mut self) {
+        if self.shutdown {
+            return;
+        }
+        unsafe {
+            // video
+            obs_source_remove(self.video_source);
+            obs_source_release(self.video_source);
+            obs_encoder_release(self.video_encoder);
+            // audio
+            obs_source_remove(self.audio_source);
+            obs_source_release(self.audio_source);
+            obs_encoder_release(self.audio_encoder);
+            // output
+            obs_output_release(self.output);
+
+            obs_shutdown();
+            if DEBUG {
+                println!("{}", bnum_allocs());
+            }
+        }
+        self.shutdown = true;
     }
 
     fn reset_video(
@@ -390,22 +416,8 @@ impl Recorder {
 
 impl Drop for Recorder {
     fn drop(&mut self) {
-        unsafe {
-            // video
-            obs_source_remove(self.video_source);
-            obs_source_release(self.video_source);
-            obs_encoder_release(self.video_encoder);
-            // audio
-            obs_source_remove(self.audio_source);
-            obs_source_release(self.audio_source);
-            obs_encoder_release(self.audio_encoder);
-            // output
-            obs_output_release(self.output);
-
-            obs_shutdown();
-            if DEBUG {
-                println!("{}", bnum_allocs());
-            }
+        if !self.shutdown {
+            self.shutdown();
         }
     }
 }

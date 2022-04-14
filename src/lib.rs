@@ -27,7 +27,7 @@ mod obs_data;
 pub mod rate_control;
 pub mod resolution;
 
-const DEBUG: bool = false;
+const DEBUG: bool = true;
 
 #[cfg(target_os = "windows")]
 const GRAPHICS_MODULE: &str = "libobs-d3d11.dll";
@@ -124,39 +124,12 @@ pub struct Recorder {
 
 impl Recorder {
     pub fn create() -> Result<Self, String> {
-        if unsafe { obs_initialized() } {
-            return Err(String::from(
-                "error: only one active recorder object allowed",
-            ));
+        if unsafe { !obs_initialized() } {
+            Self::obs_init()?;
         }
 
         let mut get = Get::new();
         unsafe {
-            // STARTUP
-            base_set_log_handler(Some(log_handler), null_mut());
-
-            if !obs_startup(get.c_str("en-US"), null_mut(), null_mut()) {
-                return Err(String::from("error on libobs startup"));
-            }
-
-            obs_add_data_path(get.c_str(LIBOBS_DATA_PATH));
-            obs_add_module_path(get.c_str(PLUGIN_BIN_PATH), get.c_str(PLUGIN_DATA_PATH));
-            obs_load_all_modules();
-
-            if DEBUG {
-                obs_log_loaded_modules();
-            }
-
-            let framerate = Framerate::new(DEFAULT_FRAMERATE);
-            Self::reset_video(
-                DEFAULT_RESOLUTION.get_size(),
-                DEFAULT_RESOLUTION.get_size(),
-                framerate,
-            )?;
-            Self::reset_audio()?;
-
-            obs_post_load_modules();
-
             // SETUP NEW VIDEO SOURCE/ENCODER
             let video_source = {
                 let mut data = ObsData::new();
@@ -219,7 +192,7 @@ impl Recorder {
                 recording: false,
                 input_resolution: DEFAULT_RESOLUTION,
                 output_resolution: DEFAULT_RESOLUTION,
-                framerate,
+                framerate: Framerate::new(DEFAULT_FRAMERATE),
                 shutdown: false,
             })
         }
@@ -236,28 +209,42 @@ impl Recorder {
         }
 
         // RESET VIDEO
-        if settings.input_resolution.is_some()
-            || settings.output_resolution.is_some()
-            || settings.framerate.is_set()
-        {
-            let input_size = if let Some(resolution) = settings.input_resolution {
+        let mut reset_necessary = false;
+        let input_size = if let Some(resolution) = settings.input_resolution {
+            if resolution != self.input_resolution {
+                reset_necessary = true;
                 self.input_resolution = resolution;
                 resolution.get_size()
             } else {
                 self.input_resolution.get_size()
-            };
-            let output_size = if let Some(resolution) = settings.output_resolution {
+            }
+        } else {
+            self.input_resolution.get_size()
+        };
+        let output_size = if let Some(resolution) = settings.output_resolution {
+            if resolution != self.output_resolution {
+                reset_necessary = true;
                 self.output_resolution = resolution;
                 resolution.get_size()
             } else {
                 self.output_resolution.get_size()
-            };
-            let framerate = if settings.framerate.is_set() {
+            }
+        } else {
+            self.output_resolution.get_size()
+        };
+        let framerate = if settings.framerate.is_set() {
+            if settings.framerate != self.framerate {
+                reset_necessary = true;
                 self.framerate = settings.framerate;
                 settings.framerate
             } else {
                 self.framerate
-            };
+            }
+        } else {
+            self.framerate
+        };
+
+        if reset_necessary {
             Self::reset_video(input_size, output_size, framerate)?;
             unsafe { obs_encoder_set_video(self.video_encoder, obs_get_video()) };
         }
@@ -372,6 +359,37 @@ impl Recorder {
         self.shutdown = true;
     }
 
+    fn obs_init() -> Result<(), String> {
+        let mut get = Get::new();
+        unsafe {
+            // STARTUP
+            base_set_log_handler(Some(log_handler), null_mut());
+
+            if !obs_startup(get.c_str("en-US"), null_mut(), null_mut()) {
+                return Err(String::from("error on libobs startup"));
+            }
+
+            obs_add_data_path(get.c_str(LIBOBS_DATA_PATH));
+            obs_add_module_path(get.c_str(PLUGIN_BIN_PATH), get.c_str(PLUGIN_DATA_PATH));
+            obs_load_all_modules();
+
+            if DEBUG {
+                obs_log_loaded_modules();
+            }
+
+            let framerate = Framerate::new(DEFAULT_FRAMERATE);
+            Self::reset_video(
+                DEFAULT_RESOLUTION.get_size(),
+                DEFAULT_RESOLUTION.get_size(),
+                framerate,
+            )?;
+            Self::reset_audio()?;
+
+            obs_post_load_modules();
+        }
+        Ok(())
+    }
+
     fn reset_video(
         input_size: Size,
         output_size: Size,
@@ -418,8 +436,19 @@ impl Recorder {
 
 impl Drop for Recorder {
     fn drop(&mut self) {
-        if !self.shutdown {
-            self.shutdown();
+        unsafe {
+            if !self.shutdown {
+                // video
+                obs_source_remove(self.video_source);
+                obs_source_release(self.video_source);
+                obs_encoder_release(self.video_encoder);
+                // audio
+                obs_source_remove(self.audio_source);
+                obs_source_release(self.audio_source);
+                obs_encoder_release(self.audio_encoder);
+                // output
+                obs_output_release(self.output);
+            }
         }
     }
 }

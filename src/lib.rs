@@ -6,11 +6,11 @@ use libobs_sys::{
     obs_initialized, obs_load_all_modules, obs_log_loaded_modules, obs_output, obs_output_create,
     obs_output_release, obs_output_set_audio_encoder, obs_output_set_video_encoder,
     obs_output_start, obs_output_stop, obs_output_update, obs_post_load_modules, obs_reset_audio,
-    obs_reset_video, obs_set_output_source, obs_shutdown, obs_source, obs_source_create,
-    obs_source_release, obs_source_remove, obs_source_update, obs_startup,
-    obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO, va_list,
+    obs_reset_video, obs_scale_type_OBS_SCALE_BILINEAR, obs_set_output_source, obs_shutdown,
+    obs_source, obs_source_create, obs_source_release, obs_source_remove, obs_source_update,
+    obs_startup, obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO, va_list,
     video_colorspace_VIDEO_CS_DEFAULT, video_format_VIDEO_FORMAT_NV12,
-    video_range_type_VIDEO_RANGE_DEFAULT, video_scale_type_VIDEO_SCALE_BILINEAR, OBS_VIDEO_SUCCESS,
+    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
 
 use std::{ffi::CStr, ptr::null_mut};
@@ -27,7 +27,7 @@ mod obs_data;
 pub mod rate_control;
 pub mod resolution;
 
-const DEBUG: bool = true;
+const DEBUG: bool = false;
 
 #[cfg(target_os = "windows")]
 const GRAPHICS_MODULE: &str = "libobs-d3d11.dll";
@@ -53,7 +53,7 @@ unsafe extern "C" fn log_handler(
     _p: *mut ::std::os::raw::c_void,
 ) {
     if DEBUG {
-        //dbg!(CStr::from_ptr(msg));
+        dbg!(CStr::from_ptr(msg));
     }
 }
 
@@ -364,7 +364,7 @@ impl Recorder {
                 gpu_conversion: true,
                 colorspace: video_colorspace_VIDEO_CS_DEFAULT,
                 range: video_range_type_VIDEO_RANGE_DEFAULT,
-                scale_type: video_scale_type_VIDEO_SCALE_BILINEAR,
+                scale_type: obs_scale_type_OBS_SCALE_BILINEAR,
             };
 
             let ret = obs_reset_video(&mut ovi as *mut _);

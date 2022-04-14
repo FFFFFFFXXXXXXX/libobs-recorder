@@ -114,20 +114,59 @@ pub struct Recorder {
     audio_source: *mut obs_source,
     audio_encoder: *mut obs_encoder,
     output: *mut obs_output,
-    configured: bool,
     recording: bool,
     input_resolution: Resolution,
     output_resolution: Resolution,
     framerate: Framerate,
-    shutdown: bool,
 }
 
 impl Recorder {
-    pub fn create() -> Result<Self, String> {
-        if unsafe { !obs_initialized() } {
-            Self::obs_init()?;
+    pub fn init() -> Result<(), String> {
+        if unsafe { obs_initialized() } {
+            return Err("error: obs already initialized".into());
         }
 
+        let mut get = Get::new();
+        unsafe {
+            // STARTUP
+            base_set_log_handler(Some(log_handler), null_mut());
+
+            if !obs_startup(get.c_str("en-US"), null_mut(), null_mut()) {
+                return Err(String::from("error on libobs startup"));
+            }
+
+            obs_add_data_path(get.c_str(LIBOBS_DATA_PATH));
+            obs_add_module_path(get.c_str(PLUGIN_BIN_PATH), get.c_str(PLUGIN_DATA_PATH));
+            obs_load_all_modules();
+
+            if DEBUG {
+                obs_log_loaded_modules();
+            }
+
+            let framerate = Framerate::new(DEFAULT_FRAMERATE);
+            Self::reset_video(
+                DEFAULT_RESOLUTION.get_size(),
+                DEFAULT_RESOLUTION.get_size(),
+                framerate,
+            )?;
+            Self::reset_audio()?;
+
+            obs_post_load_modules();
+        }
+
+        Ok(())
+    }
+
+    pub fn shutdown() {
+        unsafe {
+            obs_shutdown();
+            if DEBUG {
+                println!("{}", bnum_allocs());
+            }
+        }
+    }
+
+    pub fn get(settings: RecorderSettings) -> Self {
         let mut get = Get::new();
         unsafe {
             // SETUP NEW VIDEO SOURCE/ENCODER
@@ -182,30 +221,51 @@ impl Recorder {
             obs_set_output_source(AUDIO_CHANNEL, audio_source);
             obs_output_set_audio_encoder(output, audio_encoder, AUDIO_ENCODER_INDEX);
 
-            Ok(Recorder {
+            let mut recorder = Recorder {
                 video_source,
                 video_encoder,
                 audio_source,
                 audio_encoder,
                 output,
-                configured: false,
                 recording: false,
                 input_resolution: DEFAULT_RESOLUTION,
                 output_resolution: DEFAULT_RESOLUTION,
                 framerate: Framerate::new(DEFAULT_FRAMERATE),
-                shutdown: false,
-            })
+            };
+            recorder.configure(settings);
+
+            return recorder;
         }
     }
 
-    pub fn configure(&mut self, settings: RecorderSettings) -> Result<(), String> {
+    pub fn start_recording(&mut self) -> bool {
+        if DEBUG {
+            println!("Recording Start: {}", unsafe { bnum_allocs() });
+        }
+        if self.recording {
+            return false;
+        }
+        if unsafe { obs_output_start(self.output) } {
+            self.recording = true;
+        }
+        self.recording
+    }
+
+    pub fn stop_recording(&mut self) -> bool {
+        if !self.recording {
+            return false;
+        }
+        unsafe { obs_output_stop(self.output) }
+        self.recording = false;
+        if DEBUG {
+            println!("Recording Stop: {}", unsafe { bnum_allocs() });
+        }
+        true
+    }
+
+    fn configure(&mut self, settings: RecorderSettings) {
         if DEBUG {
             println!("Configure before: {}", unsafe { bnum_allocs() });
-        }
-        if self.recording || self.shutdown {
-            return Err(String::from(
-                "error: cannot change configuration while recording or after shutdown",
-            ));
         }
 
         // RESET VIDEO
@@ -245,7 +305,7 @@ impl Recorder {
         };
 
         if reset_necessary {
-            Self::reset_video(input_size, output_size, framerate)?;
+            Self::reset_video(input_size, output_size, framerate).unwrap();
             unsafe { obs_encoder_set_video(self.video_encoder, obs_get_video()) };
         }
 
@@ -305,89 +365,6 @@ impl Recorder {
         if DEBUG {
             println!("Configure after: {}", unsafe { bnum_allocs() });
         }
-
-        self.configured = true;
-        Ok(())
-    }
-
-    pub fn start_recording(&mut self) -> bool {
-        if DEBUG {
-            println!("Recording Start: {}", unsafe { bnum_allocs() });
-        }
-        if self.shutdown || self.recording || !self.configured {
-            return false;
-        }
-        if unsafe { obs_output_start(self.output) } {
-            self.recording = true;
-        }
-        self.recording
-    }
-
-    pub fn stop_recording(&mut self) -> bool {
-        if self.shutdown || !self.recording {
-            return false;
-        }
-        unsafe { obs_output_stop(self.output) }
-        self.recording = false;
-        if DEBUG {
-            println!("Recording Stop: {}", unsafe { bnum_allocs() });
-        }
-        true
-    }
-
-    pub fn shutdown(&mut self) {
-        if self.shutdown {
-            return;
-        }
-        unsafe {
-            // video
-            obs_source_remove(self.video_source);
-            obs_source_release(self.video_source);
-            obs_encoder_release(self.video_encoder);
-            // audio
-            obs_source_remove(self.audio_source);
-            obs_source_release(self.audio_source);
-            obs_encoder_release(self.audio_encoder);
-            // output
-            obs_output_release(self.output);
-
-            obs_shutdown();
-            if DEBUG {
-                println!("{}", bnum_allocs());
-            }
-        }
-        self.shutdown = true;
-    }
-
-    fn obs_init() -> Result<(), String> {
-        let mut get = Get::new();
-        unsafe {
-            // STARTUP
-            base_set_log_handler(Some(log_handler), null_mut());
-
-            if !obs_startup(get.c_str("en-US"), null_mut(), null_mut()) {
-                return Err(String::from("error on libobs startup"));
-            }
-
-            obs_add_data_path(get.c_str(LIBOBS_DATA_PATH));
-            obs_add_module_path(get.c_str(PLUGIN_BIN_PATH), get.c_str(PLUGIN_DATA_PATH));
-            obs_load_all_modules();
-
-            if DEBUG {
-                obs_log_loaded_modules();
-            }
-
-            let framerate = Framerate::new(DEFAULT_FRAMERATE);
-            Self::reset_video(
-                DEFAULT_RESOLUTION.get_size(),
-                DEFAULT_RESOLUTION.get_size(),
-                framerate,
-            )?;
-            Self::reset_audio()?;
-
-            obs_post_load_modules();
-        }
-        Ok(())
     }
 
     fn reset_video(
@@ -437,18 +414,16 @@ impl Recorder {
 impl Drop for Recorder {
     fn drop(&mut self) {
         unsafe {
-            if !self.shutdown {
-                // video
-                obs_source_remove(self.video_source);
-                obs_source_release(self.video_source);
-                obs_encoder_release(self.video_encoder);
-                // audio
-                obs_source_remove(self.audio_source);
-                obs_source_release(self.audio_source);
-                obs_encoder_release(self.audio_encoder);
-                // output
-                obs_output_release(self.output);
-            }
+            // video
+            obs_source_remove(self.video_source);
+            obs_source_release(self.video_source);
+            obs_encoder_release(self.video_encoder);
+            // audio
+            obs_source_remove(self.audio_source);
+            obs_source_release(self.audio_source);
+            obs_encoder_release(self.audio_encoder);
+            // output
+            obs_output_release(self.output);
         }
     }
 }

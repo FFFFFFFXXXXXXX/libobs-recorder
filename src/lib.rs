@@ -27,7 +27,7 @@ mod obs_data;
 pub mod rate_control;
 pub mod resolution;
 
-const DEBUG: bool = true;
+const DEBUG: bool = false;
 
 #[cfg(target_os = "windows")]
 const GRAPHICS_MODULE: &str = "libobs-d3d11.dll";
@@ -125,7 +125,9 @@ pub struct Recorder {
 impl Recorder {
     pub fn create() -> Result<Self, String> {
         if unsafe { obs_initialized() } {
-            return Err(String::from("error: can only create one recorder object"));
+            return Err(String::from(
+                "error: only one active recorder object allowed",
+            ));
         }
 
         let mut get = Get::new();

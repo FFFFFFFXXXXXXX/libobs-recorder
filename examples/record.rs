@@ -35,7 +35,7 @@ fn main() {
     settings3.set_cbr(Cbr::mbit(20));
     settings3.record_audio(true);
 
-    Recorder::init().unwrap();
+    Recorder::init(None, None, None).unwrap();
     {
         // RECORD 1
         println!("RECORDING 1");

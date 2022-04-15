@@ -124,10 +124,31 @@ pub struct Recorder {
 }
 
 impl Recorder {
-    pub fn init() -> Result<(), String> {
+    pub fn init(
+        libobs_data_path: Option<String>,
+        plugin_bin_path: Option<String>,
+        plugin_data_path: Option<String>,
+    ) -> Result<(), String> {
         if unsafe { obs_initialized() } {
             return Err("error: obs already initialized".into());
         }
+
+        // set defaults in case no arguments were provided
+        let libobs_data_path: String = if let Some(path) = libobs_data_path {
+            path.into()
+        } else {
+            LIBOBS_DATA_PATH.into()
+        };
+        let plugin_bin_path: String = if let Some(path) = plugin_bin_path {
+            path.into()
+        } else {
+            PLUGIN_BIN_PATH.into()
+        };
+        let plugin_data_path: String = if let Some(path) = plugin_data_path {
+            path.into()
+        } else {
+            PLUGIN_DATA_PATH.into()
+        };
 
         let mut get = Get::new();
         unsafe {
@@ -138,8 +159,8 @@ impl Recorder {
                 return Err(String::from("error on libobs startup"));
             }
 
-            obs_add_data_path(get.c_str(LIBOBS_DATA_PATH));
-            obs_add_module_path(get.c_str(PLUGIN_BIN_PATH), get.c_str(PLUGIN_DATA_PATH));
+            obs_add_data_path(get.c_str(libobs_data_path));
+            obs_add_module_path(get.c_str(plugin_bin_path), get.c_str(plugin_data_path));
             obs_load_all_modules();
 
             if DEBUG {

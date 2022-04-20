@@ -2,18 +2,18 @@ extern crate libobs_sys;
 use libobs_sys::{
     base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path,
     obs_audio_encoder_create, obs_audio_info, obs_encoder, obs_encoder_release,
-    obs_encoder_set_audio, obs_encoder_set_video, obs_get_audio, obs_get_video, obs_get_video_info,
-    obs_initialized, obs_load_all_modules, obs_log_loaded_modules, obs_output, obs_output_create,
-    obs_output_release, obs_output_set_audio_encoder, obs_output_set_video_encoder,
-    obs_output_start, obs_output_stop, obs_post_load_modules, obs_reset_audio, obs_reset_video,
-    obs_scale_type_OBS_SCALE_BILINEAR, obs_set_output_source, obs_shutdown, obs_source,
-    obs_source_create, obs_source_release, obs_source_remove, obs_startup,
-    obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO, va_list,
-    video_colorspace_VIDEO_CS_DEFAULT, video_format_VIDEO_FORMAT_NV12,
-    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
+    obs_encoder_set_audio, obs_encoder_set_video, obs_enum_encoder_types, obs_get_audio,
+    obs_get_video, obs_get_video_info, obs_initialized, obs_load_all_modules,
+    obs_log_loaded_modules, obs_output, obs_output_create, obs_output_release,
+    obs_output_set_audio_encoder, obs_output_set_video_encoder, obs_output_start, obs_output_stop,
+    obs_post_load_modules, obs_reset_audio, obs_reset_video, obs_scale_type_OBS_SCALE_BILINEAR,
+    obs_set_output_source, obs_shutdown, obs_source, obs_source_create, obs_source_release,
+    obs_source_remove, obs_startup, obs_video_encoder_create, obs_video_info,
+    speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_DEFAULT,
+    video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
 
-use std::{ffi::CStr, fmt::Debug, ptr::null_mut};
+use std::{ffi::CStr, fmt::Debug, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
 
 use framerate::Framerate;
 use get::Get;
@@ -49,6 +49,8 @@ const DEFAULT_FRAMERATE_DEN: u32 = 1;
 const VIDEO_CHANNEL: u32 = 0;
 const AUDIO_CHANNEL: u32 = 1;
 const AUDIO_ENCODER_INDEX: usize = 0;
+
+static mut ENCODER_TYPE: &str = "";
 
 unsafe extern "C" fn log_handler(
     _lvl: ::std::os::raw::c_int,
@@ -174,6 +176,42 @@ impl Recorder {
             Self::reset_audio()?;
 
             obs_post_load_modules();
+
+            let mut amf = false;
+            let mut jim_nvenc = false;
+            let mut ffmpeg_nvenc = false;
+            let mut qsv = false;
+
+            let mut n = 0;
+            loop {
+                let mut ptr = MaybeUninit::<*const c_char>::uninit();
+                if !obs_enum_encoder_types(n, ptr.as_mut_ptr()) {
+                    break;
+                }
+                let encoder = ptr.assume_init();
+                if let Ok(enc) = CStr::from_ptr(encoder).to_str() {
+                    match enc {
+                        "amd_amf_h264" => amf = true,
+                        "jim_nvenc" => jim_nvenc = true,
+                        "ffmpeg_nvenc" => ffmpeg_nvenc = true,
+                        "obs_qsv11" => qsv = true,
+                        _ => {}
+                    }
+                }
+                n += 1;
+            }
+
+            ENCODER_TYPE = if jim_nvenc {
+                "jim_nvenc"
+            } else if ffmpeg_nvenc {
+                "ffmpeg_nvenc"
+            } else if amf {
+                "amd_amf_h264"
+            } else if qsv {
+                "obs_qsv11"
+            } else {
+                "obs_x264"
+            };
         }
 
         Ok(())
@@ -230,7 +268,7 @@ impl Recorder {
         unsafe {
             // SETUP NEW VIDEO SOURCE
             let video_source = {
-                let data = if let Some(window_title) = settings.window_title {
+                let data = if let Some(window_title) = settings.window_title.clone() {
                     let mut data = ObsData::new();
                     data.set_string("capture_mode", "window");
                     data.set_string("window", window_title);
@@ -251,29 +289,17 @@ impl Recorder {
             };
             // SETUP NEW VIDEO ENCODER
             let video_encoder = {
-                let mut data = ObsData::new();
-                // Static Properties
-                data.set_int("Usage", 0);
-                data.set_int("Profile", 100);
-                // Picture Control Properties
-                data.set_double("KeyframeInterval", 2.0);
-                data.set_int("BFrame.Pattern", 0);
-                if settings.bitrate.is_set() {
-                    data.set_int("RateControlMethod", 3);
-                    data.set_int("Bitrate.Target", settings.bitrate);
-                    data.set_int("FillerData", 1);
-                    data.set_int("VBVBuffer", 1);
-                    data.set_int("VBVBuffer.Size", settings.bitrate);
-                } else if settings.cqp.is_set() {
-                    data.set_int("RateControlMethod", 0);
-                    data.set_int("QP.IFrame", settings.cqp);
-                    data.set_int("QP.PFrame", settings.cqp);
-                    data.set_int("QP.BFrame", settings.cqp);
-                    data.set_int("VBVBuffer", 1);
-                    data.set_int("VBVBuffer.Size", 100000);
-                }
+                let data = match ENCODER_TYPE {
+                    "amd_amf_h264" => Self::amd_amf_h264_settings(&settings),
+                    "jim_nvenc" => Self::nvenc_settings(&settings, "jim_nvenc"),
+                    "ffmpeg_nvenc" => Self::nvenc_settings(&settings, "ffmpeg_nvenc"),
+                    "obs_qsv11" => Self::quicksync_settings(&settings),
+                    "obs_x264" => Self::obs_x264_settings(&settings),
+                    _ => panic!("This shouldnt happen!"),
+                };
+                let mut get = Get::new();
                 obs_video_encoder_create(
-                    get.c_str("amd_amf_h264"),
+                    get.c_str(ENCODER_TYPE),
                     get.c_str(""),
                     data.get_ptr(),
                     null_mut(),
@@ -360,6 +386,49 @@ impl Recorder {
             println!("Recording Stop: {}", unsafe { bnum_allocs() });
         }
         true
+    }
+
+    fn amd_amf_h264_settings(settings: &RecorderSettings) -> ObsData {
+        let mut data = ObsData::new();
+        // Static Properties
+        data.set_int("Usage", 0);
+        data.set_int("Profile", 100);
+        // Picture Control Properties
+        data.set_double("KeyframeInterval", 2.0);
+        data.set_int("BFrame.Pattern", 0);
+        if settings.bitrate.is_set() {
+            data.set_int("RateControlMethod", 3);
+            data.set_int("Bitrate.Target", settings.bitrate);
+            data.set_int("FillerData", 1);
+            data.set_int("VBVBuffer", 1);
+            data.set_int("VBVBuffer.Size", settings.bitrate);
+        } else if settings.cqp.is_set() {
+            data.set_int("RateControlMethod", 0);
+            data.set_int("QP.IFrame", settings.cqp);
+            data.set_int("QP.PFrame", settings.cqp);
+            data.set_int("QP.BFrame", settings.cqp);
+            data.set_int("VBVBuffer", 1);
+            data.set_int("VBVBuffer.Size", 100000);
+        }
+        return data;
+    }
+
+    fn nvenc_settings(settings: &RecorderSettings, enc_type: &str) -> ObsData {
+        todo!("NVENC encoder not implemented yet");
+        // let mut data = ObsData::new();
+        // return data;
+    }
+
+    fn quicksync_settings(settings: &RecorderSettings) -> ObsData {
+        todo!("QuickSync encoder not implemented yet");
+        // let mut data = ObsData::new();
+        // return data;
+    }
+
+    fn obs_x264_settings(settings: &RecorderSettings) -> ObsData {
+        todo!("OBS software-encoder not implemented yet");
+        // let mut data = ObsData::new();
+        // return data;
     }
 
     fn get_video_info() -> Result<obs_video_info, String> {

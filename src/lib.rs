@@ -1,4 +1,5 @@
 extern crate libobs_sys;
+
 use libobs_sys::{
     base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path,
     obs_audio_encoder_create, obs_audio_info, obs_encoder, obs_encoder_release,
@@ -18,7 +19,7 @@ use std::{ffi::CStr, fmt::Debug, mem::MaybeUninit, os::raw::c_char, ptr::null_mu
 use framerate::Framerate;
 use get::Get;
 use obs_data::ObsData;
-use rate_control::{Cbr, Cqp};
+use rate_control::{Cbr, Cqp, Icq};
 use resolution::{Resolution, Size};
 
 pub mod framerate;
@@ -46,6 +47,8 @@ const DEFAULT_RESOLUTION: Resolution = Resolution::_1080p;
 const DEFAULT_FRAMERATE_NUM: u32 = 30;
 const DEFAULT_FRAMERATE_DEN: u32 = 1;
 
+const DEFAULT_CQP: u32 = 20;
+
 const VIDEO_CHANNEL: u32 = 0;
 const AUDIO_CHANNEL: u32 = 1;
 const AUDIO_ENCODER_INDEX: usize = 0;
@@ -69,8 +72,9 @@ pub struct RecorderSettings {
     input_resolution: Option<Resolution>,
     output_resolution: Option<Resolution>,
     framerate: Framerate,
-    bitrate: Cbr,
+    cbr: Cbr,
     cqp: Cqp,
+    icq: Icq,
     record_audio: bool,
     output_path: Option<String>,
 }
@@ -82,8 +86,9 @@ impl RecorderSettings {
             input_resolution: None,
             output_resolution: None,
             framerate: Framerate::new(0, 0),
-            bitrate: Cbr::kbit(0),
+            cbr: Cbr::kbit(0),
             cqp: Cqp::new(0),
+            icq: Icq::new(0),
             record_audio: true,
             output_path: None,
         }
@@ -101,10 +106,13 @@ impl RecorderSettings {
         self.framerate = framerate;
     }
     pub fn set_cbr(&mut self, bitrate: Cbr) {
-        self.bitrate = bitrate;
+        self.cbr = bitrate;
     }
     pub fn set_cqp(&mut self, cqp: Cqp) {
         self.cqp = cqp;
+    }
+    pub fn set_icq(&mut self, icq: Icq) {
+        self.icq = icq;
     }
     pub fn record_audio(&mut self, record_audio: bool) {
         self.record_audio = record_audio;
@@ -128,7 +136,7 @@ impl Recorder {
         libobs_data_path: Option<String>,
         plugin_bin_path: Option<String>,
         plugin_data_path: Option<String>,
-    ) -> Result<(), String> {
+    ) -> Result<String, String> {
         if unsafe { obs_initialized() } {
             return Err("error: obs already initialized".into());
         }
@@ -212,9 +220,9 @@ impl Recorder {
             } else {
                 "obs_x264"
             };
-        }
 
-        Ok(())
+            Ok(ENCODER_TYPE.into())
+        }
     }
 
     pub fn shutdown() {
@@ -291,8 +299,7 @@ impl Recorder {
             let video_encoder = {
                 let data = match ENCODER_TYPE {
                     "amd_amf_h264" => Self::amd_amf_h264_settings(&settings),
-                    "jim_nvenc" => Self::nvenc_settings(&settings, "jim_nvenc"),
-                    "ffmpeg_nvenc" => Self::nvenc_settings(&settings, "ffmpeg_nvenc"),
+                    "jim_nvenc" | "ffmpeg_nvenc" => Self::nvenc_settings(&settings),
                     "obs_qsv11" => Self::quicksync_settings(&settings),
                     "obs_x264" => Self::obs_x264_settings(&settings),
                     _ => panic!("This shouldnt happen!"),
@@ -396,39 +403,87 @@ impl Recorder {
         // Picture Control Properties
         data.set_double("KeyframeInterval", 2.0);
         data.set_int("BFrame.Pattern", 0);
-        if settings.bitrate.is_set() {
+        data.set_int("VBVBuffer", 1);
+        if settings.cbr.is_set() {
             data.set_int("RateControlMethod", 3);
-            data.set_int("Bitrate.Target", settings.bitrate);
+            data.set_int("Bitrate.Target", settings.cbr);
             data.set_int("FillerData", 1);
-            data.set_int("VBVBuffer", 1);
-            data.set_int("VBVBuffer.Size", settings.bitrate);
-        } else if settings.cqp.is_set() {
+            data.set_int("VBVBuffer.Size", settings.cbr);
+        } else {
+            let cqp = if settings.cqp.is_set() {
+                settings.cqp
+            } else {
+                Cqp::new(DEFAULT_CQP)
+            };
             data.set_int("RateControlMethod", 0);
-            data.set_int("QP.IFrame", settings.cqp);
-            data.set_int("QP.PFrame", settings.cqp);
-            data.set_int("QP.BFrame", settings.cqp);
-            data.set_int("VBVBuffer", 1);
+            data.set_int("QP.IFrame", cqp);
+            data.set_int("QP.PFrame", cqp);
+            data.set_int("QP.BFrame", cqp);
             data.set_int("VBVBuffer.Size", 100000);
         }
         return data;
     }
 
-    fn nvenc_settings(settings: &RecorderSettings, enc_type: &str) -> ObsData {
-        todo!("NVENC encoder not implemented yet");
-        // let mut data = ObsData::new();
-        // return data;
+    fn nvenc_settings(settings: &RecorderSettings) -> ObsData {
+        let mut data = ObsData::new();
+        data.set_string("profile", "high");
+        data.set_string("preset", "hq");
+        if settings.cbr.is_set() {
+            data.set_string("rate_control", "CBR");
+            data.set_int("bitrate", settings.cbr);
+        } else {
+            let cqp = if settings.cqp.is_set() {
+                settings.cqp
+            } else {
+                Cqp::new(DEFAULT_CQP)
+            };
+            data.set_string("rate_control", "CQP");
+            data.set_int("cqp", cqp);
+        }
+        return data;
     }
 
     fn quicksync_settings(settings: &RecorderSettings) -> ObsData {
-        todo!("QuickSync encoder not implemented yet");
-        // let mut data = ObsData::new();
-        // return data;
+        let mut data = ObsData::new();
+        data.set_string("profile", "high");
+        if settings.icq.is_set() {
+            data.set_string("rate_control", "ICQ");
+            data.set_int("icq_quality", settings.icq);
+        } else if settings.cbr.is_set() {
+            data.set_string("rate_control", "CBR");
+            data.set_int("bitrate", settings.cbr);
+        } else {
+            let cqp = if settings.cqp.is_set() {
+                settings.cqp
+            } else {
+                Cqp::new(DEFAULT_CQP)
+            };
+            data.set_string("rate_control", "CQP");
+            data.set_int("qpi", cqp);
+            data.set_int("qpp", cqp);
+            data.set_int("qpb", cqp);
+        }
+        return data;
     }
 
     fn obs_x264_settings(settings: &RecorderSettings) -> ObsData {
-        todo!("OBS software-encoder not implemented yet");
-        // let mut data = ObsData::new();
-        // return data;
+        let mut data = ObsData::new();
+        data.set_bool("use_bufsize", true);
+        data.set_string("profile", "high");
+        data.set_string("preset", "veryfast");
+        if settings.cbr.is_set() {
+            data.set_string("rate_control", "CBR");
+            data.set_int("bitrate", settings.cbr);
+        } else {
+            let cqp = if settings.cqp.is_set() {
+                settings.cqp
+            } else {
+                Cqp::new(DEFAULT_CQP)
+            };
+            data.set_string("rate_control", "CRF");
+            data.set_int("crf", cqp);
+        }
+        return data;
     }
 
     fn get_video_info() -> Result<obs_video_info, String> {

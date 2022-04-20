@@ -24,7 +24,7 @@ pub struct Cqp(u32);
 
 impl Cqp {
     pub fn new(cqp: u32) -> Self {
-        Self(cqp.min(30))
+        Self(cqp.min(50))
     }
     pub fn is_set(&self) -> bool {
         self.0 > 0
@@ -32,6 +32,24 @@ impl Cqp {
 }
 
 impl Into<i64> for Cqp {
+    fn into(self) -> i64 {
+        self.0 as i64
+    }
+}
+
+#[derive(Debug, Copy, Clone, PartialEq)]
+pub struct Icq(u32);
+
+impl Icq {
+    pub fn new(icq: u32) -> Self {
+        Self(icq.min(50))
+    }
+    pub fn is_set(&self) -> bool {
+        self.0 > 0
+    }
+}
+
+impl Into<i64> for Icq {
     fn into(self) -> i64 {
         self.0 as i64
     }

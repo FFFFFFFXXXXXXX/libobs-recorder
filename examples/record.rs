@@ -36,6 +36,7 @@ fn main() {
     settings3.record_audio(true);
 
     Recorder::init(None, None, None).unwrap();
+    return;
     {
         // RECORD 1
         println!("RECORDING 1");

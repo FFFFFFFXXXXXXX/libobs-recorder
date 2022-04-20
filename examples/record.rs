@@ -22,7 +22,7 @@ fn main() {
     settings2.set_output_path("C:/Users/Felix/Videos/Test2.mp4");
     settings2.set_input_resolution(libobs_recorder::resolution::Resolution::_1080p);
     settings2.set_output_resolution(libobs_recorder::resolution::Resolution::_1440p);
-    settings2.set_framerate(Framerate::new(45));
+    settings2.set_framerate(Framerate::new(45, 1));
     settings2.set_cqp(Cqp::new(16));
     settings2.record_audio(false);
 
@@ -31,7 +31,7 @@ fn main() {
     settings3
         .set_window_title("League of Legends (TM) Client:RiotWindowClass:League of Legends.exe");
     settings3.set_output_path("C:/Users/Felix/Videos/Test3.mp4");
-    settings3.set_framerate(Framerate::new(60));
+    settings3.set_framerate(Framerate::new(60, 1));
     settings3.set_cbr(Cbr::mbit(20));
     settings3.record_audio(true);
 

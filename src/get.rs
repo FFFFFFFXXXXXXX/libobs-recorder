@@ -22,6 +22,6 @@ impl Get {
         let s = CString::new(string.into()).unwrap();
         let ptr = s.as_ptr();
         self.c_strings.push(s);
-        ptr
+        return ptr;
     }
 }

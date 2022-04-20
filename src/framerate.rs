@@ -1,22 +1,17 @@
 #[derive(Debug, Copy, Clone, PartialEq)]
-pub struct Framerate(u32);
+pub struct Framerate(u32, u32);
 
 impl Framerate {
-    pub fn new(framerate: u32) -> Self {
-        Self(framerate)
+    pub fn new(num: u32, den: u32) -> Self {
+        Self(num, den)
     }
-    pub fn is_set(&self) -> bool {
-        self.0 > 0
-    }
-}
-
-impl Into<u32> for Framerate {
-    fn into(self) -> u32 {
+    pub fn num(&self) -> u32 {
         self.0
     }
-}
-impl From<u32> for Framerate {
-    fn from(framerate: u32) -> Self {
-        Self(framerate)
+    pub fn den(&self) -> u32 {
+        self.1
+    }
+    pub fn is_set(&self) -> bool {
+        self.0 > 0 && self.1 > 0
     }
 }

@@ -1,4 +1,3 @@
 /target
 /Cargo.lock
 /obs.lib
-/libobs-sys/libobs_headers/*

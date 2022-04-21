@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["FX"]
 build = "build.rs"
 links = "obs"
-description = "FFI bindings for libobs version "
+description = "FFI bindings for libobs"
 
 [build-dependencies.bindgen]
 version = "0.49"

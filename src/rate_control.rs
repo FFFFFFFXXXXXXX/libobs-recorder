@@ -1,4 +1,11 @@
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, Default)]
+pub struct RateControl {
+    pub cbr: Cbr,
+    pub cqp: Cqp,
+    pub icq: Icq,
+}
+
+#[derive(Debug, Copy, Clone, PartialEq, Default)]
 pub struct Cbr(u32);
 
 impl Cbr {
@@ -19,7 +26,7 @@ impl Into<i64> for Cbr {
     }
 }
 
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, Default)]
 pub struct Cqp(u32);
 
 impl Cqp {
@@ -37,7 +44,7 @@ impl Into<i64> for Cqp {
     }
 }
 
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, Default)]
 pub struct Icq(u32);
 
 impl Icq {

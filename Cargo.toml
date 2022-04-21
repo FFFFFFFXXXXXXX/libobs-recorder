@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["FX"]
 description = "Record a window or screen using libobs."
+license = "GPL-2.0"
 
 [dependencies]
 libobs-sys = { path = "./libobs-sys" }

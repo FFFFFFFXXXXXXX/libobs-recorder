@@ -16,7 +16,7 @@ fn main() {
         Some("RiotWindowClass".into()),
         Some("League of Legends.exe".into()),
     ));
-    settings1.set_output_path("C:/Users/Felix/Videos/Test1.mp4");
+    settings1.set_output_path("./Test1.mp4");
     settings1.set_cqp(Cqp::new(25));
 
     // SETTINGS 2
@@ -26,7 +26,7 @@ fn main() {
         Some("RiotWindowClass".into()),
         Some("League of Legends.exe".into()),
     ));
-    settings2.set_output_path("C:/Users/Felix/Videos/Test2.mp4");
+    settings2.set_output_path("./Test2.mp4");
     settings2.set_output_resolution(Resolution::_1440p);
     settings2.set_framerate(Framerate::new(45, 1));
     settings2.set_cqp(Cqp::new(10));
@@ -39,7 +39,7 @@ fn main() {
         Some("RiotWindowClass".into()),
         Some("League of Legends.exe".into()),
     ));
-    settings3.set_output_path("C:/Users/Felix/Videos/Test3.mp4");
+    settings3.set_output_path("./Test3.mp4");
     settings3.set_framerate(Framerate::new(60, 1));
     settings3.set_cbr(Cbr::mbit(20));
     settings3.record_audio(true);

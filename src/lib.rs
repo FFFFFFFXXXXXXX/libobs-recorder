@@ -13,13 +13,24 @@ use libobs_sys::{
     speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_DEFAULT,
     video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
+use window::Window;
+use windows::{
+    core::PCSTR,
+    Win32::{
+        Foundation::RECT,
+        UI::{
+            HiDpi::{SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE},
+            WindowsAndMessaging::{FindWindowA, GetClientRect},
+        },
+    },
+};
 
 use std::{ffi::CStr, fmt::Debug, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
 
 use framerate::Framerate;
 use get::Get;
 use obs_data::ObsData;
-use rate_control::{Cbr, Cqp, Icq};
+use rate_control::{Cbr, Cqp, Icq, RateControl};
 use resolution::{Resolution, Size};
 
 pub mod framerate;
@@ -27,6 +38,7 @@ mod get;
 mod obs_data;
 pub mod rate_control;
 pub mod resolution;
+pub mod window;
 
 #[cfg(feature = "debug")]
 const DEBUG: bool = true;
@@ -49,6 +61,8 @@ const DEFAULT_FRAMERATE_DEN: u32 = 1;
 
 const DEFAULT_CQP: u32 = 20;
 
+const AMF_CONSTANT_QP: u32 = 0;
+
 const VIDEO_CHANNEL: u32 = 0;
 const AUDIO_CHANNEL: u32 = 1;
 const AUDIO_ENCODER_INDEX: usize = 0;
@@ -68,13 +82,10 @@ unsafe extern "C" fn log_handler(
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct RecorderSettings {
-    window_title: Option<String>,
-    input_resolution: Option<Resolution>,
+    window: Option<Window>,
     output_resolution: Option<Resolution>,
     framerate: Framerate,
-    cbr: Cbr,
-    cqp: Cqp,
-    icq: Icq,
+    rate_control: RateControl,
     record_audio: bool,
     output_path: Option<String>,
 }
@@ -82,37 +93,31 @@ pub struct RecorderSettings {
 impl RecorderSettings {
     pub fn new() -> Self {
         RecorderSettings {
-            window_title: None,
-            input_resolution: None,
+            window: None,
             output_resolution: None,
             framerate: Framerate::new(0, 0),
-            cbr: Cbr::kbit(0),
-            cqp: Cqp::new(0),
-            icq: Icq::new(0),
+            rate_control: RateControl::default(),
             record_audio: true,
             output_path: None,
         }
     }
-    pub fn set_window_title<S: Into<String>>(&mut self, window_title: S) {
-        self.window_title = Some(window_title.into());
+    pub fn set_window(&mut self, window: Window) {
+        self.window = Some(window);
     }
     pub fn set_output_resolution(&mut self, resolution: Resolution) {
         self.output_resolution = Some(resolution);
-    }
-    pub fn set_input_resolution(&mut self, resolution: Resolution) {
-        self.input_resolution = Some(resolution);
     }
     pub fn set_framerate(&mut self, framerate: Framerate) {
         self.framerate = framerate;
     }
     pub fn set_cbr(&mut self, bitrate: Cbr) {
-        self.cbr = bitrate;
+        self.rate_control.cbr = bitrate;
     }
     pub fn set_cqp(&mut self, cqp: Cqp) {
-        self.cqp = cqp;
+        self.rate_control.cqp = cqp;
     }
     pub fn set_icq(&mut self, icq: Icq) {
-        self.icq = icq;
+        self.rate_control.icq = icq;
     }
     pub fn record_audio(&mut self, record_audio: bool) {
         self.record_audio = record_audio;
@@ -140,6 +145,12 @@ impl Recorder {
         if unsafe { obs_initialized() } {
             return Err("error: obs already initialized".into());
         }
+
+        #[cfg(target_os = "windows")]
+        unsafe {
+            // Get correct window size from GetClientRect
+            SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE)
+        };
 
         // set defaults in case no arguments were provided
         let libobs_data_path: String = if let Some(path) = libobs_data_path {
@@ -234,16 +245,21 @@ impl Recorder {
         }
     }
 
-    pub fn get(settings: RecorderSettings) -> Self {
+    pub fn get(settings: RecorderSettings) -> Result<Self, String> {
         if DEBUG {
             println!("before get: {}", unsafe { bnum_allocs() });
         }
 
+        let window = if let Some(w) = settings.window {
+            w
+        } else {
+            return Err("No window options set".into());
+        };
+
         // RESET VIDEO
-        let ovi = Self::get_video_info().unwrap();
         let mut reset_necessary = false;
-        let input_size = if let Some(resolution) = settings.input_resolution {
-            let size = resolution.get_size();
+        let ovi = Self::get_video_info().unwrap();
+        let input_size = if let Ok(size) = Self::get_window_size(window.name(), window.class()) {
             if size.width() != ovi.base_width || size.height() != ovi.base_height {
                 reset_necessary = true;
             }
@@ -275,18 +291,13 @@ impl Recorder {
         let mut get = Get::new();
         unsafe {
             // SETUP NEW VIDEO SOURCE
+            // let mut data = ObsData::new();
+            // data.set_string("capture_mode", "any_fullscreen");
+            // data.set_bool("capture_cursor", true);
             let video_source = {
-                let data = if let Some(window_title) = settings.window_title.clone() {
-                    let mut data = ObsData::new();
-                    data.set_string("capture_mode", "window");
-                    data.set_string("window", window_title);
-                    data
-                } else {
-                    let mut data = ObsData::new();
-                    data.set_string("capture_mode", "any_fullscreen");
-                    data.set_bool("capture_cursor", true);
-                    data
-                };
+                let mut data = ObsData::new();
+                data.set_string("capture_mode", "window");
+                data.set_string("window", window.get_libobs_window_id());
 
                 obs_source_create(
                     get.c_str("game_capture"),
@@ -298,10 +309,10 @@ impl Recorder {
             // SETUP NEW VIDEO ENCODER
             let video_encoder = {
                 let data = match ENCODER_TYPE {
-                    "amd_amf_h264" => Self::amd_amf_h264_settings(&settings),
-                    "jim_nvenc" | "ffmpeg_nvenc" => Self::nvenc_settings(&settings),
-                    "obs_qsv11" => Self::quicksync_settings(&settings),
-                    "obs_x264" => Self::obs_x264_settings(&settings),
+                    "amd_amf_h264" => Self::amd_amf_h264_settings(&settings.rate_control),
+                    "jim_nvenc" | "ffmpeg_nvenc" => Self::nvenc_settings(&settings.rate_control),
+                    "obs_qsv11" => Self::quicksync_settings(&settings.rate_control),
+                    "obs_x264" => Self::obs_x264_settings(&settings.rate_control),
                     _ => panic!("This shouldnt happen!"),
                 };
                 let mut get = Get::new();
@@ -359,14 +370,14 @@ impl Recorder {
                 println!("after get: {}", bnum_allocs());
             }
 
-            Recorder {
+            Ok(Recorder {
                 video_source,
                 video_encoder,
                 audio_source,
                 audio_encoder,
                 output,
                 recording: false,
-            }
+            })
         }
     }
 
@@ -395,18 +406,19 @@ impl Recorder {
         true
     }
 
-    fn amd_amf_h264_settings(settings: &RecorderSettings) -> ObsData {
+    fn amd_amf_h264_settings(settings: &RateControl) -> ObsData {
         let mut data = ObsData::new();
         // Static Properties
         data.set_int("Usage", 0);
         data.set_int("Profile", 100);
+        // Common Properties
+        data.set_int("VBVBuffer", 1);
         // Picture Control Properties
         data.set_double("KeyframeInterval", 2.0);
         data.set_int("BFrame.Pattern", 0);
-        data.set_int("VBVBuffer", 1);
         if settings.cbr.is_set() {
-            data.set_int("RateControlMethod", 3);
-            data.set_int("Bitrate.Target", settings.cbr);
+            data.set_string("rate_control", "CBR");
+            data.set_int("bitrate", settings.cbr);
             data.set_int("FillerData", 1);
             data.set_int("VBVBuffer.Size", settings.cbr);
         } else {
@@ -415,7 +427,7 @@ impl Recorder {
             } else {
                 Cqp::new(DEFAULT_CQP)
             };
-            data.set_int("RateControlMethod", 0);
+            data.set_int("RateControlMethod", AMF_CONSTANT_QP);
             data.set_int("QP.IFrame", cqp);
             data.set_int("QP.PFrame", cqp);
             data.set_int("QP.BFrame", cqp);
@@ -424,7 +436,7 @@ impl Recorder {
         return data;
     }
 
-    fn nvenc_settings(settings: &RecorderSettings) -> ObsData {
+    fn nvenc_settings(settings: &RateControl) -> ObsData {
         let mut data = ObsData::new();
         data.set_string("profile", "high");
         data.set_string("preset", "hq");
@@ -443,7 +455,7 @@ impl Recorder {
         return data;
     }
 
-    fn quicksync_settings(settings: &RecorderSettings) -> ObsData {
+    fn quicksync_settings(settings: &RateControl) -> ObsData {
         let mut data = ObsData::new();
         data.set_string("profile", "high");
         if settings.icq.is_set() {
@@ -466,7 +478,7 @@ impl Recorder {
         return data;
     }
 
-    fn obs_x264_settings(settings: &RecorderSettings) -> ObsData {
+    fn obs_x264_settings(settings: &RateControl) -> ObsData {
         let mut data = ObsData::new();
         data.set_bool("use_bufsize", true);
         data.set_string("profile", "high");
@@ -506,6 +518,38 @@ impl Recorder {
             Ok(ovi)
         } else {
             Err("Error video was not set! Maybe Recorder was not initialized?".into())
+        }
+    }
+
+    #[cfg(target_os = "windows")]
+    fn get_window_size<S: Into<String>>(
+        window_title: S,
+        window_class: Option<&String>,
+    ) -> Result<Size, ()> {
+        let mut window_title = window_title.into().clone();
+        window_title.push('\0'); // null terminate
+
+        let title = PCSTR(window_title.as_ptr());
+        let class = if let Some(cn) = window_class {
+            let mut class_name = cn.to_owned();
+            class_name.push('\0'); // null terminate
+            PCSTR(class_name.as_ptr())
+        } else {
+            let class_name: PCSTR = PCSTR::default(); // null
+            class_name
+        };
+
+        let hwnd = unsafe { FindWindowA(class, title) };
+        if hwnd.is_invalid() {
+            return Err(());
+        }
+
+        let mut rect = RECT::default();
+        let ok = unsafe { GetClientRect(hwnd, &mut rect as _).as_bool() };
+        if ok && rect.right > 0 && rect.bottom > 0 {
+            Ok(Size::new(rect.right as u32, rect.bottom as u32))
+        } else {
+            Err(())
         }
     }
 

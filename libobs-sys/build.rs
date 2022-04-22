@@ -1,9 +1,6 @@
 extern crate bindgen;
 
 fn main() {
-    println!("cargo:rustc-link-search=native=./");
-    println!("cargo:rustc-link-lib=obs");
-
     let bindings = bindgen::builder()
         .header("libobs_headers/obs.h")
         .blacklist_type("_bindgen_ty_2")

@@ -2,3 +2,4 @@
 /Cargo.lock
 /obs.lib
 /libobs
+build.rs

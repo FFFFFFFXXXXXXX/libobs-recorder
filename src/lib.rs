@@ -258,7 +258,7 @@ impl Recorder {
 
         // RESET VIDEO
         let mut reset_necessary = false;
-        let ovi = Self::get_video_info().unwrap();
+        let ovi = Self::get_video_info()?;
         let input_size = if let Ok(size) = Self::get_window_size(window.name(), window.class()) {
             if size.width() != ovi.base_width || size.height() != ovi.base_height {
                 reset_necessary = true;
@@ -285,7 +285,7 @@ impl Recorder {
             Framerate::new(ovi.fps_num, ovi.fps_den)
         };
         if reset_necessary {
-            Self::reset_video(input_size, output_size, framerate).unwrap();
+            Self::reset_video(input_size, output_size, framerate)?;
         }
 
         let mut get = Get::new();
@@ -577,7 +577,7 @@ impl Recorder {
             };
 
             let ret = obs_reset_video(&mut ovi as *mut _);
-            if ret != OBS_VIDEO_SUCCESS.try_into().unwrap() {
+            if ret != OBS_VIDEO_SUCCESS as i32 {
                 return Err(String::from("error on libobs reset video"));
             }
         }

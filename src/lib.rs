@@ -385,10 +385,7 @@ impl Recorder {
         if DEBUG {
             println!("Recording Start: {}", unsafe { bnum_allocs() });
         }
-        if self.recording {
-            return false;
-        }
-        if unsafe { obs_output_start(self.output) } {
+        if !self.recording && unsafe { obs_output_start(self.output) } {
             self.recording = true;
         }
         self.recording
@@ -399,11 +396,11 @@ impl Recorder {
             return false;
         }
         unsafe { obs_output_stop(self.output) }
-        self.recording = false;
         if DEBUG {
             println!("Recording Stop: {}", unsafe { bnum_allocs() });
         }
-        true
+        self.recording = false;
+        self.recording
     }
 
     fn amd_amf_h264_settings(settings: &RateControl) -> ObsData {

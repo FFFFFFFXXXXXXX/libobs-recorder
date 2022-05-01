@@ -13,16 +13,9 @@ use libobs_sys::{
     speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_DEFAULT,
     video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
-use window::Window;
-use windows::{
-    core::PCSTR,
-    Win32::{
-        Foundation::RECT,
-        UI::{
-            HiDpi::{SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE},
-            WindowsAndMessaging::{FindWindowA, GetClientRect},
-        },
-    },
+use window::{window_size::get_window_size, Window};
+use windows::Win32::UI::HiDpi::{
+    SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE,
 };
 
 use std::{ffi::CStr, fmt::Debug, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
@@ -259,7 +252,7 @@ impl Recorder {
         // RESET VIDEO
         let mut reset_necessary = false;
         let ovi = Self::get_video_info()?;
-        let input_size = if let Ok(size) = Self::get_window_size(window.name(), window.class()) {
+        let input_size = if let Ok(size) = get_window_size(window.name(), window.class()) {
             if size.width() != ovi.base_width || size.height() != ovi.base_height {
                 reset_necessary = true;
             }
@@ -515,38 +508,6 @@ impl Recorder {
             Ok(ovi)
         } else {
             Err("Error video was not set! Maybe Recorder was not initialized?".into())
-        }
-    }
-
-    #[cfg(target_os = "windows")]
-    fn get_window_size<S: Into<String>>(
-        window_title: S,
-        window_class: Option<&String>,
-    ) -> Result<Size, ()> {
-        let mut window_title = window_title.into().clone();
-        window_title.push('\0'); // null terminate
-
-        let title = PCSTR(window_title.as_ptr());
-        let class = if let Some(cn) = window_class {
-            let mut class_name = cn.to_owned();
-            class_name.push('\0'); // null terminate
-            PCSTR(class_name.as_ptr())
-        } else {
-            let class_name: PCSTR = PCSTR::default(); // null
-            class_name
-        };
-
-        let hwnd = unsafe { FindWindowA(class, title) };
-        if hwnd.is_invalid() {
-            return Err(());
-        }
-
-        let mut rect = RECT::default();
-        let ok = unsafe { GetClientRect(hwnd, &mut rect as _).as_bool() };
-        if ok && rect.right > 0 && rect.bottom > 0 {
-            Ok(Size::new(rect.right as u32, rect.bottom as u32))
-        } else {
-            Err(())
         }
     }
 

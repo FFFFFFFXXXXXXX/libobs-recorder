@@ -13,24 +13,27 @@ use libobs_sys::{
     speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_DEFAULT,
     video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
-use window::{window_size::get_window_size, Window};
+use settings::RecorderSettings;
+use window::window_size::get_window_size;
 use windows::Win32::UI::HiDpi::{
     SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE,
 };
 
-use std::{ffi::CStr, fmt::Debug, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
+use std::{ffi::CStr, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
 
+use encoder::*;
 use framerate::Framerate;
 use get::Get;
 use obs_data::ObsData;
-use rate_control::{Cbr, Cqp, Icq, RateControl};
 use resolution::{Resolution, Size};
 
+pub mod encoder;
 pub mod framerate;
 mod get;
 mod obs_data;
 pub mod rate_control;
 pub mod resolution;
+pub mod settings;
 pub mod window;
 
 #[cfg(feature = "debug")]
@@ -52,15 +55,11 @@ const DEFAULT_RESOLUTION: Resolution = Resolution::_1080p;
 const DEFAULT_FRAMERATE_NUM: u32 = 30;
 const DEFAULT_FRAMERATE_DEN: u32 = 1;
 
-const DEFAULT_CQP: u32 = 20;
-
-const AMF_CONSTANT_QP: u32 = 0;
-
 const VIDEO_CHANNEL: u32 = 0;
 const AUDIO_CHANNEL: u32 = 1;
 const AUDIO_ENCODER_INDEX: usize = 0;
 
-static mut ENCODER_TYPE: &str = "";
+static mut ENCODER_TYPE: Encoder = Encoder::OBS_X264;
 
 unsafe extern "C" fn log_handler(
     _lvl: ::std::os::raw::c_int,
@@ -70,53 +69,6 @@ unsafe extern "C" fn log_handler(
 ) {
     if DEBUG {
         dbg!(CStr::from_ptr(msg));
-    }
-}
-
-#[derive(Clone, Debug, PartialEq)]
-pub struct RecorderSettings {
-    window: Option<Window>,
-    output_resolution: Option<Resolution>,
-    framerate: Framerate,
-    rate_control: RateControl,
-    record_audio: bool,
-    output_path: Option<String>,
-}
-
-impl RecorderSettings {
-    pub fn new() -> Self {
-        RecorderSettings {
-            window: None,
-            output_resolution: None,
-            framerate: Framerate::new(0, 0),
-            rate_control: RateControl::default(),
-            record_audio: true,
-            output_path: None,
-        }
-    }
-    pub fn set_window(&mut self, window: Window) {
-        self.window = Some(window);
-    }
-    pub fn set_output_resolution(&mut self, resolution: Resolution) {
-        self.output_resolution = Some(resolution);
-    }
-    pub fn set_framerate(&mut self, framerate: Framerate) {
-        self.framerate = framerate;
-    }
-    pub fn set_cbr(&mut self, bitrate: Cbr) {
-        self.rate_control.cbr = bitrate;
-    }
-    pub fn set_cqp(&mut self, cqp: Cqp) {
-        self.rate_control.cqp = cqp;
-    }
-    pub fn set_icq(&mut self, icq: Icq) {
-        self.rate_control.icq = icq;
-    }
-    pub fn record_audio(&mut self, record_audio: bool) {
-        self.record_audio = record_audio;
-    }
-    pub fn set_output_path<S: Into<String>>(&mut self, output_path: S) {
-        self.output_path = Some(output_path.into());
     }
 }
 
@@ -134,7 +86,7 @@ impl Recorder {
         libobs_data_path: Option<String>,
         plugin_bin_path: Option<String>,
         plugin_data_path: Option<String>,
-    ) -> Result<String, String> {
+    ) -> Result<Encoder, String> {
         if unsafe { obs_initialized() } {
             return Err("error: obs already initialized".into());
         }
@@ -214,18 +166,18 @@ impl Recorder {
             }
 
             ENCODER_TYPE = if jim_nvenc {
-                "jim_nvenc"
+                Encoder::JIM_NVENC
             } else if ffmpeg_nvenc {
-                "ffmpeg_nvenc"
+                Encoder::FFMPEG_NVENC
             } else if amf {
-                "amd_amf_h264"
+                Encoder::AMD_AMF_H264
             } else if qsv {
-                "obs_qsv11"
+                Encoder::OBS_QSV11
             } else {
-                "obs_x264"
+                Encoder::OBS_X264
             };
 
-            Ok(ENCODER_TYPE.into())
+            Ok(ENCODER_TYPE)
         }
     }
 
@@ -287,6 +239,7 @@ impl Recorder {
             // let mut data = ObsData::new();
             // data.set_string("capture_mode", "any_fullscreen");
             // data.set_bool("capture_cursor", true);
+            #[cfg(target_os = "windows")]
             let video_source = {
                 let mut data = ObsData::new();
                 data.set_string("capture_mode", "window");
@@ -299,18 +252,18 @@ impl Recorder {
                     null_mut(),
                 )
             };
+            #[cfg(target_os = "linux")]
+            let video_source = { todo!() };
+            #[cfg(target_os = "macos")]
+            let video_source = { todo!() };
+
             // SETUP NEW VIDEO ENCODER
+            let encoder = settings.encoder.unwrap_or_else(|| ENCODER_TYPE);
             let video_encoder = {
-                let data = match ENCODER_TYPE {
-                    "amd_amf_h264" => Self::amd_amf_h264_settings(&settings.rate_control),
-                    "jim_nvenc" | "ffmpeg_nvenc" => Self::nvenc_settings(&settings.rate_control),
-                    "obs_qsv11" => Self::quicksync_settings(&settings.rate_control),
-                    "obs_x264" => Self::obs_x264_settings(&settings.rate_control),
-                    _ => panic!("This shouldnt happen!"),
-                };
+                let data = encoder.settings(&settings.rate_control);
                 let mut get = Get::new();
                 obs_video_encoder_create(
-                    get.c_str(ENCODER_TYPE),
+                    get.c_str(encoder.id()),
                     get.c_str(""),
                     data.get_ptr(),
                     null_mut(),
@@ -394,98 +347,6 @@ impl Recorder {
         }
         self.recording = false;
         self.recording
-    }
-
-    fn amd_amf_h264_settings(settings: &RateControl) -> ObsData {
-        let mut data = ObsData::new();
-        // Static Properties
-        data.set_int("Usage", 0);
-        data.set_int("Profile", 100);
-        // Common Properties
-        data.set_int("VBVBuffer", 1);
-        // Picture Control Properties
-        data.set_double("KeyframeInterval", 2.0);
-        data.set_int("BFrame.Pattern", 0);
-        if settings.cbr.is_set() {
-            data.set_string("rate_control", "CBR");
-            data.set_int("bitrate", settings.cbr);
-            data.set_int("FillerData", 1);
-            data.set_int("VBVBuffer.Size", settings.cbr);
-        } else {
-            let cqp = if settings.cqp.is_set() {
-                settings.cqp
-            } else {
-                Cqp::new(DEFAULT_CQP)
-            };
-            data.set_int("RateControlMethod", AMF_CONSTANT_QP);
-            data.set_int("QP.IFrame", cqp);
-            data.set_int("QP.PFrame", cqp);
-            data.set_int("QP.BFrame", cqp);
-            data.set_int("VBVBuffer.Size", 100000);
-        }
-        return data;
-    }
-
-    fn nvenc_settings(settings: &RateControl) -> ObsData {
-        let mut data = ObsData::new();
-        data.set_string("profile", "high");
-        data.set_string("preset", "hq");
-        if settings.cbr.is_set() {
-            data.set_string("rate_control", "CBR");
-            data.set_int("bitrate", settings.cbr);
-        } else {
-            let cqp = if settings.cqp.is_set() {
-                settings.cqp
-            } else {
-                Cqp::new(DEFAULT_CQP)
-            };
-            data.set_string("rate_control", "CQP");
-            data.set_int("cqp", cqp);
-        }
-        return data;
-    }
-
-    fn quicksync_settings(settings: &RateControl) -> ObsData {
-        let mut data = ObsData::new();
-        data.set_string("profile", "high");
-        if settings.icq.is_set() {
-            data.set_string("rate_control", "ICQ");
-            data.set_int("icq_quality", settings.icq);
-        } else if settings.cbr.is_set() {
-            data.set_string("rate_control", "CBR");
-            data.set_int("bitrate", settings.cbr);
-        } else {
-            let cqp = if settings.cqp.is_set() {
-                settings.cqp
-            } else {
-                Cqp::new(DEFAULT_CQP)
-            };
-            data.set_string("rate_control", "CQP");
-            data.set_int("qpi", cqp);
-            data.set_int("qpp", cqp);
-            data.set_int("qpb", cqp);
-        }
-        return data;
-    }
-
-    fn obs_x264_settings(settings: &RateControl) -> ObsData {
-        let mut data = ObsData::new();
-        data.set_bool("use_bufsize", true);
-        data.set_string("profile", "high");
-        data.set_string("preset", "veryfast");
-        if settings.cbr.is_set() {
-            data.set_string("rate_control", "CBR");
-            data.set_int("bitrate", settings.cbr);
-        } else {
-            let cqp = if settings.cqp.is_set() {
-                settings.cqp
-            } else {
-                Cqp::new(DEFAULT_CQP)
-            };
-            data.set_string("rate_control", "CRF");
-            data.set_int("crf", cqp);
-        }
-        return data;
     }
 
     fn get_video_info() -> Result<obs_video_info, String> {

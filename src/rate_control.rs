@@ -1,5 +1,5 @@
 #[derive(Debug, Copy, Clone, PartialEq, Default)]
-pub struct RateControl {
+pub(crate) struct RateControl {
     pub cbr: Cbr,
     pub cqp: Cqp,
     pub icq: Icq,

@@ -13,7 +13,6 @@ use libobs_sys::{
     speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_DEFAULT,
     video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
-use settings::RecorderSettings;
 use window::window_size::get_window_size;
 use windows::Win32::UI::HiDpi::{
     SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE,
@@ -21,20 +20,22 @@ use windows::Win32::UI::HiDpi::{
 
 use std::{ffi::CStr, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
 
-use encoder::*;
-use framerate::Framerate;
+pub use encoder::Encoder;
+pub use framerate::Framerate;
 use get::Get;
 use obs_data::ObsData;
-use resolution::{Resolution, Size};
+pub use resolution::*;
+pub use settings::RecorderSettings;
+pub use window::Window;
 
-pub mod encoder;
-pub mod framerate;
+mod encoder;
+mod framerate;
 mod get;
 mod obs_data;
 pub mod rate_control;
-pub mod resolution;
-pub mod settings;
-pub mod window;
+mod resolution;
+mod settings;
+mod window;
 
 #[cfg(feature = "debug")]
 const DEBUG: bool = true;

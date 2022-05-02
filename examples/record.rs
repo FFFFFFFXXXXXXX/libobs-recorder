@@ -1,12 +1,8 @@
 extern crate libobs_recorder;
 
 use libobs_recorder::{
-    framerate::Framerate,
     rate_control::{Cbr, Cqp},
-    resolution::Resolution,
-    settings::RecorderSettings,
-    window::Window,
-    Recorder,
+    Framerate, Recorder, RecorderSettings, Resolution, Window,
 };
 
 fn main() {

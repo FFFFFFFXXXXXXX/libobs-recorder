@@ -4,8 +4,9 @@ use libobs_recorder::{
     framerate::Framerate,
     rate_control::{Cbr, Cqp},
     resolution::Resolution,
+    settings::RecorderSettings,
     window::Window,
-    Recorder, RecorderSettings,
+    Recorder,
 };
 
 fn main() {

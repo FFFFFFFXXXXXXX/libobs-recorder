@@ -13,17 +13,14 @@ impl Window {
             process,
         }
     }
-    pub fn name(&self) -> &str {
+    pub(crate) fn name(&self) -> &str {
         self.name.as_ref()
     }
-    pub fn class(&self) -> Option<&String> {
+    pub(crate) fn class(&self) -> Option<&String> {
         self.class.as_ref()
     }
-    pub fn process(&self) -> Option<&String> {
-        self.process.as_ref()
-    }
 
-    pub fn get_libobs_window_id(&self) -> String {
+    pub(crate) fn get_libobs_window_id(&self) -> String {
         let mut window_id = String::new();
         window_id.push_str(&self.name);
         window_id.push(':');
@@ -39,7 +36,7 @@ impl Window {
 }
 
 #[cfg(target_os = "windows")]
-pub mod window_size {
+pub(crate) mod window_size {
     use windows::{
         core::PCSTR,
         Win32::{
@@ -50,7 +47,7 @@ pub mod window_size {
 
     use crate::resolution::Size;
 
-    pub fn get_window_size<S: Into<String>>(
+    pub(crate) fn get_window_size<S: Into<String>>(
         window_title: S,
         window_class: Option<&String>,
     ) -> Result<Size, ()> {
@@ -83,8 +80,8 @@ pub mod window_size {
 }
 
 #[cfg(target_os = "linux")]
-pub mod WindowSize {
-    pub fn get_window_size<S: Into<String>>(
+pub(crate) mod WindowSize {
+    pub(crate) fn get_window_size<S: Into<String>>(
         window_title: S,
         window_class: Option<&String>,
     ) -> Result<Size, ()> {
@@ -93,8 +90,8 @@ pub mod WindowSize {
 }
 
 #[cfg(target_os = "macos")]
-pub mod WindowSize {
-    pub fn get_window_size<S: Into<String>>(
+pub(crate) mod WindowSize {
+    pub(crate) fn get_window_size<S: Into<String>>(
         window_title: S,
         window_class: Option<&String>,
     ) -> Result<Size, ()> {

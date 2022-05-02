@@ -9,7 +9,7 @@ pub enum Resolution {
 }
 
 impl Resolution {
-    pub fn get_size(&self) -> Size {
+    pub(crate) fn get_size(&self) -> Size {
         match self {
             Resolution::_480p => Size {
                 width: 640,
@@ -40,7 +40,7 @@ impl Resolution {
 }
 
 #[derive(Copy, Clone, Debug, PartialEq)]
-pub struct Size {
+pub(crate) struct Size {
     width: u32,
     height: u32,
 }

@@ -1,6 +1,6 @@
 [package]
 name = "libobs-recorder"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 authors = ["FX"]
 description = "Record a window or screen using libobs."

@@ -13,10 +13,6 @@ use libobs_sys::{
     speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_DEFAULT,
     video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
-use window::window_size::get_window_size;
-use windows::Win32::UI::HiDpi::{
-    SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE,
-};
 
 use std::{ffi::CStr, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
 
@@ -91,12 +87,6 @@ impl Recorder {
         if unsafe { obs_initialized() } {
             return Err("error: obs already initialized".into());
         }
-
-        #[cfg(target_os = "windows")]
-        unsafe {
-            // Get correct window size from GetClientRect
-            SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE)
-        };
 
         // set defaults in case no arguments were provided
         let libobs_data_path: String = if let Some(path) = libobs_data_path {
@@ -205,7 +195,7 @@ impl Recorder {
         // RESET VIDEO
         let mut reset_necessary = false;
         let ovi = Self::get_video_info()?;
-        let input_size = if let Ok(size) = get_window_size(window.name(), window.class()) {
+        let input_size = if let Some(size) = settings.input_size {
             if size.width() != ovi.base_width || size.height() != ovi.base_height {
                 reset_necessary = true;
             }

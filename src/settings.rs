@@ -1,10 +1,11 @@
 use crate::{
-    encoder::Encoder, framerate::Framerate, rate_control::*, resolution::Resolution, window::Window,
+    encoder::Encoder, framerate::Framerate, rate_control::*, resolution::Resolution, Size, Window,
 };
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct RecorderSettings {
     pub(crate) window: Option<Window>,
+    pub(crate) input_size: Option<Size>,
     pub(crate) output_resolution: Option<Resolution>,
     pub(crate) framerate: Framerate,
     pub(crate) rate_control: RateControl,
@@ -17,6 +18,7 @@ impl RecorderSettings {
     pub fn new() -> Self {
         RecorderSettings {
             window: None,
+            input_size: None,
             output_resolution: None,
             framerate: Framerate::new(0, 0),
             rate_control: RateControl::default(),
@@ -27,6 +29,9 @@ impl RecorderSettings {
     }
     pub fn set_window(&mut self, window: Window) {
         self.window = Some(window);
+    }
+    pub fn set_input_size(&mut self, size: Size) {
+        self.input_size = Some(size);
     }
     pub fn set_output_resolution(&mut self, resolution: Resolution) {
         self.output_resolution = Some(resolution);

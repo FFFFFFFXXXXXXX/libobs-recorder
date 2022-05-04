@@ -40,7 +40,7 @@ impl Resolution {
 }
 
 #[derive(Copy, Clone, Debug, PartialEq)]
-pub(crate) struct Size {
+pub struct Size {
     width: u32,
     height: u32,
 }

@@ -8,7 +8,6 @@ const AMF_CONSTANT_QP: u32 = 0;
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Copy, Clone, PartialEq)]
-
 pub enum Encoder {
     JIM_NVENC,
     FFMPEG_NVENC,
@@ -18,7 +17,7 @@ pub enum Encoder {
 }
 
 impl Encoder {
-    pub(crate) fn id(&self) -> &str {
+    pub fn id(&self) -> &str {
         match *self {
             Self::JIM_NVENC => "jim_nvenc",
             Self::FFMPEG_NVENC => "ffmpeg_nvenc",

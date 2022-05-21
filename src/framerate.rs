@@ -5,10 +5,10 @@ impl Framerate {
     pub fn new(num: u32, den: u32) -> Self {
         Self(num, den)
     }
-    pub(crate) fn num(&self) -> u32 {
+    pub fn num(&self) -> u32 {
         self.0
     }
-    pub(crate) fn den(&self) -> u32 {
+    pub fn den(&self) -> u32 {
         self.1
     }
     pub(crate) fn is_set(&self) -> bool {

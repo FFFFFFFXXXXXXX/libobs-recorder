@@ -75,14 +75,12 @@ enum video_colorspace {
 	VIDEO_CS_601,
 	VIDEO_CS_709,
 	VIDEO_CS_SRGB,
-	VIDEO_CS_2020_PQ,
-	VIDEO_CS_2020_HLG,
 };
 
 enum video_range_type {
 	VIDEO_RANGE_DEFAULT,
 	VIDEO_RANGE_PARTIAL,
-	VIDEO_RANGE_FULL,
+	VIDEO_RANGE_FULL
 };
 
 struct video_data {
@@ -178,18 +176,13 @@ static inline const char *get_video_colorspace_name(enum video_colorspace cs)
 	switch (cs) {
 	case VIDEO_CS_DEFAULT:
 	case VIDEO_CS_709:
-		return "Rec. 709";
+		return "709";
 	case VIDEO_CS_SRGB:
 		return "sRGB";
-	case VIDEO_CS_601:
-		return "Rec. 601";
-	case VIDEO_CS_2020_PQ:
-		return "Rec. 2020 (PQ)";
-	case VIDEO_CS_2020_HLG:
-		return "Rec. 2020 (HLG)";
+	case VIDEO_CS_601:;
 	}
 
-	return "Unknown";
+	return "601";
 }
 
 static inline enum video_range_type

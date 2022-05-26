@@ -7,11 +7,12 @@ use libobs_sys::{
     obs_get_video, obs_get_video_info, obs_initialized, obs_load_all_modules,
     obs_log_loaded_modules, obs_output, obs_output_create, obs_output_release,
     obs_output_set_audio_encoder, obs_output_set_video_encoder, obs_output_start, obs_output_stop,
-    obs_post_load_modules, obs_reset_audio, obs_reset_video, obs_scale_type_OBS_SCALE_BILINEAR,
-    obs_set_output_source, obs_shutdown, obs_source, obs_source_create, obs_source_release,
-    obs_source_remove, obs_startup, obs_video_encoder_create, obs_video_info,
-    speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_DEFAULT,
-    video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
+    obs_output_update, obs_post_load_modules, obs_reset_audio, obs_reset_video,
+    obs_scale_type_OBS_SCALE_BILINEAR, obs_set_output_source, obs_shutdown, obs_source,
+    obs_source_create, obs_source_release, obs_source_remove, obs_startup,
+    obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO, va_list,
+    video_colorspace_VIDEO_CS_DEFAULT, video_format_VIDEO_FORMAT_NV12,
+    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
 
 use std::{ffi::CStr, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
@@ -316,6 +317,12 @@ impl Recorder {
                 recording: false,
             })
         }
+    }
+
+    pub fn set_output<S: Into<String>>(&self, path: S) {
+        let mut data = ObsData::new();
+        data.set_string("path", path.into());
+        unsafe { obs_output_update(self.output, data.get_ptr()) };
     }
 
     pub fn start_recording(&mut self) -> bool {

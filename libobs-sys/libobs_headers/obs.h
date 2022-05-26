@@ -124,11 +124,6 @@ enum obs_scale_type {
 	OBS_SCALE_AREA,
 };
 
-enum obs_blending_method {
-	OBS_BLEND_METHOD_DEFAULT,
-	OBS_BLEND_METHOD_SRGB_OFF,
-};
-
 enum obs_blending_type {
 	OBS_BLEND_NORMAL,
 	OBS_BLEND_ADDITIVE,
@@ -414,12 +409,6 @@ EXPORT bool obs_reset_audio(const struct obs_audio_info *oai);
 
 /** Gets the current video settings, returns false if no video */
 EXPORT bool obs_get_video_info(struct obs_video_info *ovi);
-
-/** Gets the SDR white level, returns 300.0 if no video */
-EXPORT float obs_get_video_sdr_white_level(void);
-
-/** Sets the SDR white level */
-EXPORT void obs_set_video_sdr_white_level(float sdr_white_level);
 
 /** Gets the current audio settings, returns false if no audio */
 EXPORT bool obs_get_audio_info(struct obs_audio_info *oai);
@@ -728,9 +717,6 @@ EXPORT obs_data_t *obs_save_source(obs_source_t *source);
 /** Loads a source from settings data */
 EXPORT obs_source_t *obs_load_source(obs_data_t *data);
 
-/** Loads a private source from settings data */
-EXPORT obs_source_t *obs_load_private_source(obs_data_t *data);
-
 /** Send a save signal to sources */
 EXPORT void obs_source_save(obs_source_t *source);
 
@@ -892,9 +878,6 @@ EXPORT void obs_display_destroy(obs_display_t *display);
 EXPORT void obs_display_resize(obs_display_t *display, uint32_t cx,
 			       uint32_t cy);
 
-/** Updates the color space of this display */
-EXPORT void obs_display_update_color_space(obs_display_t *display);
-
 /**
  * Adds a draw callback for this display context
  *
@@ -1021,11 +1004,6 @@ EXPORT uint32_t obs_source_get_width(obs_source_t *source);
 
 /** Gets the height of a source (if it has video) */
 EXPORT uint32_t obs_source_get_height(obs_source_t *source);
-
-/** Gets the color space of a source (if it has video) */
-EXPORT enum gs_color_space
-obs_source_get_color_space(obs_source_t *source, size_t count,
-			   const enum gs_color_space *preferred_spaces);
 
 /** Hints whether or not the source will blend texels */
 EXPORT bool obs_source_get_texcoords_centered(obs_source_t *source);
@@ -1396,10 +1374,6 @@ obs_source_process_filter_begin(obs_source_t *filter,
 				enum gs_color_format format,
 				enum obs_allow_direct_render allow_direct);
 
-EXPORT bool obs_source_process_filter_begin_with_color_space(
-	obs_source_t *filter, enum gs_color_format format,
-	enum gs_color_space space, enum obs_allow_direct_render allow_direct);
-
 /**
  * Draws the filter.
  *
@@ -1583,9 +1557,6 @@ EXPORT void obs_transition_force_stop(obs_source_t *transition);
 EXPORT void
 obs_transition_video_render(obs_source_t *transition,
 			    obs_transition_video_render_callback_t callback);
-
-EXPORT enum gs_color_space
-obs_transition_video_get_color_space(obs_source_t *transition);
 
 /** Directly renders its sub-source instead of to texture.  Returns false if no
  * longer transitioning */
@@ -1804,11 +1775,6 @@ EXPORT void obs_sceneitem_set_scale_filter(obs_sceneitem_t *item,
 EXPORT enum obs_scale_type
 obs_sceneitem_get_scale_filter(obs_sceneitem_t *item);
 
-EXPORT void obs_sceneitem_set_blending_method(obs_sceneitem_t *item,
-					      enum obs_blending_method method);
-EXPORT enum obs_blending_method
-obs_sceneitem_get_blending_method(obs_sceneitem_t *item);
-
 EXPORT void obs_sceneitem_set_blending_mode(obs_sceneitem_t *item,
 					    enum obs_blending_type type);
 EXPORT enum obs_blending_type
@@ -1881,30 +1847,16 @@ EXPORT void obs_sceneitem_set_show_transition(obs_sceneitem_t *item,
 					      obs_source_t *transition);
 EXPORT void obs_sceneitem_set_show_transition_duration(obs_sceneitem_t *item,
 						       uint32_t duration_ms);
-OBS_DEPRECATED EXPORT obs_source_t *
-obs_sceneitem_get_show_transition(obs_sceneitem_t *item);
-OBS_DEPRECATED EXPORT uint32_t
+EXPORT obs_source_t *obs_sceneitem_get_show_transition(obs_sceneitem_t *item);
+EXPORT uint32_t
 obs_sceneitem_get_show_transition_duration(obs_sceneitem_t *item);
-OBS_DEPRECATED EXPORT void
-obs_sceneitem_set_hide_transition(obs_sceneitem_t *item,
-				  obs_source_t *transition);
-OBS_DEPRECATED EXPORT void
-obs_sceneitem_set_hide_transition_duration(obs_sceneitem_t *item,
-					   uint32_t duration_ms);
-OBS_DEPRECATED EXPORT obs_source_t *
-obs_sceneitem_get_hide_transition(obs_sceneitem_t *item);
-OBS_DEPRECATED EXPORT uint32_t
+EXPORT void obs_sceneitem_set_hide_transition(obs_sceneitem_t *item,
+					      obs_source_t *transition);
+EXPORT void obs_sceneitem_set_hide_transition_duration(obs_sceneitem_t *item,
+						       uint32_t duration_ms);
+EXPORT obs_source_t *obs_sceneitem_get_hide_transition(obs_sceneitem_t *item);
+EXPORT uint32_t
 obs_sceneitem_get_hide_transition_duration(obs_sceneitem_t *item);
-
-EXPORT void obs_sceneitem_set_transition(obs_sceneitem_t *item, bool show,
-					 obs_source_t *transition);
-EXPORT obs_source_t *obs_sceneitem_get_transition(obs_sceneitem_t *item,
-						  bool show);
-EXPORT void obs_sceneitem_set_transition_duration(obs_sceneitem_t *item,
-						  bool show,
-						  uint32_t duration_ms);
-EXPORT uint32_t obs_sceneitem_get_transition_duration(obs_sceneitem_t *item,
-						      bool show);
 EXPORT void obs_sceneitem_do_transition(obs_sceneitem_t *item, bool visible);
 EXPORT void obs_sceneitem_transition_load(struct obs_scene_item *item,
 					  obs_data_t *data, bool show);

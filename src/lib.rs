@@ -250,7 +250,7 @@ impl Recorder {
             let video_source = { todo!() };
 
             // SETUP NEW VIDEO ENCODER
-            let encoder = settings.encoder.unwrap_or_else(|| ENCODER_TYPE);
+            let encoder = settings.encoder.unwrap_or(ENCODER_TYPE);
             let video_encoder = {
                 let data = encoder.settings(&settings.rate_control);
                 let mut get = Get::new();

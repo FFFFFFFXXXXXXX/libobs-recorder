@@ -90,20 +90,17 @@ impl Recorder {
         }
 
         // set defaults in case no arguments were provided
-        let libobs_data_path: String = if let Some(path) = libobs_data_path {
-            path.into()
-        } else {
-            LIBOBS_DATA_PATH.into()
+        let libobs_data_path = match libobs_data_path {
+            Some(path) => path,
+            None => LIBOBS_DATA_PATH.into(),
         };
-        let plugin_bin_path: String = if let Some(path) = plugin_bin_path {
-            path.into()
-        } else {
-            PLUGIN_BIN_PATH.into()
+        let plugin_bin_path = match plugin_bin_path {
+            Some(path) => path,
+            None => PLUGIN_BIN_PATH.into(),
         };
-        let plugin_data_path: String = if let Some(path) = plugin_data_path {
-            path.into()
-        } else {
-            PLUGIN_DATA_PATH.into()
+        let plugin_data_path = match plugin_data_path {
+            Some(path) => path,
+            None => PLUGIN_DATA_PATH.into(),
         };
 
         let mut get = Get::new();
@@ -187,40 +184,32 @@ impl Recorder {
             println!("before get: {}", unsafe { bnum_allocs() });
         }
 
-        let window = if let Some(w) = settings.window {
-            w
-        } else {
-            return Err("No window options set".into());
+        let window = match settings.window {
+            Some(w) => w,
+            None => return Err("No window options set".into()),
         };
 
         // RESET VIDEO
-        let mut reset_necessary = false;
         let ovi = Self::get_video_info()?;
-        let input_size = if let Some(size) = settings.input_size {
-            if size.width() != ovi.base_width || size.height() != ovi.base_height {
-                reset_necessary = true;
-            }
-            size
-        } else {
-            Size::new(ovi.base_width, ovi.base_height)
+        let input_size = match settings.input_size {
+            Some(size) => size,
+            None => Size::new(ovi.base_width, ovi.base_height),
         };
-        let output_size = if let Some(resolution) = settings.output_resolution {
-            let size = resolution.get_size();
-            if size.width() != ovi.output_width || size.height() != ovi.output_height {
-                reset_necessary = true;
-            }
-            size
-        } else {
-            Size::new(ovi.output_width, ovi.output_height)
+        let output_size = match settings.output_resolution {
+            Some(resolution) => resolution.get_size(),
+            None => Size::new(ovi.output_width, ovi.output_height),
         };
-        let framerate = if settings.framerate.is_set() {
-            if settings.framerate.num() != ovi.fps_num || settings.framerate.den() != ovi.fps_den {
-                reset_necessary = true;
-            }
-            settings.framerate
-        } else {
-            Framerate::new(ovi.fps_num, ovi.fps_den)
+        let framerate = match settings.framerate.is_set() {
+            true => settings.framerate,
+            false => Framerate::new(ovi.fps_num, ovi.fps_den),
         };
+
+        let reset_necessary = input_size.width() != ovi.base_width
+            || input_size.height() != ovi.base_height
+            || output_size.width() != ovi.output_width
+            || output_size.height() != ovi.output_height
+            || framerate.num() != ovi.fps_num
+            || framerate.den() != ovi.fps_den;
         if reset_necessary {
             Self::reset_video(input_size, output_size, framerate)?;
         }
@@ -280,11 +269,10 @@ impl Recorder {
 
             // SETUP NEW OUTPUT
             let mut data = ObsData::new();
-            if let Some(output_path) = settings.output_path {
-                data.set_string("path", output_path);
-            } else {
-                data.set_string("path", "./recording.mp4");
-            }
+            match settings.output_path {
+                Some(output_path) => data.set_string("path", output_path),
+                None => data.set_string("path", "./recording.mp4"),
+            };
             let output = obs_output_create(
                 get.c_str("ffmpeg_muxer"),
                 get.c_str(""),
@@ -297,11 +285,14 @@ impl Recorder {
             obs_output_set_video_encoder(output, video_encoder);
 
             obs_encoder_set_audio(audio_encoder, obs_get_audio());
-            if settings.record_audio {
-                obs_set_output_source(AUDIO_CHANNEL, audio_source);
-            } else {
-                obs_set_output_source(AUDIO_CHANNEL, null_mut());
-            }
+
+            obs_set_output_source(
+                AUDIO_CHANNEL,
+                match settings.record_audio {
+                    true => audio_source,
+                    false => null_mut(),
+                },
+            );
             obs_output_set_audio_encoder(output, audio_encoder, AUDIO_ENCODER_INDEX);
 
             if DEBUG {
@@ -329,9 +320,7 @@ impl Recorder {
         if DEBUG {
             println!("Recording Start: {}", unsafe { bnum_allocs() });
         }
-        if !self.recording && unsafe { obs_output_start(self.output) } {
-            self.recording = true;
-        }
+        self.recording = !self.recording && unsafe { obs_output_start(self.output) };
         self.recording
     }
 
@@ -363,10 +352,9 @@ impl Recorder {
             range: -1,
             scale_type: -1,
         };
-        if unsafe { obs_get_video_info(&mut ovi as *mut _) } {
-            Ok(ovi)
-        } else {
-            Err("Error video was not set! Maybe Recorder was not initialized?".into())
+        match unsafe { obs_get_video_info(&mut ovi as *mut _) } {
+            true => Ok(ovi),
+            false => Err("Error video was not set! Maybe Recorder was not initialized?".into()),
         }
     }
 

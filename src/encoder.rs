@@ -53,10 +53,9 @@ fn amd_amf_h264_settings(settings: &RateControl) -> ObsData {
         data.set_int("FillerData", 1);
         data.set_int("VBVBuffer.Size", settings.cbr);
     } else {
-        let cqp = if settings.cqp.is_set() {
-            settings.cqp
-        } else {
-            Cqp::new(DEFAULT_CQP)
+        let cqp = match settings.cqp.is_set() {
+            true => settings.cqp,
+            false => Cqp::new(DEFAULT_CQP),
         };
         data.set_int("RateControlMethod", AMF_CONSTANT_QP);
         data.set_int("QP.IFrame", cqp);
@@ -118,10 +117,9 @@ fn obs_x264_settings(settings: &RateControl) -> ObsData {
         data.set_string("rate_control", "CBR");
         data.set_int("bitrate", settings.cbr);
     } else {
-        let cqp = if settings.cqp.is_set() {
-            settings.cqp
-        } else {
-            Cqp::new(DEFAULT_CQP)
+        let cqp = match settings.cqp.is_set() {
+            true => settings.cqp,
+            false => Cqp::new(DEFAULT_CQP),
         };
         data.set_string("rate_control", "CRF");
         data.set_int("crf", cqp);

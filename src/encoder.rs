@@ -63,7 +63,7 @@ fn amd_amf_h264_settings(settings: &RateControl) -> ObsData {
         data.set_int("QP.BFrame", cqp);
         data.set_int("VBVBuffer.Size", 100000);
     }
-    return data;
+    data
 }
 
 fn nvenc_settings(settings: &RateControl) -> ObsData {
@@ -82,7 +82,7 @@ fn nvenc_settings(settings: &RateControl) -> ObsData {
         data.set_string("rate_control", "CQP");
         data.set_int("cqp", cqp);
     }
-    return data;
+    data
 }
 
 fn quicksync_settings(settings: &RateControl) -> ObsData {
@@ -105,7 +105,7 @@ fn quicksync_settings(settings: &RateControl) -> ObsData {
         data.set_int("qpp", cqp);
         data.set_int("qpb", cqp);
     }
-    return data;
+    data
 }
 
 fn obs_x264_settings(settings: &RateControl) -> ObsData {
@@ -124,5 +124,5 @@ fn obs_x264_settings(settings: &RateControl) -> ObsData {
         data.set_string("rate_control", "CRF");
         data.set_int("crf", cqp);
     }
-    return data;
+    data
 }

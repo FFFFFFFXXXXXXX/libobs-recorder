@@ -6,7 +6,7 @@ pub struct Window {
 }
 
 impl Window {
-    pub fn new<S: Into<String>>(name: S, class: Option<String>, process: Option<String>) -> Self {
+    pub fn new(name: impl Into<String>, class: Option<String>, process: Option<String>) -> Self {
         Self {
             name: name.into(),
             class,
@@ -25,6 +25,6 @@ impl Window {
         if let Some(process) = &self.process {
             window_id.push_str(process);
         }
-        return window_id;
+        window_id
     }
 }

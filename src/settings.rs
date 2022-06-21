@@ -51,7 +51,7 @@ impl RecorderSettings {
     pub fn record_audio(&mut self, record_audio: bool) {
         self.record_audio = record_audio;
     }
-    pub fn set_output_path<S: Into<String>>(&mut self, output_path: S) {
+    pub fn set_output_path(&mut self, output_path: impl Into<String>) {
         self.output_path = Some(output_path.into());
     }
     pub fn set_encoder(&mut self, encoder: Encoder) {

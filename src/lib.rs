@@ -310,7 +310,7 @@ impl Recorder {
         }
     }
 
-    pub fn set_output<S: Into<String>>(&self, path: S) {
+    pub fn set_output(&self, path: impl Into<String>) {
         let mut data = ObsData::new();
         data.set_string("path", path.into());
         unsafe { obs_output_update(self.output, data.get_ptr()) };

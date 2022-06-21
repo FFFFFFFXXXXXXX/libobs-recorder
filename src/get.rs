@@ -18,10 +18,10 @@ impl Get {
         }
     }
 
-    pub fn c_str<S: Into<String>>(&mut self, string: S) -> *const i8 {
+    pub fn c_str(&mut self, string: impl Into<String>) -> *const i8 {
         let s = CString::new(string.into()).unwrap();
         let ptr = s.as_ptr();
         self.c_strings.push(s);
-        return ptr;
+        ptr
     }
 }

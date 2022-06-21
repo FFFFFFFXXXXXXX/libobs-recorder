@@ -30,7 +30,7 @@ impl ObsData {
         self.obs_data
     }
 
-    pub fn set_string<S1: Into<String>, S2: Into<String>>(&mut self, name: S1, value: S2) {
+    pub fn set_string(&mut self, name: impl Into<String>, value: impl Into<String>) {
         let n = CString::new(name.into()).unwrap();
         let v = CString::new(value.into()).unwrap();
         unsafe { obs_data_set_string(self.obs_data, n.as_ptr(), v.as_ptr()) };
@@ -38,19 +38,19 @@ impl ObsData {
         self.c_strings.push(v);
     }
 
-    pub fn set_int<S: Into<String>, I: Into<i64>>(&mut self, name: S, value: I) {
+    pub fn set_int(&mut self, name: impl Into<String>, value: impl Into<i64>) {
         let n = CString::new(name.into()).unwrap();
         unsafe { obs_data_set_int(self.obs_data, n.as_ptr(), value.into()) };
         self.c_strings.push(n);
     }
 
-    pub fn set_double<S: Into<String>, F: Into<f64>>(&mut self, name: S, value: F) {
+    pub fn set_double(&mut self, name: impl Into<String>, value: impl Into<f64>) {
         let n = CString::new(name.into()).unwrap();
         unsafe { obs_data_set_double(self.obs_data, n.as_ptr(), value.into()) };
         self.c_strings.push(n);
     }
 
-    pub fn set_bool<S: Into<String>, B: Into<bool>>(&mut self, name: S, value: B) {
+    pub fn set_bool(&mut self, name: impl Into<String>, value: impl Into<bool>) {
         let n = CString::new(name.into()).unwrap();
         unsafe { obs_data_set_bool(self.obs_data, n.as_ptr(), value.into()) };
         self.c_strings.push(n);

@@ -1,6 +1,6 @@
 # libobs-recorder
 
-**CURRENTLY TIED TO OBS VERSION: 27.2.4**
+**CURRENTLY TIED TO OBS VERSION: 28.0.1**
 
 This is a rust library for recording using the [libobs library]("https://github.com/obsproject/obs-studio").
 The current version supports only a very limited amount of options and only uses the windows game_capture plugin.
@@ -16,26 +16,20 @@ There is a working version of the record example in the releases section. (for w
 
 List of required files to copy from Obs release (or from a build you made yourself):
 
-- avcodec-58.dll
-- avdevice-58.dll
-- avfilter-7.dll
-- avformat-58.dll
-- avutil-56.dll
-- libaom.dll
+- avcodec-59.dll
+- avdevice-59.dll
+- avfilter-8.dll
+- avformat-59.dll
+- avutil-57.dll
 - libcurl.dll
 - libmbedcrypto.dll
 - libobs-d3d11.dll (for windows) / libobs-opengl.dll (for linux or mac)
 - libobs-winrt.dll
-- libogg-0.dll
-- libopus-0.dll
 - librist.dll
 - libsrt.dll
-- libSvtAv1Enc.dll
-- libvorbis-0.dll
-- libvorbisenc-2.dll
-- libvorbisfile-3.dll
-- libvpx-1.dll
-- libx264-163.dll
+- libx264-164.dll
+- obs-amf-test.exe
+- obs-ffmpeg-mux.exe
 - obs.dll
 - swresample-3.dll
 - swscale-5.dll
@@ -65,14 +59,18 @@ List of required files to copy from Obs release (or from a build you made yourse
     - repeat.effect
     - solid.effect
   - obs-plugins
-    - coreaudio-encoder
     - enc-amf
-    - obs-ffmpeg
-    - obs-outputs
-    - obs-qsv11
-    - obs-x264
+      - enc-amf-test32.exe
+      - enc-amf-test64.exe
     - win-capture
-    - win-wasapi
+      - get-graphics-offsets32.exe
+      - get-graphics-offsets64.exe
+      - graphics-hook32.dll
+      - graphics-hook64.dll
+      - inject-helper32.exe
+      - inject-helper64.exe
+      - obs-vulkan32.json
+      - obs-vulkan64.json
 - obs-plugins
   - 64bit
     - coreaudio-encoder.dll
@@ -83,3 +81,5 @@ List of required files to copy from Obs release (or from a build you made yourse
     - obs-x264.dll
     - win-capture.dll
     - win-wasapi.dll
+    - libEGL.dll
+    - libGLESv2.dll

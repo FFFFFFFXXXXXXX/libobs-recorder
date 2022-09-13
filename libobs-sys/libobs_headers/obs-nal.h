@@ -1,5 +1,5 @@
 /******************************************************************************
-    Copyright (C) 2013 by Hugh Bailey <obs.jim@gmail.com>
+    Copyright (C) 2022 by Hugh Bailey <obs.jim@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,49 +17,21 @@
 
 #pragma once
 
-#include "../util/c99defs.h"
+#include "util/c99defs.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-struct quat;
-
-struct axisang {
-	union {
-		struct {
-			float x, y, z, w;
-		};
-		float ptr[4];
-	};
+enum {
+	OBS_NAL_PRIORITY_DISPOSABLE = 0,
+	OBS_NAL_PRIORITY_LOW = 1,
+	OBS_NAL_PRIORITY_HIGH = 2,
+	OBS_NAL_PRIORITY_HIGHEST = 3,
 };
 
-static inline void axisang_zero(struct axisang *dst)
-{
-	dst->x = 0.0f;
-	dst->y = 0.0f;
-	dst->z = 0.0f;
-	dst->w = 0.0f;
-}
-
-static inline void axisang_copy(struct axisang *dst, struct axisang *aa)
-{
-	dst->x = aa->x;
-	dst->y = aa->y;
-	dst->z = aa->z;
-	dst->w = aa->w;
-}
-
-static inline void axisang_set(struct axisang *dst, float x, float y, float z,
-			       float w)
-{
-	dst->x = x;
-	dst->y = y;
-	dst->z = z;
-	dst->w = w;
-}
-
-EXPORT void axisang_from_quat(struct axisang *dst, const struct quat *q);
+EXPORT const uint8_t *obs_nal_find_startcode(const uint8_t *p,
+					     const uint8_t *end);
 
 #ifdef __cplusplus
 }

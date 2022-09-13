@@ -29,7 +29,6 @@ mod encoders;
 mod framerate;
 mod get;
 mod obs_data;
-pub mod rate_control;
 mod resolution;
 mod settings;
 mod window;

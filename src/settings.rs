@@ -1,5 +1,5 @@
 use crate::{
-    encoders::Encoder, framerate::Framerate, rate_control::RateControl, resolution::Resolution, Size, Window,
+    encoders::Encoder, framerate::Framerate, resolution::Resolution, Size, Window,
 };
 
 #[derive(Clone, Debug, PartialEq)]
@@ -53,9 +53,24 @@ impl RecorderSettings {
     }
 }
 
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RecordAudio {
     NONE,
     APPLICATION,
     SYSTEM
+}
+
+#[derive(Debug, Copy, Clone, PartialEq)]
+pub enum RateControl {
+    CBR(u32),
+    VBR(u32),
+    CQP(u32),
+    CRF(u32),
+    ICQ(u32)
+}
+
+impl Default for RateControl {
+    fn default() -> Self {
+        Self::CQP(20)
+    }
 }

@@ -1,6 +1,5 @@
 use crate::{
-    obs_data::ObsData,
-    rate_control::RateControl,
+    obs_data::ObsData, RateControl
 };
 
 const ENABLE: i64 = 1;

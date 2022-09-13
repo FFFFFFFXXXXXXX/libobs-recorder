@@ -1,8 +1,7 @@
 extern crate libobs_recorder;
 
 use libobs_recorder::{
-    rate_control::RateControl,
-    Framerate, Recorder, RecorderSettings, Resolution, Size, Window, RecordAudio, Encoder,
+    Framerate, Recorder, RecorderSettings, Resolution, Size, Window, RecordAudio, Encoder, RateControl,
 };
 
 use windows::Win32::UI::HiDpi::{SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE};

@@ -2,30 +2,30 @@ extern crate libobs_sys;
 
 use libobs_sys::{
     base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path,
-    obs_audio_encoder_create, obs_audio_info, obs_encoder, obs_encoder_release,
+    obs_audio_encoder_create, obs_encoder, obs_encoder_release,
     obs_encoder_set_audio, obs_encoder_set_video, obs_enum_encoder_types, obs_get_audio,
     obs_get_video, obs_get_video_info, obs_initialized, obs_load_all_modules,
     obs_log_loaded_modules, obs_output, obs_output_create, obs_output_release,
     obs_output_set_audio_encoder, obs_output_set_video_encoder, obs_output_start, obs_output_stop,
-    obs_output_update, obs_post_load_modules, obs_reset_audio, obs_reset_video,
-    obs_scale_type_OBS_SCALE_BILINEAR, obs_set_output_source, obs_shutdown, obs_source,
+    obs_output_update, obs_post_load_modules, obs_reset_video,
+    obs_set_output_source, obs_shutdown, obs_source,
     obs_source_create, obs_source_release, obs_source_remove, obs_startup,
-    obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO, va_list,
-    video_colorspace_VIDEO_CS_DEFAULT, video_format_VIDEO_FORMAT_NV12,
-    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
+    obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO,
+    video_format_VIDEO_FORMAT_NV12,
+    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS, video_colorspace_VIDEO_CS_709, obs_scale_type_OBS_SCALE_LANCZOS, va_list, obs_audio_info, obs_reset_audio,
 };
 
-use std::{ffi::CStr, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
+use std::{ffi::CStr, os::raw::c_char, ptr::null_mut, mem::MaybeUninit};
 
-pub use encoder::Encoder;
+pub use encoders::Encoder;
 pub use framerate::Framerate;
 use get::Get;
 use obs_data::ObsData;
 pub use resolution::*;
-pub use settings::RecorderSettings;
+pub use settings::*;
 pub use window::Window;
 
-mod encoder;
+mod encoders;
 mod framerate;
 mod get;
 mod obs_data;
@@ -48,16 +48,11 @@ const LIBOBS_DATA_PATH: &str = "./data/libobs/";
 const PLUGIN_BIN_PATH: &str = "./obs-plugins/64bit/";
 const PLUGIN_DATA_PATH: &str = "./data/obs-plugins/%module%/";
 
-const DEFAULT_RESOLUTION: Resolution = Resolution::_1080p;
-
-const DEFAULT_FRAMERATE_NUM: u32 = 30;
-const DEFAULT_FRAMERATE_DEN: u32 = 1;
-
 const VIDEO_CHANNEL: u32 = 0;
 const AUDIO_CHANNEL: u32 = 1;
 const AUDIO_ENCODER_INDEX: usize = 0;
 
-static mut ENCODER_TYPE: Encoder = Encoder::OBS_X264;
+static mut ENCODER: Encoder = Encoder::OBS_X264;
 
 unsafe extern "C" fn log_handler(
     _lvl: ::std::os::raw::c_int,
@@ -66,7 +61,7 @@ unsafe extern "C" fn log_handler(
     _p: *mut ::std::os::raw::c_void,
 ) {
     if DEBUG {
-        dbg!(CStr::from_ptr(msg));
+        println!("{:?}", CStr::from_ptr(msg));
     }
 }
 
@@ -84,7 +79,7 @@ impl Recorder {
         libobs_data_path: Option<String>,
         plugin_bin_path: Option<String>,
         plugin_data_path: Option<String>,
-    ) -> Result<Encoder, String> {
+    ) -> Result<Vec<Encoder>, String> {
         if unsafe { obs_initialized() } {
             return Err("error: obs already initialized".into());
         }
@@ -115,58 +110,63 @@ impl Recorder {
             obs_add_data_path(get.c_str(libobs_data_path));
             obs_add_module_path(get.c_str(plugin_bin_path), get.c_str(plugin_data_path));
             obs_load_all_modules();
-
+            obs_post_load_modules();
             if DEBUG {
                 obs_log_loaded_modules();
             }
 
-            let framerate = Framerate::new(DEFAULT_FRAMERATE_NUM, DEFAULT_FRAMERATE_DEN);
-            Self::reset_video(
-                DEFAULT_RESOLUTION.get_size(),
-                DEFAULT_RESOLUTION.get_size(),
-                framerate,
-            )?;
+            let default_fps = Framerate::new(30, 1);
+            let default_size = Size::new(1920, 1080);
+            Self::reset_video(default_size, default_size, default_fps)?;
             Self::reset_audio()?;
 
-            obs_post_load_modules();
-
-            let mut amf = false;
+            let mut amd_amf = false;
+            let mut amd_new = false;
             let mut jim_nvenc = false;
             let mut ffmpeg_nvenc = false;
             let mut qsv = false;
 
             let mut n = 0;
-            loop {
-                let mut ptr = MaybeUninit::<*const c_char>::uninit();
-                if !obs_enum_encoder_types(n, ptr.as_mut_ptr()) {
-                    break;
-                }
+            let mut encoders = Vec::new();
+            let mut ptr = MaybeUninit::<*const c_char>::uninit();
+            while obs_enum_encoder_types(n, ptr.as_mut_ptr()) {
                 let encoder = ptr.assume_init();
                 if let Ok(enc) = CStr::from_ptr(encoder).to_str() {
+                    let enc = Encoder::from(enc);
                     match enc {
-                        "amd_amf_h264" => amf = true,
-                        "jim_nvenc" => jim_nvenc = true,
-                        "ffmpeg_nvenc" => ffmpeg_nvenc = true,
-                        "obs_qsv11" => qsv = true,
-                        _ => {}
+                        Encoder::JIM_NVENC => jim_nvenc = true,
+                        Encoder::FFMPEG_NVENC => ffmpeg_nvenc = true,
+                        Encoder::AMD_AMF_H264 => amd_amf = true,
+                        Encoder::AMD_NEW_H264 => amd_new = true,
+                        Encoder::OBS_QSV11 => qsv = true,
+                        Encoder::OBS_X264 => {},
+                        Encoder::UNKNOWN => {
+                            n += 1;
+                            continue;
+                        }
                     }
+                    encoders.push(enc);
                 }
                 n += 1;
             }
 
-            ENCODER_TYPE = if jim_nvenc {
+            ENCODER = if jim_nvenc {
                 Encoder::JIM_NVENC
             } else if ffmpeg_nvenc {
                 Encoder::FFMPEG_NVENC
-            } else if amf {
+            } else if ffmpeg_nvenc {
+                Encoder::FFMPEG_NVENC
+            } else if amd_amf {
                 Encoder::AMD_AMF_H264
+            } else if amd_new {
+                Encoder::AMD_NEW_H264
             } else if qsv {
                 Encoder::OBS_QSV11
             } else {
                 Encoder::OBS_X264
             };
 
-            Ok(ENCODER_TYPE)
+            Ok(encoders)
         }
     }
 
@@ -179,12 +179,12 @@ impl Recorder {
         }
     }
 
-    pub fn get(settings: RecorderSettings) -> Result<Self, String> {
+    pub fn get(settings: &RecorderSettings) -> Result<Self, String> {
         if DEBUG {
             println!("before get: {}", unsafe { bnum_allocs() });
         }
 
-        let window = match settings.window {
+        let window = match &settings.window {
             Some(w) => w,
             None => return Err("No window options set".into()),
         };
@@ -217,15 +217,12 @@ impl Recorder {
         let mut get = Get::new();
         unsafe {
             // SETUP NEW VIDEO SOURCE
-            // let mut data = ObsData::new();
-            // data.set_string("capture_mode", "any_fullscreen");
-            // data.set_bool("capture_cursor", true);
             #[cfg(target_os = "windows")]
             let video_source = {
                 let mut data = ObsData::new();
                 data.set_string("capture_mode", "window");
                 data.set_string("window", window.get_libobs_window_id());
-
+                data.set_bool("capture_cursor", true);
                 obs_source_create(
                     get.c_str("game_capture"),
                     get.c_str(""),
@@ -239,10 +236,9 @@ impl Recorder {
             let video_source = { todo!() };
 
             // SETUP NEW VIDEO ENCODER
-            let encoder = settings.encoder.unwrap_or(ENCODER_TYPE);
+            let encoder = settings.encoder.unwrap_or(ENCODER);
             let video_encoder = {
                 let data = encoder.settings(&settings.rate_control);
-                let mut get = Get::new();
                 obs_video_encoder_create(
                     get.c_str(encoder.id()),
                     get.c_str(""),
@@ -252,33 +248,53 @@ impl Recorder {
             };
 
             // SETUP NEW AUDIO SOURCE
-            let audio_source = obs_source_create(
-                get.c_str("wasapi_output_capture"),
-                get.c_str(""),
-                null_mut(),
-                null_mut(),
-            );
+            let audio_source = match settings.record_audio {
+                RecordAudio::NONE => null_mut(),
+                RecordAudio::APPLICATION => {
+                    let mut data = ObsData::new();
+                    data.set_string("window", window.get_libobs_window_id());
+                    obs_source_create(
+                        get.c_str("wasapi_process_output_capture"),
+                        get.c_str(""),
+                        data.get_ptr(),
+                        null_mut(),
+                    )   
+                },
+                RecordAudio::SYSTEM => {
+                    obs_source_create(
+                        get.c_str("wasapi_output_capture"),
+                        get.c_str(""),
+                        null_mut(),
+                        null_mut(),
+                    )
+                }
+            };
             // SETUP NEW AUDIO ENCODER
-            let audio_encoder = obs_audio_encoder_create(
-                get.c_str("ffmpeg_aac"),
-                get.c_str(""),
-                null_mut(),
-                0,
-                null_mut(),
-            );
+            let audio_encoder = {
+                let mut data = ObsData::new();
+                data.set_int("bitrate", 320);
+                obs_audio_encoder_create(
+                    get.c_str("ffmpeg_aac"),
+                    get.c_str(""),
+                    data.get_ptr(),
+                    0,
+                    null_mut(),
+                )
+            };
 
             // SETUP NEW OUTPUT
-            let mut data = ObsData::new();
-            match settings.output_path {
-                Some(output_path) => data.set_string("path", output_path),
-                None => data.set_string("path", "./recording.mp4"),
+            let output = {
+                let mut data = ObsData::new();
+                let default_path = String::from("./recording.mp4");
+                let path = settings.output_path.as_ref().unwrap_or(&default_path);
+                data.set_string("path", path);
+                obs_output_create(
+                    get.c_str("ffmpeg_muxer"),
+                    get.c_str(""),
+                    data.get_ptr(),
+                    null_mut(),
+                )
             };
-            let output = obs_output_create(
-                get.c_str("ffmpeg_muxer"),
-                get.c_str(""),
-                data.get_ptr(),
-                null_mut(),
-            );
 
             obs_encoder_set_video(video_encoder, obs_get_video());
             obs_set_output_source(VIDEO_CHANNEL, video_source);
@@ -286,13 +302,7 @@ impl Recorder {
 
             obs_encoder_set_audio(audio_encoder, obs_get_audio());
 
-            obs_set_output_source(
-                AUDIO_CHANNEL,
-                match settings.record_audio {
-                    true => audio_source,
-                    false => null_mut(),
-                },
-            );
+            obs_set_output_source(AUDIO_CHANNEL, audio_source);
             obs_output_set_audio_encoder(output, audio_encoder, AUDIO_ENCODER_INDEX);
 
             if DEBUG {
@@ -376,9 +386,9 @@ impl Recorder {
                 output_height: output_size.height(),
                 output_format: video_format_VIDEO_FORMAT_NV12,
                 gpu_conversion: true,
-                colorspace: video_colorspace_VIDEO_CS_DEFAULT,
+                colorspace: video_colorspace_VIDEO_CS_709,
                 range: video_range_type_VIDEO_RANGE_DEFAULT,
-                scale_type: obs_scale_type_OBS_SCALE_BILINEAR,
+                scale_type: obs_scale_type_OBS_SCALE_LANCZOS,
             };
 
             let ret = obs_reset_video(&mut ovi as *mut _);
@@ -392,7 +402,7 @@ impl Recorder {
     fn reset_audio() -> Result<(), String> {
         let ai = obs_audio_info {
             samples_per_sec: 44100,
-            speakers: speaker_layout_SPEAKERS_STEREO,
+            speakers: speaker_layout_SPEAKERS_STEREO
         };
         let ok = unsafe { obs_reset_audio(&ai) };
         if !ok {

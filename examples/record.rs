@@ -1,10 +1,13 @@
 extern crate libobs_recorder;
 
 use libobs_recorder::{
-    Framerate, Recorder, RecorderSettings, Resolution, Size, Window, RecordAudio, Encoder, RateControl,
+    Encoder, Framerate, RateControl, RecordAudio, Recorder, RecorderSettings, Resolution, Size,
+    Window,
 };
 
-use windows::Win32::UI::HiDpi::{SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE};
+use windows::Win32::UI::HiDpi::{
+    SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE,
+};
 #[cfg(target_os = "windows")]
 use windows::{
     core::PCSTR,
@@ -57,7 +60,7 @@ fn main() {
     settings1.set_window(league_window.clone());
     settings1.set_input_size(window_size);
     settings1.set_output_path("./Test1.mp4");
-    settings1.set_rate_control(RateControl::CQP(25));
+    settings1.set_rate_control(RateControl::CQP(20));
     settings1.record_audio(RecordAudio::NONE);
 
     // SETTINGS 2
@@ -66,9 +69,9 @@ fn main() {
     settings2.set_output_path("./Test2.mp4");
     settings2.set_input_size(window_size);
     settings2.set_output_resolution(Resolution::_1440p);
-    settings2.set_framerate(Framerate::new(45, 1));
-    settings2.set_rate_control(RateControl::CQP(10));
-    settings2.record_audio(RecordAudio::APPLICATION);
+    settings2.set_framerate(Framerate::new(30, 1));
+    settings2.set_rate_control(RateControl::CBR(2500));
+    settings2.record_audio(RecordAudio::SYSTEM);
 
     // SETTINGS 3
     let mut settings3 = RecorderSettings::new();
@@ -76,7 +79,7 @@ fn main() {
     settings3.set_output_path("./Test3.mp4");
     settings3.set_input_size(window_size);
     settings3.set_framerate(Framerate::new(60, 1));
-    settings3.set_rate_control(RateControl::CBR(20000));
+    settings3.set_rate_control(RateControl::CBR(2500));
     settings3.record_audio(RecordAudio::SYSTEM);
 
     // Settings 4
@@ -96,17 +99,17 @@ fn main() {
     settings5.set_framerate(Framerate::new(60, 1));
     settings5.set_rate_control(RateControl::CQP(20));
     settings5.record_audio(RecordAudio::SYSTEM);
-    settings5.set_encoder(Encoder::AMD_NEW_H264);
+    settings5.set_encoder(Encoder::OBS_X264);
 
-    let settings = [settings1, settings2, settings3, settings4, settings5];
+    let mut settings = vec![settings1, settings2, settings3, settings4, settings5];
 
     let encoders = Recorder::init(None, None, None).unwrap();
     println!("available encoders:\n{:?}", encoders);
 
     for i in 0..settings.len() {
-        println!("RECORDING {}", i);
+        println!("RECORDING {}", i + 1);
 
-        let mut recorder = Recorder::get(&settings[i]).unwrap();
+        let mut recorder = Recorder::get(settings.remove(0)).unwrap();
         if recorder.start_recording() {
             std::thread::sleep(std::time::Duration::from_secs(10));
             dbg!(recorder.stop_recording());

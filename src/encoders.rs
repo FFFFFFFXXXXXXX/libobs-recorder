@@ -1,6 +1,4 @@
-use crate::{
-    obs_data::ObsData, RateControl
-};
+use crate::{obs_data::ObsData, RateControl};
 
 const ENABLE: i64 = 1;
 
@@ -8,7 +6,6 @@ const AMD_AMF_CQP: i64 = 0;
 const AMD_AMF_VBR: i64 = 2;
 const AMD_AMF_CBR: i64 = 3;
 const AMD_AMF_QUALITY_PRESET: i64 = 1;
-
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Copy, Clone, PartialEq)]
@@ -19,7 +16,7 @@ pub enum Encoder {
     AMD_NEW_H264,
     OBS_QSV11,
     OBS_X264,
-    UNKNOWN
+    UNKNOWN,
 }
 
 impl Encoder {
@@ -31,7 +28,7 @@ impl Encoder {
             Self::AMD_NEW_H264 => "h264_texture_amf",
             Self::OBS_QSV11 => "obs_qsv11",
             Self::OBS_X264 => "obs_x264",
-            Self::UNKNOWN => "unknown"
+            Self::UNKNOWN => "unknown",
         }
     }
 
@@ -42,7 +39,7 @@ impl Encoder {
             Self::AMD_NEW_H264 => amd_new_h264_settings(rate_control),
             Self::OBS_QSV11 => intel_quicksync_settings(rate_control),
             Self::OBS_X264 => obs_x264_settings(rate_control),
-            Self::UNKNOWN => ObsData::new()
+            Self::UNKNOWN => ObsData::new(),
         }
     }
 }
@@ -56,7 +53,7 @@ impl From<&str> for Encoder {
             "h264_texture_amf" => Self::AMD_NEW_H264,
             "obs_qsv11" => Self::OBS_QSV11,
             "obs_x264" => Self::OBS_X264,
-            _ => Self::UNKNOWN
+            _ => Self::UNKNOWN,
         }
     }
 }
@@ -75,11 +72,11 @@ fn amd_amf_h264_settings(rate_control: &RateControl) -> ObsData {
         RateControl::CBR(cbr) => {
             data.set_int("RateControlMethod", AMD_AMF_CBR);
             data.set_int("bitrate", cbr);
-        },
+        }
         RateControl::VBR(vbr) => {
             data.set_int("RateControlMethod", AMD_AMF_VBR);
             data.set_int("bitrate", vbr);
-        },
+        }
         RateControl::CQP(cqp) | RateControl::ICQ(cqp) => {
             let cqp = cqp.clamp(0, 51);
             data.set_int("RateControlMethod", AMD_AMF_CQP);
@@ -103,11 +100,11 @@ fn amd_new_h264_settings(rate_control: &RateControl) -> ObsData {
         RateControl::CBR(cbr) => {
             data.set_string("rate_control", "CBR");
             data.set_int("bitrate", cbr);
-        },
+        }
         RateControl::VBR(vbr) => {
             data.set_string("rate_control", "VBR");
             data.set_int("bitrate", vbr);
-        },
+        }
         RateControl::CQP(cqp) | RateControl::ICQ(cqp) => {
             let cqp = cqp.clamp(0, 51);
             data.set_string("rate_control", "CQP");
@@ -133,7 +130,7 @@ fn nvidia_nvenc_settings(settings: &RateControl) -> ObsData {
         RateControl::VBR(vbr) => {
             data.set_string("rate_control", "VBR");
             data.set_int("bitrate", vbr);
-            data.set_int("max_bitrate", vbr + vbr/2);
+            data.set_int("max_bitrate", vbr + vbr / 2);
         }
         RateControl::CQP(cqp) => {
             data.set_string("rate_control", "CQP");
@@ -153,12 +150,12 @@ fn intel_quicksync_settings(settings: &RateControl) -> ObsData {
         RateControl::CBR(cbr) => {
             data.set_string("rate_control", "CBR");
             data.set_int("bitrate", cbr);
-            data.set_int("max_bitrate", cbr + cbr/2);
+            data.set_int("max_bitrate", cbr + cbr / 2);
         }
         RateControl::VBR(vbr) => {
             data.set_string("rate_control", "VBR");
             data.set_int("bitrate", vbr);
-            data.set_int("max_bitrate", vbr + vbr/2);
+            data.set_int("max_bitrate", vbr + vbr / 2);
         }
         RateControl::CQP(cqp) | RateControl::CRF(cqp) => {
             let cqp = cqp.clamp(0, 51);

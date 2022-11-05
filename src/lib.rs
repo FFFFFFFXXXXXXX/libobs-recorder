@@ -2,20 +2,20 @@ extern crate libobs_sys;
 
 use libobs_sys::{
     base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path,
-    obs_audio_encoder_create, obs_encoder, obs_encoder_release,
+    obs_audio_encoder_create, obs_audio_info, obs_encoder, obs_encoder_release,
     obs_encoder_set_audio, obs_encoder_set_video, obs_enum_encoder_types, obs_get_audio,
     obs_get_video, obs_get_video_info, obs_initialized, obs_load_all_modules,
     obs_log_loaded_modules, obs_output, obs_output_create, obs_output_release,
     obs_output_set_audio_encoder, obs_output_set_video_encoder, obs_output_start, obs_output_stop,
-    obs_output_update, obs_post_load_modules, obs_reset_video,
-    obs_set_output_source, obs_shutdown, obs_source,
+    obs_output_update, obs_post_load_modules, obs_reset_audio, obs_reset_video,
+    obs_scale_type_OBS_SCALE_LANCZOS, obs_set_output_source, obs_shutdown, obs_source,
     obs_source_create, obs_source_release, obs_source_remove, obs_startup,
-    obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO,
-    video_format_VIDEO_FORMAT_NV12,
-    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS, video_colorspace_VIDEO_CS_709, obs_scale_type_OBS_SCALE_LANCZOS, va_list, obs_audio_info, obs_reset_audio,
+    obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO, va_list,
+    video_colorspace_VIDEO_CS_709, video_format_VIDEO_FORMAT_NV12,
+    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
 
-use std::{ffi::CStr, os::raw::c_char, ptr::null_mut, mem::MaybeUninit};
+use std::{ffi::CStr, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
 
 pub use encoders::Encoder;
 pub use framerate::Framerate;
@@ -53,15 +53,14 @@ const AUDIO_ENCODER_INDEX: usize = 0;
 
 static mut ENCODER: Encoder = Encoder::OBS_X264;
 
-unsafe extern "C" fn log_handler(
+unsafe extern "C" fn empty_log_handler(
     _lvl: ::std::os::raw::c_int,
-    msg: *const ::std::os::raw::c_char,
+    _msg: *const ::std::os::raw::c_char,
     _args: va_list,
     _p: *mut ::std::os::raw::c_void,
 ) {
-    if DEBUG {
-        println!("{:?}", CStr::from_ptr(msg));
-    }
+    // empty function to block logs
+    return;
 }
 
 pub struct Recorder {
@@ -100,24 +99,26 @@ impl Recorder {
         let mut get = Get::new();
         unsafe {
             // STARTUP
-            base_set_log_handler(Some(log_handler), null_mut());
+            if !DEBUG {
+                base_set_log_handler(Some(empty_log_handler), null_mut());
+            }
 
             if !obs_startup(get.c_str("en-US"), null_mut(), null_mut()) {
                 return Err(String::from("error on libobs startup"));
             }
 
+            let default_fps = Framerate::new(30, 1);
+            let default_size = Size::new(1920, 1080);
             obs_add_data_path(get.c_str(libobs_data_path));
+            Self::reset_video(default_size, default_size, default_fps)?;
+            Self::reset_audio()?;
+
             obs_add_module_path(get.c_str(plugin_bin_path), get.c_str(plugin_data_path));
             obs_load_all_modules();
             obs_post_load_modules();
             if DEBUG {
                 obs_log_loaded_modules();
             }
-
-            let default_fps = Framerate::new(30, 1);
-            let default_size = Size::new(1920, 1080);
-            Self::reset_video(default_size, default_size, default_fps)?;
-            Self::reset_audio()?;
 
             let mut amd_amf = false;
             let mut amd_new = false;
@@ -138,7 +139,7 @@ impl Recorder {
                         Encoder::AMD_AMF_H264 => amd_amf = true,
                         Encoder::AMD_NEW_H264 => amd_new = true,
                         Encoder::OBS_QSV11 => qsv = true,
-                        Encoder::OBS_X264 => {},
+                        Encoder::OBS_X264 => {}
                         Encoder::UNKNOWN => {
                             n += 1;
                             continue;
@@ -153,12 +154,10 @@ impl Recorder {
                 Encoder::JIM_NVENC
             } else if ffmpeg_nvenc {
                 Encoder::FFMPEG_NVENC
-            } else if ffmpeg_nvenc {
-                Encoder::FFMPEG_NVENC
-            } else if amd_amf {
-                Encoder::AMD_AMF_H264
             } else if amd_new {
                 Encoder::AMD_NEW_H264
+            } else if amd_amf {
+                Encoder::AMD_AMF_H264
             } else if qsv {
                 Encoder::OBS_QSV11
             } else {
@@ -178,7 +177,7 @@ impl Recorder {
         }
     }
 
-    pub fn get(settings: &RecorderSettings) -> Result<Self, String> {
+    pub fn get(settings: RecorderSettings) -> Result<Self, String> {
         if DEBUG {
             println!("before get: {}", unsafe { bnum_allocs() });
         }
@@ -257,21 +256,19 @@ impl Recorder {
                         get.c_str(""),
                         data.get_ptr(),
                         null_mut(),
-                    )   
-                },
-                RecordAudio::SYSTEM => {
-                    obs_source_create(
-                        get.c_str("wasapi_output_capture"),
-                        get.c_str(""),
-                        null_mut(),
-                        null_mut(),
                     )
                 }
+                RecordAudio::SYSTEM => obs_source_create(
+                    get.c_str("wasapi_output_capture"),
+                    get.c_str(""),
+                    null_mut(),
+                    null_mut(),
+                ),
             };
             // SETUP NEW AUDIO ENCODER
             let audio_encoder = {
                 let mut data = ObsData::new();
-                data.set_int("bitrate", 320);
+                data.set_int("bitrate", 160);
                 obs_audio_encoder_create(
                     get.c_str("ffmpeg_aac"),
                     get.c_str(""),
@@ -284,8 +281,9 @@ impl Recorder {
             // SETUP NEW OUTPUT
             let output = {
                 let mut data = ObsData::new();
-                let default_path = String::from("./recording.mp4");
-                let path = settings.output_path.as_ref().unwrap_or(&default_path);
+                let path = settings
+                    .output_path
+                    .unwrap_or(String::from("./recording.mp4"));
                 data.set_string("path", path);
                 obs_output_create(
                     get.c_str("ffmpeg_muxer"),
@@ -295,13 +293,13 @@ impl Recorder {
                 )
             };
 
-            obs_encoder_set_video(video_encoder, obs_get_video());
             obs_set_output_source(VIDEO_CHANNEL, video_source);
-            obs_output_set_video_encoder(output, video_encoder);
+            obs_set_output_source(AUDIO_CHANNEL, audio_source);
 
+            obs_encoder_set_video(video_encoder, obs_get_video());
             obs_encoder_set_audio(audio_encoder, obs_get_audio());
 
-            obs_set_output_source(AUDIO_CHANNEL, audio_source);
+            obs_output_set_video_encoder(output, video_encoder);
             obs_output_set_audio_encoder(output, audio_encoder, AUDIO_ENCODER_INDEX);
 
             if DEBUG {
@@ -334,14 +332,13 @@ impl Recorder {
     }
 
     pub fn stop_recording(&mut self) -> bool {
-        if !self.recording {
-            return false;
+        if self.recording {
+            unsafe { obs_output_stop(self.output) }
+            if DEBUG {
+                println!("Recording Stop: {}", unsafe { bnum_allocs() });
+            }
+            self.recording = false;
         }
-        unsafe { obs_output_stop(self.output) }
-        if DEBUG {
-            println!("Recording Stop: {}", unsafe { bnum_allocs() });
-        }
-        self.recording = false;
         self.recording
     }
 
@@ -401,7 +398,7 @@ impl Recorder {
     fn reset_audio() -> Result<(), String> {
         let ai = obs_audio_info {
             samples_per_sec: 44100,
-            speakers: speaker_layout_SPEAKERS_STEREO
+            speakers: speaker_layout_SPEAKERS_STEREO,
         };
         let ok = unsafe { obs_reset_audio(&ai) };
         if !ok {

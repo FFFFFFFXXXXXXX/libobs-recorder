@@ -1,6 +1,4 @@
-use crate::{
-    encoders::Encoder, framerate::Framerate, resolution::Resolution, Size, Window,
-};
+use crate::{encoders::Encoder, framerate::Framerate, resolution::Resolution, Size, Window};
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct RecorderSettings {
@@ -57,7 +55,7 @@ impl RecorderSettings {
 pub enum RecordAudio {
     NONE,
     APPLICATION,
-    SYSTEM
+    SYSTEM,
 }
 
 #[derive(Debug, Copy, Clone, PartialEq)]
@@ -66,7 +64,7 @@ pub enum RateControl {
     VBR(u32),
     CQP(u32),
     CRF(u32),
-    ICQ(u32)
+    ICQ(u32),
 }
 
 impl Default for RateControl {

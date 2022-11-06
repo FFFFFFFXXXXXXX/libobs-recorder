@@ -130,6 +130,7 @@ impl Recorder {
             let mut encoders = Vec::new();
             let mut ptr = MaybeUninit::<*const c_char>::uninit();
             while obs_enum_encoder_types(n, ptr.as_mut_ptr()) {
+                n += 1;
                 let encoder = ptr.assume_init();
                 if let Ok(enc) = CStr::from_ptr(encoder).to_str() {
                     let enc = Encoder::from(enc);
@@ -140,14 +141,10 @@ impl Recorder {
                         Encoder::AMD_NEW_H264 => amd_new = true,
                         Encoder::OBS_QSV11 => qsv = true,
                         Encoder::OBS_X264 => {}
-                        Encoder::UNKNOWN => {
-                            n += 1;
-                            continue;
-                        }
+                        Encoder::UNKNOWN => continue,
                     }
                     encoders.push(enc);
                 }
-                n += 1;
             }
 
             ENCODER = if jim_nvenc {

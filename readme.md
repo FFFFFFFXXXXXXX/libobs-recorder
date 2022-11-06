@@ -1,6 +1,7 @@
 # libobs-recorder
 
-**CURRENTLY TIED TO OBS VERSION: 28.1.1**
+**CURRENTLY TIED TO OBS VERSION: 28.1.1**  
+**OLD VERSIONS ARE AVAILABLE AS RELEASES**
 
 This is a rust library for recording using the [libobs library]("https://github.com/obsproject/obs-studio").
 The current version supports only a very limited amount of options and only uses the windows game_capture plugin.

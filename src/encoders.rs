@@ -16,7 +16,6 @@ pub enum Encoder {
     AMD_NEW_H264,
     OBS_QSV11,
     OBS_X264,
-    UNKNOWN,
 }
 
 impl Encoder {
@@ -28,7 +27,6 @@ impl Encoder {
             Self::AMD_NEW_H264 => "h264_texture_amf",
             Self::OBS_QSV11 => "obs_qsv11",
             Self::OBS_X264 => "obs_x264",
-            Self::UNKNOWN => "unknown",
         }
     }
 
@@ -39,7 +37,6 @@ impl Encoder {
             Self::AMD_NEW_H264 => amd_new_h264_settings(rate_control),
             Self::OBS_QSV11 => intel_quicksync_settings(rate_control),
             Self::OBS_X264 => obs_x264_settings(rate_control),
-            Self::UNKNOWN => ObsData::new(),
         }
     }
 }
@@ -52,8 +49,7 @@ impl From<&str> for Encoder {
             "amd_amf_h264" => Self::AMD_AMF_H264,
             "h264_texture_amf" => Self::AMD_NEW_H264,
             "obs_qsv11" => Self::OBS_QSV11,
-            "obs_x264" => Self::OBS_X264,
-            _ => Self::UNKNOWN,
+            "obs_x264" | _ => Self::OBS_X264,
         }
     }
 }

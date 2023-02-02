@@ -51,7 +51,7 @@ const VIDEO_CHANNEL: u32 = 0;
 const AUDIO_CHANNEL: u32 = 1;
 const AUDIO_ENCODER_INDEX: usize = 0;
 
-static mut ENCODER: Encoder = Encoder::OBS_X264;
+static mut DEFAULT_ENCODER: Encoder = Encoder::OBS_X264;
 
 unsafe extern "C" fn empty_log_handler(
     _lvl: ::std::os::raw::c_int,
@@ -141,13 +141,12 @@ impl Recorder {
                         Encoder::AMD_NEW_H264 => amd_new = true,
                         Encoder::OBS_QSV11 => qsv = true,
                         Encoder::OBS_X264 => {}
-                        Encoder::UNKNOWN => continue,
                     }
                     encoders.push(enc);
                 }
             }
 
-            ENCODER = if jim_nvenc {
+            DEFAULT_ENCODER = if jim_nvenc {
                 Encoder::JIM_NVENC
             } else if ffmpeg_nvenc {
                 Encoder::FFMPEG_NVENC
@@ -231,7 +230,7 @@ impl Recorder {
             let video_source = { todo!() };
 
             // SETUP NEW VIDEO ENCODER
-            let encoder = settings.encoder.unwrap_or(ENCODER);
+            let encoder = settings.encoder.unwrap_or(DEFAULT_ENCODER);
             let video_encoder = {
                 let data = encoder.settings(&settings.rate_control);
                 obs_video_encoder_create(

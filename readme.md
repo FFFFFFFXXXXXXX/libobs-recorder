@@ -1,6 +1,6 @@
 # libobs-recorder
 
-**CURRENTLY TIED TO OBS VERSION: 28.1.1**  
+**CURRENTLY TIED TO OBS VERSION: 29.0.0**  
 **OLD VERSIONS ARE AVAILABLE AS RELEASES**
 
 This is a rust library for recording using the [libobs library]("https://github.com/obsproject/obs-studio").
@@ -24,63 +24,89 @@ List of required files to copy from Obs release (or from a build you made yourse
 - avutil-57.dll
 - libcurl.dll
 - libmbedcrypto.dll
-- libobs-d3d11.dll (for windows) / libobs-opengl.dll (for linux or mac)
+- libobs-d3d11.dll
 - libobs-winrt.dll
 - librist.dll
 - libsrt.dll
 - libx264-164.dll
 - obs-amf-test.exe
 - obs-ffmpeg-mux.exe
+- obs-nvenc-test.exe
+- obs-qsv-test.exe
 - obs.dll
-- swresample-3.dll
-- swscale-5.dll
+- swresample-4.dll
+- swscale-6.dll
 - w32-pthreads.dll
 - zlib.dll
-- data
-  - libobs
+- data/
+  - libobs/
     - area.effect
     - bicubic_scale.effect
     - bilinear_lowres_scale.effect
     - color.effect
-    - default_rect.effect
     - default.effect
+    - default_rect.effect
     - deinterlace_base.effect
-    - deinterlace_blend_2x.effect
     - deinterlace_blend.effect
-    - deinterlace_discard_2x.effect
+    - deinterlace_blend_2x.effect
     - deinterlace_discard.effect
-    - deinterlace_linear_2x.effect
+    - deinterlace_discard_2x.effect
     - deinterlace_linear.effect
-    - deinterlace_yadif_2x.effect
+    - deinterlace_linear_2x.effect
     - deinterlace_yadif.effect
+    - deinterlace_yadif_2x.effect
     - format_conversion.effect
     - lanczos_scale.effect
     - opaque.effect
     - premultiplied_alpha.effect
     - repeat.effect
     - solid.effect
-  - obs-plugins
-    - enc-amf
-      - enc-amf-test32.exe
-      - enc-amf-test64.exe
-    - win-capture
-      - get-graphics-offsets32.exe
-      - get-graphics-offsets64.exe
-      - graphics-hook32.dll
-      - graphics-hook64.dll
-      - inject-helper32.exe
-      - inject-helper64.exe
-      - obs-vulkan32.json
-      - obs-vulkan64.json
-- obs-plugins
-  - 64bit
+  - obs-plugins/
+    - coreaudio-encoder/
+      - locale/
+        - en-US.ini
+      - enc-amf/
+        - enc-amf-test64.exe
+        - locale/
+          - en-US.ini
+      - obs-ffmpeg/
+        - locale/
+          - en-US.ini
+      - obs-outputs/
+        - locale/
+          - en-US.ini
+      - obs-qsv11/
+        - locale/
+          - en-US.ini
+      - obs-x264/
+        - locale/
+          - en-US.ini
+      - win-capture/
+        - get-graphics-offsets32.exe
+        - get-graphics-offsets64.exe
+        - graphics-hook32.dll
+        - graphics-hook64.dll
+        - inject-helper32.exe
+        - inject-helper64.exe
+        - obs-vulkan32.json
+        - obs-vulkan64.json
+        - locale/
+          - en-US.ini
+        - win-wasapi/
+          - locale/
+            - en-US.ini
+- obs-plugins/
+  - 64bit/
     - coreaudio-encoder.dll
     - enc-amf.dll
+    - libcef.dll
+    - libEGL.dll
+    - libGLESv2.dll
     - obs-ffmpeg.dll
     - obs-outputs.dll
     - obs-qsv11.dll
     - obs-x264.dll
     - win-capture.dll
     - win-wasapi.dll
-    - libEGL.dll
-    - libGLESv2.dll
+    - locales/
+      - en-US.pak

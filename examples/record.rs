@@ -60,7 +60,7 @@ fn main() {
     settings1.set_window(league_window.clone());
     settings1.set_input_size(window_size);
     settings1.set_output_path("./Test1.mp4");
-    settings1.set_rate_control(RateControl::CQP(20));
+    settings1.set_rate_control(RateControl::CQP(30));
     settings1.record_audio(RecordAudio::NONE);
 
     // SETTINGS 2
@@ -71,7 +71,7 @@ fn main() {
     settings2.set_output_resolution(Resolution::_1440p);
     settings2.set_framerate(Framerate::new(30, 1));
     settings2.set_rate_control(RateControl::CBR(2500));
-    settings2.record_audio(RecordAudio::SYSTEM);
+    settings2.record_audio(RecordAudio::APPLICATION);
 
     // SETTINGS 3
     let mut settings3 = RecorderSettings::new();

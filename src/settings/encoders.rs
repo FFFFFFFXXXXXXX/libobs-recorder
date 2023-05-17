@@ -1,11 +1,15 @@
-use crate::{obs_data::ObsData, RateControl};
+#[cfg(feature = "full")]
+use crate::{recorder::obs_data::ObsData, RateControl};
 
-const ENABLE: i64 = 1;
+#[cfg(feature = "full")]
+mod consts {
+    pub const ENABLE: i64 = 1;
 
-const AMD_AMF_CQP: i64 = 0;
-const AMD_AMF_VBR: i64 = 2;
-const AMD_AMF_CBR: i64 = 3;
-const AMD_AMF_QUALITY_PRESET: i64 = 1;
+    pub const AMD_AMF_CQP: i64 = 0;
+    pub const AMD_AMF_VBR: i64 = 2;
+    pub const AMD_AMF_CBR: i64 = 3;
+    pub const AMD_AMF_QUALITY_PRESET: i64 = 1;
+}
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Copy, Clone, PartialEq)]
@@ -30,6 +34,7 @@ impl Encoder {
         }
     }
 
+    #[cfg(feature = "full")]
     pub(crate) fn settings(&self, rate_control: &RateControl) -> ObsData {
         match *self {
             Self::JIM_NVENC | Self::FFMPEG_NVENC => nvidia_nvenc_settings(rate_control),
@@ -54,28 +59,29 @@ impl From<&str> for Encoder {
     }
 }
 
+#[cfg(feature = "full")]
 fn amd_amf_h264_settings(rate_control: &RateControl) -> ObsData {
     let mut data = ObsData::new();
     // Picture Control Properties
     data.set_double("Interval.Keyframe", 2.0);
-    data.set_int("HighMotionQualityBoost", ENABLE);
+    data.set_int("HighMotionQualityBoost", consts::ENABLE);
     data.set_int("BFrame.Pattern", 1);
-    data.set_int("BFrame.Reference", ENABLE);
-    data.set_int("QualityPreset", AMD_AMF_QUALITY_PRESET);
+    data.set_int("BFrame.Reference", consts::ENABLE);
+    data.set_int("QualityPreset", consts::AMD_AMF_QUALITY_PRESET);
     data.set_string("preset", "quality");
     data.set_string("profile", "high");
     match *rate_control {
         RateControl::CBR(cbr) => {
-            data.set_int("RateControlMethod", AMD_AMF_CBR);
+            data.set_int("RateControlMethod", consts::AMD_AMF_CBR);
             data.set_int("bitrate", cbr);
         }
         RateControl::VBR(vbr) => {
-            data.set_int("RateControlMethod", AMD_AMF_VBR);
+            data.set_int("RateControlMethod", consts::AMD_AMF_VBR);
             data.set_int("bitrate", vbr);
         }
         RateControl::CQP(cqp) | RateControl::ICQ(cqp) => {
             let cqp = cqp.clamp(0, 51);
-            data.set_int("RateControlMethod", AMD_AMF_CQP);
+            data.set_int("RateControlMethod", consts::AMD_AMF_CQP);
             data.set_int("QP.IFrame", cqp);
             data.set_int("QP.PFrame", cqp);
         }
@@ -84,6 +90,7 @@ fn amd_amf_h264_settings(rate_control: &RateControl) -> ObsData {
     data
 }
 
+#[cfg(feature = "full")]
 fn amd_new_h264_settings(rate_control: &RateControl) -> ObsData {
     let mut data = ObsData::new();
     // Picture Control Properties
@@ -111,6 +118,7 @@ fn amd_new_h264_settings(rate_control: &RateControl) -> ObsData {
     data
 }
 
+#[cfg(feature = "full")]
 fn nvidia_nvenc_settings(settings: &RateControl) -> ObsData {
     let mut data = ObsData::new();
     data.set_string("profile", "high");
@@ -139,6 +147,7 @@ fn nvidia_nvenc_settings(settings: &RateControl) -> ObsData {
     data
 }
 
+#[cfg(feature = "full")]
 fn intel_quicksync_settings(settings: &RateControl) -> ObsData {
     let mut data = ObsData::new();
     data.set_string("profile", "high");
@@ -169,6 +178,7 @@ fn intel_quicksync_settings(settings: &RateControl) -> ObsData {
     data
 }
 
+#[cfg(feature = "full")]
 fn obs_x264_settings(rate_control: &RateControl) -> ObsData {
     let mut data = ObsData::new();
     data.set_bool("use_bufsize", true);

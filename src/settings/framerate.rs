@@ -11,7 +11,7 @@ impl Framerate {
     pub fn den(&self) -> u32 {
         self.1
     }
-    pub(crate) fn is_set(&self) -> bool {
+    pub fn is_valid(&self) -> bool {
         self.0 > 0 && self.1 > 0
     }
 }

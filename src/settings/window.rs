@@ -14,6 +14,7 @@ impl Window {
         }
     }
 
+    #[cfg(feature = "full")]
     pub(crate) fn get_libobs_window_id(&self) -> String {
         let mut window_id = String::new();
         window_id.push_str(&self.name);

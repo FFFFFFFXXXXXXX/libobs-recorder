@@ -1,4 +1,16 @@
-use crate::{encoders::Encoder, framerate::Framerate, resolution::Resolution, Size, Window};
+pub mod audio;
+pub mod encoders;
+pub mod framerate;
+pub mod rate_control;
+pub mod resolution;
+pub mod window;
+
+use self::{
+    encoders::Encoder, framerate::Framerate, resolution::Resolution, resolution::Size,
+    window::Window,
+};
+
+use self::{audio::AudioSource, rate_control::RateControl};
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct RecorderSettings {
@@ -7,7 +19,7 @@ pub struct RecorderSettings {
     pub(crate) output_resolution: Option<Resolution>,
     pub(crate) framerate: Framerate,
     pub(crate) rate_control: RateControl,
-    pub(crate) record_audio: RecordAudio,
+    pub(crate) record_audio: AudioSource,
     pub(crate) output_path: Option<String>,
     pub(crate) encoder: Option<Encoder>,
 }
@@ -20,7 +32,7 @@ impl RecorderSettings {
             output_resolution: None,
             framerate: Framerate::new(0, 0),
             rate_control: RateControl::default(),
-            record_audio: RecordAudio::APPLICATION,
+            record_audio: AudioSource::APPLICATION,
             output_path: None,
             encoder: None,
         }
@@ -40,7 +52,7 @@ impl RecorderSettings {
     pub fn set_rate_control(&mut self, rate_control: RateControl) {
         self.rate_control = rate_control;
     }
-    pub fn record_audio(&mut self, record_audio: RecordAudio) {
+    pub fn record_audio(&mut self, record_audio: AudioSource) {
         self.record_audio = record_audio;
     }
     pub fn set_output_path(&mut self, output_path: impl Into<String>) {
@@ -48,27 +60,5 @@ impl RecorderSettings {
     }
     pub fn set_encoder(&mut self, encoder: Encoder) {
         self.encoder = Some(encoder);
-    }
-}
-
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RecordAudio {
-    NONE,
-    APPLICATION,
-    SYSTEM,
-}
-
-#[derive(Debug, Copy, Clone, PartialEq)]
-pub enum RateControl {
-    CBR(u32),
-    VBR(u32),
-    CQP(u32),
-    CRF(u32),
-    ICQ(u32),
-}
-
-impl Default for RateControl {
-    fn default() -> Self {
-        Self::CQP(20)
     }
 }

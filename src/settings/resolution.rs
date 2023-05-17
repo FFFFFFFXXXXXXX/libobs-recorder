@@ -8,6 +8,7 @@ pub enum Resolution {
     _4320p,
 }
 
+#[cfg(feature = "full")]
 impl Resolution {
     pub(crate) fn get_size(&self) -> Size {
         match self {

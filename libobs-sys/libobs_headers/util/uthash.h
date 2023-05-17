@@ -1,5 +1,5 @@
 /******************************************************************************
-    Copyright (C) 2013 by Hugh Bailey <obs.jim@gmail.com>
+    Copyright (C) 2023 by Dennis Sädtler <dennis@obsproject.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,18 +17,18 @@
 
 #pragma once
 
-/* TODO: incomplete/may not be necessary */
+/*
+ * This file (re)defines various uthash settings for use in libobs
+ */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <uthash/uthash.h>
 
-/* wrapped opaque data types */
-struct input_subsystem;
-typedef struct input_subsystem input_t;
+/* Use OBS allocator */
+#undef uthash_malloc
+#undef uthash_free
+#define uthash_malloc(sz) bmalloc(sz)
+#define uthash_free(ptr, sz) bfree(ptr)
 
-EXPORT int input_getbuttonstate(input_t *input, uint32_t button);
-
-#ifdef __cplusplus
-}
-#endif
+/* Use SFH (Super Fast Hash) function instead of JEN */
+#undef HASH_FUNCTION
+#define HASH_FUNCTION HASH_SFH

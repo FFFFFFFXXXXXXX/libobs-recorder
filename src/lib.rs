@@ -9,7 +9,6 @@ pub use settings::{
     encoders::Encoder,
     framerate::Framerate,
     rate_control::RateControl,
-    resolution::{Resolution, Size},
-    window::Window,
+    window::{Resolution, Size, Window},
     RecorderSettings,
 };

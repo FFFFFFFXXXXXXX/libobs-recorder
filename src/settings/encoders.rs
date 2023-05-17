@@ -12,6 +12,7 @@ mod consts {
 }
 
 #[allow(non_camel_case_types)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum Encoder {
     JIM_NVENC,

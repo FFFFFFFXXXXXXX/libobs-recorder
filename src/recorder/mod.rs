@@ -20,7 +20,7 @@ use std::{ffi::CStr, mem::MaybeUninit, os::raw::c_char, ptr::null_mut};
 
 use self::{get::Get, obs_data::ObsData};
 use crate::settings::{
-    audio::AudioSource, encoders::Encoder, framerate::Framerate, resolution::Size, RecorderSettings,
+    audio::AudioSource, encoders::Encoder, framerate::Framerate, window::Size, RecorderSettings,
 };
 
 #[cfg(feature = "debug")]

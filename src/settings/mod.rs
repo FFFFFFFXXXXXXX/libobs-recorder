@@ -2,16 +2,17 @@ pub mod audio;
 pub mod encoders;
 pub mod framerate;
 pub mod rate_control;
-pub mod resolution;
 pub mod window;
 
 use self::{
-    encoders::Encoder, framerate::Framerate, resolution::Resolution, resolution::Size,
-    window::Window,
+    encoders::Encoder,
+    framerate::Framerate,
+    window::{Resolution, Size, Window},
 };
 
 use self::{audio::AudioSource, rate_control::RateControl};
 
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[derive(Clone, Debug, PartialEq)]
 pub struct RecorderSettings {
     pub(crate) window: Option<Window>,

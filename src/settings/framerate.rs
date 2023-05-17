@@ -1,3 +1,4 @@
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct Framerate(u32, u32);
 

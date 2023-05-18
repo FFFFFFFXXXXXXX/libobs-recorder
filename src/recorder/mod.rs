@@ -124,7 +124,7 @@ impl Recorder {
                 n += 1;
                 let encoder = ptr.assume_init();
                 if let Ok(enc) = CStr::from_ptr(encoder).to_str() {
-                    let enc = Encoder::from(enc);
+                    let Ok(enc) = Encoder::try_from(enc) else { continue };
                     match enc {
                         Encoder::JIM_NVENC => jim_nvenc = true,
                         Encoder::FFMPEG_NVENC => ffmpeg_nvenc = true,

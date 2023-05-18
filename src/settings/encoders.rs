@@ -47,15 +47,18 @@ impl Encoder {
     }
 }
 
-impl From<&str> for Encoder {
-    fn from(string: &str) -> Self {
-        match string {
-            "jim_nvenc" => Self::JIM_NVENC,
-            "ffmpeg_nvenc" => Self::FFMPEG_NVENC,
-            "amd_amf_h264" => Self::AMD_AMF_H264,
-            "h264_texture_amf" => Self::AMD_NEW_H264,
-            "obs_qsv11" => Self::OBS_QSV11,
-            "obs_x264" | _ => Self::OBS_X264,
+impl TryFrom<&str> for Encoder {
+    type Error = ();
+
+    fn try_from(value: &str) -> Result<Self, Self::Error> {
+        match value {
+            "jim_nvenc" => Ok(Self::JIM_NVENC),
+            "ffmpeg_nvenc" => Ok(Self::FFMPEG_NVENC),
+            "amd_amf_h264" => Ok(Self::AMD_AMF_H264),
+            "h264_texture_amf" => Ok(Self::AMD_NEW_H264),
+            "obs_qsv11" => Ok(Self::OBS_QSV11),
+            "obs_x264" => Ok(Self::OBS_X264),
+            _ => Err(()),
         }
     }
 }

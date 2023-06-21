@@ -14,5 +14,6 @@ Just delete all the content from the `bindings.rs` file, but don't delete it. Th
 
 Using this library requires including a bunch of .dll dependencies as well as a data/plugins folder with your compiled program.
 You can find these files included in the `Releases` of this repo or in the matching Obs `Release`.
+Due to these DLLs you can't just run the example. Instead you have to copy the DLLs to the output folder of the .exe and run the .exe from there.
 
 There is a working version of the record example in the releases section. (for windows-x64)

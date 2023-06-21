@@ -6,107 +6,13 @@
 This is a rust library for recording using the [libobs library]("https://github.com/obsproject/obs-studio").
 The current version supports only a very limited amount of options and only uses the windows game_capture plugin.
 
-The libobs-sys subcrate is up to date with the newest Obs release.
+The libobs-sys subcrate is up-to-date with the newest Obs release.
 
-For building this library it is necessary to install the Visual Studio Build Tools 2019 and LLVM (and adding the LLVM /bin folder to your `PATH`) because bindgen requires both.
+~~For building this library it is necessary to install the Visual Studio Build Tools 2019 and LLVM (and adding the LLVM /bin folder to your `PATH`) because bindgen requires both.~~
+This is only necessary if you want to generate the bindings yourself. You don't have to though, since they are now included in repo!
+Just delete all the content from the `bindings.rs` file, but don't delete it. This causes the bindings to be regenerated on the next build.
 
 Using this library requires including a bunch of .dll dependencies as well as a data/plugins folder with your compiled program.
-You can find these files in the newest Obs release. Alternatively you could build a headless Obs version yourself.
+You can find these files included in the `Releases` of this repo or in the matching Obs `Release`.
 
 There is a working version of the record example in the releases section. (for windows-x64)
-
-List of required files to copy from Obs release (or from a build you made yourself):
-
-- avcodec-59.dll
-- avdevice-59.dll
-- avfilter-8.dll
-- avformat-59.dll
-- avutil-57.dll
-- libcurl.dll
-- libmbedcrypto.dll
-- libobs-d3d11.dll
-- libobs-winrt.dll
-- librist.dll
-- libsrt.dll
-- libx264-164.dll
-- obs-amf-test.exe
-- obs-ffmpeg-mux.exe
-- obs-nvenc-test.exe
-- obs-qsv-test.exe
-- obs.dll
-- swresample-4.dll
-- swscale-6.dll
-- w32-pthreads.dll
-- zlib.dll
-- data/
-  - libobs/
-    - area.effect
-    - bicubic_scale.effect
-    - bilinear_lowres_scale.effect
-    - color.effect
-    - default.effect
-    - default_rect.effect
-    - deinterlace_base.effect
-    - deinterlace_blend.effect
-    - deinterlace_blend_2x.effect
-    - deinterlace_discard.effect
-    - deinterlace_discard_2x.effect
-    - deinterlace_linear.effect
-    - deinterlace_linear_2x.effect
-    - deinterlace_yadif.effect
-    - deinterlace_yadif_2x.effect
-    - format_conversion.effect
-    - lanczos_scale.effect
-    - opaque.effect
-    - premultiplied_alpha.effect
-    - repeat.effect
-    - solid.effect
-  - obs-plugins/
-    - coreaudio-encoder/
-      - locale/
-        - en-US.ini
-      - enc-amf/
-        - enc-amf-test64.exe
-        - locale/
-          - en-US.ini
-      - obs-ffmpeg/
-        - locale/
-          - en-US.ini
-      - obs-outputs/
-        - locale/
-          - en-US.ini
-      - obs-qsv11/
-        - locale/
-          - en-US.ini
-      - obs-x264/
-        - locale/
-          - en-US.ini
-      - win-capture/
-        - get-graphics-offsets32.exe
-        - get-graphics-offsets64.exe
-        - graphics-hook32.dll
-        - graphics-hook64.dll
-        - inject-helper32.exe
-        - inject-helper64.exe
-        - obs-vulkan32.json
-        - obs-vulkan64.json
-        - locale/
-          - en-US.ini
-        - win-wasapi/
-          - locale/
-            - en-US.ini
-- obs-plugins/
-  - 64bit/
-    - coreaudio-encoder.dll
-    - enc-amf.dll
-    - libcef.dll
-    - libEGL.dll
-    - libGLESv2.dll
-    - obs-ffmpeg.dll
-    - obs-outputs.dll
-    - obs-qsv11.dll
-    - obs-x264.dll
-    - win-capture.dll
-    - win-wasapi.dll
-    - locales/
-      - en-US.pak

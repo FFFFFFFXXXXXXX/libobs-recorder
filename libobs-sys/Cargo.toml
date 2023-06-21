@@ -7,4 +7,4 @@ links = "obs"
 description = "FFI bindings for libobs"
 
 [build-dependencies.bindgen]
-version = "0.49"
+version = "0.66.1"

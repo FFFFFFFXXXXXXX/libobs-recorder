@@ -38,7 +38,8 @@ const PLUGIN_BIN_PATH: &str = "./obs-plugins/64bit/";
 const PLUGIN_DATA_PATH: &str = "./data/obs-plugins/%module%/";
 
 const VIDEO_CHANNEL: u32 = 0;
-const AUDIO_CHANNEL: u32 = 1;
+const AUDIO_CHANNEL1: u32 = 1;
+const AUDIO_CHANNEL2: u32 = 2;
 const AUDIO_ENCODER_INDEX: usize = 0;
 
 static mut DEFAULT_ENCODER: Encoder = Encoder::OBS_X264;
@@ -56,7 +57,8 @@ unsafe extern "C" fn empty_log_handler(
 pub struct Recorder {
     video_source: *mut obs_source,
     video_encoder: *mut obs_encoder,
-    audio_source: *mut obs_source,
+    audio_source1: *mut obs_source,
+    audio_source2: Option<*mut obs_source>,
     audio_encoder: *mut obs_encoder,
     output: *mut obs_output,
     recording: bool,
@@ -189,18 +191,19 @@ impl Recorder {
             false => Framerate::new(ovi.fps_num, ovi.fps_den),
         };
 
-        let reset_necessary = input_size.width() != ovi.base_width
+        Self::reset_audio()?;
+        let video_reset_necessary = input_size.width() != ovi.base_width
             || input_size.height() != ovi.base_height
             || output_size.width() != ovi.output_width
             || output_size.height() != ovi.output_height
             || framerate.num() != ovi.fps_num
             || framerate.den() != ovi.fps_den;
-        if reset_necessary {
+        if video_reset_necessary {
             Self::reset_video(input_size, output_size, framerate)?;
         }
 
         let mut get = Get::new();
-        unsafe {
+        {
             // SETUP NEW VIDEO SOURCE
             #[cfg(target_os = "windows")]
             let video_source = {
@@ -208,12 +211,14 @@ impl Recorder {
                 data.set_string("capture_mode", "window");
                 data.set_string("window", window.get_libobs_window_id());
                 data.set_bool("capture_cursor", true);
-                obs_source_create(
-                    get.c_str("game_capture"),
-                    get.c_str(""),
-                    data.get_ptr(),
-                    null_mut(),
-                )
+                unsafe {
+                    obs_source_create(
+                        get.c_str("game_capture"),
+                        get.c_str(""),
+                        data.get_ptr(),
+                        null_mut(),
+                    )
+                }
             };
             #[cfg(target_os = "linux")]
             let video_source = { todo!() };
@@ -221,48 +226,71 @@ impl Recorder {
             let video_source = { todo!() };
 
             // SETUP NEW VIDEO ENCODER
-            let encoder = settings.encoder.unwrap_or(DEFAULT_ENCODER);
+            let encoder = settings.encoder.unwrap_or(unsafe { DEFAULT_ENCODER });
             let video_encoder = {
                 let data = encoder.settings(&settings.rate_control);
-                obs_video_encoder_create(
-                    get.c_str(encoder.id()),
-                    get.c_str(""),
-                    data.get_ptr(),
-                    null_mut(),
-                )
-            };
-
-            // SETUP NEW AUDIO SOURCE
-            let audio_source = match settings.record_audio {
-                AudioSource::NONE => null_mut(),
-                AudioSource::APPLICATION => {
-                    let mut data = ObsData::new();
-                    data.set_string("window", window.get_libobs_window_id());
-                    obs_source_create(
-                        get.c_str("wasapi_process_output_capture"),
+                unsafe {
+                    obs_video_encoder_create(
+                        get.c_str(encoder.id()),
                         get.c_str(""),
                         data.get_ptr(),
                         null_mut(),
                     )
                 }
-                AudioSource::SYSTEM => obs_source_create(
-                    get.c_str("wasapi_output_capture"),
-                    get.c_str(""),
-                    null_mut(),
-                    null_mut(),
-                ),
+            };
+
+            // SETUP NEW AUDIO SOURCE
+            let audio_source1 = match settings.record_audio {
+                AudioSource::NONE => null_mut(),
+                AudioSource::APPLICATION => {
+                    let mut data = ObsData::new();
+                    data.set_string("window", window.get_libobs_window_id());
+                    unsafe {
+                        obs_source_create(
+                            get.c_str("wasapi_process_output_capture"),
+                            get.c_str(""),
+                            data.get_ptr(),
+                            null_mut(),
+                        )
+                    }
+                }
+                AudioSource::SYSTEM | AudioSource::ALL => unsafe {
+                    obs_source_create(
+                        get.c_str("wasapi_output_capture"),
+                        get.c_str(""),
+                        null_mut(),
+                        null_mut(),
+                    )
+                },
+            };
+            let audio_source2 = match settings.record_audio {
+                AudioSource::ALL => {
+                    let mut data = ObsData::new();
+                    data.set_string("device_id", "default");
+                    unsafe {
+                        Some(obs_source_create(
+                            get.c_str("wasapi_input_capture"),
+                            get.c_str(""),
+                            null_mut(),
+                            null_mut(),
+                        ))
+                    }
+                }
+                _ => None,
             };
             // SETUP NEW AUDIO ENCODER
             let audio_encoder = {
                 let mut data = ObsData::new();
                 data.set_int("bitrate", 160);
-                obs_audio_encoder_create(
-                    get.c_str("ffmpeg_aac"),
-                    get.c_str(""),
-                    data.get_ptr(),
-                    0,
-                    null_mut(),
-                )
+                unsafe {
+                    obs_audio_encoder_create(
+                        get.c_str("ffmpeg_aac"),
+                        get.c_str(""),
+                        data.get_ptr(),
+                        0,
+                        null_mut(),
+                    )
+                }
             };
 
             // SETUP NEW OUTPUT
@@ -270,33 +298,41 @@ impl Recorder {
                 let mut data = ObsData::new();
                 let path = settings
                     .output_path
-                    .unwrap_or(String::from("./recording.mp4"));
+                    .unwrap_or_else(|| String::from("./recording.mp4"));
                 data.set_string("path", path);
-                obs_output_create(
-                    get.c_str("ffmpeg_muxer"),
-                    get.c_str(""),
-                    data.get_ptr(),
-                    null_mut(),
-                )
+                unsafe {
+                    obs_output_create(
+                        get.c_str("ffmpeg_muxer"),
+                        get.c_str(""),
+                        data.get_ptr(),
+                        null_mut(),
+                    )
+                }
             };
 
-            obs_set_output_source(VIDEO_CHANNEL, video_source);
-            obs_set_output_source(AUDIO_CHANNEL, audio_source);
+            unsafe {
+                obs_set_output_source(VIDEO_CHANNEL, video_source);
+                obs_set_output_source(AUDIO_CHANNEL1, audio_source1);
+                if let Some(audio_source2) = audio_source2 {
+                    obs_set_output_source(AUDIO_CHANNEL2, audio_source2);
+                }
 
-            obs_encoder_set_video(video_encoder, obs_get_video());
-            obs_encoder_set_audio(audio_encoder, obs_get_audio());
+                obs_encoder_set_video(video_encoder, obs_get_video());
+                obs_encoder_set_audio(audio_encoder, obs_get_audio());
 
-            obs_output_set_video_encoder(output, video_encoder);
-            obs_output_set_audio_encoder(output, audio_encoder, AUDIO_ENCODER_INDEX);
+                obs_output_set_video_encoder(output, video_encoder);
+                obs_output_set_audio_encoder(output, audio_encoder, AUDIO_ENCODER_INDEX);
 
-            if DEBUG {
-                println!("after get: {}", bnum_allocs());
+                if DEBUG {
+                    println!("after get: {}", bnum_allocs());
+                }
             }
 
             Ok(Recorder {
                 video_source,
                 video_encoder,
-                audio_source,
+                audio_source1,
+                audio_source2: None,
                 audio_encoder,
                 output,
                 recording: false,
@@ -304,7 +340,7 @@ impl Recorder {
         }
     }
 
-    pub fn set_output(&self, path: impl Into<String>) {
+    pub fn set_output(&mut self, path: impl Into<String>) {
         let mut data = ObsData::new();
         data.set_string("path", path.into());
         unsafe { obs_output_update(self.output, data.get_ptr()) };
@@ -404,8 +440,12 @@ impl Drop for Recorder {
             obs_source_release(self.video_source);
             obs_encoder_release(self.video_encoder);
             // audio
-            obs_source_remove(self.audio_source);
-            obs_source_release(self.audio_source);
+            obs_source_remove(self.audio_source1);
+            obs_source_release(self.audio_source1);
+            if let Some(audio_source2) = self.audio_source2 {
+                obs_source_remove(audio_source2);
+                obs_source_release(audio_source2);
+            }
             obs_encoder_release(self.audio_encoder);
             // output
             obs_output_release(self.output);

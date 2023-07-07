@@ -28,7 +28,7 @@ fn get_window_size(window_title: &str, window_class: &str) -> Result<Size, ()> {
     let class = PCSTR(window_class.as_ptr());
 
     let hwnd = unsafe { FindWindowA(class, title) };
-    if hwnd.is_invalid() {
+    if hwnd.0 <= 0 {
         return Err(());
     }
 
@@ -61,7 +61,7 @@ fn main() {
     settings1.set_input_size(window_size);
     settings1.set_output_path("./Test1.mp4");
     settings1.set_rate_control(RateControl::CQP(30));
-    settings1.record_audio(AudioSource::NONE);
+    settings1.record_audio(AudioSource::ALL);
 
     // SETTINGS 2
     let mut settings2 = RecorderSettings::new();
@@ -71,7 +71,7 @@ fn main() {
     settings2.set_output_resolution(Resolution::_1440p);
     settings2.set_framerate(Framerate::new(30, 1));
     settings2.set_rate_control(RateControl::CBR(2500));
-    settings2.record_audio(AudioSource::APPLICATION);
+    settings2.record_audio(AudioSource::ALL);
 
     // SETTINGS 3
     let mut settings3 = RecorderSettings::new();
@@ -101,15 +101,17 @@ fn main() {
     settings5.record_audio(AudioSource::SYSTEM);
     settings5.set_encoder(Encoder::OBS_X264);
 
-    let mut settings = vec![settings1, settings2, settings3, settings4, settings5];
+    let settings = vec![settings1, settings2, settings3, settings4, settings5];
 
     let encoders = Recorder::init(None, None, None).unwrap();
     println!("available encoders:\n{:?}", encoders);
 
-    for i in 0..settings.len() {
-        println!("RECORDING {}", i + 1);
+    let mut i = 1;
+    for setting in settings {
+        println!("RECORDING {}", i);
+        i += 1;
 
-        let mut recorder = Recorder::get(settings.remove(0)).unwrap();
+        let mut recorder = Recorder::get(&setting).unwrap();
         if recorder.start_recording() {
             std::thread::sleep(std::time::Duration::from_secs(10));
             dbg!(recorder.stop_recording());

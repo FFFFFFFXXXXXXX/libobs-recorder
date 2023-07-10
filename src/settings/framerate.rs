@@ -4,7 +4,7 @@ pub struct Framerate(u32, u32);
 
 impl Framerate {
     pub fn new(num: u32, den: u32) -> Self {
-        Self(num, den)
+        Self(num.max(1), den.max(1)) // let both values be >= 1
     }
     pub fn num(&self) -> u32 {
         self.0

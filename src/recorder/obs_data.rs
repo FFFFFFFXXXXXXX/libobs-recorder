@@ -26,7 +26,7 @@ impl ObsData {
         }
     }
 
-    pub fn get_ptr(&self) -> *mut obs_data {
+    pub fn as_ptr(&self) -> *mut obs_data {
         self.obs_data
     }
 

@@ -1,5 +1,3 @@
-extern crate libobs_recorder;
-
 use libobs_recorder::{
     AudioSource, Encoder, Framerate, RateControl, Recorder, RecorderSettings, Resolution, Size,
     Window,
@@ -61,7 +59,7 @@ fn main() {
     settings1.set_input_size(window_size);
     settings1.set_output_path("./Test1.mp4");
     settings1.set_rate_control(RateControl::CQP(30));
-    settings1.record_audio(AudioSource::ALL);
+    settings1.record_audio(AudioSource::APPLICATION);
 
     // SETTINGS 2
     let mut settings2 = RecorderSettings::new();
@@ -71,7 +69,7 @@ fn main() {
     settings2.set_output_resolution(Resolution::_1440p);
     settings2.set_framerate(Framerate::new(30, 1));
     settings2.set_rate_control(RateControl::CBR(2500));
-    settings2.record_audio(AudioSource::ALL);
+    settings2.record_audio(AudioSource::APPLICATION);
 
     // SETTINGS 3
     let mut settings3 = RecorderSettings::new();
@@ -98,26 +96,30 @@ fn main() {
     settings5.set_input_size(window_size);
     settings5.set_framerate(Framerate::new(60, 1));
     settings5.set_rate_control(RateControl::CQP(20));
-    settings5.record_audio(AudioSource::SYSTEM);
+    settings5.record_audio(AudioSource::NONE);
     settings5.set_encoder(Encoder::OBS_X264);
 
     let settings = vec![settings1, settings2, settings3, settings4, settings5];
 
-    let encoders = Recorder::init(None, None, None).unwrap();
-    println!("available encoders:\n{:?}", encoders);
+    let mut recorder = Recorder::new(None, None, None).unwrap();
+
+    println!(
+        "available encoders:\n{:?}",
+        Recorder::get_available_encoders()
+    );
 
     let mut i = 1;
     for setting in settings {
         println!("RECORDING {}", i);
         i += 1;
 
-        let mut recorder = Recorder::get(&setting).unwrap();
+        _ = recorder.set(&setting).unwrap();
         if recorder.start_recording() {
             std::thread::sleep(std::time::Duration::from_secs(10));
             dbg!(recorder.stop_recording());
+            // std::thread::sleep(std::time::Duration::from_secs(3));
         } else {
             println!("error starting recorder");
         }
     }
-    Recorder::shutdown();
 }

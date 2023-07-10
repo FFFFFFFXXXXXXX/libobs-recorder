@@ -4,6 +4,7 @@ mod settings;
 
 #[cfg(feature = "full")]
 pub use recorder::Recorder;
+
 pub use settings::{
     audio::AudioSource,
     encoders::Encoder,

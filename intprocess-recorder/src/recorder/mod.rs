@@ -1,3 +1,6 @@
+mod get;
+pub(crate) mod obs_data;
+
 use libobs_sys::{
     base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path,
     obs_audio_encoder_create, obs_audio_info, obs_encoder, obs_encoder_release,
@@ -32,9 +35,6 @@ use crate::{
     },
     RateControl,
 };
-
-mod get;
-pub(crate) mod obs_data;
 
 #[cfg(feature = "debug")]
 const DEBUG: bool = true;
@@ -79,7 +79,7 @@ thread_local! {
 type PhantomUnsync = std::marker::PhantomData<std::cell::Cell<()>>;
 type PhantomUnsend = std::marker::PhantomData<std::sync::MutexGuard<'static, ()>>;
 
-pub struct Recorder {
+pub struct InpRecorder {
     output: NonNull<obs_output>,
     video_encoder: Cell<NonNull<obs_encoder>>,
     audio_encoder: NonNull<obs_encoder>,
@@ -91,7 +91,7 @@ pub struct Recorder {
     _phantom: std::marker::PhantomData<(PhantomUnsend, PhantomUnsync)>,
 }
 
-impl Recorder {
+impl InpRecorder {
     pub fn new(
         libobs_data_path: Option<&str>,
         plugin_bin_path: Option<&str>,
@@ -194,7 +194,7 @@ impl Recorder {
         }
     }
 
-    pub fn stop_recording(&mut self) -> bool {
+    pub fn stop_recording(&mut self) {
         if self.is_recording() {
             unsafe { obs_output_stop(self.output.as_ptr()) }
             if DEBUG {
@@ -206,10 +206,10 @@ impl Recorder {
         loop {
             thread::sleep(Duration::from_millis(100));
             if !self.is_recording() {
-                return true;
+                return;
             } else if now.elapsed().as_millis() > 3000 {
                 unsafe { obs_output_force_stop(self.output.as_ptr()) };
-                return false;
+                return;
             }
         }
     }
@@ -283,7 +283,6 @@ impl Recorder {
             if let Some(window) = settings.window.as_ref() {
                 let mut data = ObsData::new();
                 data.set_string("window", window.get_libobs_window_id());
-                println!("video source update");
                 obs_source_update(self.video_source.as_ptr(), data.as_ptr());
             }
 
@@ -294,7 +293,6 @@ impl Recorder {
                         if let Some(window) = settings.window.as_ref() {
                             let mut data = ObsData::new();
                             data.set_string("window", window.get_libobs_window_id());
-                            println!("audio source 1 update");
                             obs_source_update(self.audio_source1.as_ptr(), data.as_ptr());
                         };
                         self.audio_source1.as_ptr()
@@ -326,13 +324,13 @@ impl Recorder {
         Ok(())
     }
 
-    fn is_recording(&self) -> bool {
+    pub fn is_recording(&self) -> bool {
         unsafe { obs_output_active(self.output.as_ptr()) }
     }
 }
 
 // implement associated functions
-impl Recorder {
+impl InpRecorder {
     fn init(
         libobs_data_path: Option<&str>,
         plugin_bin_path: Option<&str>,
@@ -420,8 +418,6 @@ impl Recorder {
         unsafe {
             obs_set_output_source(VIDEO_CHANNEL, video_source);
         }
-
-        println!("STARTUP DONE");
 
         // CREATE AUDIO ENCODER
         let mut data = ObsData::new();
@@ -616,7 +612,7 @@ impl Recorder {
     }
 }
 
-impl Drop for Recorder {
+impl Drop for InpRecorder {
     fn drop(&mut self) {
         unsafe {
             // output

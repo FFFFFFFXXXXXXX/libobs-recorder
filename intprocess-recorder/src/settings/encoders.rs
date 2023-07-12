@@ -11,14 +11,15 @@ mod consts {
     pub const AMD_AMF_QUALITY_PRESET: i64 = 1;
 }
 
+// the encoders are sorted by their default preference
 #[allow(non_camel_case_types)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Encoder {
     JIM_NVENC,
     FFMPEG_NVENC,
-    AMD_AMF_H264,
     AMD_NEW_H264,
+    AMD_AMF_H264,
     OBS_QSV11,
     OBS_X264,
 }
@@ -36,7 +37,7 @@ impl Encoder {
     }
 
     #[cfg(feature = "full")]
-    pub(crate) fn settings(&self, rate_control: &RateControl) -> ObsData {
+    pub(crate) fn settings(&self, rate_control: RateControl) -> ObsData {
         match *self {
             Self::JIM_NVENC | Self::FFMPEG_NVENC => nvidia_nvenc_settings(rate_control),
             Self::AMD_AMF_H264 => amd_amf_h264_settings(rate_control),
@@ -64,7 +65,7 @@ impl TryFrom<&str> for Encoder {
 }
 
 #[cfg(feature = "full")]
-fn amd_amf_h264_settings(rate_control: &RateControl) -> ObsData {
+fn amd_amf_h264_settings(rate_control: RateControl) -> ObsData {
     let mut data = ObsData::new();
     // Picture Control Properties
     data.set_double("Interval.Keyframe", 2.0);
@@ -74,7 +75,7 @@ fn amd_amf_h264_settings(rate_control: &RateControl) -> ObsData {
     data.set_int("QualityPreset", consts::AMD_AMF_QUALITY_PRESET);
     data.set_string("preset", "quality");
     data.set_string("profile", "high");
-    match *rate_control {
+    match rate_control {
         RateControl::CBR(cbr) => {
             data.set_int("RateControlMethod", consts::AMD_AMF_CBR);
             data.set_int("bitrate", cbr);
@@ -95,7 +96,7 @@ fn amd_amf_h264_settings(rate_control: &RateControl) -> ObsData {
 }
 
 #[cfg(feature = "full")]
-fn amd_new_h264_settings(rate_control: &RateControl) -> ObsData {
+fn amd_new_h264_settings(rate_control: RateControl) -> ObsData {
     let mut data = ObsData::new();
     // Picture Control Properties
     data.set_int("bf", 1);
@@ -103,7 +104,7 @@ fn amd_new_h264_settings(rate_control: &RateControl) -> ObsData {
     data.set_string("preset", "quality");
     data.set_string("profile", "high");
     data.set_string("ffmpeg_opts", "MaxNumRefFrames=4 BReferenceEnable=1 BPicturesPattern=1 MaxConsecutiveBPictures=1 HighMotionQualityBoostEnable=1");
-    match *rate_control {
+    match rate_control {
         RateControl::CBR(cbr) => {
             data.set_string("rate_control", "CBR");
             data.set_int("bitrate", cbr);
@@ -123,14 +124,14 @@ fn amd_new_h264_settings(rate_control: &RateControl) -> ObsData {
 }
 
 #[cfg(feature = "full")]
-fn nvidia_nvenc_settings(settings: &RateControl) -> ObsData {
+fn nvidia_nvenc_settings(settings: RateControl) -> ObsData {
     let mut data = ObsData::new();
     data.set_string("profile", "high");
     data.set_string("preset", "hq");
     data.set_int("bf", 2);
     data.set_bool("psycho_aq", true);
     data.set_bool("lookahead", true);
-    match *settings {
+    match settings {
         RateControl::CBR(cbr) => {
             data.set_string("rate_control", "CBR");
             data.set_int("bitrate", cbr);
@@ -152,10 +153,10 @@ fn nvidia_nvenc_settings(settings: &RateControl) -> ObsData {
 }
 
 #[cfg(feature = "full")]
-fn intel_quicksync_settings(settings: &RateControl) -> ObsData {
+fn intel_quicksync_settings(settings: RateControl) -> ObsData {
     let mut data = ObsData::new();
     data.set_string("profile", "high");
-    match *settings {
+    match settings {
         RateControl::CBR(cbr) => {
             data.set_string("rate_control", "CBR");
             data.set_int("bitrate", cbr);
@@ -183,13 +184,13 @@ fn intel_quicksync_settings(settings: &RateControl) -> ObsData {
 }
 
 #[cfg(feature = "full")]
-fn obs_x264_settings(rate_control: &RateControl) -> ObsData {
+fn obs_x264_settings(rate_control: RateControl) -> ObsData {
     let mut data = ObsData::new();
     data.set_bool("use_bufsize", true);
     data.set_string("profile", "high");
     data.set_string("preset", "veryfast");
 
-    match *rate_control {
+    match rate_control {
         RateControl::CBR(cbr) => {
             data.set_string("rate_control", "CBR");
             data.set_int("bitrate", cbr);

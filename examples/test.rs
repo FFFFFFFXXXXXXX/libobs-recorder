@@ -1,7 +1,7 @@
 use ipc_link::{IpcCommand, IpcLinkMaster};
 
 fn main() {
-    let mut link = IpcLinkMaster::new("extprocess_recorder.exe");
+    let mut link = IpcLinkMaster::new("extprocess_recorder.exe").unwrap();
     link.send(IpcCommand::Init {
         libobs_data_path: None,
         plugin_bin_path: None,

@@ -29,12 +29,7 @@ use std::{
 };
 
 use self::{get::Get, obs_data::ObsData};
-use crate::{
-    settings::{
-        audio::AudioSource, encoders::Encoder, framerate::Framerate, window::Size, RecorderSettings,
-    },
-    RateControl,
-};
+use crate::settings::{AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Size};
 
 #[cfg(feature = "debug")]
 const DEBUG: bool = true;

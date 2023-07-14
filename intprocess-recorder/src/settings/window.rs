@@ -44,7 +44,7 @@ pub enum Resolution {
 
 #[cfg(feature = "full")]
 impl Resolution {
-    pub(crate) fn get_size(&self) -> Size {
+    pub fn get_size(&self) -> Size {
         match self {
             Resolution::_480p => Size {
                 width: 640,

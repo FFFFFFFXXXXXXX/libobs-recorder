@@ -1,8 +1,10 @@
-pub use intprocess_recorder::InpRecorder as SingletonRecorder;
-pub use intprocess_recorder::{
-    AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Resolution, Size, Window,
-};
+pub mod settings {
+    pub use intprocess_recorder::settings::{
+        AudioSource, Encoder, Framerate, RateControl, Resolution, Size, Window,
+    };
+}
 
+pub use intprocess_recorder::{settings::RecorderSettings, InpRecorder as SingletonRecorder};
 use ipc_link::{IpcCommand, IpcLinkMaster};
 
 #[cfg(target_family = "windows")]
@@ -11,61 +13,47 @@ const EXECUTABLE: &str = "extprocess_recorder.exe";
 const EXECUTABLE: &str = "extprocess_recorder";
 
 pub struct Recorder {
-    recorder: Option<IpcLinkMaster>,
+    recorder: IpcLinkMaster,
 }
 
 impl Recorder {
-    pub fn new() -> Self {
-        Self { recorder: None }
-    }
+    pub fn new(
+        libobs_data_path: Option<&str>,
+        plugin_bin_path: Option<&str>,
+        plugin_data_path: Option<&str>,
+    ) -> std::io::Result<Self> {
+        let mut rec = IpcLinkMaster::new(EXECUTABLE)?;
 
-    pub fn init(&mut self) -> bool {
-        let mut rec = IpcLinkMaster::new(EXECUTABLE);
-        let response = rec.send(IpcCommand::Init {
-            libobs_data_path: None,
-            plugin_bin_path: None,
-            plugin_data_path: None,
-        });
-        self.recorder = Some(rec);
+        let cmd = IpcCommand::Init {
+            libobs_data_path: libobs_data_path.map(|s| s.to_string()),
+            plugin_bin_path: plugin_bin_path.map(|s| s.to_string()),
+            plugin_data_path: plugin_data_path.map(|s| s.to_string()),
+        };
 
-        response
+        if rec.send(cmd) {
+            Ok(Self { recorder: rec })
+        } else {
+            Err(std::io::ErrorKind::Other.into())
+        }
     }
 
     pub fn configure(&mut self, settings: &RecorderSettings) -> bool {
-        if let Some(recorder) = self.recorder.as_mut() {
-            recorder.send(ipc_link::IpcCommand::Settings(settings.clone()))
-        } else {
-            false
-        }
+        self.recorder
+            .send(ipc_link::IpcCommand::Settings(settings.clone()))
     }
 
     pub fn start_recording(&mut self) -> bool {
-        if let Some(recorder) = self.recorder.as_mut() {
-            recorder.send(ipc_link::IpcCommand::StartRecording)
-        } else {
-            false
-        }
+        self.recorder.send(ipc_link::IpcCommand::StartRecording)
     }
 
     pub fn stop_recording(&mut self) -> bool {
-        if let Some(recorder) = self.recorder.as_mut() {
-            recorder.send(ipc_link::IpcCommand::StopRecording)
-        } else {
-            false
-        }
+        self.recorder.send(ipc_link::IpcCommand::StopRecording)
     }
 
-    pub fn shutdown(&mut self) -> bool {
-        let success = if let Some(recorder) = self.recorder.as_mut() {
-            recorder.send(ipc_link::IpcCommand::Shutdown)
-        } else {
-            false
-        };
+    pub fn shutdown(mut self) -> Result<(), Self> {
+        self.recorder.send(ipc_link::IpcCommand::Shutdown);
+        self.recorder.send(ipc_link::IpcCommand::Exit);
 
-        if success {
-            drop(self.recorder.take());
-        }
-
-        success
+        Ok(())
     }
 }

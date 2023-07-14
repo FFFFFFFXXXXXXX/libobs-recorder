@@ -1,5 +1,5 @@
 #[cfg(feature = "full")]
-use crate::{recorder::obs_data::ObsData, RateControl};
+use crate::{recorder::obs_data::ObsData, settings::RateControl};
 
 #[cfg(feature = "full")]
 mod consts {

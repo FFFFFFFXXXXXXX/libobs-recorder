@@ -1,16 +1,16 @@
-pub mod audio;
-pub mod encoders;
-pub mod framerate;
-pub mod rate_control;
-pub mod window;
+mod audio;
+mod encoders;
+mod framerate;
+mod rate_control;
+mod window;
 
-use self::{
+pub use self::{
+    audio::AudioSource,
     encoders::Encoder,
     framerate::Framerate,
+    rate_control::RateControl,
     window::{Resolution, Size, Window},
 };
-
-use self::{audio::AudioSource, rate_control::RateControl};
 
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[derive(Clone, Debug, PartialEq)]

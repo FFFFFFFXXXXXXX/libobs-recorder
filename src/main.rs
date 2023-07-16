@@ -1,11 +1,15 @@
+// 'windows_subsystem = "windows/console"' decides if the executable should launch in a console window or not
+// but only add this for release builds (debug_assertions disabled)
+// gets ignored on all other targets
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
 use intprocess_recorder::InpRecorder;
 use ipc_link::{IpcCommand, IpcLinkSlave, IpcResponse};
 
 fn main() {
     let mut recorder = None;
 
-    let mut slave = IpcLinkSlave::new();
-    slave.respond(|cmd| match cmd {
+    IpcLinkSlave::new().respond(|cmd| match cmd {
         IpcCommand::Init {
             libobs_data_path,
             plugin_bin_path,

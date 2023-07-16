@@ -209,7 +209,7 @@ impl InpRecorder {
         }
     }
 
-    pub fn set(&self, settings: &RecorderSettings) -> Result<(), String> {
+    pub fn configure(&self, settings: &RecorderSettings) -> Result<(), String> {
         if self.is_recording() {
             return Err("can't change settings while recording".into());
         }
@@ -241,6 +241,16 @@ impl InpRecorder {
             || framerate.den() != ovi.fps_den;
         if video_reset_necessary {
             Self::reset_video(input_size, output_size, framerate)?;
+
+            unsafe {
+                // reconfigure video output pipeline after resetting the video backend
+                obs_encoder_set_video(self.video_encoder.get().as_ptr(), obs_get_video());
+                obs_output_set_video_encoder(
+                    self.output.as_ptr(),
+                    self.video_encoder.get().as_ptr(),
+                );
+                obs_set_output_source(VIDEO_CHANNEL, self.video_source.as_ptr());
+            }
         }
 
         let mut get = Get::new();

@@ -23,9 +23,9 @@ fn main() {
             .ok();
             Some(IpcResponse::Ok)
         }
-        IpcCommand::Settings(settings) => {
+        IpcCommand::Configure(settings) => {
             if let Some(recorder) = recorder.as_mut() {
-                if let Err(e) = recorder.set(&settings) {
+                if let Err(e) = recorder.configure(&settings) {
                     Some(IpcResponse::Err(e))
                 } else {
                     Some(IpcResponse::Ok)

@@ -45,7 +45,7 @@ impl Recorder {
 
     pub fn configure(&mut self, settings: &RecorderSettings) -> bool {
         self.recorder
-            .send(ipc_link::IpcCommand::Settings(settings.clone()))
+            .send(ipc_link::IpcCommand::Configure(settings.clone()))
     }
 
     pub fn start_recording(&mut self) -> bool {

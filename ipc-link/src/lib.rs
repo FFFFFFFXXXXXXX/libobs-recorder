@@ -12,7 +12,7 @@ pub enum IpcCommand {
         plugin_bin_path: Option<String>,
         plugin_data_path: Option<String>,
     },
-    Settings(intprocess_recorder::settings::RecorderSettings),
+    Configure(intprocess_recorder::settings::RecorderSettings),
     StartRecording,
     StopRecording,
     Shutdown,
@@ -68,7 +68,7 @@ impl IpcLinkMaster {
                     println!("ipc_link error: {e}");
                     return false;
                 }
-                _ => println!("ipc_link log: {line}"),
+                _ => print!("ipc_link log: {line}"),
             }
         }
     }

@@ -1,6 +1,6 @@
 use std::{
-    ffi::OsStr,
     io::{self, BufRead, BufReader, BufWriter, StdinLock, StdoutLock, Write},
+    path::{Component, Path},
     process::{Child, ChildStdin, ChildStdout, Command, Stdio},
     time::Duration,
 };
@@ -23,7 +23,6 @@ pub enum IpcCommand {
 pub enum IpcResponse {
     Ok,
     Err(String),
-    Log(String),
 }
 
 #[derive(Debug)]
@@ -35,10 +34,17 @@ pub struct IpcLinkMaster {
 }
 
 impl IpcLinkMaster {
-    pub fn new(executable: impl AsRef<OsStr>) -> io::Result<Self> {
-        let mut child_process = Command::new(executable)
+    pub fn new(executable: impl AsRef<Path>) -> io::Result<Self> {
+        let executable = executable.as_ref().canonicalize()?;
+
+        let mut child_process = Command::new(executable.as_os_str())
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
+            .current_dir(
+                executable
+                    .parent()
+                    .unwrap_or_else(|| Path::new(&Component::RootDir)),
+            )
             .spawn()?;
 
         Ok(Self {
@@ -55,13 +61,14 @@ impl IpcLinkMaster {
         _ = self.tx.flush();
 
         loop {
-            match serde_json::from_str::<IpcResponse>(self.read_line()).unwrap() {
-                IpcResponse::Ok => return true,
-                IpcResponse::Err(e) => {
+            let line = self.read_line();
+            match serde_json::from_str::<IpcResponse>(line) {
+                Ok(IpcResponse::Ok) => return true,
+                Ok(IpcResponse::Err(e)) => {
                     println!("ipc_link error: {e}");
                     return false;
                 }
-                IpcResponse::Log(log) => println!("ipc_link log: {log}"),
+                _ => println!("ipc_link log: {line}"),
             }
         }
     }

@@ -12,8 +12,7 @@ pub use self::{
     window::{Resolution, Size, Window},
 };
 
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Clone, Debug, PartialEq)]
+#[derive(serde::Serialize, serde::Deserialize, Clone, Debug, PartialEq)]
 pub struct RecorderSettings {
     pub(crate) window: Option<Window>,
     pub(crate) input_size: Option<Size>,

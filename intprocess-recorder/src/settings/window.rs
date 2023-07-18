@@ -1,5 +1,4 @@
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(serde::Serialize, serde::Deserialize, Debug, Clone, PartialEq)]
 pub struct Window {
     name: String,
     class: Option<String>,
@@ -15,7 +14,6 @@ impl Window {
         }
     }
 
-    #[cfg(feature = "full")]
     pub(crate) fn get_libobs_window_id(&self) -> String {
         let mut window_id = String::new();
         window_id.push_str(&self.name);
@@ -31,8 +29,7 @@ impl Window {
     }
 }
 
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(serde::Serialize, serde::Deserialize, Copy, Clone, Debug, PartialEq)]
 pub enum Resolution {
     _480p,
     _720p,
@@ -42,7 +39,6 @@ pub enum Resolution {
     _4320p,
 }
 
-#[cfg(feature = "full")]
 impl Resolution {
     pub fn get_size(&self) -> Size {
         match self {
@@ -74,8 +70,7 @@ impl Resolution {
     }
 }
 
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(serde::Serialize, serde::Deserialize, Copy, Clone, Debug, PartialEq)]
 pub struct Size {
     width: u32,
     height: u32,

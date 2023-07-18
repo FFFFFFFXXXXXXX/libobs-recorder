@@ -1,7 +1,5 @@
-#[cfg(feature = "full")]
 use crate::{recorder::obs_data::ObsData, settings::RateControl};
 
-#[cfg(feature = "full")]
 mod consts {
     pub const ENABLE: i64 = 1;
 
@@ -13,8 +11,9 @@ mod consts {
 
 // the encoders are sorted by their default preference
 #[allow(non_camel_case_types)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(
+    serde::Serialize, serde::Deserialize, Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord,
+)]
 pub enum Encoder {
     JIM_NVENC,
     FFMPEG_NVENC,
@@ -36,7 +35,6 @@ impl Encoder {
         }
     }
 
-    #[cfg(feature = "full")]
     pub(crate) fn settings(&self, rate_control: RateControl) -> ObsData {
         match *self {
             Self::JIM_NVENC | Self::FFMPEG_NVENC => nvidia_nvenc_settings(rate_control),
@@ -64,7 +62,6 @@ impl TryFrom<&str> for Encoder {
     }
 }
 
-#[cfg(feature = "full")]
 fn amd_amf_h264_settings(rate_control: RateControl) -> ObsData {
     let mut data = ObsData::new();
     // Picture Control Properties
@@ -95,7 +92,6 @@ fn amd_amf_h264_settings(rate_control: RateControl) -> ObsData {
     data
 }
 
-#[cfg(feature = "full")]
 fn amd_new_h264_settings(rate_control: RateControl) -> ObsData {
     let mut data = ObsData::new();
     // Picture Control Properties
@@ -123,7 +119,6 @@ fn amd_new_h264_settings(rate_control: RateControl) -> ObsData {
     data
 }
 
-#[cfg(feature = "full")]
 fn nvidia_nvenc_settings(settings: RateControl) -> ObsData {
     let mut data = ObsData::new();
     data.set_string("profile", "high");
@@ -152,7 +147,6 @@ fn nvidia_nvenc_settings(settings: RateControl) -> ObsData {
     data
 }
 
-#[cfg(feature = "full")]
 fn intel_quicksync_settings(settings: RateControl) -> ObsData {
     let mut data = ObsData::new();
     data.set_string("profile", "high");
@@ -183,7 +177,6 @@ fn intel_quicksync_settings(settings: RateControl) -> ObsData {
     data
 }
 
-#[cfg(feature = "full")]
 fn obs_x264_settings(rate_control: RateControl) -> ObsData {
     let mut data = ObsData::new();
     data.set_bool("use_bufsize", true);

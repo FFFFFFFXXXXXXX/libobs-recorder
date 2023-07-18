@@ -15,8 +15,12 @@ name = "extprocess_recorder"
 path = "src/main.rs"
 
 [dependencies]
-intprocess-recorder = { path = "intprocess-recorder", features = ["full"] }
+intprocess-recorder = { path = "intprocess-recorder" }
 ipc-link = { path = "ipc-link" }
+
+[features]
+debug = ["intprocess-recorder/debug"] # prints a log to stdout
+bindgen = ["intprocess-recorder/bindgen"] # regenerates libobs-sys bindings
 
 [workspace]
 members = [

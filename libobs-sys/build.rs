@@ -6,14 +6,14 @@ fn main() {
     );
     println!("cargo:rustc-link-lib=obs");
 
-    // only generate bindings if they don't exist yet
+    #[cfg(feature = "bindgen")]
+    gen_bindings();
+}
+
+#[cfg(feature = "bindgen")]
+fn gen_bindings() {
     let bindings_path =
         std::path::Path::new(concat!(env!("CARGO_MANIFEST_DIR"), "/src/bindings.rs"));
-    if let Ok(metadata) = bindings_path.metadata() {
-        if metadata.len() > 0 {
-            return;
-        }
-    }
 
     let bindings = bindgen::builder()
         .header("libobs_headers/obs.h")

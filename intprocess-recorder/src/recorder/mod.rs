@@ -4,17 +4,17 @@ pub(crate) mod obs_data;
 use libobs_sys::{
     base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path,
     obs_audio_encoder_create, obs_audio_info, obs_encoder, obs_encoder_release,
-    obs_encoder_set_audio, obs_encoder_set_video, obs_enum_encoder_types, obs_get_audio,
-    obs_get_encoder_by_name, obs_get_output_by_name, obs_get_source_by_name, obs_get_video,
-    obs_get_video_info, obs_initialized, obs_load_all_modules, obs_log_loaded_modules, obs_output,
-    obs_output_active, obs_output_create, obs_output_force_stop, obs_output_release,
-    obs_output_set_audio_encoder, obs_output_set_video_encoder, obs_output_start, obs_output_stop,
-    obs_output_update, obs_post_load_modules, obs_reset_audio, obs_reset_video,
-    obs_scale_type_OBS_SCALE_LANCZOS, obs_set_output_source, obs_shutdown, obs_source,
-    obs_source_create, obs_source_release, obs_source_update, obs_startup,
-    obs_video_encoder_create, obs_video_info, speaker_layout_SPEAKERS_STEREO, va_list,
-    video_colorspace_VIDEO_CS_709, video_format_VIDEO_FORMAT_NV12,
-    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
+    obs_encoder_set_audio, obs_encoder_set_video, obs_encoder_update, obs_enum_encoder_types,
+    obs_get_audio, obs_get_encoder_by_name, obs_get_output_by_name, obs_get_source_by_name,
+    obs_get_video, obs_get_video_info, obs_initialized, obs_load_all_modules,
+    obs_log_loaded_modules, obs_output, obs_output_active, obs_output_create,
+    obs_output_force_stop, obs_output_release, obs_output_set_audio_encoder,
+    obs_output_set_video_encoder, obs_output_start, obs_output_stop, obs_output_update,
+    obs_post_load_modules, obs_reset_audio, obs_reset_video, obs_scale_type_OBS_SCALE_LANCZOS,
+    obs_set_output_source, obs_shutdown, obs_source, obs_source_create, obs_source_release,
+    obs_source_update, obs_startup, obs_video_encoder_create, obs_video_info,
+    speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_709,
+    video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
 
 use std::{
@@ -110,12 +110,16 @@ impl InpRecorder {
         }
 
         // choose 'best' encoder
-        let encoders = Self::get_available_encoders();
+        let encoders = Self::get_available_encoders_internal();
         if encoders.len() == 0 {
             return Err("no encoder available".into());
         }
         let new_encoder = *encoders.first().unwrap();
         let current_encoder = Self::get_current_encoder();
+
+        if DEBUG {
+            println!("selected encoder: {new_encoder:?}");
+        }
 
         let mut video_encoder = unsafe { obs_get_encoder_by_name(VIDEO_ENCODER) };
         let output = unsafe { obs_get_output_by_name(OUTPUT) };
@@ -264,24 +268,28 @@ impl InpRecorder {
 
             // VIDEO ENCODER
             // create a new encoder if there is none or if it is different from the previously selected encoder
-            let current_encoder = Self::get_current_encoder();
-            let new_encoder = settings.encoder.unwrap_or(current_encoder);
-            if new_encoder != current_encoder {
-                // create new encoder
-                let data = new_encoder.settings(settings.rate_control.unwrap_or_default());
-                let new_video_encoder = NonNull::new(obs_video_encoder_create(
-                    get.c_str(new_encoder.id()),
-                    get.c_str("video_encoder"),
-                    data.as_ptr(),
-                    null_mut(),
-                ))
-                .expect("unable to create video encoder");
+            // or update the encoder if rate_control is Some()
+            if let Some(new_encoder) = settings.encoder {
+                if new_encoder != Self::get_current_encoder() {
+                    // create new encoder
+                    let data = new_encoder.settings(settings.rate_control.unwrap_or_default());
+                    let new_video_encoder = NonNull::new(obs_video_encoder_create(
+                        get.c_str(new_encoder.id()),
+                        get.c_str("video_encoder"),
+                        data.as_ptr(),
+                        null_mut(),
+                    ))
+                    .expect("unable to create video encoder");
 
-                obs_encoder_set_video(new_video_encoder.as_ptr(), obs_get_video());
-                obs_output_set_video_encoder(self.output.as_ptr(), new_video_encoder.as_ptr());
+                    obs_encoder_set_video(new_video_encoder.as_ptr(), obs_get_video());
+                    obs_output_set_video_encoder(self.output.as_ptr(), new_video_encoder.as_ptr());
 
-                // replace and release old encoder
-                obs_encoder_release(self.video_encoder.replace(new_video_encoder).as_ptr());
+                    // replace and release old encoder
+                    obs_encoder_release(self.video_encoder.replace(new_video_encoder).as_ptr());
+                }
+            } else if let Some(rate_control) = settings.rate_control {
+                let data = Self::get_current_encoder().settings(rate_control);
+                obs_encoder_update(self.video_encoder.get().as_ptr(), data.as_ptr());
             }
 
             // VIDEO SOURCE
@@ -331,6 +339,12 @@ impl InpRecorder {
 
     pub fn is_recording(&self) -> bool {
         unsafe { obs_output_active(self.output.as_ptr()) }
+    }
+
+    pub fn get_available_encoders(&self) -> Vec<Encoder> {
+        // public version of internal function that is only available after libobs is initialized
+        // due to requiring &self
+        Self::get_available_encoders_internal()
     }
 }
 
@@ -384,7 +398,7 @@ impl InpRecorder {
         };
 
         // choose 'best' encoder
-        let encoders = Self::get_available_encoders();
+        let encoders = Self::get_available_encoders_internal();
         if encoders.len() == 0 {
             panic!("no encoder available");
         }
@@ -567,7 +581,7 @@ impl InpRecorder {
         Ok(())
     }
 
-    pub fn get_available_encoders() -> Vec<Encoder> {
+    fn get_available_encoders_internal() -> Vec<Encoder> {
         // GET AVAILABLE ENCODERS
         let mut n = 0;
         let mut encoders = Vec::new();

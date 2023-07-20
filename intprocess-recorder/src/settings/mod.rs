@@ -37,27 +37,35 @@ impl RecorderSettings {
             encoder: None,
         }
     }
+
     pub fn set_window(&mut self, window: Window) {
         self.window = Some(window);
     }
+
     pub fn set_input_size(&mut self, size: Size) {
         self.input_size = Some(size);
     }
+
     pub fn set_output_resolution(&mut self, resolution: Resolution) {
         self.output_resolution = Some(resolution);
     }
+
     pub fn set_framerate(&mut self, framerate: Framerate) {
         self.framerate = Some(framerate);
     }
+
     pub fn set_rate_control(&mut self, rate_control: RateControl) {
         self.rate_control = Some(rate_control);
     }
+
     pub fn record_audio(&mut self, record_audio: AudioSource) {
         self.record_audio = Some(record_audio);
     }
+
     pub fn set_output_path(&mut self, output_path: impl Into<String>) {
         self.output_path = Some(output_path.into());
     }
+
     pub fn set_encoder(&mut self, encoder: Encoder) {
         self.encoder = Some(encoder);
     }

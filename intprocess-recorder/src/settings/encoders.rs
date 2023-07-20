@@ -28,8 +28,8 @@ impl Encoder {
         match *self {
             Self::JIM_NVENC => "jim_nvenc",
             Self::FFMPEG_NVENC => "ffmpeg_nvenc",
-            Self::AMD_AMF_H264 => "amd_amf_h264",
             Self::AMD_NEW_H264 => "h264_texture_amf",
+            Self::AMD_AMF_H264 => "amd_amf_h264",
             Self::OBS_QSV11 => "obs_qsv11",
             Self::OBS_X264 => "obs_x264",
         }
@@ -38,8 +38,8 @@ impl Encoder {
     pub(crate) fn settings(&self, rate_control: RateControl) -> ObsData {
         match *self {
             Self::JIM_NVENC | Self::FFMPEG_NVENC => nvidia_nvenc_settings(rate_control),
-            Self::AMD_AMF_H264 => amd_amf_h264_settings(rate_control),
             Self::AMD_NEW_H264 => amd_new_h264_settings(rate_control),
+            Self::AMD_AMF_H264 => amd_amf_h264_settings(rate_control),
             Self::OBS_QSV11 => intel_quicksync_settings(rate_control),
             Self::OBS_X264 => obs_x264_settings(rate_control),
         }
@@ -62,16 +62,49 @@ impl TryFrom<&str> for Encoder {
     }
 }
 
+fn amd_new_h264_settings(rate_control: RateControl) -> ObsData {
+    let mut data = ObsData::new();
+
+    // Picture Control Properties
+    data.set_int("bf", 1);
+    data.set_int("keyint_sec", 2);
+    data.set_string("ffmpeg_opts", "MaxNumRefFrames=4 BReferenceEnable=1 BPicturesPattern=1 MaxConsecutiveBPictures=1 HighMotionQualityBoostEnable=1");
+
+    data.set_string("preset", "quality");
+    data.set_string("profile", "high");
+
+    match rate_control {
+        RateControl::CBR(cbr) => {
+            data.set_string("rate_control", "CBR");
+            data.set_int("bitrate", cbr);
+        }
+        RateControl::VBR(vbr) => {
+            data.set_string("rate_control", "VBR");
+            data.set_int("bitrate", vbr);
+        }
+        RateControl::CQP(cqp) | RateControl::ICQ(cqp) => {
+            let cqp = cqp.clamp(0, 51);
+            data.set_string("rate_control", "CQP");
+            data.set_int("cqp", cqp);
+        }
+        _ => {}
+    };
+    data
+}
+
 fn amd_amf_h264_settings(rate_control: RateControl) -> ObsData {
     let mut data = ObsData::new();
+
     // Picture Control Properties
     data.set_double("Interval.Keyframe", 2.0);
     data.set_int("HighMotionQualityBoost", consts::ENABLE);
     data.set_int("BFrame.Pattern", 1);
     data.set_int("BFrame.Reference", consts::ENABLE);
     data.set_int("QualityPreset", consts::AMD_AMF_QUALITY_PRESET);
+
     data.set_string("preset", "quality");
     data.set_string("profile", "high");
+
     match rate_control {
         RateControl::CBR(cbr) => {
             data.set_int("RateControlMethod", consts::AMD_AMF_CBR);
@@ -92,40 +125,16 @@ fn amd_amf_h264_settings(rate_control: RateControl) -> ObsData {
     data
 }
 
-fn amd_new_h264_settings(rate_control: RateControl) -> ObsData {
-    let mut data = ObsData::new();
-    // Picture Control Properties
-    data.set_int("bf", 1);
-    data.set_int("keyint_sec", 2);
-    data.set_string("preset", "quality");
-    data.set_string("profile", "high");
-    data.set_string("ffmpeg_opts", "MaxNumRefFrames=4 BReferenceEnable=1 BPicturesPattern=1 MaxConsecutiveBPictures=1 HighMotionQualityBoostEnable=1");
-    match rate_control {
-        RateControl::CBR(cbr) => {
-            data.set_string("rate_control", "CBR");
-            data.set_int("bitrate", cbr);
-        }
-        RateControl::VBR(vbr) => {
-            data.set_string("rate_control", "VBR");
-            data.set_int("bitrate", vbr);
-        }
-        RateControl::CQP(cqp) | RateControl::ICQ(cqp) => {
-            let cqp = cqp.clamp(0, 51);
-            data.set_string("rate_control", "CQP");
-            data.set_int("cqp", cqp);
-        }
-        _ => {}
-    };
-    data
-}
-
 fn nvidia_nvenc_settings(settings: RateControl) -> ObsData {
     let mut data = ObsData::new();
-    data.set_string("profile", "high");
-    data.set_string("preset", "hq");
+
     data.set_int("bf", 2);
     data.set_bool("psycho_aq", true);
     data.set_bool("lookahead", true);
+
+    data.set_string("profile", "high");
+    data.set_string("preset", "hq");
+
     match settings {
         RateControl::CBR(cbr) => {
             data.set_string("rate_control", "CBR");
@@ -149,7 +158,9 @@ fn nvidia_nvenc_settings(settings: RateControl) -> ObsData {
 
 fn intel_quicksync_settings(settings: RateControl) -> ObsData {
     let mut data = ObsData::new();
+
     data.set_string("profile", "high");
+
     match settings {
         RateControl::CBR(cbr) => {
             data.set_string("rate_control", "CBR");
@@ -179,7 +190,9 @@ fn intel_quicksync_settings(settings: RateControl) -> ObsData {
 
 fn obs_x264_settings(rate_control: RateControl) -> ObsData {
     let mut data = ObsData::new();
+
     data.set_bool("use_bufsize", true);
+
     data.set_string("profile", "high");
     data.set_string("preset", "veryfast");
 

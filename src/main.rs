@@ -15,18 +15,26 @@ fn main() {
             plugin_bin_path,
             plugin_data_path,
         } => {
-            recorder = InpRecorder::new(
+            if let Err(e) = InpRecorder::initialize(
                 libobs_data_path.as_deref(),
                 plugin_bin_path.as_deref(),
                 plugin_data_path.as_deref(),
-            )
-            .ok();
-            Some(IpcResponse::Ok)
+            ) {
+                return Some(IpcResponse::Err(e.to_string()));
+            }
+
+            match InpRecorder::get_handle() {
+                Ok(rec) => {
+                    recorder = Some(rec);
+                    Some(IpcResponse::Ok)
+                }
+                Err(e) => Some(IpcResponse::Err(e.to_string())),
+            }
         }
         IpcCommand::Configure(settings) => {
             if let Some(recorder) = recorder.as_mut() {
                 if let Err(e) = recorder.configure(&settings) {
-                    Some(IpcResponse::Err(e))
+                    Some(IpcResponse::Err(e.to_string()))
                 } else {
                     Some(IpcResponse::Ok)
                 }
@@ -68,7 +76,7 @@ fn main() {
             }
 
             if let Err(e) = InpRecorder::shutdown() {
-                Some(IpcResponse::Err(e))
+                Some(IpcResponse::Err(e.to_string()))
             } else {
                 Some(IpcResponse::Ok)
             }

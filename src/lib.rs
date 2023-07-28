@@ -1,11 +1,9 @@
-pub mod settings {
-    pub use intprocess_recorder::settings::{
-        AudioSource, Encoder, Framerate, RateControl, Resolution, Size, Window,
-    };
-}
-
 pub use intprocess_recorder::{settings::RecorderSettings, InpRecorder as SingletonRecorder};
 use ipc_link::{IpcCommand, IpcLinkMaster};
+
+pub mod settings {
+    pub use intprocess_recorder::settings::{AudioSource, Encoder, Framerate, RateControl, Resolution, Size, Window};
+}
 
 #[cfg(target_family = "windows")]
 const EXECUTABLE: &str = "./extprocess_recorder.exe";
@@ -27,13 +25,12 @@ impl Recorder {
         plugin_bin_path: Option<&str>,
         plugin_data_path: Option<&str>,
     ) -> std::io::Result<Self> {
-        let mut rec =
-            IpcLinkMaster::new(executable_path.unwrap_or(std::path::Path::new(EXECUTABLE)))?;
+        let mut rec = IpcLinkMaster::new(executable_path.unwrap_or(std::path::Path::new(EXECUTABLE)))?;
 
         let cmd = IpcCommand::Init {
-            libobs_data_path: libobs_data_path.map(|s| s.to_string()),
-            plugin_bin_path: plugin_bin_path.map(|s| s.to_string()),
-            plugin_data_path: plugin_data_path.map(|s| s.to_string()),
+            libobs_data_path: libobs_data_path.map(ToString::to_string),
+            plugin_bin_path: plugin_bin_path.map(ToString::to_string),
+            plugin_data_path: plugin_data_path.map(ToString::to_string),
         };
 
         if rec.send(cmd) {
@@ -44,21 +41,20 @@ impl Recorder {
     }
 
     pub fn configure(&mut self, settings: &RecorderSettings) -> bool {
-        self.recorder
-            .send(ipc_link::IpcCommand::Configure(settings.clone()))
+        self.recorder.send(IpcCommand::Configure(settings.clone()))
     }
 
     pub fn start_recording(&mut self) -> bool {
-        self.recorder.send(ipc_link::IpcCommand::StartRecording)
+        self.recorder.send(IpcCommand::StartRecording)
     }
 
     pub fn stop_recording(&mut self) -> bool {
-        self.recorder.send(ipc_link::IpcCommand::StopRecording)
+        self.recorder.send(IpcCommand::StopRecording)
     }
 
     pub fn shutdown(mut self) -> Result<(), Self> {
-        self.recorder.send(ipc_link::IpcCommand::Shutdown);
-        self.recorder.send(ipc_link::IpcCommand::Exit);
+        self.recorder.send(IpcCommand::Shutdown);
+        self.recorder.send(IpcCommand::Exit);
 
         Ok(())
     }

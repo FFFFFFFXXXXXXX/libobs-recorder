@@ -44,14 +44,12 @@ fn main() {
         }
         IpcCommand::StartRecording => {
             if let Some(recorder) = recorder.as_mut() {
-                if !recorder.is_recording() {
-                    if recorder.start_recording() {
-                        Some(IpcResponse::Ok)
-                    } else {
-                        Some(IpcResponse::Err("failed to start recording".into()))
-                    }
-                } else {
+                if recorder.is_recording() {
                     Some(IpcResponse::Err("already recording".into()))
+                } else if recorder.start_recording() {
+                    Some(IpcResponse::Ok)
+                } else {
+                    Some(IpcResponse::Err("failed to start recording".into()))
                 }
             } else {
                 Some(IpcResponse::Err("recorder not initialized".into()))

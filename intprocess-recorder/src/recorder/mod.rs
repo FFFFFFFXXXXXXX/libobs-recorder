@@ -1,5 +1,13 @@
-mod get;
-pub(crate) mod obs_data;
+use std::{
+    cell::Cell,
+    ffi::CStr,
+    mem::MaybeUninit,
+    os::raw::c_char,
+    ptr::{addr_of_mut, null_mut, NonNull},
+    sync::{Once, OnceLock},
+    thread::{self, ThreadId},
+    time::Duration,
+};
 
 use libobs_sys::{
     base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path, obs_audio_encoder_create,
@@ -14,19 +22,12 @@ use libobs_sys::{
     video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
 
-use std::{
-    cell::Cell,
-    ffi::CStr,
-    mem::MaybeUninit,
-    os::raw::c_char,
-    ptr::{null_mut, NonNull},
-    sync::{Once, OnceLock},
-    thread::{self, ThreadId},
-    time::Duration,
-};
+use crate::settings::{AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Size};
 
 use self::{get::Get, obs_data::ObsData};
-use crate::settings::{AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Size};
+
+mod get;
+pub(crate) mod obs_data;
 
 #[cfg(feature = "debug")]
 const DEBUG: bool = true;
@@ -44,13 +45,13 @@ const DEFAULT_PLUGIN_BIN_PATH: &str = "./obs-plugins/64bit/";
 const DEFAULT_PLUGIN_DATA_PATH: &str = "./data/obs-plugins/%module%/";
 
 // define null terminated libobs object names for ffi
-const OUTPUT: *const i8 = b"output\0".as_ptr() as _;
-const VIDEO_ENCODER: *const i8 = b"video_encoder\0".as_ptr() as _;
-const AUDIO_ENCODER: *const i8 = b"audio_encoder\0".as_ptr() as _;
-const VIDEO_SOURCE: *const i8 = b"video_source\0".as_ptr() as _;
-const AUDIO_SOURCE1: *const i8 = b"audio_source1\0".as_ptr() as _;
-const AUDIO_SOURCE2: *const i8 = b"audio_source2\0".as_ptr() as _;
-const AUDIO_SOURCE3: *const i8 = b"audio_source3\0".as_ptr() as _;
+const OUTPUT: *const i8 = b"output\0".as_ptr().cast();
+const VIDEO_ENCODER: *const i8 = b"video_encoder\0".as_ptr().cast();
+const AUDIO_ENCODER: *const i8 = b"audio_encoder\0".as_ptr().cast();
+const VIDEO_SOURCE: *const i8 = b"video_source\0".as_ptr().cast();
+const AUDIO_SOURCE1: *const i8 = b"audio_source1\0".as_ptr().cast();
+const AUDIO_SOURCE2: *const i8 = b"audio_source2\0".as_ptr().cast();
+const AUDIO_SOURCE3: *const i8 = b"audio_source3\0".as_ptr().cast();
 
 // libobs output channel assignments
 const VIDEO_CHANNEL: u32 = 0;
@@ -85,6 +86,12 @@ pub struct InpRecorder {
 
 // implement associated functions
 impl InpRecorder {
+    /// # Panics
+    /// Panics if the libobs initialization sequence fails.
+    ///
+    /// This can happen because the necessary DLLs are missing or some other necessary files can not be found.
+    /// If the `initialize` function runs once without panicking for a certain environment (DLLs, config files, ...)
+    /// it is garuanteed to never panic as long as the environment stays the same. If it does it is a bug.
     pub fn initialize(
         libobs_data_path: Option<&str>,
         plugin_bin_path: Option<&str>,
@@ -106,7 +113,7 @@ impl InpRecorder {
             let plugin_bin_path = plugin_bin_path.unwrap_or(DEFAULT_PLUGIN_BIN_PATH);
             let plugin_data_path = plugin_data_path.unwrap_or(DEFAULT_PLUGIN_DATA_PATH);
             if let Err(e) = Self::init_internal(libobs_data_path, plugin_bin_path, plugin_data_path) {
-                panic!("{e}");
+                panic!("Error initializing libobs: {e}");
             }
 
             std::thread::current().id()
@@ -155,7 +162,7 @@ impl InpRecorder {
 
             // choose 'best' encoder
             let encoders = Self::get_available_encoders_internal();
-            if encoders.len() == 0 {
+            if encoders.is_empty() {
                 return Err("no encoder available");
             }
             let current_encoder = *encoders.first().unwrap();
@@ -232,66 +239,32 @@ impl InpRecorder {
     }
 
     pub fn get_handle() -> Result<Self, &'static str> {
-        if LIBOBS_THREAD.get() != Some(&std::thread::current().id()) {
+        if LIBOBS_THREAD.get() != Some(&thread::current().id()) {
             return Err("wrong thread - only able to get handle to recorder in the thread in which ");
         }
 
-        // choose 'best' encoder
-        let encoders = Self::get_available_encoders_internal();
-        if encoders.len() == 0 {
-            return Err("no encoder available");
-        }
-        let new_encoder = *encoders.first().unwrap();
-        let current_encoder = Self::get_current_encoder();
-
-        if DEBUG {
-            println!("selected encoder: {new_encoder:?}");
-        }
-
         unsafe {
-            let mut video_encoder = obs_get_encoder_by_name(VIDEO_ENCODER);
-            let output = obs_get_output_by_name(OUTPUT);
-            let is_recording = obs_output_active(output);
-            if !is_recording && new_encoder != current_encoder {
-                // RELEASE OLD / CREATE NEW VIDEO ENCODER
-                obs_encoder_release(video_encoder);
-
-                let mut get = Get::new();
-                let data: ObsData = new_encoder.settings(RateControl::default());
-                video_encoder =
-                    obs_video_encoder_create(get.c_str(new_encoder.id()), VIDEO_ENCODER, data.as_ptr(), null_mut());
-
-                obs_encoder_set_video(video_encoder, obs_get_video());
-                obs_output_set_video_encoder(output, video_encoder);
-            }
-
-            let Some(output) = NonNull::new(output) else {
-                return Err("got nullpointer instead of output")
-            };
-            let Some(video_encoder) = NonNull::new(video_encoder) else {
-                return Err("got nullpointer instead of video encoder")
-            };
-            let Some(audio_encoder) = NonNull::new(obs_get_encoder_by_name(AUDIO_ENCODER)) else {
-                return Err("got nullpointer instead of audio encoder")
-            };
-            let Some(video_source) = NonNull::new(obs_get_source_by_name(VIDEO_SOURCE)) else {
-                return Err("got nullpointer instead of video source")
-            };
-            let Some(audio_source1) = NonNull::new(obs_get_source_by_name(AUDIO_SOURCE1)) else {
-                return Err("got nullpointer instead of audio source 1")
-            };
-            let Some(audio_source2) = NonNull::new(obs_get_source_by_name(AUDIO_SOURCE2)) else {
-                return Err("got nullpointer instead of audio source2")
-            };
-            let Some(audio_source3) = NonNull::new(obs_get_source_by_name(AUDIO_SOURCE3)) else {
-                return Err("got nullpointer instead of audio source3")
-            };
+            let output = NonNull::new(obs_get_output_by_name(OUTPUT)).ok_or("got nullpointer instead of output")?;
+            let video_encoder = Cell::new(
+                NonNull::new(obs_get_encoder_by_name(VIDEO_ENCODER))
+                    .ok_or("got nullpointer instead of video encoder")?,
+            );
+            let audio_encoder = NonNull::new(obs_get_encoder_by_name(AUDIO_ENCODER))
+                .ok_or("got nullpointer instead of audio encoder")?;
+            let video_source =
+                NonNull::new(obs_get_source_by_name(VIDEO_SOURCE)).ok_or("got nullpointer instead of video source")?;
+            let audio_source1 = NonNull::new(obs_get_source_by_name(AUDIO_SOURCE1))
+                .ok_or("got nullpointer instead of audio source 1")?;
+            let audio_source2 = NonNull::new(obs_get_source_by_name(AUDIO_SOURCE2))
+                .ok_or("got nullpointer instead of audio source2")?;
+            let audio_source3 = NonNull::new(obs_get_source_by_name(AUDIO_SOURCE3))
+                .ok_or("got nullpointer instead of audio source3")?;
 
             Self::increment_refcount();
 
             Ok(Self {
                 output,
-                video_encoder: Cell::new(video_encoder),
+                video_encoder,
                 audio_encoder,
                 video_source,
                 audio_source1,
@@ -337,9 +310,11 @@ impl InpRecorder {
             range: -1,
             scale_type: -1,
         };
-        match unsafe { obs_get_video_info(&mut ovi as *mut _) } {
-            true => Ok(ovi),
-            false => Err("Error video was not set! Maybe Recorder was not initialized?"),
+
+        if unsafe { obs_get_video_info(addr_of_mut!(ovi)) } {
+            Ok(ovi)
+        } else {
+            Err("Error video was not set! Maybe Recorder was not initialized?")
         }
     }
 
@@ -362,8 +337,7 @@ impl InpRecorder {
                 scale_type: obs_scale_type_OBS_SCALE_LANCZOS,
             };
 
-            let ret = obs_reset_video(&mut ovi as *mut _);
-            if ret != OBS_VIDEO_SUCCESS as i32 {
+            if obs_reset_video(addr_of_mut!(ovi)) != OBS_VIDEO_SUCCESS.try_into().unwrap() {
                 return Err("error on libobs reset video");
             }
         }
@@ -410,15 +384,14 @@ impl InpRecorder {
         _p: *mut ::std::os::raw::c_void,
     ) {
         // empty function to block logs
-        return;
     }
 
     fn set_current_encoder(encoder: Encoder) {
-        CURRENT_ENCODER.with(|cell| cell.set(encoder))
+        CURRENT_ENCODER.with(|cell| cell.set(encoder));
     }
 
     fn get_current_encoder() -> Encoder {
-        CURRENT_ENCODER.with(|cell| cell.get())
+        CURRENT_ENCODER.with(Cell::get)
     }
 
     fn increment_refcount() {
@@ -430,7 +403,7 @@ impl InpRecorder {
     }
 
     fn get_refcount() -> u32 {
-        REF_COUNT.with(|cell| cell.get())
+        REF_COUNT.with(Cell::get)
     }
 }
 

@@ -13,9 +13,7 @@ pub struct Get {
 
 impl Get {
     pub fn new() -> Self {
-        Self {
-            c_strings: Vec::new(),
-        }
+        Self { c_strings: Vec::new() }
     }
 
     /// panics if `name` contains a character with the character code zero (0)

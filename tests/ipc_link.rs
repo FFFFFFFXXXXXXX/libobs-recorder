@@ -15,10 +15,7 @@ fn main() {
         plugin_data_path: None,
     });
 
-    println!(
-        "Configure: {}",
-        link.send(IpcCommand::Configure(settings()))
-    );
+    println!("Configure: {}", link.send(IpcCommand::Configure(settings())));
 
     std::thread::sleep(std::time::Duration::from_secs(3));
 

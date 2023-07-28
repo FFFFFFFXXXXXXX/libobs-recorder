@@ -494,6 +494,8 @@ impl InpRecorder {
             // or update the encoder if rate_control is Some()
             if let Some(new_encoder) = settings.encoder {
                 if new_encoder != Self::get_current_encoder() {
+                    Self::set_current_encoder(new_encoder);
+
                     // create new encoder
                     let data = new_encoder.settings(settings.rate_control.unwrap_or_default());
                     let new_video_encoder = NonNull::new(obs_video_encoder_create(

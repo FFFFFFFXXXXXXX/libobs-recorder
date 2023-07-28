@@ -1,8 +1,7 @@
 use std::ffi::CString;
 
 use libobs_sys::{
-    obs_data, obs_data_create, obs_data_release, obs_data_set_bool, obs_data_set_double,
-    obs_data_set_int, obs_data_set_string,
+    obs_data, obs_data_create, obs_data_release, obs_data_set_bool, obs_data_set_int, obs_data_set_string,
 };
 
 /*
@@ -41,12 +40,6 @@ impl ObsData {
     pub fn set_int(&mut self, name: impl Into<String>, value: impl Into<i64>) {
         let n = CString::new(name.into()).unwrap();
         unsafe { obs_data_set_int(self.obs_data, n.as_ptr(), value.into()) };
-        self.c_strings.push(n);
-    }
-
-    pub fn set_double(&mut self, name: impl Into<String>, value: impl Into<f64>) {
-        let n = CString::new(name.into()).unwrap();
-        unsafe { obs_data_set_double(self.obs_data, n.as_ptr(), value.into()) };
         self.c_strings.push(n);
     }
 

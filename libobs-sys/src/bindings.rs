@@ -570,8 +570,7 @@ pub struct __crt_locale_data_public {
 }
 #[test]
 fn bindgen_test_layout___crt_locale_data_public() {
-    const UNINIT: ::std::mem::MaybeUninit<__crt_locale_data_public> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<__crt_locale_data_public> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<__crt_locale_data_public>(),
@@ -622,8 +621,7 @@ pub struct __crt_locale_pointers {
 }
 #[test]
 fn bindgen_test_layout___crt_locale_pointers() {
-    const UNINIT: ::std::mem::MaybeUninit<__crt_locale_pointers> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<__crt_locale_pointers> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<__crt_locale_pointers>(),
@@ -681,32 +679,17 @@ fn bindgen_test_layout__Mbstatet() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Wchar) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_Mbstatet),
-            "::",
-            stringify!(_Wchar)
-        )
+        concat!("Offset of field: ", stringify!(_Mbstatet), "::", stringify!(_Wchar))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Byte) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_Mbstatet),
-            "::",
-            stringify!(_Byte)
-        )
+        concat!("Offset of field: ", stringify!(_Mbstatet), "::", stringify!(_Byte))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._State) as usize - ptr as usize },
         6usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_Mbstatet),
-            "::",
-            stringify!(_State)
-        )
+        concat!("Offset of field: ", stringify!(_Mbstatet), "::", stringify!(_State))
     );
 }
 pub type mbstate_t = _Mbstatet;
@@ -760,10 +743,7 @@ pub type log_handler_t = ::std::option::Option<
     ),
 >;
 extern "C" {
-    pub fn base_get_log_handler(
-        handler: *mut log_handler_t,
-        param: *mut *mut ::std::os::raw::c_void,
-    );
+    pub fn base_get_log_handler(handler: *mut log_handler_t, param: *mut *mut ::std::os::raw::c_void);
 }
 extern "C" {
     pub fn base_set_log_handler(handler: log_handler_t, param: *mut ::std::os::raw::c_void);
@@ -771,21 +751,13 @@ extern "C" {
 extern "C" {
     pub fn base_set_crash_handler(
         handler: ::std::option::Option<
-            unsafe extern "C" fn(
-                arg1: *const ::std::os::raw::c_char,
-                arg2: va_list,
-                arg3: *mut ::std::os::raw::c_void,
-            ),
+            unsafe extern "C" fn(arg1: *const ::std::os::raw::c_char, arg2: va_list, arg3: *mut ::std::os::raw::c_void),
         >,
         param: *mut ::std::os::raw::c_void,
     );
 }
 extern "C" {
-    pub fn blogva(
-        log_level: ::std::os::raw::c_int,
-        format: *const ::std::os::raw::c_char,
-        args: va_list,
-    );
+    pub fn blogva(log_level: ::std::os::raw::c_int, format: *const ::std::os::raw::c_char, args: va_list);
 }
 extern "C" {
     pub fn blog(log_level: ::std::os::raw::c_int, format: *const ::std::os::raw::c_char, ...);
@@ -838,16 +810,10 @@ extern "C" {
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn strchr(
-        _Str: *const ::std::os::raw::c_char,
-        _Val: ::std::os::raw::c_int,
-    ) -> *mut ::std::os::raw::c_char;
+    pub fn strchr(_Str: *const ::std::os::raw::c_char, _Val: ::std::os::raw::c_int) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn strrchr(
-        _Str: *const ::std::os::raw::c_char,
-        _Ch: ::std::os::raw::c_int,
-    ) -> *mut ::std::os::raw::c_char;
+    pub fn strrchr(_Str: *const ::std::os::raw::c_char, _Ch: ::std::os::raw::c_int) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn strstr(
@@ -1136,22 +1102,12 @@ fn bindgen_test_layout__wfinddata32_t() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).size) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_wfinddata32_t),
-            "::",
-            stringify!(size)
-        )
+        concat!("Offset of field: ", stringify!(_wfinddata32_t), "::", stringify!(size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).name) as usize - ptr as usize },
         20usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_wfinddata32_t),
-            "::",
-            stringify!(name)
-        )
+        concat!("Offset of field: ", stringify!(_wfinddata32_t), "::", stringify!(name))
     );
 }
 #[repr(C)]
@@ -1391,62 +1347,37 @@ fn bindgen_test_layout__wfinddata64_t() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).size) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_wfinddata64_t),
-            "::",
-            stringify!(size)
-        )
+        concat!("Offset of field: ", stringify!(_wfinddata64_t), "::", stringify!(size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).name) as usize - ptr as usize },
         40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_wfinddata64_t),
-            "::",
-            stringify!(name)
-        )
+        concat!("Offset of field: ", stringify!(_wfinddata64_t), "::", stringify!(name))
     );
 }
 extern "C" {
-    pub fn _waccess(
-        _FileName: *const wchar_t,
-        _AccessMode: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _waccess(_FileName: *const wchar_t, _AccessMode: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _waccess_s(_FileName: *const wchar_t, _AccessMode: ::std::os::raw::c_int) -> errno_t;
 }
 extern "C" {
-    pub fn _wchmod(
-        _FileName: *const wchar_t,
-        _Mode: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wchmod(_FileName: *const wchar_t, _Mode: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wcreat(
-        _FileName: *const wchar_t,
-        _PermissionMode: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wcreat(_FileName: *const wchar_t, _PermissionMode: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wfindfirst32(_FileName: *const wchar_t, _FindData: *mut _wfinddata32_t) -> isize;
 }
 extern "C" {
-    pub fn _wfindnext32(
-        _FindHandle: isize,
-        _FindData: *mut _wfinddata32_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wfindnext32(_FindHandle: isize, _FindData: *mut _wfinddata32_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wunlink(_FileName: *const wchar_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wrename(
-        _OldFileName: *const wchar_t,
-        _NewFileName: *const wchar_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wrename(_OldFileName: *const wchar_t, _NewFileName: *const wchar_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wmktemp_s(_TemplateName: *mut wchar_t, _SizeInWords: usize) -> errno_t;
@@ -1464,22 +1395,13 @@ extern "C" {
     pub fn _wfindfirst64(_FileName: *const wchar_t, _FindData: *mut _wfinddata64_t) -> isize;
 }
 extern "C" {
-    pub fn _wfindnext32i64(
-        _FindHandle: isize,
-        _FindData: *mut _wfinddata32i64_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wfindnext32i64(_FindHandle: isize, _FindData: *mut _wfinddata32i64_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wfindnext64i32(
-        _FindHandle: isize,
-        _FindData: *mut _wfinddata64i32_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wfindnext64i32(_FindHandle: isize, _FindData: *mut _wfinddata64i32_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wfindnext64(
-        _FindHandle: isize,
-        _FindData: *mut _wfinddata64_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wfindnext64(_FindHandle: isize, _FindData: *mut _wfinddata64_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wsopen_s(
@@ -1501,11 +1423,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn _wopen(
-        _FileName: *const wchar_t,
-        _OpenFlag: ::std::os::raw::c_int,
-        ...
-    ) -> ::std::os::raw::c_int;
+    pub fn _wopen(_FileName: *const wchar_t, _OpenFlag: ::std::os::raw::c_int, ...) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wsopen(
@@ -1531,60 +1449,28 @@ extern "C" {
     pub fn _wexecv(_FileName: *const wchar_t, _ArgList: *const *const wchar_t) -> isize;
 }
 extern "C" {
-    pub fn _wexecve(
-        _FileName: *const wchar_t,
-        _ArgList: *const *const wchar_t,
-        _Env: *const *const wchar_t,
-    ) -> isize;
+    pub fn _wexecve(_FileName: *const wchar_t, _ArgList: *const *const wchar_t, _Env: *const *const wchar_t) -> isize;
 }
 extern "C" {
     pub fn _wexecvp(_FileName: *const wchar_t, _ArgList: *const *const wchar_t) -> isize;
 }
 extern "C" {
-    pub fn _wexecvpe(
-        _FileName: *const wchar_t,
-        _ArgList: *const *const wchar_t,
-        _Env: *const *const wchar_t,
-    ) -> isize;
+    pub fn _wexecvpe(_FileName: *const wchar_t, _ArgList: *const *const wchar_t, _Env: *const *const wchar_t) -> isize;
 }
 extern "C" {
-    pub fn _wspawnl(
-        _Mode: ::std::os::raw::c_int,
-        _FileName: *const wchar_t,
-        _ArgList: *const wchar_t,
-        ...
-    ) -> isize;
+    pub fn _wspawnl(_Mode: ::std::os::raw::c_int, _FileName: *const wchar_t, _ArgList: *const wchar_t, ...) -> isize;
 }
 extern "C" {
-    pub fn _wspawnle(
-        _Mode: ::std::os::raw::c_int,
-        _FileName: *const wchar_t,
-        _ArgList: *const wchar_t,
-        ...
-    ) -> isize;
+    pub fn _wspawnle(_Mode: ::std::os::raw::c_int, _FileName: *const wchar_t, _ArgList: *const wchar_t, ...) -> isize;
 }
 extern "C" {
-    pub fn _wspawnlp(
-        _Mode: ::std::os::raw::c_int,
-        _FileName: *const wchar_t,
-        _ArgList: *const wchar_t,
-        ...
-    ) -> isize;
+    pub fn _wspawnlp(_Mode: ::std::os::raw::c_int, _FileName: *const wchar_t, _ArgList: *const wchar_t, ...) -> isize;
 }
 extern "C" {
-    pub fn _wspawnlpe(
-        _Mode: ::std::os::raw::c_int,
-        _FileName: *const wchar_t,
-        _ArgList: *const wchar_t,
-        ...
-    ) -> isize;
+    pub fn _wspawnlpe(_Mode: ::std::os::raw::c_int, _FileName: *const wchar_t, _ArgList: *const wchar_t, ...) -> isize;
 }
 extern "C" {
-    pub fn _wspawnv(
-        _Mode: ::std::os::raw::c_int,
-        _FileName: *const wchar_t,
-        _ArgList: *const *const wchar_t,
-    ) -> isize;
+    pub fn _wspawnv(_Mode: ::std::os::raw::c_int, _FileName: *const wchar_t, _ArgList: *const *const wchar_t) -> isize;
 }
 extern "C" {
     pub fn _wspawnve(
@@ -1595,11 +1481,8 @@ extern "C" {
     ) -> isize;
 }
 extern "C" {
-    pub fn _wspawnvp(
-        _Mode: ::std::os::raw::c_int,
-        _FileName: *const wchar_t,
-        _ArgList: *const *const wchar_t,
-    ) -> isize;
+    pub fn _wspawnvp(_Mode: ::std::os::raw::c_int, _FileName: *const wchar_t, _ArgList: *const *const wchar_t)
+        -> isize;
 }
 extern "C" {
     pub fn _wspawnvpe(
@@ -1634,12 +1517,7 @@ fn bindgen_test_layout__iobuf() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Placeholder) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_iobuf),
-            "::",
-            stringify!(_Placeholder)
-        )
+        concat!("Offset of field: ", stringify!(_iobuf), "::", stringify!(_Placeholder))
     );
 }
 pub type FILE = _iobuf;
@@ -1665,11 +1543,7 @@ extern "C" {
     pub fn getwchar() -> wint_t;
 }
 extern "C" {
-    pub fn fgetws(
-        _Buffer: *mut wchar_t,
-        _BufferCount: ::std::os::raw::c_int,
-        _Stream: *mut FILE,
-    ) -> *mut wchar_t;
+    pub fn fgetws(_Buffer: *mut wchar_t, _BufferCount: ::std::os::raw::c_int, _Stream: *mut FILE) -> *mut wchar_t;
 }
 extern "C" {
     pub fn fputws(_Buffer: *const wchar_t, _Stream: *mut FILE) -> ::std::os::raw::c_int;
@@ -1696,18 +1570,10 @@ extern "C" {
     pub fn _wfopen(_FileName: *const wchar_t, _Mode: *const wchar_t) -> *mut FILE;
 }
 extern "C" {
-    pub fn _wfopen_s(
-        _Stream: *mut *mut FILE,
-        _FileName: *const wchar_t,
-        _Mode: *const wchar_t,
-    ) -> errno_t;
+    pub fn _wfopen_s(_Stream: *mut *mut FILE, _FileName: *const wchar_t, _Mode: *const wchar_t) -> errno_t;
 }
 extern "C" {
-    pub fn _wfreopen(
-        _FileName: *const wchar_t,
-        _Mode: *const wchar_t,
-        _OldStream: *mut FILE,
-    ) -> *mut FILE;
+    pub fn _wfreopen(_FileName: *const wchar_t, _Mode: *const wchar_t, _OldStream: *mut FILE) -> *mut FILE;
 }
 extern "C" {
     pub fn _wfreopen_s(
@@ -1718,11 +1584,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn _wfsopen(
-        _FileName: *const wchar_t,
-        _Mode: *const wchar_t,
-        _ShFlag: ::std::os::raw::c_int,
-    ) -> *mut FILE;
+    pub fn _wfsopen(_FileName: *const wchar_t, _Mode: *const wchar_t, _ShFlag: ::std::os::raw::c_int) -> *mut FILE;
 }
 extern "C" {
     pub fn _wperror(_ErrorMessage: *const wchar_t);
@@ -1853,11 +1715,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn _itow(
-        _Value: ::std::os::raw::c_int,
-        _Buffer: *mut wchar_t,
-        _Radix: ::std::os::raw::c_int,
-    ) -> *mut wchar_t;
+    pub fn _itow(_Value: ::std::os::raw::c_int, _Buffer: *mut wchar_t, _Radix: ::std::os::raw::c_int) -> *mut wchar_t;
 }
 extern "C" {
     pub fn _ltow_s(
@@ -1868,11 +1726,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn _ltow(
-        _Value: ::std::os::raw::c_long,
-        _Buffer: *mut wchar_t,
-        _Radix: ::std::os::raw::c_int,
-    ) -> *mut wchar_t;
+    pub fn _ltow(_Value: ::std::os::raw::c_long, _Buffer: *mut wchar_t, _Radix: ::std::os::raw::c_int) -> *mut wchar_t;
 }
 extern "C" {
     pub fn _ultow_s(
@@ -1893,11 +1747,7 @@ extern "C" {
     pub fn wcstod(_String: *const wchar_t, _EndPtr: *mut *mut wchar_t) -> f64;
 }
 extern "C" {
-    pub fn _wcstod_l(
-        _String: *const wchar_t,
-        _EndPtr: *mut *mut wchar_t,
-        _Locale: _locale_t,
-    ) -> f64;
+    pub fn _wcstod_l(_String: *const wchar_t, _EndPtr: *mut *mut wchar_t, _Locale: _locale_t) -> f64;
 }
 extern "C" {
     pub fn wcstol(
@@ -1963,21 +1813,13 @@ extern "C" {
     pub fn wcstold(_String: *const wchar_t, _EndPtr: *mut *mut wchar_t) -> f64;
 }
 extern "C" {
-    pub fn _wcstold_l(
-        _String: *const wchar_t,
-        _EndPtr: *mut *mut wchar_t,
-        _Locale: _locale_t,
-    ) -> f64;
+    pub fn _wcstold_l(_String: *const wchar_t, _EndPtr: *mut *mut wchar_t, _Locale: _locale_t) -> f64;
 }
 extern "C" {
     pub fn wcstof(_String: *const wchar_t, _EndPtr: *mut *mut wchar_t) -> f32;
 }
 extern "C" {
-    pub fn _wcstof_l(
-        _String: *const wchar_t,
-        _EndPtr: *mut *mut wchar_t,
-        _Locale: _locale_t,
-    ) -> f32;
+    pub fn _wcstof_l(_String: *const wchar_t, _EndPtr: *mut *mut wchar_t, _Locale: _locale_t) -> f32;
 }
 extern "C" {
     pub fn _wtof(_String: *const wchar_t) -> f64;
@@ -2070,11 +1912,7 @@ extern "C" {
     ) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _wfullpath(
-        _Buffer: *mut wchar_t,
-        _Path: *const wchar_t,
-        _BufferCount: usize,
-    ) -> *mut wchar_t;
+    pub fn _wfullpath(_Buffer: *mut wchar_t, _Path: *const wchar_t, _BufferCount: usize) -> *mut wchar_t;
 }
 extern "C" {
     pub fn _wmakepath_s(
@@ -2118,11 +1956,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn _wdupenv_s(
-        _Buffer: *mut *mut wchar_t,
-        _BufferCount: *mut usize,
-        _VarName: *const wchar_t,
-    ) -> errno_t;
+    pub fn _wdupenv_s(_Buffer: *mut *mut wchar_t, _BufferCount: *mut usize, _VarName: *const wchar_t) -> errno_t;
 }
 extern "C" {
     pub fn _wgetenv(_VarName: *const wchar_t) -> *mut wchar_t;
@@ -2150,25 +1984,13 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn _wsearchenv(
-        _Filename: *const wchar_t,
-        _VarName: *const wchar_t,
-        _ResultPath: *mut wchar_t,
-    );
+    pub fn _wsearchenv(_Filename: *const wchar_t, _VarName: *const wchar_t, _ResultPath: *mut wchar_t);
 }
 extern "C" {
-    pub fn wcscat_s(
-        _Destination: *mut wchar_t,
-        _SizeInWords: rsize_t,
-        _Source: *const wchar_t,
-    ) -> errno_t;
+    pub fn wcscat_s(_Destination: *mut wchar_t, _SizeInWords: rsize_t, _Source: *const wchar_t) -> errno_t;
 }
 extern "C" {
-    pub fn wcscpy_s(
-        _Destination: *mut wchar_t,
-        _SizeInWords: rsize_t,
-        _Source: *const wchar_t,
-    ) -> errno_t;
+    pub fn wcscpy_s(_Destination: *mut wchar_t, _SizeInWords: rsize_t, _Source: *const wchar_t) -> errno_t;
 }
 extern "C" {
     pub fn wcsncat_s(
@@ -2187,11 +2009,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn wcstok_s(
-        _String: *mut wchar_t,
-        _Delimiter: *const wchar_t,
-        _Context: *mut *mut wchar_t,
-    ) -> *mut wchar_t;
+    pub fn wcstok_s(_String: *mut wchar_t, _Delimiter: *const wchar_t, _Context: *mut *mut wchar_t) -> *mut wchar_t;
 }
 extern "C" {
     pub fn _wcsdup(_String: *const wchar_t) -> *mut wchar_t;
@@ -2218,11 +2036,7 @@ extern "C" {
     pub fn wcsnlen(_Source: *const wchar_t, _MaxCount: usize) -> usize;
 }
 extern "C" {
-    pub fn wcsncat(
-        _Destination: *mut wchar_t,
-        _Source: *const wchar_t,
-        _Count: usize,
-    ) -> *mut wchar_t;
+    pub fn wcsncat(_Destination: *mut wchar_t, _Source: *const wchar_t, _Count: usize) -> *mut wchar_t;
 }
 extern "C" {
     pub fn wcsncmp(
@@ -2232,11 +2046,7 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn wcsncpy(
-        _Destination: *mut wchar_t,
-        _Source: *const wchar_t,
-        _Count: usize,
-    ) -> *mut wchar_t;
+    pub fn wcsncpy(_Destination: *mut wchar_t, _Source: *const wchar_t, _Count: usize) -> *mut wchar_t;
 }
 extern "C" {
     pub fn wcspbrk(_String: *const wchar_t, _Control: *const wchar_t) -> *mut wchar_t;
@@ -2245,48 +2055,28 @@ extern "C" {
     pub fn wcsspn(_String: *const wchar_t, _Control: *const wchar_t) -> usize;
 }
 extern "C" {
-    pub fn wcstok(
-        _String: *mut wchar_t,
-        _Delimiter: *const wchar_t,
-        _Context: *mut *mut wchar_t,
-    ) -> *mut wchar_t;
+    pub fn wcstok(_String: *mut wchar_t, _Delimiter: *const wchar_t, _Context: *mut *mut wchar_t) -> *mut wchar_t;
 }
 extern "C" {
     pub fn _wcserror(_ErrorNumber: ::std::os::raw::c_int) -> *mut wchar_t;
 }
 extern "C" {
-    pub fn _wcserror_s(
-        _Buffer: *mut wchar_t,
-        _SizeInWords: usize,
-        _ErrorNumber: ::std::os::raw::c_int,
-    ) -> errno_t;
+    pub fn _wcserror_s(_Buffer: *mut wchar_t, _SizeInWords: usize, _ErrorNumber: ::std::os::raw::c_int) -> errno_t;
 }
 extern "C" {
     pub fn __wcserror(_String: *const wchar_t) -> *mut wchar_t;
 }
 extern "C" {
-    pub fn __wcserror_s(
-        _Buffer: *mut wchar_t,
-        _SizeInWords: usize,
-        _ErrorMessage: *const wchar_t,
-    ) -> errno_t;
+    pub fn __wcserror_s(_Buffer: *mut wchar_t, _SizeInWords: usize, _ErrorMessage: *const wchar_t) -> errno_t;
 }
 extern "C" {
     pub fn _wcsicmp(_String1: *const wchar_t, _String2: *const wchar_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wcsicmp_l(
-        _String1: *const wchar_t,
-        _String2: *const wchar_t,
-        _Locale: _locale_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wcsicmp_l(_String1: *const wchar_t, _String2: *const wchar_t, _Locale: _locale_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wcsnicmp(
-        _String1: *const wchar_t,
-        _String2: *const wchar_t,
-        _MaxCount: usize,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wcsnicmp(_String1: *const wchar_t, _String2: *const wchar_t, _MaxCount: usize) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wcsnicmp_l(
@@ -2297,12 +2087,7 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wcsnset_s(
-        _Destination: *mut wchar_t,
-        _SizeInWords: usize,
-        _Value: wchar_t,
-        _MaxCount: usize,
-    ) -> errno_t;
+    pub fn _wcsnset_s(_Destination: *mut wchar_t, _SizeInWords: usize, _Value: wchar_t, _MaxCount: usize) -> errno_t;
 }
 extern "C" {
     pub fn _wcsnset(_String: *mut wchar_t, _Value: wchar_t, _MaxCount: usize) -> *mut wchar_t;
@@ -2355,28 +2140,17 @@ extern "C" {
     pub fn wcscoll(_String1: *const wchar_t, _String2: *const wchar_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wcscoll_l(
-        _String1: *const wchar_t,
-        _String2: *const wchar_t,
-        _Locale: _locale_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wcscoll_l(_String1: *const wchar_t, _String2: *const wchar_t, _Locale: _locale_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wcsicoll(_String1: *const wchar_t, _String2: *const wchar_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wcsicoll_l(
-        _String1: *const wchar_t,
-        _String2: *const wchar_t,
-        _Locale: _locale_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wcsicoll_l(_String1: *const wchar_t, _String2: *const wchar_t, _Locale: _locale_t)
+        -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wcsncoll(
-        _String1: *const wchar_t,
-        _String2: *const wchar_t,
-        _MaxCount: usize,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wcsncoll(_String1: *const wchar_t, _String2: *const wchar_t, _MaxCount: usize) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wcsncoll_l(
@@ -2387,11 +2161,7 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wcsnicoll(
-        _String1: *const wchar_t,
-        _String2: *const wchar_t,
-        _MaxCount: usize,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wcsnicoll(_String1: *const wchar_t, _String2: *const wchar_t, _MaxCount: usize) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wcsnicoll_l(
@@ -2408,11 +2178,7 @@ extern "C" {
     pub fn wcsicmp(_String1: *const wchar_t, _String2: *const wchar_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn wcsnicmp(
-        _String1: *const wchar_t,
-        _String2: *const wchar_t,
-        _MaxCount: usize,
-    ) -> ::std::os::raw::c_int;
+    pub fn wcsnicmp(_String1: *const wchar_t, _String2: *const wchar_t, _MaxCount: usize) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn wcsnset(_String: *mut wchar_t, _Value: wchar_t, _MaxCount: usize) -> *mut wchar_t;
@@ -2462,92 +2228,47 @@ fn bindgen_test_layout_tm() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tm_sec) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_sec)
-        )
+        concat!("Offset of field: ", stringify!(tm), "::", stringify!(tm_sec))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tm_min) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_min)
-        )
+        concat!("Offset of field: ", stringify!(tm), "::", stringify!(tm_min))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tm_hour) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_hour)
-        )
+        concat!("Offset of field: ", stringify!(tm), "::", stringify!(tm_hour))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tm_mday) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_mday)
-        )
+        concat!("Offset of field: ", stringify!(tm), "::", stringify!(tm_mday))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tm_mon) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_mon)
-        )
+        concat!("Offset of field: ", stringify!(tm), "::", stringify!(tm_mon))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tm_year) as usize - ptr as usize },
         20usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_year)
-        )
+        concat!("Offset of field: ", stringify!(tm), "::", stringify!(tm_year))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tm_wday) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_wday)
-        )
+        concat!("Offset of field: ", stringify!(tm), "::", stringify!(tm_wday))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tm_yday) as usize - ptr as usize },
         28usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_yday)
-        )
+        concat!("Offset of field: ", stringify!(tm), "::", stringify!(tm_yday))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tm_isdst) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(tm),
-            "::",
-            stringify!(tm_isdst)
-        )
+        concat!("Offset of field: ", stringify!(tm), "::", stringify!(tm_isdst))
     );
 }
 extern "C" {
@@ -2557,12 +2278,7 @@ extern "C" {
     pub fn _wasctime_s(_Buffer: *mut wchar_t, _SizeInWords: usize, _Tm: *const tm) -> errno_t;
 }
 extern "C" {
-    pub fn wcsftime(
-        _Buffer: *mut wchar_t,
-        _SizeInWords: usize,
-        _Format: *const wchar_t,
-        _Tm: *const tm,
-    ) -> usize;
+    pub fn wcsftime(_Buffer: *mut wchar_t, _SizeInWords: usize, _Format: *const wchar_t, _Tm: *const tm) -> usize;
 }
 extern "C" {
     pub fn _wcsftime_l(
@@ -2577,21 +2293,13 @@ extern "C" {
     pub fn _wctime32(_Time: *const __time32_t) -> *mut wchar_t;
 }
 extern "C" {
-    pub fn _wctime32_s(
-        _Buffer: *mut wchar_t,
-        _SizeInWords: usize,
-        _Time: *const __time32_t,
-    ) -> errno_t;
+    pub fn _wctime32_s(_Buffer: *mut wchar_t, _SizeInWords: usize, _Time: *const __time32_t) -> errno_t;
 }
 extern "C" {
     pub fn _wctime64(_Time: *const __time64_t) -> *mut wchar_t;
 }
 extern "C" {
-    pub fn _wctime64_s(
-        _Buffer: *mut wchar_t,
-        _SizeInWords: usize,
-        _Time: *const __time64_t,
-    ) -> errno_t;
+    pub fn _wctime64_s(_Buffer: *mut wchar_t, _SizeInWords: usize, _Time: *const __time64_t) -> errno_t;
 }
 extern "C" {
     pub fn _wstrdate_s(_Buffer: *mut wchar_t, _SizeInWords: usize) -> errno_t;
@@ -2637,112 +2345,57 @@ fn bindgen_test_layout__stat32() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_dev) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_dev)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_dev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ino) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_ino)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_ino))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mode) as usize - ptr as usize },
         6usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_mode)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_mode))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_nlink) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_nlink)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_nlink))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_uid) as usize - ptr as usize },
         10usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_uid)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_uid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_gid) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_gid)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_gid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_rdev) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_rdev)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_rdev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_size) as usize - ptr as usize },
         20usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_size)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_atime) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_atime)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_atime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mtime) as usize - ptr as usize },
         28usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_mtime)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_mtime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ctime) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32),
-            "::",
-            stringify!(st_ctime)
-        )
+        concat!("Offset of field: ", stringify!(_stat32), "::", stringify!(st_ctime))
     );
 }
 #[repr(C)]
@@ -2777,112 +2430,57 @@ fn bindgen_test_layout__stat32i64() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_dev) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_dev)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_dev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ino) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_ino)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_ino))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mode) as usize - ptr as usize },
         6usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_mode)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_mode))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_nlink) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_nlink)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_nlink))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_uid) as usize - ptr as usize },
         10usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_uid)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_uid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_gid) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_gid)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_gid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_rdev) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_rdev)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_rdev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_size) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_size)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_atime) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_atime)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_atime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mtime) as usize - ptr as usize },
         36usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_mtime)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_mtime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ctime) as usize - ptr as usize },
         40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat32i64),
-            "::",
-            stringify!(st_ctime)
-        )
+        concat!("Offset of field: ", stringify!(_stat32i64), "::", stringify!(st_ctime))
     );
 }
 #[repr(C)]
@@ -2917,112 +2515,57 @@ fn bindgen_test_layout__stat64i32() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_dev) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_dev)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_dev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ino) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_ino)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_ino))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mode) as usize - ptr as usize },
         6usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_mode)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_mode))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_nlink) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_nlink)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_nlink))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_uid) as usize - ptr as usize },
         10usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_uid)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_uid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_gid) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_gid)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_gid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_rdev) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_rdev)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_rdev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_size) as usize - ptr as usize },
         20usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_size)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_atime) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_atime)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_atime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mtime) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_mtime)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_mtime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ctime) as usize - ptr as usize },
         40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64i32),
-            "::",
-            stringify!(st_ctime)
-        )
+        concat!("Offset of field: ", stringify!(_stat64i32), "::", stringify!(st_ctime))
     );
 }
 #[repr(C)]
@@ -3057,112 +2600,57 @@ fn bindgen_test_layout__stat64() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_dev) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_dev)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_dev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ino) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_ino)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_ino))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mode) as usize - ptr as usize },
         6usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_mode)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_mode))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_nlink) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_nlink)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_nlink))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_uid) as usize - ptr as usize },
         10usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_uid)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_uid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_gid) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_gid)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_gid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_rdev) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_rdev)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_rdev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_size) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_size)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_atime) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_atime)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_atime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mtime) as usize - ptr as usize },
         40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_mtime)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_mtime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ctime) as usize - ptr as usize },
         48usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_stat64),
-            "::",
-            stringify!(st_ctime)
-        )
+        concat!("Offset of field: ", stringify!(_stat64), "::", stringify!(st_ctime))
     );
 }
 #[repr(C)]
@@ -3197,161 +2685,82 @@ fn bindgen_test_layout_stat() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_dev) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_dev)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_dev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ino) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_ino)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_ino))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mode) as usize - ptr as usize },
         6usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_mode)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_mode))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_nlink) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_nlink)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_nlink))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_uid) as usize - ptr as usize },
         10usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_uid)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_uid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_gid) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_gid)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_gid))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_rdev) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_rdev)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_rdev))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_size) as usize - ptr as usize },
         20usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_size)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_atime) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_atime)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_atime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_mtime) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_mtime)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_mtime))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).st_ctime) as usize - ptr as usize },
         40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(stat),
-            "::",
-            stringify!(st_ctime)
-        )
+        concat!("Offset of field: ", stringify!(stat), "::", stringify!(st_ctime))
     );
 }
 extern "C" {
-    pub fn _fstat32(
-        _FileHandle: ::std::os::raw::c_int,
-        _Stat: *mut _stat32,
-    ) -> ::std::os::raw::c_int;
+    pub fn _fstat32(_FileHandle: ::std::os::raw::c_int, _Stat: *mut _stat32) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _fstat32i64(
-        _FileHandle: ::std::os::raw::c_int,
-        _Stat: *mut _stat32i64,
-    ) -> ::std::os::raw::c_int;
+    pub fn _fstat32i64(_FileHandle: ::std::os::raw::c_int, _Stat: *mut _stat32i64) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _fstat64i32(
-        _FileHandle: ::std::os::raw::c_int,
-        _Stat: *mut _stat64i32,
-    ) -> ::std::os::raw::c_int;
+    pub fn _fstat64i32(_FileHandle: ::std::os::raw::c_int, _Stat: *mut _stat64i32) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _fstat64(
-        _FileHandle: ::std::os::raw::c_int,
-        _Stat: *mut _stat64,
-    ) -> ::std::os::raw::c_int;
+    pub fn _fstat64(_FileHandle: ::std::os::raw::c_int, _Stat: *mut _stat64) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _stat32(
-        _FileName: *const ::std::os::raw::c_char,
-        _Stat: *mut _stat32,
-    ) -> ::std::os::raw::c_int;
+    pub fn _stat32(_FileName: *const ::std::os::raw::c_char, _Stat: *mut _stat32) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _stat32i64(
-        _FileName: *const ::std::os::raw::c_char,
-        _Stat: *mut _stat32i64,
-    ) -> ::std::os::raw::c_int;
+    pub fn _stat32i64(_FileName: *const ::std::os::raw::c_char, _Stat: *mut _stat32i64) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _stat64i32(
-        _FileName: *const ::std::os::raw::c_char,
-        _Stat: *mut _stat64i32,
-    ) -> ::std::os::raw::c_int;
+    pub fn _stat64i32(_FileName: *const ::std::os::raw::c_char, _Stat: *mut _stat64i32) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _stat64(
-        _FileName: *const ::std::os::raw::c_char,
-        _Stat: *mut _stat64,
-    ) -> ::std::os::raw::c_int;
+    pub fn _stat64(_FileName: *const ::std::os::raw::c_char, _Stat: *mut _stat64) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _wstat32(_FileName: *const wchar_t, _Stat: *mut _stat32) -> ::std::os::raw::c_int;
@@ -3376,11 +2785,7 @@ extern "C" {
     pub fn btowc(_Ch: ::std::os::raw::c_int) -> wint_t;
 }
 extern "C" {
-    pub fn mbrlen(
-        _Ch: *const ::std::os::raw::c_char,
-        _SizeInBytes: usize,
-        _State: *mut mbstate_t,
-    ) -> usize;
+    pub fn mbrlen(_Ch: *const ::std::os::raw::c_char, _SizeInBytes: usize, _State: *mut mbstate_t) -> usize;
 }
 extern "C" {
     pub fn mbrtowc(
@@ -3418,11 +2823,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn wcrtomb(
-        _Dest: *mut ::std::os::raw::c_char,
-        _Source: wchar_t,
-        _State: *mut mbstate_t,
-    ) -> usize;
+    pub fn wcrtomb(_Dest: *mut ::std::os::raw::c_char, _Source: wchar_t, _State: *mut mbstate_t) -> usize;
 }
 extern "C" {
     pub fn wcsrtombs_s(
@@ -3449,8 +2850,7 @@ extern "C" {
     pub fn wmemcpy_s(_S1: *mut wchar_t, _N1: rsize_t, _S2: *const wchar_t, _N: rsize_t) -> errno_t;
 }
 extern "C" {
-    pub fn wmemmove_s(_S1: *mut wchar_t, _N1: rsize_t, _S2: *const wchar_t, _N: rsize_t)
-        -> errno_t;
+    pub fn wmemmove_s(_S1: *mut wchar_t, _N1: rsize_t, _S2: *const wchar_t, _N: rsize_t) -> errno_t;
 }
 extern "C" {
     pub fn _memicmp(
@@ -3541,10 +2941,7 @@ extern "C" {
     ) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn strcmp(
-        _Str1: *const ::std::os::raw::c_char,
-        _Str2: *const ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_int;
+    pub fn strcmp(_Str1: *const ::std::os::raw::c_char, _Str2: *const ::std::os::raw::c_char) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _strcmpi(
@@ -3629,17 +3026,10 @@ extern "C" {
     pub fn _strlwr(_String: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn _strlwr_s_l(
-        _String: *mut ::std::os::raw::c_char,
-        _Size: usize,
-        _Locale: _locale_t,
-    ) -> errno_t;
+    pub fn _strlwr_s_l(_String: *mut ::std::os::raw::c_char, _Size: usize, _Locale: _locale_t) -> errno_t;
 }
 extern "C" {
-    pub fn _strlwr_l(
-        _String: *mut ::std::os::raw::c_char,
-        _Locale: _locale_t,
-    ) -> *mut ::std::os::raw::c_char;
+    pub fn _strlwr_l(_String: *mut ::std::os::raw::c_char, _Locale: _locale_t) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn strncat(
@@ -3769,17 +3159,10 @@ extern "C" {
     pub fn _strupr(_String: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn _strupr_s_l(
-        _String: *mut ::std::os::raw::c_char,
-        _Size: usize,
-        _Locale: _locale_t,
-    ) -> errno_t;
+    pub fn _strupr_s_l(_String: *mut ::std::os::raw::c_char, _Size: usize, _Locale: _locale_t) -> errno_t;
 }
 extern "C" {
-    pub fn _strupr_l(
-        _String: *mut ::std::os::raw::c_char,
-        _Locale: _locale_t,
-    ) -> *mut ::std::os::raw::c_char;
+    pub fn _strupr_l(_String: *mut ::std::os::raw::c_char, _Locale: _locale_t) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn strxfrm(
@@ -3832,10 +3215,7 @@ extern "C" {
     pub fn strrev(_String: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn strset(
-        _String: *mut ::std::os::raw::c_char,
-        _Value: ::std::os::raw::c_int,
-    ) -> *mut ::std::os::raw::c_char;
+    pub fn strset(_String: *mut ::std::os::raw::c_char, _Value: ::std::os::raw::c_int) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn strupr(_String: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
@@ -3843,13 +3223,9 @@ extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct base_allocator {
-    pub malloc:
-        ::std::option::Option<unsafe extern "C" fn(arg1: usize) -> *mut ::std::os::raw::c_void>,
+    pub malloc: ::std::option::Option<unsafe extern "C" fn(arg1: usize) -> *mut ::std::os::raw::c_void>,
     pub realloc: ::std::option::Option<
-        unsafe extern "C" fn(
-            arg1: *mut ::std::os::raw::c_void,
-            arg2: usize,
-        ) -> *mut ::std::os::raw::c_void,
+        unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: usize) -> *mut ::std::os::raw::c_void,
     >,
     pub free: ::std::option::Option<unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void)>,
 }
@@ -3890,12 +3266,7 @@ fn bindgen_test_layout_base_allocator() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).free) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(base_allocator),
-            "::",
-            stringify!(free)
-        )
+        concat!("Offset of field: ", stringify!(base_allocator), "::", stringify!(free))
     );
 }
 extern "C" {
@@ -3932,10 +3303,7 @@ extern "C" {
     pub fn _callnewh(_Size: usize) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _expand(
-        _Block: *mut ::std::os::raw::c_void,
-        _Size: usize,
-    ) -> *mut ::std::os::raw::c_void;
+    pub fn _expand(_Block: *mut ::std::os::raw::c_void, _Size: usize) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn _free_base(_Block: *mut ::std::os::raw::c_void);
@@ -3956,10 +3324,7 @@ extern "C" {
     pub fn _msize(_Block: *mut ::std::os::raw::c_void) -> usize;
 }
 extern "C" {
-    pub fn _realloc_base(
-        _Block: *mut ::std::os::raw::c_void,
-        _Size: usize,
-    ) -> *mut ::std::os::raw::c_void;
+    pub fn _realloc_base(_Block: *mut ::std::os::raw::c_void, _Size: usize) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn realloc(
@@ -3975,11 +3340,7 @@ extern "C" {
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn _recalloc(
-        _Block: *mut ::std::os::raw::c_void,
-        _Count: usize,
-        _Size: usize,
-    ) -> *mut ::std::os::raw::c_void;
+    pub fn _recalloc(_Block: *mut ::std::os::raw::c_void, _Count: usize, _Size: usize) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn _aligned_free(_Block: *mut ::std::os::raw::c_void);
@@ -3988,18 +3349,10 @@ extern "C" {
     pub fn _aligned_malloc(_Size: usize, _Alignment: usize) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn _aligned_offset_malloc(
-        _Size: usize,
-        _Alignment: usize,
-        _Offset: usize,
-    ) -> *mut ::std::os::raw::c_void;
+    pub fn _aligned_offset_malloc(_Size: usize, _Alignment: usize, _Offset: usize) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn _aligned_msize(
-        _Block: *mut ::std::os::raw::c_void,
-        _Alignment: usize,
-        _Offset: usize,
-    ) -> usize;
+    pub fn _aligned_msize(_Block: *mut ::std::os::raw::c_void, _Alignment: usize, _Offset: usize) -> usize;
 }
 extern "C" {
     pub fn _aligned_offset_realloc(
@@ -4161,10 +3514,8 @@ extern "C" {
     pub fn abort() -> !;
 }
 extern "C" {
-    pub fn _set_abort_behavior(
-        _Flags: ::std::os::raw::c_uint,
-        _Mask: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _set_abort_behavior(_Flags: ::std::os::raw::c_uint, _Mask: ::std::os::raw::c_uint)
+        -> ::std::os::raw::c_uint;
 }
 pub type _onexit_t = ::std::option::Option<unsafe extern "C" fn() -> ::std::os::raw::c_int>;
 extern "C" {
@@ -4174,9 +3525,7 @@ extern "C" {
     pub fn _onexit(_Func: _onexit_t) -> _onexit_t;
 }
 extern "C" {
-    pub fn at_quick_exit(
-        arg1: ::std::option::Option<unsafe extern "C" fn()>,
-    ) -> ::std::os::raw::c_int;
+    pub fn at_quick_exit(arg1: ::std::option::Option<unsafe extern "C" fn()>) -> ::std::os::raw::c_int;
 }
 pub type _purecall_handler = ::std::option::Option<unsafe extern "C" fn()>;
 pub type _invalid_parameter_handler = ::std::option::Option<
@@ -4195,9 +3544,7 @@ extern "C" {
     pub fn _get_purecall_handler() -> _purecall_handler;
 }
 extern "C" {
-    pub fn _set_invalid_parameter_handler(
-        _Handler: _invalid_parameter_handler,
-    ) -> _invalid_parameter_handler;
+    pub fn _set_invalid_parameter_handler(_Handler: _invalid_parameter_handler) -> _invalid_parameter_handler;
 }
 extern "C" {
     pub fn _get_invalid_parameter_handler() -> _invalid_parameter_handler;
@@ -4266,22 +3613,12 @@ fn bindgen_test_layout__div_t() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).quot) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_div_t),
-            "::",
-            stringify!(quot)
-        )
+        concat!("Offset of field: ", stringify!(_div_t), "::", stringify!(quot))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).rem) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_div_t),
-            "::",
-            stringify!(rem)
-        )
+        concat!("Offset of field: ", stringify!(_div_t), "::", stringify!(rem))
     );
 }
 pub type div_t = _div_t;
@@ -4308,22 +3645,12 @@ fn bindgen_test_layout__ldiv_t() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).quot) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_ldiv_t),
-            "::",
-            stringify!(quot)
-        )
+        concat!("Offset of field: ", stringify!(_ldiv_t), "::", stringify!(quot))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).rem) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_ldiv_t),
-            "::",
-            stringify!(rem)
-        )
+        concat!("Offset of field: ", stringify!(_ldiv_t), "::", stringify!(rem))
     );
 }
 pub type ldiv_t = _ldiv_t;
@@ -4350,22 +3677,12 @@ fn bindgen_test_layout__lldiv_t() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).quot) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_lldiv_t),
-            "::",
-            stringify!(quot)
-        )
+        concat!("Offset of field: ", stringify!(_lldiv_t), "::", stringify!(quot))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).rem) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_lldiv_t),
-            "::",
-            stringify!(rem)
-        )
+        concat!("Offset of field: ", stringify!(_lldiv_t), "::", stringify!(rem))
     );
 }
 pub type lldiv_t = _lldiv_t;
@@ -4394,50 +3711,28 @@ extern "C" {
     pub fn div(_Numerator: ::std::os::raw::c_int, _Denominator: ::std::os::raw::c_int) -> div_t;
 }
 extern "C" {
-    pub fn ldiv(_Numerator: ::std::os::raw::c_long, _Denominator: ::std::os::raw::c_long)
-        -> ldiv_t;
+    pub fn ldiv(_Numerator: ::std::os::raw::c_long, _Denominator: ::std::os::raw::c_long) -> ldiv_t;
 }
 extern "C" {
-    pub fn lldiv(
-        _Numerator: ::std::os::raw::c_longlong,
-        _Denominator: ::std::os::raw::c_longlong,
-    ) -> lldiv_t;
+    pub fn lldiv(_Numerator: ::std::os::raw::c_longlong, _Denominator: ::std::os::raw::c_longlong) -> lldiv_t;
 }
 extern "C" {
-    pub fn _rotl(
-        _Value: ::std::os::raw::c_uint,
-        _Shift: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _rotl(_Value: ::std::os::raw::c_uint, _Shift: ::std::os::raw::c_int) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _lrotl(
-        _Value: ::std::os::raw::c_ulong,
-        _Shift: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulong;
+    pub fn _lrotl(_Value: ::std::os::raw::c_ulong, _Shift: ::std::os::raw::c_int) -> ::std::os::raw::c_ulong;
 }
 extern "C" {
-    pub fn _rotl64(
-        _Value: ::std::os::raw::c_ulonglong,
-        _Shift: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _rotl64(_Value: ::std::os::raw::c_ulonglong, _Shift: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _rotr(
-        _Value: ::std::os::raw::c_uint,
-        _Shift: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _rotr(_Value: ::std::os::raw::c_uint, _Shift: ::std::os::raw::c_int) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _lrotr(
-        _Value: ::std::os::raw::c_ulong,
-        _Shift: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulong;
+    pub fn _lrotr(_Value: ::std::os::raw::c_ulong, _Shift: ::std::os::raw::c_int) -> ::std::os::raw::c_ulong;
 }
 extern "C" {
-    pub fn _rotr64(
-        _Value: ::std::os::raw::c_ulonglong,
-        _Shift: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _rotr64(_Value: ::std::os::raw::c_ulonglong, _Shift: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn srand(_Seed: ::std::os::raw::c_uint);
@@ -4467,12 +3762,7 @@ fn bindgen_test_layout__LDOUBLE() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).ld) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_LDOUBLE),
-            "::",
-            stringify!(ld)
-        )
+        concat!("Offset of field: ", stringify!(_LDOUBLE), "::", stringify!(ld))
     );
 }
 #[repr(C)]
@@ -4497,12 +3787,7 @@ fn bindgen_test_layout__CRT_DOUBLE() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).x) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_CRT_DOUBLE),
-            "::",
-            stringify!(x)
-        )
+        concat!("Offset of field: ", stringify!(_CRT_DOUBLE), "::", stringify!(x))
     );
 }
 #[repr(C)]
@@ -4527,12 +3812,7 @@ fn bindgen_test_layout__CRT_FLOAT() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).f) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_CRT_FLOAT),
-            "::",
-            stringify!(f)
-        )
+        concat!("Offset of field: ", stringify!(_CRT_FLOAT), "::", stringify!(f))
     );
 }
 #[repr(C)]
@@ -4557,12 +3837,7 @@ fn bindgen_test_layout__LONGDOUBLE() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).x) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_LONGDOUBLE),
-            "::",
-            stringify!(x)
-        )
+        concat!("Offset of field: ", stringify!(_LONGDOUBLE), "::", stringify!(x))
     );
 }
 #[repr(C)]
@@ -4587,12 +3862,7 @@ fn bindgen_test_layout__LDBL12() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).ld12) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_LDBL12),
-            "::",
-            stringify!(ld12)
-        )
+        concat!("Offset of field: ", stringify!(_LDBL12), "::", stringify!(ld12))
     );
 }
 extern "C" {
@@ -4614,46 +3884,25 @@ extern "C" {
     pub fn _atof_l(_String: *const ::std::os::raw::c_char, _Locale: _locale_t) -> f64;
 }
 extern "C" {
-    pub fn _atoi_l(
-        _String: *const ::std::os::raw::c_char,
-        _Locale: _locale_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _atoi_l(_String: *const ::std::os::raw::c_char, _Locale: _locale_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _atol_l(
-        _String: *const ::std::os::raw::c_char,
-        _Locale: _locale_t,
-    ) -> ::std::os::raw::c_long;
+    pub fn _atol_l(_String: *const ::std::os::raw::c_char, _Locale: _locale_t) -> ::std::os::raw::c_long;
 }
 extern "C" {
-    pub fn _atoll_l(
-        _String: *const ::std::os::raw::c_char,
-        _Locale: _locale_t,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _atoll_l(_String: *const ::std::os::raw::c_char, _Locale: _locale_t) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _atoi64_l(
-        _String: *const ::std::os::raw::c_char,
-        _Locale: _locale_t,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _atoi64_l(_String: *const ::std::os::raw::c_char, _Locale: _locale_t) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _atoflt(
-        _Result: *mut _CRT_FLOAT,
-        _String: *const ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_int;
+    pub fn _atoflt(_Result: *mut _CRT_FLOAT, _String: *const ::std::os::raw::c_char) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _atodbl(
-        _Result: *mut _CRT_DOUBLE,
-        _String: *mut ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_int;
+    pub fn _atodbl(_Result: *mut _CRT_DOUBLE, _String: *mut ::std::os::raw::c_char) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _atoldbl(
-        _Result: *mut _LDOUBLE,
-        _String: *mut ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_int;
+    pub fn _atoldbl(_Result: *mut _LDOUBLE, _String: *mut ::std::os::raw::c_char) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _atoflt_l(
@@ -4677,10 +3926,7 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn strtof(
-        _String: *const ::std::os::raw::c_char,
-        _EndPtr: *mut *mut ::std::os::raw::c_char,
-    ) -> f32;
+    pub fn strtof(_String: *const ::std::os::raw::c_char, _EndPtr: *mut *mut ::std::os::raw::c_char) -> f32;
 }
 extern "C" {
     pub fn _strtof_l(
@@ -4690,10 +3936,7 @@ extern "C" {
     ) -> f32;
 }
 extern "C" {
-    pub fn strtod(
-        _String: *const ::std::os::raw::c_char,
-        _EndPtr: *mut *mut ::std::os::raw::c_char,
-    ) -> f64;
+    pub fn strtod(_String: *const ::std::os::raw::c_char, _EndPtr: *mut *mut ::std::os::raw::c_char) -> f64;
 }
 extern "C" {
     pub fn _strtod_l(
@@ -4703,10 +3946,7 @@ extern "C" {
     ) -> f64;
 }
 extern "C" {
-    pub fn strtold(
-        _String: *const ::std::os::raw::c_char,
-        _EndPtr: *mut *mut ::std::os::raw::c_char,
-    ) -> f64;
+    pub fn strtold(_String: *const ::std::os::raw::c_char, _EndPtr: *mut *mut ::std::os::raw::c_char) -> f64;
 }
 extern "C" {
     pub fn _strtold_l(
@@ -4941,11 +4181,7 @@ extern "C" {
     pub fn mblen(_Ch: *const ::std::os::raw::c_char, _MaxCount: usize) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mblen_l(
-        _Ch: *const ::std::os::raw::c_char,
-        _MaxCount: usize,
-        _Locale: _locale_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mblen_l(_Ch: *const ::std::os::raw::c_char, _MaxCount: usize, _Locale: _locale_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _mbstrlen(_String: *const ::std::os::raw::c_char) -> usize;
@@ -4957,11 +4193,7 @@ extern "C" {
     pub fn _mbstrnlen(_String: *const ::std::os::raw::c_char, _MaxCount: usize) -> usize;
 }
 extern "C" {
-    pub fn _mbstrnlen_l(
-        _String: *const ::std::os::raw::c_char,
-        _MaxCount: usize,
-        _Locale: _locale_t,
-    ) -> usize;
+    pub fn _mbstrnlen_l(_String: *const ::std::os::raw::c_char, _MaxCount: usize, _Locale: _locale_t) -> usize;
 }
 extern "C" {
     pub fn mbtowc(
@@ -4988,11 +4220,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn mbstowcs(
-        _Dest: *mut wchar_t,
-        _Source: *const ::std::os::raw::c_char,
-        _MaxCount: usize,
-    ) -> usize;
+    pub fn mbstowcs(_Dest: *mut wchar_t, _Source: *const ::std::os::raw::c_char, _MaxCount: usize) -> usize;
 }
 extern "C" {
     pub fn _mbstowcs_s_l(
@@ -5016,11 +4244,7 @@ extern "C" {
     pub fn wctomb(_MbCh: *mut ::std::os::raw::c_char, _WCh: wchar_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _wctomb_l(
-        _MbCh: *mut ::std::os::raw::c_char,
-        _WCh: wchar_t,
-        _Locale: _locale_t,
-    ) -> ::std::os::raw::c_int;
+    pub fn _wctomb_l(_MbCh: *mut ::std::os::raw::c_char, _WCh: wchar_t, _Locale: _locale_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn wctomb_s(
@@ -5049,11 +4273,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn wcstombs(
-        _Dest: *mut ::std::os::raw::c_char,
-        _Source: *const wchar_t,
-        _MaxCount: usize,
-    ) -> usize;
+    pub fn wcstombs(_Dest: *mut ::std::os::raw::c_char, _Source: *const wchar_t, _MaxCount: usize) -> usize;
 }
 extern "C" {
     pub fn _wcstombs_s_l(
@@ -5161,10 +4381,7 @@ extern "C" {
     pub fn _putenv(_EnvString: *const ::std::os::raw::c_char) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _putenv_s(
-        _Name: *const ::std::os::raw::c_char,
-        _Value: *const ::std::os::raw::c_char,
-    ) -> errno_t;
+    pub fn _putenv_s(_Name: *const ::std::os::raw::c_char, _Value: *const ::std::os::raw::c_char) -> errno_t;
 }
 extern "C" {
     pub fn _searchenv_s(
@@ -5274,32 +4491,17 @@ fn bindgen_test_layout_darray() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).array) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(darray),
-            "::",
-            stringify!(array)
-        )
+        concat!("Offset of field: ", stringify!(darray), "::", stringify!(array))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).num) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(darray),
-            "::",
-            stringify!(num)
-        )
+        concat!("Offset of field: ", stringify!(darray), "::", stringify!(num))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).capacity) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(darray),
-            "::",
-            stringify!(capacity)
-        )
+        concat!("Offset of field: ", stringify!(darray), "::", stringify!(capacity))
     );
 }
 #[repr(C)]
@@ -5316,10 +4518,7 @@ pub struct profiler_snapshot_entry {
 pub type profiler_snapshot_entry_t = profiler_snapshot_entry;
 pub type profiler_time_entry_t = profiler_time_entry;
 extern "C" {
-    pub fn profile_register_root(
-        name: *const ::std::os::raw::c_char,
-        expected_time_between_calls: u64,
-    );
+    pub fn profile_register_root(name: *const ::std::os::raw::c_char, expected_time_between_calls: u64);
 }
 extern "C" {
     pub fn profile_start(name: *const ::std::os::raw::c_char);
@@ -5420,24 +4619,17 @@ pub struct profiler_time_entries_t__bindgen_ty_1 {
 }
 #[test]
 fn bindgen_test_layout_profiler_time_entries_t__bindgen_ty_1() {
-    const UNINIT: ::std::mem::MaybeUninit<profiler_time_entries_t__bindgen_ty_1> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<profiler_time_entries_t__bindgen_ty_1> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<profiler_time_entries_t__bindgen_ty_1>(),
         24usize,
-        concat!(
-            "Size of: ",
-            stringify!(profiler_time_entries_t__bindgen_ty_1)
-        )
+        concat!("Size of: ", stringify!(profiler_time_entries_t__bindgen_ty_1))
     );
     assert_eq!(
         ::std::mem::align_of::<profiler_time_entries_t__bindgen_ty_1>(),
         8usize,
-        concat!(
-            "Alignment of ",
-            stringify!(profiler_time_entries_t__bindgen_ty_1)
-        )
+        concat!("Alignment of ", stringify!(profiler_time_entries_t__bindgen_ty_1))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).array) as usize - ptr as usize },
@@ -5472,8 +4664,7 @@ fn bindgen_test_layout_profiler_time_entries_t__bindgen_ty_1() {
 }
 #[test]
 fn bindgen_test_layout_profiler_time_entries_t() {
-    const UNINIT: ::std::mem::MaybeUninit<profiler_time_entries_t> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<profiler_time_entries_t> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<profiler_time_entries_t>(),
@@ -5497,10 +4688,7 @@ fn bindgen_test_layout_profiler_time_entries_t() {
     );
 }
 pub type profiler_entry_enum_func = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut ::std::os::raw::c_void,
-        entry: *mut profiler_snapshot_entry_t,
-    ) -> bool,
+    unsafe extern "C" fn(context: *mut ::std::os::raw::c_void, entry: *mut profiler_snapshot_entry_t) -> bool,
 >;
 extern "C" {
     pub fn profile_snapshot_create() -> *mut profiler_snapshot_t;
@@ -5555,14 +4743,10 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn profiler_snapshot_entry_name(
-        entry: *mut profiler_snapshot_entry_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn profiler_snapshot_entry_name(entry: *mut profiler_snapshot_entry_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn profiler_snapshot_entry_times(
-        entry: *mut profiler_snapshot_entry_t,
-    ) -> *mut profiler_time_entries_t;
+    pub fn profiler_snapshot_entry_times(entry: *mut profiler_snapshot_entry_t) -> *mut profiler_time_entries_t;
 }
 extern "C" {
     pub fn profiler_snapshot_entry_min_time(entry: *mut profiler_snapshot_entry_t) -> u64;
@@ -5579,24 +4763,16 @@ extern "C" {
     ) -> *mut profiler_time_entries_t;
 }
 extern "C" {
-    pub fn profiler_snapshot_entry_expected_time_between_calls(
-        entry: *mut profiler_snapshot_entry_t,
-    ) -> u64;
+    pub fn profiler_snapshot_entry_expected_time_between_calls(entry: *mut profiler_snapshot_entry_t) -> u64;
 }
 extern "C" {
-    pub fn profiler_snapshot_entry_min_time_between_calls(
-        entry: *mut profiler_snapshot_entry_t,
-    ) -> u64;
+    pub fn profiler_snapshot_entry_min_time_between_calls(entry: *mut profiler_snapshot_entry_t) -> u64;
 }
 extern "C" {
-    pub fn profiler_snapshot_entry_max_time_between_calls(
-        entry: *mut profiler_snapshot_entry_t,
-    ) -> u64;
+    pub fn profiler_snapshot_entry_max_time_between_calls(entry: *mut profiler_snapshot_entry_t) -> u64;
 }
 extern "C" {
-    pub fn profiler_snapshot_entry_overall_between_calls_count(
-        entry: *mut profiler_snapshot_entry_t,
-    ) -> u64;
+    pub fn profiler_snapshot_entry_overall_between_calls_count(entry: *mut profiler_snapshot_entry_t) -> u64;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -5770,13 +4946,9 @@ pub type gs_texture_type = ::std::os::raw::c_int;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gs_device_loss {
-    pub device_loss_release:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
+    pub device_loss_release: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
     pub device_loss_rebuild: ::std::option::Option<
-        unsafe extern "C" fn(
-            device: *mut ::std::os::raw::c_void,
-            data: *mut ::std::os::raw::c_void,
-        ),
+        unsafe extern "C" fn(device: *mut ::std::os::raw::c_void, data: *mut ::std::os::raw::c_void),
     >,
     pub data: *mut ::std::os::raw::c_void,
 }
@@ -5817,12 +4989,7 @@ fn bindgen_test_layout_gs_device_loss() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).data) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_device_loss),
-            "::",
-            stringify!(data)
-        )
+        concat!("Offset of field: ", stringify!(gs_device_loss), "::", stringify!(data))
     );
 }
 #[repr(C)]
@@ -5861,42 +5028,22 @@ fn bindgen_test_layout_gs_monitor_info() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).x) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_monitor_info),
-            "::",
-            stringify!(x)
-        )
+        concat!("Offset of field: ", stringify!(gs_monitor_info), "::", stringify!(x))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).y) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_monitor_info),
-            "::",
-            stringify!(y)
-        )
+        concat!("Offset of field: ", stringify!(gs_monitor_info), "::", stringify!(y))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).cx) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_monitor_info),
-            "::",
-            stringify!(cx)
-        )
+        concat!("Offset of field: ", stringify!(gs_monitor_info), "::", stringify!(cx))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).cy) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_monitor_info),
-            "::",
-            stringify!(cy)
-        )
+        concat!("Offset of field: ", stringify!(gs_monitor_info), "::", stringify!(cy))
     );
 }
 #[repr(C)]
@@ -5922,22 +5069,12 @@ fn bindgen_test_layout_gs_tvertarray() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).width) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_tvertarray),
-            "::",
-            stringify!(width)
-        )
+        concat!("Offset of field: ", stringify!(gs_tvertarray), "::", stringify!(width))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).array) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_tvertarray),
-            "::",
-            stringify!(array)
-        )
+        concat!("Offset of field: ", stringify!(gs_tvertarray), "::", stringify!(array))
     );
 }
 #[repr(C)]
@@ -5968,72 +5105,37 @@ fn bindgen_test_layout_gs_vb_data() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).num) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_vb_data),
-            "::",
-            stringify!(num)
-        )
+        concat!("Offset of field: ", stringify!(gs_vb_data), "::", stringify!(num))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).points) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_vb_data),
-            "::",
-            stringify!(points)
-        )
+        concat!("Offset of field: ", stringify!(gs_vb_data), "::", stringify!(points))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).normals) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_vb_data),
-            "::",
-            stringify!(normals)
-        )
+        concat!("Offset of field: ", stringify!(gs_vb_data), "::", stringify!(normals))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tangents) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_vb_data),
-            "::",
-            stringify!(tangents)
-        )
+        concat!("Offset of field: ", stringify!(gs_vb_data), "::", stringify!(tangents))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).colors) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_vb_data),
-            "::",
-            stringify!(colors)
-        )
+        concat!("Offset of field: ", stringify!(gs_vb_data), "::", stringify!(colors))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).num_tex) as usize - ptr as usize },
         40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_vb_data),
-            "::",
-            stringify!(num_tex)
-        )
+        concat!("Offset of field: ", stringify!(gs_vb_data), "::", stringify!(num_tex))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).tvarray) as usize - ptr as usize },
         48usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_vb_data),
-            "::",
-            stringify!(tvarray)
-        )
+        concat!("Offset of field: ", stringify!(gs_vb_data), "::", stringify!(tvarray))
     );
 }
 #[repr(C)]
@@ -6166,22 +5268,12 @@ fn bindgen_test_layout_gs_display_mode() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).bits) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_display_mode),
-            "::",
-            stringify!(bits)
-        )
+        concat!("Offset of field: ", stringify!(gs_display_mode), "::", stringify!(bits))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).freq) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_display_mode),
-            "::",
-            stringify!(freq)
-        )
+        concat!("Offset of field: ", stringify!(gs_display_mode), "::", stringify!(freq))
     );
 }
 #[repr(C)]
@@ -6209,42 +5301,22 @@ fn bindgen_test_layout_gs_rect() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).x) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_rect),
-            "::",
-            stringify!(x)
-        )
+        concat!("Offset of field: ", stringify!(gs_rect), "::", stringify!(x))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).y) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_rect),
-            "::",
-            stringify!(y)
-        )
+        concat!("Offset of field: ", stringify!(gs_rect), "::", stringify!(y))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).cx) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_rect),
-            "::",
-            stringify!(cx)
-        )
+        concat!("Offset of field: ", stringify!(gs_rect), "::", stringify!(cx))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).cy) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_rect),
-            "::",
-            stringify!(cy)
-        )
+        concat!("Offset of field: ", stringify!(gs_rect), "::", stringify!(cy))
     );
 }
 #[repr(C)]
@@ -6511,11 +5583,7 @@ extern "C" {
     pub fn gs_shader_set_texture(param: *mut gs_sparam_t, val: *mut gs_texture_t);
 }
 extern "C" {
-    pub fn gs_shader_set_val(
-        param: *mut gs_sparam_t,
-        val: *const ::std::os::raw::c_void,
-        size: usize,
-    );
+    pub fn gs_shader_set_val(param: *mut gs_sparam_t, val: *const ::std::os::raw::c_void, size: usize);
 }
 extern "C" {
     pub fn gs_shader_set_default(param: *mut gs_sparam_t);
@@ -6586,19 +5654,14 @@ extern "C" {
     pub fn gs_technique_begin_pass(technique: *mut gs_technique_t, pass: usize) -> bool;
 }
 extern "C" {
-    pub fn gs_technique_begin_pass_by_name(
-        technique: *mut gs_technique_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> bool;
+    pub fn gs_technique_begin_pass_by_name(technique: *mut gs_technique_t, name: *const ::std::os::raw::c_char)
+        -> bool;
 }
 extern "C" {
     pub fn gs_technique_end_pass(technique: *mut gs_technique_t);
 }
 extern "C" {
-    pub fn gs_technique_get_pass_by_idx(
-        technique: *const gs_technique_t,
-        pass: usize,
-    ) -> *mut gs_epass_t;
+    pub fn gs_technique_get_pass_by_idx(technique: *const gs_technique_t, pass: usize) -> *mut gs_epass_t;
 }
 extern "C" {
     pub fn gs_technique_get_pass_by_name(
@@ -6610,8 +5673,7 @@ extern "C" {
     pub fn gs_effect_get_num_params(effect: *const gs_effect_t) -> usize;
 }
 extern "C" {
-    pub fn gs_effect_get_param_by_idx(effect: *const gs_effect_t, param: usize)
-        -> *mut gs_eparam_t;
+    pub fn gs_effect_get_param_by_idx(effect: *const gs_effect_t, param: usize) -> *mut gs_eparam_t;
 }
 extern "C" {
     pub fn gs_effect_get_param_by_name(
@@ -6623,10 +5685,7 @@ extern "C" {
     pub fn gs_param_get_num_annotations(param: *const gs_eparam_t) -> usize;
 }
 extern "C" {
-    pub fn gs_param_get_annotation_by_idx(
-        param: *const gs_eparam_t,
-        annotation: usize,
-    ) -> *mut gs_eparam_t;
+    pub fn gs_param_get_annotation_by_idx(param: *const gs_eparam_t, annotation: usize) -> *mut gs_eparam_t;
 }
 extern "C" {
     pub fn gs_param_get_annotation_by_name(
@@ -6679,11 +5738,7 @@ extern "C" {
     pub fn gs_effect_set_texture_srgb(param: *mut gs_eparam_t, val: *mut gs_texture_t);
 }
 extern "C" {
-    pub fn gs_effect_set_val(
-        param: *mut gs_eparam_t,
-        val: *const ::std::os::raw::c_void,
-        size: usize,
-    );
+    pub fn gs_effect_set_val(param: *mut gs_eparam_t, val: *const ::std::os::raw::c_void, size: usize);
 }
 extern "C" {
     pub fn gs_effect_set_default(param: *mut gs_eparam_t);
@@ -6707,10 +5762,7 @@ extern "C" {
     pub fn gs_effect_set_color(param: *mut gs_eparam_t, argb: u32);
 }
 extern "C" {
-    pub fn gs_texrender_create(
-        format: gs_color_format,
-        zsformat: gs_zstencil_format,
-    ) -> *mut gs_texrender_t;
+    pub fn gs_texrender_create(format: gs_color_format, zsformat: gs_zstencil_format) -> *mut gs_texrender_t;
 }
 extern "C" {
     pub fn gs_texrender_destroy(texrender: *mut gs_texrender_t);
@@ -6760,12 +5812,7 @@ fn bindgen_test_layout_gs_window() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).hwnd) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_window),
-            "::",
-            stringify!(hwnd)
-        )
+        concat!("Offset of field: ", stringify!(gs_window), "::", stringify!(hwnd))
     );
 }
 #[repr(C)]
@@ -6796,32 +5843,17 @@ fn bindgen_test_layout_gs_init_data() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).window) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_init_data),
-            "::",
-            stringify!(window)
-        )
+        concat!("Offset of field: ", stringify!(gs_init_data), "::", stringify!(window))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).cx) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_init_data),
-            "::",
-            stringify!(cx)
-        )
+        concat!("Offset of field: ", stringify!(gs_init_data), "::", stringify!(cx))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).cy) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_init_data),
-            "::",
-            stringify!(cy)
-        )
+        concat!("Offset of field: ", stringify!(gs_init_data), "::", stringify!(cy))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).num_backbuffers) as usize - ptr as usize },
@@ -6836,12 +5868,7 @@ fn bindgen_test_layout_gs_init_data() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).format) as usize - ptr as usize },
         20usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_init_data),
-            "::",
-            stringify!(format)
-        )
+        concat!("Offset of field: ", stringify!(gs_init_data), "::", stringify!(format))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).zsformat) as usize - ptr as usize },
@@ -6856,12 +5883,7 @@ fn bindgen_test_layout_gs_init_data() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).adapter) as usize - ptr as usize },
         28usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(gs_init_data),
-            "::",
-            stringify!(adapter)
-        )
+        concat!("Offset of field: ", stringify!(gs_init_data), "::", stringify!(adapter))
     );
 }
 extern "C" {
@@ -7055,14 +6077,7 @@ extern "C" {
     pub fn gs_draw_sprite(tex: *mut gs_texture_t, flip: u32, width: u32, height: u32);
 }
 extern "C" {
-    pub fn gs_draw_sprite_subregion(
-        tex: *mut gs_texture_t,
-        flip: u32,
-        x: u32,
-        y: u32,
-        cx: u32,
-        cy: u32,
-    );
+    pub fn gs_draw_sprite_subregion(tex: *mut gs_texture_t, flip: u32, x: u32, y: u32, cx: u32, cy: u32);
 }
 extern "C" {
     pub fn gs_draw_cube_backdrop(
@@ -7094,12 +6109,7 @@ extern "C" {
     pub fn gs_viewport_pop();
 }
 extern "C" {
-    pub fn gs_texture_set_image(
-        tex: *mut gs_texture_t,
-        data: *const u8,
-        linesize: u32,
-        invert: bool,
-    );
+    pub fn gs_texture_set_image(tex: *mut gs_texture_t, data: *const u8, linesize: u32, invert: bool);
 }
 extern "C" {
     pub fn gs_cubetexture_set_image(
@@ -7171,18 +6181,10 @@ extern "C" {
     ) -> *mut gs_texture_t;
 }
 extern "C" {
-    pub fn gs_zstencil_create(
-        width: u32,
-        height: u32,
-        format: gs_zstencil_format,
-    ) -> *mut gs_zstencil_t;
+    pub fn gs_zstencil_create(width: u32, height: u32, format: gs_zstencil_format) -> *mut gs_zstencil_t;
 }
 extern "C" {
-    pub fn gs_stagesurface_create(
-        width: u32,
-        height: u32,
-        color_format: gs_color_format,
-    ) -> *mut gs_stagesurf_t;
+    pub fn gs_stagesurface_create(width: u32, height: u32, color_format: gs_color_format) -> *mut gs_stagesurf_t;
 }
 extern "C" {
     pub fn gs_samplerstate_create(info: *const gs_sampler_info) -> *mut gs_samplerstate_t;
@@ -7472,11 +6474,7 @@ extern "C" {
     pub fn gs_stagesurface_get_color_format(stagesurf: *const gs_stagesurf_t) -> gs_color_format;
 }
 extern "C" {
-    pub fn gs_stagesurface_map(
-        stagesurf: *mut gs_stagesurf_t,
-        data: *mut *mut u8,
-        linesize: *mut u32,
-    ) -> bool;
+    pub fn gs_stagesurface_map(stagesurf: *mut gs_stagesurf_t, data: *mut *mut u8, linesize: *mut u32) -> bool;
 }
 extern "C" {
     pub fn gs_stagesurface_unmap(stagesurf: *mut gs_stagesurf_t);
@@ -7506,15 +6504,10 @@ extern "C" {
     pub fn gs_indexbuffer_flush(indexbuffer: *mut gs_indexbuffer_t);
 }
 extern "C" {
-    pub fn gs_indexbuffer_flush_direct(
-        indexbuffer: *mut gs_indexbuffer_t,
-        data: *const ::std::os::raw::c_void,
-    );
+    pub fn gs_indexbuffer_flush_direct(indexbuffer: *mut gs_indexbuffer_t, data: *const ::std::os::raw::c_void);
 }
 extern "C" {
-    pub fn gs_indexbuffer_get_data(
-        indexbuffer: *const gs_indexbuffer_t,
-    ) -> *mut ::std::os::raw::c_void;
+    pub fn gs_indexbuffer_get_data(indexbuffer: *const gs_indexbuffer_t) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn gs_indexbuffer_get_num_indices(indexbuffer: *const gs_indexbuffer_t) -> usize;
@@ -7544,11 +6537,7 @@ extern "C" {
     pub fn gs_timer_range_end(range: *mut gs_timer_range_t);
 }
 extern "C" {
-    pub fn gs_timer_range_get_data(
-        range: *mut gs_timer_range_t,
-        disjoint: *mut bool,
-        frequency: *mut u64,
-    ) -> bool;
+    pub fn gs_timer_range_get_data(range: *mut gs_timer_range_t, disjoint: *mut bool, frequency: *mut u64) -> bool;
 }
 extern "C" {
     pub fn gs_nv12_available() -> bool;
@@ -7563,11 +6552,7 @@ extern "C" {
     pub fn gs_debug_marker_begin(color: *const f32, markername: *const ::std::os::raw::c_char);
 }
 extern "C" {
-    pub fn gs_debug_marker_begin_format(
-        color: *const f32,
-        format: *const ::std::os::raw::c_char,
-        ...
-    );
+    pub fn gs_debug_marker_begin_format(color: *const f32, format: *const ::std::os::raw::c_char, ...);
 }
 extern "C" {
     pub fn gs_debug_marker_end();
@@ -7592,9 +6577,7 @@ extern "C" {
     ) -> bool;
 }
 extern "C" {
-    pub fn gs_duplicator_get_monitor_index(
-        monitor: *mut ::std::os::raw::c_void,
-    ) -> ::std::os::raw::c_int;
+    pub fn gs_duplicator_get_monitor_index(monitor: *mut ::std::os::raw::c_void) -> ::std::os::raw::c_int;
 }
 extern "C" {
     #[doc = " creates a windows 8+ output duplicator (monitor capture)"]
@@ -7643,11 +6626,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " acquires a lock on a keyed mutex texture.\n returns -1 on generic failure, ETIMEDOUT if timed out"]
-    pub fn gs_texture_acquire_sync(
-        tex: *mut gs_texture_t,
-        key: u64,
-        ms: u32,
-    ) -> ::std::os::raw::c_int;
+    pub fn gs_texture_acquire_sync(tex: *mut gs_texture_t, key: u64, ms: u32) -> ::std::os::raw::c_int;
 }
 extern "C" {
     #[doc = " releases a lock on a keyed mutex texture to another device.\n return 0 on success, -1 on error"]
@@ -7709,52 +6688,27 @@ fn bindgen_test_layout__exception() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).type_) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_exception),
-            "::",
-            stringify!(type_)
-        )
+        concat!("Offset of field: ", stringify!(_exception), "::", stringify!(type_))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).name) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_exception),
-            "::",
-            stringify!(name)
-        )
+        concat!("Offset of field: ", stringify!(_exception), "::", stringify!(name))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).arg1) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_exception),
-            "::",
-            stringify!(arg1)
-        )
+        concat!("Offset of field: ", stringify!(_exception), "::", stringify!(arg1))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).arg2) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_exception),
-            "::",
-            stringify!(arg2)
-        )
+        concat!("Offset of field: ", stringify!(_exception), "::", stringify!(arg2))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).retval) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_exception),
-            "::",
-            stringify!(retval)
-        )
+        concat!("Offset of field: ", stringify!(_exception), "::", stringify!(retval))
     );
 }
 #[repr(C)]
@@ -7780,22 +6734,12 @@ fn bindgen_test_layout__complex() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).x) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_complex),
-            "::",
-            stringify!(x)
-        )
+        concat!("Offset of field: ", stringify!(_complex), "::", stringify!(x))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).y) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_complex),
-            "::",
-            stringify!(y)
-        )
+        concat!("Offset of field: ", stringify!(_complex), "::", stringify!(y))
     );
 }
 pub type float_t = f32;
@@ -7864,23 +6808,19 @@ extern "C" {
     pub fn _dunscale(_Pex: *mut ::std::os::raw::c_short, _Px: *mut f64) -> ::std::os::raw::c_short;
 }
 extern "C" {
-    pub fn _ldunscale(_Pex: *mut ::std::os::raw::c_short, _Px: *mut f64)
-        -> ::std::os::raw::c_short;
+    pub fn _ldunscale(_Pex: *mut ::std::os::raw::c_short, _Px: *mut f64) -> ::std::os::raw::c_short;
 }
 extern "C" {
-    pub fn _fdunscale(_Pex: *mut ::std::os::raw::c_short, _Px: *mut f32)
-        -> ::std::os::raw::c_short;
+    pub fn _fdunscale(_Pex: *mut ::std::os::raw::c_short, _Px: *mut f32) -> ::std::os::raw::c_short;
 }
 extern "C" {
     pub fn _dexp(_Px: *mut f64, _Y: f64, _Eoff: ::std::os::raw::c_long) -> ::std::os::raw::c_short;
 }
 extern "C" {
-    pub fn _ldexp(_Px: *mut f64, _Y: f64, _Eoff: ::std::os::raw::c_long)
-        -> ::std::os::raw::c_short;
+    pub fn _ldexp(_Px: *mut f64, _Y: f64, _Eoff: ::std::os::raw::c_long) -> ::std::os::raw::c_short;
 }
 extern "C" {
-    pub fn _fdexp(_Px: *mut f32, _Y: f32, _Eoff: ::std::os::raw::c_long)
-        -> ::std::os::raw::c_short;
+    pub fn _fdexp(_Px: *mut f32, _Y: f32, _Eoff: ::std::os::raw::c_long) -> ::std::os::raw::c_short;
 }
 extern "C" {
     pub fn _dnorm(_Ps: *mut ::std::os::raw::c_ushort) -> ::std::os::raw::c_short;
@@ -7938,22 +6878,12 @@ fn bindgen_test_layout__double_val() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Sh) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_double_val),
-            "::",
-            stringify!(_Sh)
-        )
+        concat!("Offset of field: ", stringify!(_double_val), "::", stringify!(_Sh))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Val) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_double_val),
-            "::",
-            stringify!(_Val)
-        )
+        concat!("Offset of field: ", stringify!(_double_val), "::", stringify!(_Val))
     );
 }
 #[repr(C)]
@@ -7979,22 +6909,12 @@ fn bindgen_test_layout__float_val() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Sh) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_float_val),
-            "::",
-            stringify!(_Sh)
-        )
+        concat!("Offset of field: ", stringify!(_float_val), "::", stringify!(_Sh))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Val) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_float_val),
-            "::",
-            stringify!(_Val)
-        )
+        concat!("Offset of field: ", stringify!(_float_val), "::", stringify!(_Val))
     );
 }
 #[repr(C)]
@@ -8020,22 +6940,12 @@ fn bindgen_test_layout__ldouble_val() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Sh) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_ldouble_val),
-            "::",
-            stringify!(_Sh)
-        )
+        concat!("Offset of field: ", stringify!(_ldouble_val), "::", stringify!(_Sh))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Val) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_ldouble_val),
-            "::",
-            stringify!(_Val)
-        )
+        concat!("Offset of field: ", stringify!(_ldouble_val), "::", stringify!(_Val))
     );
 }
 #[repr(C)]
@@ -8063,32 +6973,17 @@ fn bindgen_test_layout__float_const() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Word) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_float_const),
-            "::",
-            stringify!(_Word)
-        )
+        concat!("Offset of field: ", stringify!(_float_const), "::", stringify!(_Word))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Float) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_float_const),
-            "::",
-            stringify!(_Float)
-        )
+        concat!("Offset of field: ", stringify!(_float_const), "::", stringify!(_Float))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Double) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_float_const),
-            "::",
-            stringify!(_Double)
-        )
+        concat!("Offset of field: ", stringify!(_float_const), "::", stringify!(_Double))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._Long_double) as usize - ptr as usize },
@@ -8711,8 +7606,7 @@ pub struct vec2__bindgen_ty_1__bindgen_ty_1 {
 }
 #[test]
 fn bindgen_test_layout_vec2__bindgen_ty_1__bindgen_ty_1() {
-    const UNINIT: ::std::mem::MaybeUninit<vec2__bindgen_ty_1__bindgen_ty_1> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<vec2__bindgen_ty_1__bindgen_ty_1> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<vec2__bindgen_ty_1__bindgen_ty_1>(),
@@ -8722,10 +7616,7 @@ fn bindgen_test_layout_vec2__bindgen_ty_1__bindgen_ty_1() {
     assert_eq!(
         ::std::mem::align_of::<vec2__bindgen_ty_1__bindgen_ty_1>(),
         4usize,
-        concat!(
-            "Alignment of ",
-            stringify!(vec2__bindgen_ty_1__bindgen_ty_1)
-        )
+        concat!("Alignment of ", stringify!(vec2__bindgen_ty_1__bindgen_ty_1))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).x) as usize - ptr as usize },
@@ -8831,92 +7722,47 @@ fn bindgen_test_layout___m64() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m64_u64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m64),
-            "::",
-            stringify!(m64_u64)
-        )
+        concat!("Offset of field: ", stringify!(__m64), "::", stringify!(m64_u64))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m64_f32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m64),
-            "::",
-            stringify!(m64_f32)
-        )
+        concat!("Offset of field: ", stringify!(__m64), "::", stringify!(m64_f32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m64_i8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m64),
-            "::",
-            stringify!(m64_i8)
-        )
+        concat!("Offset of field: ", stringify!(__m64), "::", stringify!(m64_i8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m64_i16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m64),
-            "::",
-            stringify!(m64_i16)
-        )
+        concat!("Offset of field: ", stringify!(__m64), "::", stringify!(m64_i16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m64_i32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m64),
-            "::",
-            stringify!(m64_i32)
-        )
+        concat!("Offset of field: ", stringify!(__m64), "::", stringify!(m64_i32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m64_i64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m64),
-            "::",
-            stringify!(m64_i64)
-        )
+        concat!("Offset of field: ", stringify!(__m64), "::", stringify!(m64_i64))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m64_u8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m64),
-            "::",
-            stringify!(m64_u8)
-        )
+        concat!("Offset of field: ", stringify!(__m64), "::", stringify!(m64_u8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m64_u16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m64),
-            "::",
-            stringify!(m64_u16)
-        )
+        concat!("Offset of field: ", stringify!(__m64), "::", stringify!(m64_u16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m64_u32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m64),
-            "::",
-            stringify!(m64_u32)
-        )
+        concat!("Offset of field: ", stringify!(__m64), "::", stringify!(m64_u32))
     );
 }
 #[repr(C)]
@@ -8950,92 +7796,47 @@ fn bindgen_test_layout___m128() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128_f32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128),
-            "::",
-            stringify!(m128_f32)
-        )
+        concat!("Offset of field: ", stringify!(__m128), "::", stringify!(m128_f32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128_u64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128),
-            "::",
-            stringify!(m128_u64)
-        )
+        concat!("Offset of field: ", stringify!(__m128), "::", stringify!(m128_u64))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128_i8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128),
-            "::",
-            stringify!(m128_i8)
-        )
+        concat!("Offset of field: ", stringify!(__m128), "::", stringify!(m128_i8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128_i16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128),
-            "::",
-            stringify!(m128_i16)
-        )
+        concat!("Offset of field: ", stringify!(__m128), "::", stringify!(m128_i16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128_i32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128),
-            "::",
-            stringify!(m128_i32)
-        )
+        concat!("Offset of field: ", stringify!(__m128), "::", stringify!(m128_i32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128_i64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128),
-            "::",
-            stringify!(m128_i64)
-        )
+        concat!("Offset of field: ", stringify!(__m128), "::", stringify!(m128_i64))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128_u8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128),
-            "::",
-            stringify!(m128_u8)
-        )
+        concat!("Offset of field: ", stringify!(__m128), "::", stringify!(m128_u8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128_u16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128),
-            "::",
-            stringify!(m128_u16)
-        )
+        concat!("Offset of field: ", stringify!(__m128), "::", stringify!(m128_u16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128_u32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128),
-            "::",
-            stringify!(m128_u32)
-        )
+        concat!("Offset of field: ", stringify!(__m128), "::", stringify!(m128_u32))
     );
 }
 #[repr(C)]
@@ -9062,32 +7863,17 @@ fn bindgen_test_layout__heapinfo() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._pentry) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_heapinfo),
-            "::",
-            stringify!(_pentry)
-        )
+        concat!("Offset of field: ", stringify!(_heapinfo), "::", stringify!(_pentry))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._size) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_heapinfo),
-            "::",
-            stringify!(_size)
-        )
+        concat!("Offset of field: ", stringify!(_heapinfo), "::", stringify!(_size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr)._useflag) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_heapinfo),
-            "::",
-            stringify!(_useflag)
-        )
+        concat!("Offset of field: ", stringify!(_heapinfo), "::", stringify!(_useflag))
     );
 }
 pub type _HEAPINFO = _heapinfo;
@@ -9427,82 +8213,42 @@ fn bindgen_test_layout___m128i() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128i_i8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128i),
-            "::",
-            stringify!(m128i_i8)
-        )
+        concat!("Offset of field: ", stringify!(__m128i), "::", stringify!(m128i_i8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128i_i16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128i),
-            "::",
-            stringify!(m128i_i16)
-        )
+        concat!("Offset of field: ", stringify!(__m128i), "::", stringify!(m128i_i16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128i_i32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128i),
-            "::",
-            stringify!(m128i_i32)
-        )
+        concat!("Offset of field: ", stringify!(__m128i), "::", stringify!(m128i_i32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128i_i64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128i),
-            "::",
-            stringify!(m128i_i64)
-        )
+        concat!("Offset of field: ", stringify!(__m128i), "::", stringify!(m128i_i64))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128i_u8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128i),
-            "::",
-            stringify!(m128i_u8)
-        )
+        concat!("Offset of field: ", stringify!(__m128i), "::", stringify!(m128i_u8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128i_u16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128i),
-            "::",
-            stringify!(m128i_u16)
-        )
+        concat!("Offset of field: ", stringify!(__m128i), "::", stringify!(m128i_u16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128i_u32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128i),
-            "::",
-            stringify!(m128i_u32)
-        )
+        concat!("Offset of field: ", stringify!(__m128i), "::", stringify!(m128i_u32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128i_u64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128i),
-            "::",
-            stringify!(m128i_u64)
-        )
+        concat!("Offset of field: ", stringify!(__m128i), "::", stringify!(m128i_u64))
     );
 }
 #[repr(C)]
@@ -9528,12 +8274,7 @@ fn bindgen_test_layout___m128d() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m128d_f64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m128d),
-            "::",
-            stringify!(m128d_f64)
-        )
+        concat!("Offset of field: ", stringify!(__m128d), "::", stringify!(m128d_f64))
     );
 }
 extern "C" {
@@ -10005,11 +8746,7 @@ extern "C" {
     pub fn _mm_extract_epi16(_A: __m128i, _Imm: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_insert_epi16(
-        _A: __m128i,
-        _B: ::std::os::raw::c_int,
-        _Imm: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_insert_epi16(_A: __m128i, _B: ::std::os::raw::c_int, _Imm: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_movemask_epi8(_A: __m128i) -> ::std::os::raw::c_int;
@@ -10057,10 +8794,7 @@ extern "C" {
     pub fn _mm_loadl_epi64(_P: *const __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_set_epi64x(
-        _I1: ::std::os::raw::c_longlong,
-        _I0: ::std::os::raw::c_longlong,
-    ) -> __m128i;
+    pub fn _mm_set_epi64x(_I1: ::std::os::raw::c_longlong, _I0: ::std::os::raw::c_longlong) -> __m128i;
 }
 extern "C" {
     pub fn _mm_set_epi32(
@@ -10256,8 +8990,7 @@ pub struct vec4__bindgen_ty_1__bindgen_ty_1 {
 }
 #[test]
 fn bindgen_test_layout_vec4__bindgen_ty_1__bindgen_ty_1() {
-    const UNINIT: ::std::mem::MaybeUninit<vec4__bindgen_ty_1__bindgen_ty_1> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<vec4__bindgen_ty_1__bindgen_ty_1> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<vec4__bindgen_ty_1__bindgen_ty_1>(),
@@ -10267,10 +9000,7 @@ fn bindgen_test_layout_vec4__bindgen_ty_1__bindgen_ty_1() {
     assert_eq!(
         ::std::mem::align_of::<vec4__bindgen_ty_1__bindgen_ty_1>(),
         4usize,
-        concat!(
-            "Alignment of ",
-            stringify!(vec4__bindgen_ty_1__bindgen_ty_1)
-        )
+        concat!("Alignment of ", stringify!(vec4__bindgen_ty_1__bindgen_ty_1))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).x) as usize - ptr as usize },
@@ -10340,12 +9070,7 @@ fn bindgen_test_layout_vec4__bindgen_ty_1() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(vec4__bindgen_ty_1),
-            "::",
-            stringify!(m)
-        )
+        concat!("Offset of field: ", stringify!(vec4__bindgen_ty_1), "::", stringify!(m))
     );
 }
 #[test]
@@ -10391,8 +9116,7 @@ pub struct vec3__bindgen_ty_1__bindgen_ty_1 {
 }
 #[test]
 fn bindgen_test_layout_vec3__bindgen_ty_1__bindgen_ty_1() {
-    const UNINIT: ::std::mem::MaybeUninit<vec3__bindgen_ty_1__bindgen_ty_1> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<vec3__bindgen_ty_1__bindgen_ty_1> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<vec3__bindgen_ty_1__bindgen_ty_1>(),
@@ -10402,10 +9126,7 @@ fn bindgen_test_layout_vec3__bindgen_ty_1__bindgen_ty_1() {
     assert_eq!(
         ::std::mem::align_of::<vec3__bindgen_ty_1__bindgen_ty_1>(),
         4usize,
-        concat!(
-            "Alignment of ",
-            stringify!(vec3__bindgen_ty_1__bindgen_ty_1)
-        )
+        concat!("Alignment of ", stringify!(vec3__bindgen_ty_1__bindgen_ty_1))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).x) as usize - ptr as usize },
@@ -10475,12 +9196,7 @@ fn bindgen_test_layout_vec3__bindgen_ty_1() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(vec3__bindgen_ty_1),
-            "::",
-            stringify!(m)
-        )
+        concat!("Offset of field: ", stringify!(vec3__bindgen_ty_1), "::", stringify!(m))
     );
 }
 #[test]
@@ -10545,10 +9261,7 @@ extern "C" {
     ) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
-    pub fn _bittest(
-        arg1: *const ::std::os::raw::c_long,
-        arg2: ::std::os::raw::c_long,
-    ) -> ::std::os::raw::c_uchar;
+    pub fn _bittest(arg1: *const ::std::os::raw::c_long, arg2: ::std::os::raw::c_long) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
     pub fn _InterlockedAnd(
@@ -10620,19 +9333,13 @@ extern "C" {
     pub fn _InterlockedDecrement(_Addend: *mut ::std::os::raw::c_long) -> ::std::os::raw::c_long;
 }
 extern "C" {
-    pub fn _InterlockedDecrement16(
-        _Addend: *mut ::std::os::raw::c_short,
-    ) -> ::std::os::raw::c_short;
+    pub fn _InterlockedDecrement16(_Addend: *mut ::std::os::raw::c_short) -> ::std::os::raw::c_short;
 }
 extern "C" {
-    pub fn _InterlockedDecrement64(
-        _Addend: *mut ::std::os::raw::c_longlong,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _InterlockedDecrement64(_Addend: *mut ::std::os::raw::c_longlong) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _interlockeddecrement64(
-        _Addend: *mut ::std::os::raw::c_longlong,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _interlockeddecrement64(_Addend: *mut ::std::os::raw::c_longlong) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _InterlockedExchange(
@@ -10698,25 +9405,17 @@ extern "C" {
     pub fn _InterlockedIncrement(_Addend: *mut ::std::os::raw::c_long) -> ::std::os::raw::c_long;
 }
 extern "C" {
-    pub fn _InterlockedIncrement16(
-        _Addend: *mut ::std::os::raw::c_short,
-    ) -> ::std::os::raw::c_short;
+    pub fn _InterlockedIncrement16(_Addend: *mut ::std::os::raw::c_short) -> ::std::os::raw::c_short;
 }
 extern "C" {
-    pub fn _InterlockedIncrement64(
-        _Addend: *mut ::std::os::raw::c_longlong,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _InterlockedIncrement64(_Addend: *mut ::std::os::raw::c_longlong) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _interlockedincrement64(
-        _Addend: *mut ::std::os::raw::c_longlong,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _interlockedincrement64(_Addend: *mut ::std::os::raw::c_longlong) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _InterlockedOr(
-        _Value: *mut ::std::os::raw::c_long,
-        _Mask: ::std::os::raw::c_long,
-    ) -> ::std::os::raw::c_long;
+    pub fn _InterlockedOr(_Value: *mut ::std::os::raw::c_long, _Mask: ::std::os::raw::c_long)
+        -> ::std::os::raw::c_long;
 }
 extern "C" {
     pub fn _InterlockedOr16(
@@ -10782,27 +9481,19 @@ extern "C" {
     pub fn __iso_volatile_load32(arg1: *const ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn __iso_volatile_load64(
-        arg1: *const ::std::os::raw::c_longlong,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn __iso_volatile_load64(arg1: *const ::std::os::raw::c_longlong) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn __iso_volatile_load8(arg1: *const ::std::os::raw::c_char) -> ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn __iso_volatile_store16(
-        arg1: *mut ::std::os::raw::c_short,
-        arg2: ::std::os::raw::c_short,
-    );
+    pub fn __iso_volatile_store16(arg1: *mut ::std::os::raw::c_short, arg2: ::std::os::raw::c_short);
 }
 extern "C" {
     pub fn __iso_volatile_store32(arg1: *mut ::std::os::raw::c_int, arg2: ::std::os::raw::c_int);
 }
 extern "C" {
-    pub fn __iso_volatile_store64(
-        arg1: *mut ::std::os::raw::c_longlong,
-        arg2: ::std::os::raw::c_longlong,
-    );
+    pub fn __iso_volatile_store64(arg1: *mut ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_longlong);
 }
 extern "C" {
     pub fn __iso_volatile_store8(arg1: *mut ::std::os::raw::c_char, arg2: ::std::os::raw::c_char);
@@ -10826,28 +9517,16 @@ extern "C" {
     pub fn __popcnt64(arg1: ::std::os::raw::c_ulonglong) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _rotl16(
-        _Value: ::std::os::raw::c_ushort,
-        _Shift: ::std::os::raw::c_uchar,
-    ) -> ::std::os::raw::c_ushort;
+    pub fn _rotl16(_Value: ::std::os::raw::c_ushort, _Shift: ::std::os::raw::c_uchar) -> ::std::os::raw::c_ushort;
 }
 extern "C" {
-    pub fn _rotl8(
-        _Value: ::std::os::raw::c_uchar,
-        _Shift: ::std::os::raw::c_uchar,
-    ) -> ::std::os::raw::c_uchar;
+    pub fn _rotl8(_Value: ::std::os::raw::c_uchar, _Shift: ::std::os::raw::c_uchar) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
-    pub fn _rotr16(
-        _Value: ::std::os::raw::c_ushort,
-        _Shift: ::std::os::raw::c_uchar,
-    ) -> ::std::os::raw::c_ushort;
+    pub fn _rotr16(_Value: ::std::os::raw::c_ushort, _Shift: ::std::os::raw::c_uchar) -> ::std::os::raw::c_ushort;
 }
 extern "C" {
-    pub fn _rotr8(
-        _Value: ::std::os::raw::c_uchar,
-        _Shift: ::std::os::raw::c_uchar,
-    ) -> ::std::os::raw::c_uchar;
+    pub fn _rotr8(_Value: ::std::os::raw::c_uchar, _Shift: ::std::os::raw::c_uchar) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
     pub fn __shiftleft128(
@@ -11009,242 +9688,122 @@ fn bindgen_test_layout__JUMP_BUFFER() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Frame) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Frame)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Frame))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Rbx) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Rbx)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Rbx))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Rsp) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Rsp)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Rsp))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Rbp) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Rbp)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Rbp))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Rsi) as usize - ptr as usize },
         32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Rsi)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Rsi))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Rdi) as usize - ptr as usize },
         40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Rdi)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Rdi))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).R12) as usize - ptr as usize },
         48usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(R12)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(R12))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).R13) as usize - ptr as usize },
         56usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(R13)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(R13))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).R14) as usize - ptr as usize },
         64usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(R14)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(R14))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).R15) as usize - ptr as usize },
         72usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(R15)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(R15))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Rip) as usize - ptr as usize },
         80usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Rip)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Rip))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).MxCsr) as usize - ptr as usize },
         88usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(MxCsr)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(MxCsr))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).FpCsr) as usize - ptr as usize },
         92usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(FpCsr)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(FpCsr))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Spare) as usize - ptr as usize },
         94usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Spare)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Spare))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm6) as usize - ptr as usize },
         96usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm6)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm6))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm7) as usize - ptr as usize },
         112usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm7)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm7))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm8) as usize - ptr as usize },
         128usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm8)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm9) as usize - ptr as usize },
         144usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm9)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm9))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm10) as usize - ptr as usize },
         160usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm10)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm10))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm11) as usize - ptr as usize },
         176usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm11)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm11))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm12) as usize - ptr as usize },
         192usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm12)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm12))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm13) as usize - ptr as usize },
         208usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm13)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm13))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm14) as usize - ptr as usize },
         224usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm14)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm14))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).Xmm15) as usize - ptr as usize },
         240usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_JUMP_BUFFER),
-            "::",
-            stringify!(Xmm15)
-        )
+        concat!("Offset of field: ", stringify!(_JUMP_BUFFER), "::", stringify!(Xmm15))
     );
 }
 pub type jmp_buf = [_JBTYPE; 16usize];
@@ -11288,11 +9847,7 @@ extern "C" {
     pub fn _mm_lddqu_si128(arg1: *const __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_monitor(
-        arg1: *const ::std::os::raw::c_void,
-        arg2: ::std::os::raw::c_uint,
-        arg3: ::std::os::raw::c_uint,
-    );
+    pub fn _mm_monitor(arg1: *const ::std::os::raw::c_void, arg2: ::std::os::raw::c_uint, arg3: ::std::os::raw::c_uint);
 }
 extern "C" {
     pub fn _mm_mwait(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint);
@@ -11418,25 +9973,13 @@ extern "C" {
     pub fn _mm_extract_ps(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_insert_epi8(
-        arg1: __m128i,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_insert_epi8(arg1: __m128i, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_insert_epi32(
-        arg1: __m128i,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_insert_epi32(arg1: __m128i, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_insert_epi64(
-        arg1: __m128i,
-        arg2: ::std::os::raw::c_longlong,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_insert_epi64(arg1: __m128i, arg2: ::std::os::raw::c_longlong, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_extract_epi8(arg1: __m128i, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
@@ -11445,10 +9988,7 @@ extern "C" {
     pub fn _mm_extract_epi32(arg1: __m128i, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_extract_epi64(
-        arg1: __m128i,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_extract_epi64(arg1: __m128i, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm_minpos_epu16(arg1: __m128i) -> __m128i;
@@ -11514,11 +10054,7 @@ extern "C" {
     pub fn _mm_cmpistrm(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_cmpistri(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cmpistri(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _mm_cmpestrm(
@@ -11539,39 +10075,19 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cmpistrz(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cmpistrz(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cmpistrc(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cmpistrc(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cmpistrs(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cmpistrs(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cmpistro(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cmpistro(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cmpistra(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cmpistra(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _mm_cmpestrz(
@@ -11628,22 +10144,13 @@ extern "C" {
     pub fn _mm_popcnt_u64(arg1: ::std::os::raw::c_ulonglong) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm_crc32_u8(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uchar,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _mm_crc32_u8(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uchar) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _mm_crc32_u16(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_ushort,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _mm_crc32_u16(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_ushort) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _mm_crc32_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _mm_crc32_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
     pub fn _mm_crc32_u64(
@@ -11670,11 +10177,7 @@ extern "C" {
     pub fn _mm_aeskeygenassist_si128(arg1: __m128i, arg2: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_clmulepi64_si128(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_clmulepi64_si128(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 #[repr(C)]
 #[repr(align(32))]
@@ -11699,12 +10202,7 @@ fn bindgen_test_layout___m256() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256_f32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256),
-            "::",
-            stringify!(m256_f32)
-        )
+        concat!("Offset of field: ", stringify!(__m256), "::", stringify!(m256_f32))
     );
 }
 #[repr(C)]
@@ -11730,12 +10228,7 @@ fn bindgen_test_layout___m256d() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256d_f64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256d),
-            "::",
-            stringify!(m256d_f64)
-        )
+        concat!("Offset of field: ", stringify!(__m256d), "::", stringify!(m256d_f64))
     );
 }
 #[repr(C)]
@@ -11768,82 +10261,42 @@ fn bindgen_test_layout___m256i() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256i_i8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256i),
-            "::",
-            stringify!(m256i_i8)
-        )
+        concat!("Offset of field: ", stringify!(__m256i), "::", stringify!(m256i_i8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256i_i16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256i),
-            "::",
-            stringify!(m256i_i16)
-        )
+        concat!("Offset of field: ", stringify!(__m256i), "::", stringify!(m256i_i16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256i_i32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256i),
-            "::",
-            stringify!(m256i_i32)
-        )
+        concat!("Offset of field: ", stringify!(__m256i), "::", stringify!(m256i_i32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256i_i64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256i),
-            "::",
-            stringify!(m256i_i64)
-        )
+        concat!("Offset of field: ", stringify!(__m256i), "::", stringify!(m256i_i64))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256i_u8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256i),
-            "::",
-            stringify!(m256i_u8)
-        )
+        concat!("Offset of field: ", stringify!(__m256i), "::", stringify!(m256i_u8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256i_u16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256i),
-            "::",
-            stringify!(m256i_u16)
-        )
+        concat!("Offset of field: ", stringify!(__m256i), "::", stringify!(m256i_u16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256i_u32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256i),
-            "::",
-            stringify!(m256i_u32)
-        )
+        concat!("Offset of field: ", stringify!(__m256i), "::", stringify!(m256i_u32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m256i_u64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m256i),
-            "::",
-            stringify!(m256i_u64)
-        )
+        concat!("Offset of field: ", stringify!(__m256i), "::", stringify!(m256i_u64))
     );
 }
 extern "C" {
@@ -11961,21 +10414,13 @@ extern "C" {
     pub fn _mm_cmp_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_comi_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_comi_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _mm_cmp_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_comi_ss(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_comi_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _mm256_cvtepi32_pd(arg1: __m128i) -> __m256d;
@@ -12041,25 +10486,13 @@ extern "C" {
     pub fn _mm_permute_pd(arg1: __m128d, arg2: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_permute2f128_ps(
-        arg1: __m256,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_permute2f128_ps(arg1: __m256, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_permute2f128_pd(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_permute2f128_pd(arg1: __m256d, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_permute2f128_si256(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_permute2f128_si256(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_broadcast_ss(arg1: *const f32) -> __m256;
@@ -12080,18 +10513,10 @@ extern "C" {
     pub fn _mm256_insertf128_ps(arg1: __m256, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_insertf128_pd(
-        arg1: __m256d,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_insertf128_pd(arg1: __m256d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_insertf128_si256(
-        arg1: __m256i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_insertf128_si256(arg1: __m256i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_load_pd(arg1: *const f64) -> __m256d;
@@ -12888,11 +11313,7 @@ extern "C" {
     pub fn _mm256_sad_epu8(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mpsadbw_epu8(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_mpsadbw_epu8(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_slli_si256(arg1: __m256i, arg2: ::std::os::raw::c_int) -> __m256i;
@@ -12982,19 +11403,16 @@ extern "C" {
     pub fn _mm_blend_epi32(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_blend_epi32(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_blend_epi32(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_alignr_epi8(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_alignr_epi8(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_blendv_epi8(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_blend_epi16(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_blend_epi16(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_packs_epi16(arg1: __m256i, arg2: __m256i) -> __m256i;
@@ -13048,11 +11466,7 @@ extern "C" {
     pub fn _mm256_extracti128_si256(arg1: __m256i, arg2: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_inserti128_si256(
-        arg1: __m256i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_inserti128_si256(arg1: __m256i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm_broadcastss_ps(arg1: __m128) -> __m128;
@@ -13148,18 +11562,13 @@ extern "C" {
     pub fn _mm256_maskload_epi32(arg1: *const ::std::os::raw::c_int, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskload_epi64(arg1: *const ::std::os::raw::c_longlong, arg2: __m256i)
-        -> __m256i;
+    pub fn _mm256_maskload_epi64(arg1: *const ::std::os::raw::c_longlong, arg2: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskstore_epi32(arg1: *mut ::std::os::raw::c_int, arg2: __m256i, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm256_maskstore_epi64(
-        arg1: *mut ::std::os::raw::c_longlong,
-        arg2: __m256i,
-        arg3: __m256i,
-    );
+    pub fn _mm256_maskstore_epi64(arg1: *mut ::std::os::raw::c_longlong, arg2: __m256i, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm256_permutevar8x32_epi32(arg1: __m256i, arg2: __m256i) -> __m256i;
@@ -13174,11 +11583,7 @@ extern "C" {
     pub fn _mm256_permute4x64_pd(arg1: __m256d, arg2: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_permute2x128_si256(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_permute2x128_si256(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_stream_load_si256(arg1: *const __m256i) -> __m256i;
@@ -13328,54 +11733,28 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_i32gather_pd(
-        arg1: *const f64,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_i32gather_pd(arg1: *const f64, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_i32gather_ps(
-        arg1: *const f32,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_i32gather_ps(arg1: *const f32, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_i64gather_pd(
-        arg1: *const f64,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_i64gather_pd(arg1: *const f64, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_i64gather_ps(
-        arg1: *const f32,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm256_i64gather_ps(arg1: *const f32, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_i32gather_pd(
-        arg1: *const f64,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_i32gather_pd(arg1: *const f64, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_i32gather_ps(arg1: *const f32, arg2: __m128i, arg3: ::std::os::raw::c_int)
-        -> __m128;
+    pub fn _mm_i32gather_ps(arg1: *const f32, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_i64gather_pd(
-        arg1: *const f64,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_i64gather_pd(arg1: *const f64, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_i64gather_ps(arg1: *const f32, arg2: __m128i, arg3: ::std::os::raw::c_int)
-        -> __m128;
+    pub fn _mm_i64gather_ps(arg1: *const f32, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm256_i32gather_epi32(
@@ -13441,10 +11820,7 @@ extern "C" {
     ) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _bextr2_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _bextr2_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
     pub fn _blsi_u32(arg1: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
@@ -13456,10 +11832,7 @@ extern "C" {
     pub fn _blsr_u32(arg1: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _bzhi_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _bzhi_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
     pub fn _mulx_u32(
@@ -13469,40 +11842,22 @@ extern "C" {
     ) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _pdep_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _pdep_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _pext_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _pext_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _rorx_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _rorx_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _sarx_i32(
-        arg1: ::std::os::raw::c_int,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_int;
+    pub fn _sarx_i32(arg1: ::std::os::raw::c_int, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _shlx_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _shlx_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _shrx_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _shrx_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
     pub fn _bextr_u64(
@@ -13527,10 +11882,7 @@ extern "C" {
     pub fn _blsr_u64(arg1: ::std::os::raw::c_ulonglong) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _bzhi_u64(
-        arg1: ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _bzhi_u64(arg1: ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn _mulx_u64(
@@ -13552,28 +11904,16 @@ extern "C" {
     ) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _rorx_u64(
-        arg1: ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _rorx_u64(arg1: ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _sarx_i64(
-        arg1: ::std::os::raw::c_longlong,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _sarx_i64(arg1: ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _shlx_u64(
-        arg1: ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _shlx_u64(arg1: ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _shrx_u64(
-        arg1: ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _shrx_u64(arg1: ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn _lzcnt_u32(arg1: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
@@ -13597,10 +11937,7 @@ extern "C" {
     pub fn _Store_HLERelease(arg1: *mut ::std::os::raw::c_long, arg2: ::std::os::raw::c_long);
 }
 extern "C" {
-    pub fn _StorePointer_HLERelease(
-        arg1: *mut *mut ::std::os::raw::c_void,
-        arg2: *mut ::std::os::raw::c_void,
-    );
+    pub fn _StorePointer_HLERelease(arg1: *mut *mut ::std::os::raw::c_void, arg2: *mut ::std::os::raw::c_void);
 }
 extern "C" {
     pub fn _InterlockedExchange_HLEAcquire(
@@ -13741,10 +12078,7 @@ extern "C" {
     ) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
-    pub fn _Store64_HLERelease(
-        arg1: *mut ::std::os::raw::c_longlong,
-        arg2: ::std::os::raw::c_longlong,
-    );
+    pub fn _Store64_HLERelease(arg1: *mut ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_longlong);
 }
 extern "C" {
     pub fn _InterlockedExchange64_HLEAcquire(
@@ -13895,11 +12229,7 @@ extern "C" {
     pub fn _mm_sha1nexte_epu32(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_sha1rnds4_epu32(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_sha1rnds4_epu32(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_sha256msg1_epu32(arg1: __m128i, arg2: __m128i) -> __m128i;
@@ -13911,10 +12241,7 @@ extern "C" {
     pub fn _mm_sha256rnds2_epu32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _bnd_set_ptr_bounds(
-        arg1: *const ::std::os::raw::c_void,
-        arg2: usize,
-    ) -> *mut ::std::os::raw::c_void;
+    pub fn _bnd_set_ptr_bounds(arg1: *const ::std::os::raw::c_void, arg2: usize) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn _bnd_narrow_ptr_bounds(
@@ -13930,14 +12257,10 @@ extern "C" {
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn _bnd_init_ptr_bounds(arg1: *const ::std::os::raw::c_void)
-        -> *mut ::std::os::raw::c_void;
+    pub fn _bnd_init_ptr_bounds(arg1: *const ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn _bnd_store_ptr_bounds(
-        arg1: *mut *const ::std::os::raw::c_void,
-        arg2: *const ::std::os::raw::c_void,
-    );
+    pub fn _bnd_store_ptr_bounds(arg1: *mut *const ::std::os::raw::c_void, arg2: *const ::std::os::raw::c_void);
 }
 extern "C" {
     pub fn _bnd_chk_ptr_lbounds(arg1: *const ::std::os::raw::c_void);
@@ -13955,64 +12278,35 @@ extern "C" {
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn _bnd_get_ptr_lbound(
-        arg1: *const ::std::os::raw::c_void,
-    ) -> *const ::std::os::raw::c_void;
+    pub fn _bnd_get_ptr_lbound(arg1: *const ::std::os::raw::c_void) -> *const ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn _bnd_get_ptr_ubound(
-        arg1: *const ::std::os::raw::c_void,
-    ) -> *const ::std::os::raw::c_void;
+    pub fn _bnd_get_ptr_ubound(arg1: *const ::std::os::raw::c_void) -> *const ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn _mm256_insert_epi8(
-        arg1: __m256i,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_insert_epi8(arg1: __m256i, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_insert_epi16(
-        arg1: __m256i,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_insert_epi16(arg1: __m256i, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_insert_epi32(
-        arg1: __m256i,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_insert_epi32(arg1: __m256i, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_insert_epi64(
-        arg1: __m256i,
-        arg2: ::std::os::raw::c_longlong,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_insert_epi64(arg1: __m256i, arg2: ::std::os::raw::c_longlong, arg3: ::std::os::raw::c_int)
+        -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_extract_epi8(arg1: __m256i, arg2: ::std::os::raw::c_int)
-        -> ::std::os::raw::c_int;
+    pub fn _mm256_extract_epi8(arg1: __m256i, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm256_extract_epi16(
-        arg1: __m256i,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm256_extract_epi16(arg1: __m256i, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm256_extract_epi32(
-        arg1: __m256i,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm256_extract_epi32(arg1: __m256i, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm256_extract_epi64(
-        arg1: __m256i,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm256_extract_epi64(arg1: __m256i, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm256_zextpd128_pd256(arg1: __m128d) -> __m256d;
@@ -14174,16 +12468,10 @@ extern "C" {
     pub fn _wrpkru(arg1: ::std::os::raw::c_uint);
 }
 extern "C" {
-    pub fn _enqcmd(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> ::std::os::raw::c_int;
+    pub fn _enqcmd(arg1: *mut ::std::os::raw::c_void, arg2: *const ::std::os::raw::c_void) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _enqcmds(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> ::std::os::raw::c_int;
+    pub fn _enqcmds(arg1: *mut ::std::os::raw::c_void, arg2: *const ::std::os::raw::c_void) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _incsspd(arg1: ::std::os::raw::c_uint);
@@ -14891,16 +13179,10 @@ extern "C" {
     pub fn _umonitor(arg1: *mut ::std::os::raw::c_void);
 }
 extern "C" {
-    pub fn _umwait(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_ulonglong,
-    ) -> ::std::os::raw::c_uchar;
+    pub fn _umwait(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_ulonglong) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
-    pub fn _tpause(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_ulonglong,
-    ) -> ::std::os::raw::c_uchar;
+    pub fn _tpause(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_ulonglong) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
     pub fn _clui();
@@ -14980,12 +13262,7 @@ fn bindgen_test_layout___m512() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512_f32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512),
-            "::",
-            stringify!(m512_f32)
-        )
+        concat!("Offset of field: ", stringify!(__m512), "::", stringify!(m512_f32))
     );
 }
 #[repr(C)]
@@ -15011,12 +13288,7 @@ fn bindgen_test_layout___m512d() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512d_f64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512d),
-            "::",
-            stringify!(m512d_f64)
-        )
+        concat!("Offset of field: ", stringify!(__m512d), "::", stringify!(m512d_f64))
     );
 }
 #[repr(C)]
@@ -15049,82 +13321,42 @@ fn bindgen_test_layout___m512i() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512i_i8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512i),
-            "::",
-            stringify!(m512i_i8)
-        )
+        concat!("Offset of field: ", stringify!(__m512i), "::", stringify!(m512i_i8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512i_i16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512i),
-            "::",
-            stringify!(m512i_i16)
-        )
+        concat!("Offset of field: ", stringify!(__m512i), "::", stringify!(m512i_i16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512i_i32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512i),
-            "::",
-            stringify!(m512i_i32)
-        )
+        concat!("Offset of field: ", stringify!(__m512i), "::", stringify!(m512i_i32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512i_i64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512i),
-            "::",
-            stringify!(m512i_i64)
-        )
+        concat!("Offset of field: ", stringify!(__m512i), "::", stringify!(m512i_i64))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512i_u8) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512i),
-            "::",
-            stringify!(m512i_u8)
-        )
+        concat!("Offset of field: ", stringify!(__m512i), "::", stringify!(m512i_u8))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512i_u16) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512i),
-            "::",
-            stringify!(m512i_u16)
-        )
+        concat!("Offset of field: ", stringify!(__m512i), "::", stringify!(m512i_u16))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512i_u32) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512i),
-            "::",
-            stringify!(m512i_u32)
-        )
+        concat!("Offset of field: ", stringify!(__m512i), "::", stringify!(m512i_u32))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).m512i_u64) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__m512i),
-            "::",
-            stringify!(m512i_u64)
-        )
+        concat!("Offset of field: ", stringify!(__m512i), "::", stringify!(m512i_u64))
     );
 }
 extern "C" {
@@ -15570,18 +13802,10 @@ extern "C" {
     pub fn _mm512_maskz_load_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_load_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512;
+    pub fn _mm512_mask_load_ps(arg1: __m512, arg2: __mmask16, arg3: *const ::std::os::raw::c_void) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_load_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512d;
+    pub fn _mm512_mask_load_pd(arg1: __m512d, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_loadu_ps(arg1: *const ::std::os::raw::c_void) -> __m512;
@@ -15596,18 +13820,10 @@ extern "C" {
     pub fn _mm512_maskz_loadu_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_loadu_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512;
+    pub fn _mm512_mask_loadu_ps(arg1: __m512, arg2: __mmask16, arg3: *const ::std::os::raw::c_void) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_loadu_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512d;
+    pub fn _mm512_mask_loadu_pd(arg1: __m512d, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_store_ps(arg1: *mut ::std::os::raw::c_void, arg2: __m512);
@@ -15669,19 +13885,10 @@ extern "C" {
     pub fn _mm512_maskz_add_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_add_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_add_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_add_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_add_round_pd(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_add_round_pd(
@@ -15736,19 +13943,10 @@ extern "C" {
     pub fn _mm512_maskz_sub_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_sub_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_sub_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_sub_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_sub_round_pd(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_sub_round_pd(
@@ -15803,19 +14001,10 @@ extern "C" {
     pub fn _mm512_maskz_mul_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_mul_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_mul_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mul_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_mul_round_pd(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_mul_round_pd(
@@ -15870,19 +14059,10 @@ extern "C" {
     pub fn _mm512_maskz_div_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_div_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_div_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_div_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_div_round_pd(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_div_round_pd(
@@ -15905,36 +14085,16 @@ extern "C" {
     pub fn _mm512_fmadd_ps(arg1: __m512, arg2: __m512, arg3: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_fmadd_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_fmadd_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmadd_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __mmask16,
-    ) -> __m512;
+    pub fn _mm512_mask3_fmadd_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: __mmask16) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmadd_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_maskz_fmadd_ps(arg1: __mmask16, arg2: __m512, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_fmadd_round_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_fmadd_round_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_fmadd_round_ps(
@@ -15967,36 +14127,16 @@ extern "C" {
     pub fn _mm512_fmadd_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_fmadd_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_fmadd_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmadd_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __mmask8,
-    ) -> __m512d;
+    pub fn _mm512_mask3_fmadd_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: __mmask8) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmadd_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_maskz_fmadd_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_fmadd_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_fmadd_round_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_fmadd_round_pd(
@@ -16029,36 +14169,16 @@ extern "C" {
     pub fn _mm512_fmsub_ps(arg1: __m512, arg2: __m512, arg3: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_fmsub_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_fmsub_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmsub_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __mmask16,
-    ) -> __m512;
+    pub fn _mm512_mask3_fmsub_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: __mmask16) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmsub_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_maskz_fmsub_ps(arg1: __mmask16, arg2: __m512, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_fmsub_round_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_fmsub_round_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_fmsub_round_ps(
@@ -16091,36 +14211,16 @@ extern "C" {
     pub fn _mm512_fmsub_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_fmsub_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_fmsub_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmsub_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __mmask8,
-    ) -> __m512d;
+    pub fn _mm512_mask3_fmsub_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: __mmask8) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmsub_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_maskz_fmsub_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_fmsub_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_fmsub_round_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_fmsub_round_pd(
@@ -16153,36 +14253,16 @@ extern "C" {
     pub fn _mm512_fmaddsub_ps(arg1: __m512, arg2: __m512, arg3: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_fmaddsub_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_fmaddsub_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmaddsub_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __mmask16,
-    ) -> __m512;
+    pub fn _mm512_mask3_fmaddsub_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: __mmask16) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmaddsub_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_maskz_fmaddsub_ps(arg1: __mmask16, arg2: __m512, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_fmaddsub_round_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_fmaddsub_round_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_fmaddsub_round_ps(
@@ -16215,28 +14295,13 @@ extern "C" {
     pub fn _mm512_fmaddsub_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_fmaddsub_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_fmaddsub_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmaddsub_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __mmask8,
-    ) -> __m512d;
+    pub fn _mm512_mask3_fmaddsub_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: __mmask8) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmaddsub_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_maskz_fmaddsub_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_fmaddsub_round_pd(
@@ -16277,36 +14342,16 @@ extern "C" {
     pub fn _mm512_fmsubadd_ps(arg1: __m512, arg2: __m512, arg3: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_fmsubadd_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_fmsubadd_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmsubadd_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __mmask16,
-    ) -> __m512;
+    pub fn _mm512_mask3_fmsubadd_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: __mmask16) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmsubadd_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_maskz_fmsubadd_ps(arg1: __mmask16, arg2: __m512, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_fmsubadd_round_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_fmsubadd_round_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_fmsubadd_round_ps(
@@ -16339,28 +14384,13 @@ extern "C" {
     pub fn _mm512_fmsubadd_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_fmsubadd_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_fmsubadd_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmsubadd_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __mmask8,
-    ) -> __m512d;
+    pub fn _mm512_mask3_fmsubadd_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: __mmask8) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmsubadd_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_maskz_fmsubadd_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_fmsubadd_round_pd(
@@ -16401,36 +14431,16 @@ extern "C" {
     pub fn _mm512_fnmadd_ps(arg1: __m512, arg2: __m512, arg3: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_fnmadd_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_fnmadd_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask3_fnmadd_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __mmask16,
-    ) -> __m512;
+    pub fn _mm512_mask3_fnmadd_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: __mmask16) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_fnmadd_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_maskz_fnmadd_ps(arg1: __mmask16, arg2: __m512, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_fnmadd_round_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_fnmadd_round_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_fnmadd_round_ps(
@@ -16463,36 +14473,16 @@ extern "C" {
     pub fn _mm512_fnmadd_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_fnmadd_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_fnmadd_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask3_fnmadd_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __mmask8,
-    ) -> __m512d;
+    pub fn _mm512_mask3_fnmadd_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: __mmask8) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_fnmadd_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_maskz_fnmadd_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_fnmadd_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_fnmadd_round_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_fnmadd_round_pd(
@@ -16525,36 +14515,16 @@ extern "C" {
     pub fn _mm512_fnmsub_ps(arg1: __m512, arg2: __m512, arg3: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_fnmsub_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_fnmsub_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask3_fnmsub_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __mmask16,
-    ) -> __m512;
+    pub fn _mm512_mask3_fnmsub_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: __mmask16) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_fnmsub_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_maskz_fnmsub_ps(arg1: __mmask16, arg2: __m512, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_fnmsub_round_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_fnmsub_round_ps(arg1: __m512, arg2: __m512, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_fnmsub_round_ps(
@@ -16587,36 +14557,16 @@ extern "C" {
     pub fn _mm512_fnmsub_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_fnmsub_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_fnmsub_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask3_fnmsub_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __mmask8,
-    ) -> __m512d;
+    pub fn _mm512_mask3_fnmsub_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: __mmask8) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_fnmsub_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_maskz_fnmsub_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_fnmsub_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_fnmsub_round_pd(arg1: __m512d, arg2: __m512d, arg3: __m512d, arg4: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_fnmsub_round_pd(
@@ -16670,18 +14620,10 @@ extern "C" {
     pub fn _mm512_sqrt_round_pd(arg1: __m512d, arg2: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_sqrt_round_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_sqrt_round_ps(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_sqrt_round_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_sqrt_round_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_sqrt_round_ps(
@@ -16733,22 +14675,13 @@ extern "C" {
     pub fn _mm512_mask_max_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_max_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_max_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_max_round_ps(arg1: __m512, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_max_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_max_round_pd(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_max_round_ps(
@@ -16800,22 +14733,13 @@ extern "C" {
     pub fn _mm512_mask_min_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_min_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_min_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_min_round_ps(arg1: __m512, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_min_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_min_round_pd(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_min_round_ps(
@@ -16912,18 +14836,10 @@ extern "C" {
     pub fn _mm512_cvt_roundpd_ps(arg1: __m512d, arg2: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundps_pd(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_cvt_roundps_pd(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundpd_ps(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm512_maskz_cvt_roundpd_ps(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm512_mask_cvt_roundps_pd(
@@ -16942,8 +14858,7 @@ extern "C" {
     ) -> __m256;
 }
 extern "C" {
-    pub fn _mm512_cmp_ps_mask(arg1: __m512, arg2: __m512, arg3: ::std::os::raw::c_int)
-        -> __mmask16;
+    pub fn _mm512_cmp_ps_mask(arg1: __m512, arg2: __m512, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_ps_mask(
@@ -16971,11 +14886,7 @@ extern "C" {
     ) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_cmp_pd_mask(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm512_cmp_pd_mask(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_pd_mask(
@@ -17077,11 +14988,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm512_maskz_extractf32x4_ps(
-        arg1: __mmask8,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm512_maskz_extractf32x4_ps(arg1: __mmask8, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm512_extractf32x8_ps(arg1: __m512, arg2: ::std::os::raw::c_int) -> __m256;
@@ -17095,11 +15002,7 @@ extern "C" {
     ) -> __m256;
 }
 extern "C" {
-    pub fn _mm512_maskz_extractf32x8_ps(
-        arg1: __mmask8,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm512_maskz_extractf32x8_ps(arg1: __mmask8, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm512_extractf64x2_pd(arg1: __m512d, arg2: ::std::os::raw::c_int) -> __m128d;
@@ -17113,11 +15016,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm512_maskz_extractf64x2_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm512_maskz_extractf64x2_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm512_extractf64x4_pd(arg1: __m512d, arg2: ::std::os::raw::c_int) -> __m256d;
@@ -17131,11 +15030,7 @@ extern "C" {
     ) -> __m256d;
 }
 extern "C" {
-    pub fn _mm512_maskz_extractf64x4_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm512_maskz_extractf64x4_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn _mm512_insertf32x4(arg1: __m512, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m512;
@@ -17150,12 +15045,8 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_insertf32x4(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_insertf32x4(arg1: __mmask16, arg2: __m512, arg3: __m128, arg4: ::std::os::raw::c_int)
+        -> __m512;
 }
 extern "C" {
     pub fn _mm512_insertf32x8(arg1: __m512, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m512;
@@ -17170,16 +15061,11 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_insertf32x8(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m256,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_insertf32x8(arg1: __mmask16, arg2: __m512, arg3: __m256, arg4: ::std::os::raw::c_int)
+        -> __m512;
 }
 extern "C" {
-    pub fn _mm512_insertf64x2(arg1: __m512d, arg2: __m128d, arg3: ::std::os::raw::c_int)
-        -> __m512d;
+    pub fn _mm512_insertf64x2(arg1: __m512d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_insertf64x2(
@@ -17199,8 +15085,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_insertf64x4(arg1: __m512d, arg2: __m256d, arg3: ::std::os::raw::c_int)
-        -> __m512d;
+    pub fn _mm512_insertf64x4(arg1: __m512d, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_insertf64x4(
@@ -17240,11 +15125,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_shuffle_f64x2(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_shuffle_f64x2(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_shuffle_f64x2(
@@ -17296,12 +15177,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_shuffle_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_shuffle_ps(arg1: __mmask16, arg2: __m512, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_cmpeq_ps_mask(arg1: __m512, arg2: __m512) -> __mmask16;
@@ -17678,11 +15554,7 @@ extern "C" {
     pub fn _mm512_set1_epi8(arg1: ::std::os::raw::c_char) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_set1_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: ::std::os::raw::c_char,
-    ) -> __m512i;
+    pub fn _mm512_mask_set1_epi8(arg1: __m512i, arg2: __mmask64, arg3: ::std::os::raw::c_char) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_set1_epi8(arg1: __mmask64, arg2: ::std::os::raw::c_char) -> __m512i;
@@ -17691,11 +15563,7 @@ extern "C" {
     pub fn _mm512_set1_epi16(arg1: ::std::os::raw::c_short) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_set1_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: ::std::os::raw::c_short,
-    ) -> __m512i;
+    pub fn _mm512_mask_set1_epi16(arg1: __m512i, arg2: __mmask32, arg3: ::std::os::raw::c_short) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_set1_epi16(arg1: __mmask32, arg2: ::std::os::raw::c_short) -> __m512i;
@@ -17704,11 +15572,7 @@ extern "C" {
     pub fn _mm512_set1_epi32(arg1: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_set1_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_mask_set1_epi32(arg1: __m512i, arg2: __mmask16, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_set1_epi32(arg1: __mmask16, arg2: ::std::os::raw::c_int) -> __m512i;
@@ -17717,11 +15581,7 @@ extern "C" {
     pub fn _mm512_set1_epi64(arg1: ::std::os::raw::c_longlong) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_set1_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: ::std::os::raw::c_longlong,
-    ) -> __m512i;
+    pub fn _mm512_mask_set1_epi64(arg1: __m512i, arg2: __mmask8, arg3: ::std::os::raw::c_longlong) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_set1_epi64(arg1: __mmask8, arg2: ::std::os::raw::c_longlong) -> __m512i;
@@ -17730,12 +15590,7 @@ extern "C" {
     pub fn _mm512_add_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_add_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_add_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_add_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17744,12 +15599,7 @@ extern "C" {
     pub fn _mm512_add_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_add_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_add_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_add_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17758,12 +15608,7 @@ extern "C" {
     pub fn _mm512_add_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_add_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_add_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_add_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17772,12 +15617,7 @@ extern "C" {
     pub fn _mm512_add_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_add_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_add_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_add_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17786,12 +15626,7 @@ extern "C" {
     pub fn _mm512_adds_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_adds_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_adds_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_adds_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17800,12 +15635,7 @@ extern "C" {
     pub fn _mm512_adds_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_adds_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_adds_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_adds_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17814,12 +15644,7 @@ extern "C" {
     pub fn _mm512_adds_epu8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_adds_epu8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_adds_epu8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_adds_epu8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17828,12 +15653,7 @@ extern "C" {
     pub fn _mm512_adds_epu16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_adds_epu16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_adds_epu16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_adds_epu16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17965,12 +15785,7 @@ extern "C" {
     pub fn _mm512_sub_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sub_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sub_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sub_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17979,12 +15794,7 @@ extern "C" {
     pub fn _mm512_sub_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sub_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sub_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sub_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -17993,12 +15803,7 @@ extern "C" {
     pub fn _mm512_sub_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sub_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sub_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sub_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18007,12 +15812,7 @@ extern "C" {
     pub fn _mm512_sub_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sub_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sub_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sub_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18021,12 +15821,7 @@ extern "C" {
     pub fn _mm512_subs_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_subs_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_subs_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_subs_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18035,12 +15830,7 @@ extern "C" {
     pub fn _mm512_subs_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_subs_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_subs_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_subs_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18049,12 +15839,7 @@ extern "C" {
     pub fn _mm512_subs_epu8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_subs_epu8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_subs_epu8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_subs_epu8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18063,12 +15848,7 @@ extern "C" {
     pub fn _mm512_subs_epu16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_subs_epu16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_subs_epu16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_subs_epu16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18077,12 +15857,7 @@ extern "C" {
     pub fn _mm512_max_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_max_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_max_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_max_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18091,12 +15866,7 @@ extern "C" {
     pub fn _mm512_max_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_max_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_max_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_max_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18105,12 +15875,7 @@ extern "C" {
     pub fn _mm512_max_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_max_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_max_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_max_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18119,12 +15884,7 @@ extern "C" {
     pub fn _mm512_max_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_max_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_max_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_max_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18133,12 +15893,7 @@ extern "C" {
     pub fn _mm512_max_epu8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_max_epu8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_max_epu8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_max_epu8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18147,12 +15902,7 @@ extern "C" {
     pub fn _mm512_max_epu16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_max_epu16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_max_epu16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_max_epu16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18161,12 +15911,7 @@ extern "C" {
     pub fn _mm512_max_epu32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_max_epu32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_max_epu32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_max_epu32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18175,12 +15920,7 @@ extern "C" {
     pub fn _mm512_max_epu64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_max_epu64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_max_epu64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_max_epu64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18189,12 +15929,7 @@ extern "C" {
     pub fn _mm512_min_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_min_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_min_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_min_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18203,12 +15938,7 @@ extern "C" {
     pub fn _mm512_min_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_min_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_min_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_min_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18217,12 +15947,7 @@ extern "C" {
     pub fn _mm512_min_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_min_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_min_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_min_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18231,12 +15956,7 @@ extern "C" {
     pub fn _mm512_min_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_min_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_min_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_min_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18245,12 +15965,7 @@ extern "C" {
     pub fn _mm512_min_epu8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_min_epu8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_min_epu8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_min_epu8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18259,12 +15974,7 @@ extern "C" {
     pub fn _mm512_min_epu16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_min_epu16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_min_epu16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_min_epu16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18273,12 +15983,7 @@ extern "C" {
     pub fn _mm512_min_epu32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_min_epu32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_min_epu32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_min_epu32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18287,12 +15992,7 @@ extern "C" {
     pub fn _mm512_min_epu64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_min_epu64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_min_epu64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_min_epu64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18301,12 +16001,7 @@ extern "C" {
     pub fn _mm512_mul_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_mul_epi32(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_mul_epi32(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_mul_epi32(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18315,12 +16010,7 @@ extern "C" {
     pub fn _mm512_mul_epu32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_mul_epu32(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_mul_epu32(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_mul_epu32(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18329,12 +16019,7 @@ extern "C" {
     pub fn _mm512_mulhi_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_mulhi_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_mulhi_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_mulhi_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18343,12 +16028,7 @@ extern "C" {
     pub fn _mm512_mulhi_epu16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_mulhi_epu16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_mulhi_epu16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_mulhi_epu16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18357,12 +16037,7 @@ extern "C" {
     pub fn _mm512_mullo_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_mullo_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_mullo_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_mullo_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18371,12 +16046,7 @@ extern "C" {
     pub fn _mm512_mullo_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_mullo_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_mullo_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_mullo_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18385,12 +16055,7 @@ extern "C" {
     pub fn _mm512_mullo_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_mullo_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_mullo_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_mullo_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18399,23 +16064,13 @@ extern "C" {
     pub fn _mm512_mullox_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_mullox_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_mullox_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mulhrs_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_mulhrs_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_mulhrs_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_mulhrs_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18424,25 +16079,16 @@ extern "C" {
     pub fn _mm512_load_epi32(arg1: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_load_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_mask_load_epi32(arg1: __m512i, arg2: __mmask16, arg3: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_load_epi32(arg1: __mmask16, arg2: *const ::std::os::raw::c_void)
-        -> __m512i;
+    pub fn _mm512_maskz_load_epi32(arg1: __mmask16, arg2: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_load_epi64(arg1: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_load_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_mask_load_epi64(arg1: __m512i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_load_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m512i;
@@ -18451,121 +16097,73 @@ extern "C" {
     pub fn _mm512_loadu_epi8(arg1: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_loadu_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_mask_loadu_epi8(arg1: __m512i, arg2: __mmask64, arg3: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_loadu_epi8(arg1: __mmask64, arg2: *const ::std::os::raw::c_void)
-        -> __m512i;
+    pub fn _mm512_maskz_loadu_epi8(arg1: __mmask64, arg2: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_loadu_epi16(arg1: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_loadu_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_mask_loadu_epi16(arg1: __m512i, arg2: __mmask32, arg3: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_loadu_epi16(
-        arg1: __mmask32,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_maskz_loadu_epi16(arg1: __mmask32, arg2: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_loadu_epi32(arg1: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_loadu_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_mask_loadu_epi32(arg1: __m512i, arg2: __mmask16, arg3: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_loadu_epi32(
-        arg1: __mmask16,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_maskz_loadu_epi32(arg1: __mmask16, arg2: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_loadu_epi64(arg1: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_loadu_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_mask_loadu_epi64(arg1: __m512i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_loadu_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void)
-        -> __m512i;
+    pub fn _mm512_maskz_loadu_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_store_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __m512i);
 }
 extern "C" {
-    pub fn _mm512_mask_store_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_store_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_store_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __m512i);
 }
 extern "C" {
-    pub fn _mm512_mask_store_epi64(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_store_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __m512i);
 }
 extern "C" {
-    pub fn _mm512_mask_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask64,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask64, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __m512i);
 }
 extern "C" {
-    pub fn _mm512_mask_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask32,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask32, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __m512i);
 }
 extern "C" {
-    pub fn _mm512_mask_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_storeu_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __m512i);
 }
 extern "C" {
-    pub fn _mm512_mask_storeu_epi64(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_storeu_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_extracti32x4_epi32(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m128i;
@@ -18579,11 +16177,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_maskz_extracti32x4_epi32(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm512_maskz_extracti32x4_epi32(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm512_extracti32x8_epi32(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m256i;
@@ -18597,11 +16191,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_maskz_extracti32x8_epi32(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm512_maskz_extracti32x8_epi32(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_extracti64x2_epi64(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m128i;
@@ -18615,11 +16205,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_maskz_extracti64x2_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm512_maskz_extracti64x2_epi64(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm512_extracti64x4_epi64(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m256i;
@@ -18633,15 +16219,10 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_maskz_extracti64x4_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm512_maskz_extracti64x4_epi64(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_inserti32x4(arg1: __m512i, arg2: __m128i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_inserti32x4(arg1: __m512i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_inserti32x4(
@@ -18661,8 +16242,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_inserti32x8(arg1: __m512i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_inserti32x8(arg1: __m512i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_inserti32x8(
@@ -18682,8 +16262,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_inserti64x2(arg1: __m512i, arg2: __m128i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_inserti64x2(arg1: __m512i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_inserti64x2(
@@ -18703,8 +16282,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_inserti64x4(arg1: __m512i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_inserti64x4(arg1: __m512i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_inserti64x4(
@@ -18727,12 +16305,7 @@ extern "C" {
     pub fn _mm512_shuffle_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_shuffle_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_shuffle_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_shuffle_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -18749,18 +16322,10 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_shuffle_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_shuffle_epi32(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_shuffle_i32x4(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_shuffle_i32x4(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_shuffle_i32x4(
@@ -18780,11 +16345,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_shuffle_i64x2(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_shuffle_i64x2(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_shuffle_i64x2(
@@ -18815,11 +16376,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_shufflehi_epi16(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_shufflehi_epi16(arg1: __mmask32, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_shufflelo_epi16(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m512i;
@@ -18833,11 +16390,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_shufflelo_epi16(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_shufflelo_epi16(arg1: __mmask32, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_mov_ps(arg1: __m512, arg2: __mmask16, arg3: __m512) -> __m512;
@@ -18927,8 +16480,7 @@ extern "C" {
     pub fn _mm512_movepi64_mask(arg1: __m512i) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm512_alignr_epi8(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_alignr_epi8(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_alignr_epi8(
@@ -18948,11 +16500,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_alignr_epi32(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_alignr_epi32(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_alignr_epi32(
@@ -18972,11 +16520,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_alignr_epi64(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_alignr_epi64(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_alignr_epi64(
@@ -18999,12 +16543,7 @@ extern "C" {
     pub fn _mm512_and_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_and_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_and_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_and_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
@@ -19022,12 +16561,7 @@ extern "C" {
     pub fn _mm512_and_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_and_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_and_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_and_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19036,12 +16570,7 @@ extern "C" {
     pub fn _mm512_and_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_and_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_and_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_and_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19050,12 +16579,7 @@ extern "C" {
     pub fn _mm512_andnot_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_andnot_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_andnot_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_andnot_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
@@ -19064,12 +16588,7 @@ extern "C" {
     pub fn _mm512_andnot_ps(arg1: __m512, arg2: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_andnot_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_andnot_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
     pub fn _mm512_maskz_andnot_ps(arg1: __mmask16, arg2: __m512, arg3: __m512) -> __m512;
@@ -19078,12 +16597,7 @@ extern "C" {
     pub fn _mm512_andnot_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_andnot_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_andnot_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_andnot_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19092,12 +16606,7 @@ extern "C" {
     pub fn _mm512_andnot_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_andnot_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_andnot_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_andnot_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19106,12 +16615,7 @@ extern "C" {
     pub fn _mm512_or_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_or_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_or_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_or_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
@@ -19129,12 +16633,7 @@ extern "C" {
     pub fn _mm512_or_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_or_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_or_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_or_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19143,12 +16642,7 @@ extern "C" {
     pub fn _mm512_or_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_or_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_or_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_or_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19157,12 +16651,7 @@ extern "C" {
     pub fn _mm512_xor_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_xor_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_xor_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_xor_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
@@ -19180,12 +16669,7 @@ extern "C" {
     pub fn _mm512_xor_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_xor_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_xor_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_xor_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19194,12 +16678,7 @@ extern "C" {
     pub fn _mm512_xor_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_xor_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_xor_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_xor_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19250,34 +16729,19 @@ extern "C" {
     pub fn _mm512_sllv_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sll_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m128i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sll_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m128i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sll_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m128i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sll_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m128i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sll_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m128i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sll_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m128i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sll_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m128i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sll_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m128i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sll_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m128i) -> __m512i;
@@ -19291,11 +16755,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_slli_epi16(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m512i;
+    pub fn _mm512_maskz_slli_epi16(arg1: __mmask32, arg2: __m512i, arg3: ::std::os::raw::c_uint) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_slli_epi32(
@@ -19306,11 +16766,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_slli_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m512i;
+    pub fn _mm512_maskz_slli_epi32(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_uint) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_slli_epi64(
@@ -19321,41 +16777,22 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_slli_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m512i;
+    pub fn _mm512_maskz_slli_epi64(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_uint) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sllv_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sllv_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sllv_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sllv_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sllv_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sllv_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sllv_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sllv_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sllv_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19388,34 +16825,19 @@ extern "C" {
     pub fn _mm512_srlv_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_srl_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m128i,
-    ) -> __m512i;
+    pub fn _mm512_mask_srl_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m128i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_srl_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m128i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_srl_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m128i,
-    ) -> __m512i;
+    pub fn _mm512_mask_srl_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m128i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_srl_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m128i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_srl_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m128i,
-    ) -> __m512i;
+    pub fn _mm512_mask_srl_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m128i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_srl_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m128i) -> __m512i;
@@ -19429,11 +16851,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_srli_epi16(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_srli_epi16(arg1: __mmask32, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_srli_epi32(
@@ -19444,11 +16862,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_srli_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m512i;
+    pub fn _mm512_maskz_srli_epi32(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_uint) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_srli_epi64(
@@ -19459,41 +16873,22 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_srli_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m512i;
+    pub fn _mm512_maskz_srli_epi64(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_uint) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_srlv_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_srlv_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_srlv_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_srlv_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_srlv_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_srlv_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_srlv_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_srlv_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_srlv_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19526,34 +16921,19 @@ extern "C" {
     pub fn _mm512_srav_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sra_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m128i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sra_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m128i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sra_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m128i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sra_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m128i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sra_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m128i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sra_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m128i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_sra_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m128i,
-    ) -> __m512i;
+    pub fn _mm512_mask_sra_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m128i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_sra_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m128i) -> __m512i;
@@ -19567,11 +16947,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_srai_epi16(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m512i;
+    pub fn _mm512_maskz_srai_epi16(arg1: __mmask32, arg2: __m512i, arg3: ::std::os::raw::c_uint) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_srai_epi32(
@@ -19582,11 +16958,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_srai_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m512i;
+    pub fn _mm512_maskz_srai_epi32(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_uint) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_srai_epi64(
@@ -19597,41 +16969,22 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_srai_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m512i;
+    pub fn _mm512_maskz_srai_epi64(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_uint) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_srav_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_srav_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_srav_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_srav_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_srav_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_srav_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_srav_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_srav_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_srav_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19646,48 +16999,26 @@ extern "C" {
     pub fn _mm512_rol_epi32(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_rol_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_mask_rol_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: ::std::os::raw::c_int)
+        -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_rol_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_rol_epi32(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_rol_epi64(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_rol_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_mask_rol_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_rol_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_rol_epi64(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_rolv_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_rolv_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_rolv_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_rolv_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19696,12 +17027,7 @@ extern "C" {
     pub fn _mm512_rolv_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_rolv_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_rolv_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_rolv_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19710,48 +17036,26 @@ extern "C" {
     pub fn _mm512_ror_epi32(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_ror_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_mask_ror_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: ::std::os::raw::c_int)
+        -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_ror_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_ror_epi32(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_ror_epi64(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_ror_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_mask_ror_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_ror_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_ror_epi64(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_rorv_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_rorv_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_rorv_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_rorv_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19760,12 +17064,7 @@ extern "C" {
     pub fn _mm512_rorv_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_rorv_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_rorv_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_rorv_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19774,12 +17073,7 @@ extern "C" {
     pub fn _mm512_unpackhi_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_unpackhi_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_unpackhi_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_unpackhi_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
@@ -19788,12 +17082,7 @@ extern "C" {
     pub fn _mm512_unpackhi_ps(arg1: __m512, arg2: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_unpackhi_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_unpackhi_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
     pub fn _mm512_maskz_unpackhi_ps(arg1: __mmask16, arg2: __m512, arg3: __m512) -> __m512;
@@ -19802,12 +17091,7 @@ extern "C" {
     pub fn _mm512_unpacklo_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_unpacklo_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_unpacklo_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_unpacklo_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
@@ -19816,12 +17100,7 @@ extern "C" {
     pub fn _mm512_unpacklo_ps(arg1: __m512, arg2: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_unpacklo_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_unpacklo_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
     pub fn _mm512_maskz_unpacklo_ps(arg1: __mmask16, arg2: __m512, arg3: __m512) -> __m512;
@@ -19830,12 +17109,7 @@ extern "C" {
     pub fn _mm512_unpackhi_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_unpackhi_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_unpackhi_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_unpackhi_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19844,12 +17118,7 @@ extern "C" {
     pub fn _mm512_unpackhi_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_unpackhi_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_unpackhi_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_unpackhi_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19858,12 +17127,7 @@ extern "C" {
     pub fn _mm512_unpackhi_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_unpackhi_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_unpackhi_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_unpackhi_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19872,12 +17136,7 @@ extern "C" {
     pub fn _mm512_unpackhi_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_unpackhi_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_unpackhi_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_unpackhi_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19886,12 +17145,7 @@ extern "C" {
     pub fn _mm512_unpacklo_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_unpacklo_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_unpacklo_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_unpacklo_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19900,12 +17154,7 @@ extern "C" {
     pub fn _mm512_unpacklo_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_unpacklo_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_unpacklo_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_unpacklo_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19914,12 +17163,7 @@ extern "C" {
     pub fn _mm512_unpacklo_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_unpacklo_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_unpacklo_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_unpacklo_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19928,12 +17172,7 @@ extern "C" {
     pub fn _mm512_unpacklo_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_unpacklo_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_unpacklo_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_unpacklo_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -19959,11 +17198,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_getexp_round_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_getexp_round_ps(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_getexp_pd(arg1: __m512d) -> __m512d;
@@ -19986,18 +17221,10 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_getexp_round_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_getexp_round_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_getmant_ps(
-        arg1: __m512,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_getmant_ps(arg1: __m512, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_getmant_ps(
@@ -20044,11 +17271,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_getmant_pd(
-        arg1: __m512d,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_getmant_pd(arg1: __m512d, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_getmant_pd(
@@ -20098,48 +17321,26 @@ extern "C" {
     pub fn _mm512_permute_pd(arg1: __m512d, arg2: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_permute_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_mask_permute_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: ::std::os::raw::c_int)
+        -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_permute_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_permute_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_permute_ps(arg1: __m512, arg2: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_permute_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_mask_permute_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_permute_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_permute_ps(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_permutevar_pd(arg1: __m512d, arg2: __m512i) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_permutevar_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512i,
-    ) -> __m512d;
+    pub fn _mm512_mask_permutevar_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512i) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_permutevar_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512i) -> __m512d;
@@ -20148,12 +17349,7 @@ extern "C" {
     pub fn _mm512_permutevar_ps(arg1: __m512, arg2: __m512i) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_permutevar_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512i,
-    ) -> __m512;
+    pub fn _mm512_mask_permutevar_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512i) -> __m512;
 }
 extern "C" {
     pub fn _mm512_maskz_permutevar_ps(arg1: __mmask16, arg2: __m512, arg3: __m512i) -> __m512;
@@ -20162,12 +17358,7 @@ extern "C" {
     pub fn _mm512_permutevar_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_permutevar_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_permutevar_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_permutex_pd(arg1: __m512d, arg2: ::std::os::raw::c_int) -> __m512d;
@@ -20181,11 +17372,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutex_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_permutex_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_permutex_epi64(arg1: __m512i, arg2: ::std::os::raw::c_int) -> __m512i;
@@ -20199,22 +17386,13 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutex_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_permutex_epi64(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_permutexvar_pd(arg1: __m512i, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_permutexvar_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_permutexvar_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512i, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_permutexvar_pd(arg1: __mmask8, arg2: __m512i, arg3: __m512d) -> __m512d;
@@ -20223,12 +17401,7 @@ extern "C" {
     pub fn _mm512_permutexvar_ps(arg1: __m512i, arg2: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_permutexvar_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_permutexvar_ps(arg1: __m512, arg2: __mmask16, arg3: __m512i, arg4: __m512) -> __m512;
 }
 extern "C" {
     pub fn _mm512_maskz_permutexvar_ps(arg1: __mmask16, arg2: __m512i, arg3: __m512) -> __m512;
@@ -20237,42 +17410,25 @@ extern "C" {
     pub fn _mm512_permutexvar_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_permutexvar_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_permutexvar_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutexvar_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __m512i;
+    pub fn _mm512_maskz_permutexvar_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_permutexvar_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_permutexvar_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_permutexvar_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutexvar_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __m512i;
+    pub fn _mm512_maskz_permutexvar_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_permutexvar_epi64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_permutexvar_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_permutexvar_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_permutexvar_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -20281,136 +17437,61 @@ extern "C" {
     pub fn _mm512_permutex2var_pd(arg1: __m512d, arg2: __m512i, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_permutex2var_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_permutex2var_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512i, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask2_permutex2var_pd(
-        arg1: __m512d,
-        arg2: __m512i,
-        arg3: __mmask8,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask2_permutex2var_pd(arg1: __m512d, arg2: __m512i, arg3: __mmask8, arg4: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutex2var_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: __m512i,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_maskz_permutex2var_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512i, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_permutex2var_ps(arg1: __m512, arg2: __m512i, arg3: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_permutex2var_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_permutex2var_ps(arg1: __m512, arg2: __mmask16, arg3: __m512i, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask2_permutex2var_ps(
-        arg1: __m512,
-        arg2: __m512i,
-        arg3: __mmask16,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask2_permutex2var_ps(arg1: __m512, arg2: __m512i, arg3: __mmask16, arg4: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutex2var_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512i,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_maskz_permutex2var_ps(arg1: __mmask16, arg2: __m512, arg3: __m512i, arg4: __m512) -> __m512;
 }
 extern "C" {
     pub fn _mm512_permutex2var_epi16(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_permutex2var_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_permutex2var_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask2_permutex2var_epi16(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: __mmask32,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask2_permutex2var_epi16(arg1: __m512i, arg2: __m512i, arg3: __mmask32, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutex2var_epi16(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_permutex2var_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_permutex2var_epi32(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_permutex2var_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_permutex2var_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask2_permutex2var_epi32(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: __mmask16,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask2_permutex2var_epi32(arg1: __m512i, arg2: __m512i, arg3: __mmask16, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutex2var_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_permutex2var_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_permutex2var_epi64(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_permutex2var_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_permutex2var_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask2_permutex2var_epi64(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: __mmask8,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask2_permutex2var_epi64(arg1: __m512i, arg2: __m512i, arg3: __mmask8, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutex2var_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_permutex2var_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_compress_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d) -> __m512d;
@@ -20449,46 +17530,22 @@ extern "C" {
     pub fn _mm512_maskz_compress_epi64(arg1: __mmask8, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_compressstoreu_pd(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512d,
-    );
+    pub fn _mm512_mask_compressstoreu_pd(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512d);
 }
 extern "C" {
-    pub fn _mm512_mask_compressstoreu_ps(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512,
-    );
+    pub fn _mm512_mask_compressstoreu_ps(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512);
 }
 extern "C" {
-    pub fn _mm512_mask_compressstoreu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask64,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_compressstoreu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask64, arg3: __m512i);
 }
 extern "C" {
-    pub fn _mm512_mask_compressstoreu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask32,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_compressstoreu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask32, arg3: __m512i);
 }
 extern "C" {
-    pub fn _mm512_mask_compressstoreu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_compressstoreu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512i);
 }
 extern "C" {
-    pub fn _mm512_mask_compressstoreu_epi64(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_compressstoreu_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_mask_expand_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d) -> __m512d;
@@ -20527,43 +17584,23 @@ extern "C" {
     pub fn _mm512_maskz_expand_epi64(arg1: __mmask8, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_expandloadu_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512d;
+    pub fn _mm512_mask_expandloadu_pd(arg1: __m512d, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_expandloadu_pd(
-        arg1: __mmask8,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m512d;
+    pub fn _mm512_maskz_expandloadu_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_expandloadu_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512;
+    pub fn _mm512_mask_expandloadu_ps(arg1: __m512, arg2: __mmask16, arg3: *const ::std::os::raw::c_void) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_expandloadu_ps(
-        arg1: __mmask16,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m512;
+    pub fn _mm512_maskz_expandloadu_ps(arg1: __mmask16, arg2: *const ::std::os::raw::c_void) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_expandloadu_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_mask_expandloadu_epi8(arg1: __m512i, arg2: __mmask64, arg3: *const ::std::os::raw::c_void)
+        -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_expandloadu_epi8(
-        arg1: __mmask64,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_maskz_expandloadu_epi8(arg1: __mmask64, arg2: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_expandloadu_epi16(
@@ -20573,10 +17610,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_expandloadu_epi16(
-        arg1: __mmask32,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_maskz_expandloadu_epi16(arg1: __mmask32, arg2: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_expandloadu_epi32(
@@ -20586,23 +17620,14 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_expandloadu_epi32(
-        arg1: __mmask16,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_maskz_expandloadu_epi32(arg1: __mmask16, arg2: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_expandloadu_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_mask_expandloadu_epi64(arg1: __m512i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void)
+        -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_expandloadu_epi64(
-        arg1: __mmask8,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m512i;
+    pub fn _mm512_maskz_expandloadu_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_ternarylogic_epi32(
@@ -20696,12 +17721,7 @@ extern "C" {
     pub fn _mm512_avg_epu8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_avg_epu8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_avg_epu8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_avg_epu8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -20710,12 +17730,7 @@ extern "C" {
     pub fn _mm512_avg_epu16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_avg_epu16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_avg_epu16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_avg_epu16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -20777,10 +17792,7 @@ extern "C" {
     pub fn _mm512_reduce_add_epi64(arg1: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_add_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm512_mask_reduce_add_epi64(arg1: __mmask8, arg2: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm512_reduce_add_epu8(arg1: __m512i) -> ::std::os::raw::c_int;
@@ -20816,10 +17828,7 @@ extern "C" {
     pub fn _mm512_reduce_mul_epi64(arg1: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_mul_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm512_mask_reduce_mul_epi64(arg1: __mmask8, arg2: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm512_reduce_min_ps(arg1: __m512) -> f32;
@@ -20843,10 +17852,7 @@ extern "C" {
     pub fn _mm512_reduce_min_epi64(arg1: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_min_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm512_mask_reduce_min_epi64(arg1: __mmask8, arg2: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm512_reduce_min_epu32(arg1: __m512i) -> ::std::os::raw::c_uint;
@@ -20858,10 +17864,7 @@ extern "C" {
     pub fn _mm512_reduce_min_epu64(arg1: __m512i) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_min_epu64(
-        arg1: __mmask8,
-        arg2: __m512i,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _mm512_mask_reduce_min_epu64(arg1: __mmask8, arg2: __m512i) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn _mm512_reduce_max_ps(arg1: __m512) -> f32;
@@ -20885,10 +17888,7 @@ extern "C" {
     pub fn _mm512_reduce_max_epi64(arg1: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_max_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm512_mask_reduce_max_epi64(arg1: __mmask8, arg2: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm512_reduce_max_epu32(arg1: __m512i) -> ::std::os::raw::c_uint;
@@ -20900,10 +17900,7 @@ extern "C" {
     pub fn _mm512_reduce_max_epu64(arg1: __m512i) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_max_epu64(
-        arg1: __mmask8,
-        arg2: __m512i,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _mm512_mask_reduce_max_epu64(arg1: __mmask8, arg2: __m512i) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn _mm512_reduce_and_epi32(arg1: __m512i) -> ::std::os::raw::c_int;
@@ -20915,10 +17912,7 @@ extern "C" {
     pub fn _mm512_reduce_and_epi64(arg1: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_and_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm512_mask_reduce_and_epi64(arg1: __mmask8, arg2: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm512_reduce_or_epi32(arg1: __m512i) -> ::std::os::raw::c_int;
@@ -20930,8 +17924,7 @@ extern "C" {
     pub fn _mm512_reduce_or_epi64(arg1: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_or_epi64(arg1: __mmask8, arg2: __m512i)
-        -> ::std::os::raw::c_longlong;
+    pub fn _mm512_mask_reduce_or_epi64(arg1: __mmask8, arg2: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm512_reduce_xor_epi32(arg1: __m512i) -> ::std::os::raw::c_int;
@@ -20943,35 +17936,19 @@ extern "C" {
     pub fn _mm512_reduce_xor_epi64(arg1: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_xor_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm512_mask_reduce_xor_epi64(arg1: __mmask8, arg2: __m512i) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm512_reduce_pd(arg1: __m512d, arg2: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_mask_reduce_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_reduce_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_reduce_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_reduce_round_pd(
-        arg1: __m512d,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_reduce_round_pd(arg1: __m512d, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_reduce_round_pd(
@@ -20994,26 +17971,13 @@ extern "C" {
     pub fn _mm512_reduce_ps(arg1: __m512, arg2: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_mask_reduce_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_reduce_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_reduce_ps(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_reduce_round_ps(
-        arg1: __m512,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_reduce_round_ps(arg1: __m512, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_reduce_round_ps(
@@ -21044,11 +18008,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_roundscale_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_roundscale_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_roundscale_round_pd(
@@ -21086,18 +18046,11 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_roundscale_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_roundscale_ps(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_roundscale_round_ps(
-        arg1: __m512,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_roundscale_round_ps(arg1: __m512, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int)
+        -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_roundscale_round_ps(
@@ -21120,22 +18073,13 @@ extern "C" {
     pub fn _mm512_scalef_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_scalef_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_scalef_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_maskz_scalef_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_scalef_round_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_scalef_round_pd(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_scalef_round_pd(
@@ -21158,22 +18102,13 @@ extern "C" {
     pub fn _mm512_scalef_ps(arg1: __m512, arg2: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_scalef_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_scalef_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
     pub fn _mm512_maskz_scalef_ps(arg1: __mmask16, arg2: __m512, arg3: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_scalef_round_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_scalef_round_ps(arg1: __m512, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_scalef_round_ps(
@@ -21193,12 +18128,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_fixupimm_pd(
-        arg1: __m512d,
-        arg2: __m512d,
-        arg3: __m512i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_fixupimm_pd(arg1: __m512d, arg2: __m512d, arg3: __m512i, arg4: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_fixupimm_pd(
@@ -21248,12 +18178,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_fixupimm_ps(
-        arg1: __m512,
-        arg2: __m512,
-        arg3: __m512i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_fixupimm_ps(arg1: __m512, arg2: __m512, arg3: __m512i, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_fixupimm_ps(
@@ -21330,21 +18255,13 @@ extern "C" {
     pub fn _mm512_fpclass_ps_mask(arg1: __m512, arg2: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_fpclass_ps_mask(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask16;
+    pub fn _mm512_mask_fpclass_ps_mask(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm512_fpclass_pd_mask(arg1: __m512d, arg2: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm512_mask_fpclass_pd_mask(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm512_mask_fpclass_pd_mask(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm512_range_pd(arg1: __m512d, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
@@ -21359,12 +18276,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_range_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: __m512d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_range_pd(arg1: __mmask8, arg2: __m512d, arg3: __m512d, arg4: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_range_round_pd(
@@ -21406,12 +18318,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_range_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_range_ps(arg1: __mmask16, arg2: __m512, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_range_round_ps(
@@ -21444,12 +18351,7 @@ extern "C" {
     pub fn _mm512_madd_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_madd_epi16(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_madd_epi16(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_madd_epi16(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -21458,12 +18360,7 @@ extern "C" {
     pub fn _mm512_maddubs_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_maddubs_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_maddubs_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_maddubs_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -21472,12 +18369,7 @@ extern "C" {
     pub fn _mm512_packs_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_packs_epi16(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_packs_epi16(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_packs_epi16(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -21486,12 +18378,7 @@ extern "C" {
     pub fn _mm512_packs_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_packs_epi32(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_packs_epi32(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_packs_epi32(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -21500,12 +18387,7 @@ extern "C" {
     pub fn _mm512_packus_epi16(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_packus_epi16(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_packus_epi16(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_packus_epi16(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -21514,22 +18396,13 @@ extern "C" {
     pub fn _mm512_packus_epi32(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_packus_epi32(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_packus_epi32(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_packus_epi32(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_cmp_epi8_mask(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask64;
+    pub fn _mm512_cmp_epi8_mask(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __mmask64;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_epi8_mask(
@@ -21540,11 +18413,7 @@ extern "C" {
     ) -> __mmask64;
 }
 extern "C" {
-    pub fn _mm512_cmp_epi16_mask(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask32;
+    pub fn _mm512_cmp_epi16_mask(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __mmask32;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_epi16_mask(
@@ -21555,11 +18424,7 @@ extern "C" {
     ) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_cmp_epi32_mask(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask16;
+    pub fn _mm512_cmp_epi32_mask(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_epi32_mask(
@@ -21570,11 +18435,7 @@ extern "C" {
     ) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_cmp_epi64_mask(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm512_cmp_epi64_mask(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_epi64_mask(
@@ -21585,11 +18446,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm512_cmp_epu8_mask(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask64;
+    pub fn _mm512_cmp_epu8_mask(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __mmask64;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_epu8_mask(
@@ -21600,11 +18457,7 @@ extern "C" {
     ) -> __mmask64;
 }
 extern "C" {
-    pub fn _mm512_cmp_epu16_mask(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask32;
+    pub fn _mm512_cmp_epu16_mask(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __mmask32;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_epu16_mask(
@@ -21615,11 +18468,7 @@ extern "C" {
     ) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_cmp_epu32_mask(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask16;
+    pub fn _mm512_cmp_epu32_mask(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_epu32_mask(
@@ -21630,11 +18479,7 @@ extern "C" {
     ) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_cmp_epu64_mask(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm512_cmp_epu64_mask(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_epu64_mask(
@@ -21666,8 +18511,7 @@ extern "C" {
     pub fn _mm512_testn_epi16_mask(arg1: __m512i, arg2: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_testn_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_testn_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
     pub fn _mm512_test_epi32_mask(arg1: __m512i, arg2: __m512i) -> __mmask16;
@@ -21685,8 +18529,7 @@ extern "C" {
     pub fn _mm512_testn_epi32_mask(arg1: __m512i, arg2: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_testn_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_testn_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
     pub fn _mm512_testn_epi64_mask(arg1: __m512i, arg2: __m512i) -> __mmask8;
@@ -22072,11 +18915,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepi32_ps(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_cvt_roundepi32_ps(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_cvtepu32_ps(arg1: __m512i) -> __m512;
@@ -22099,11 +18938,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepu32_ps(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_cvt_roundepu32_ps(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_cvtph_ps(arg1: __m256i) -> __m512;
@@ -22126,29 +18961,16 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundph_ps(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_cvt_roundph_ps(arg1: __mmask16, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_cvtps_ph(arg1: __m512, arg2: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtps_ph(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm512_mask_cvtps_ph(arg1: __m256i, arg2: __mmask16, arg3: __m512, arg4: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtps_ph(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm512_maskz_cvtps_ph(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_cvt_roundps_ph(arg1: __m512, arg2: ::std::os::raw::c_int) -> __m256i;
@@ -22162,11 +18984,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundps_ph(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm512_maskz_cvt_roundps_ph(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_cvtepi64_ps(arg1: __m512i) -> __m256;
@@ -22189,11 +19007,7 @@ extern "C" {
     ) -> __m256;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepi64_ps(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm512_maskz_cvt_roundepi64_ps(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm512_cvtepu64_ps(arg1: __m512i) -> __m256;
@@ -22216,11 +19030,7 @@ extern "C" {
     ) -> __m256;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepu64_ps(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm512_maskz_cvt_roundepu64_ps(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm512_cvtepi8_epi32(arg1: __m128i) -> __m512i;
@@ -22268,11 +19078,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtepi32_epi8(arg1: __mmask16, arg2: __m512i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtepi32_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtepi32_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtsepi32_epi8(arg1: __m512i) -> __m128i;
@@ -22284,11 +19090,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtsepi32_epi8(arg1: __mmask16, arg2: __m512i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtsepi32_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtsepi32_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtusepi32_epi8(arg1: __m512i) -> __m128i;
@@ -22300,11 +19102,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtusepi32_epi8(arg1: __mmask16, arg2: __m512i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtusepi32_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtusepi32_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtepi32_epi16(arg1: __m512i) -> __m256i;
@@ -22316,11 +19114,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtepi32_epi16(arg1: __mmask16, arg2: __m512i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtepi32_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtepi32_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtsepi32_epi16(arg1: __m512i) -> __m256i;
@@ -22332,11 +19126,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtsepi32_epi16(arg1: __mmask16, arg2: __m512i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtsepi32_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtsepi32_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtusepi32_epi16(arg1: __m512i) -> __m256i;
@@ -22348,11 +19138,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtusepi32_epi16(arg1: __mmask16, arg2: __m512i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtusepi32_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtusepi32_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtepi32_epi64(arg1: __m256i) -> __m512i;
@@ -22373,11 +19159,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtepi64_epi8(arg1: __mmask8, arg2: __m512i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtepi64_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtepi64_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtsepi64_epi8(arg1: __m512i) -> __m128i;
@@ -22389,11 +19171,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtsepi64_epi8(arg1: __mmask8, arg2: __m512i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtsepi64_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtsepi64_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtusepi64_epi8(arg1: __m512i) -> __m128i;
@@ -22405,11 +19183,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtusepi64_epi8(arg1: __mmask8, arg2: __m512i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtusepi64_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtusepi64_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtepi64_epi16(arg1: __m512i) -> __m128i;
@@ -22421,11 +19195,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtepi64_epi16(arg1: __mmask8, arg2: __m512i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtepi64_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtepi64_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtsepi64_epi16(arg1: __m512i) -> __m128i;
@@ -22437,11 +19207,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtsepi64_epi16(arg1: __mmask8, arg2: __m512i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtsepi64_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtsepi64_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtusepi64_epi16(arg1: __m512i) -> __m128i;
@@ -22453,11 +19219,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtusepi64_epi16(arg1: __mmask8, arg2: __m512i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtusepi64_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtusepi64_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtepi64_epi32(arg1: __m512i) -> __m256i;
@@ -22469,11 +19231,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtepi64_epi32(arg1: __mmask8, arg2: __m512i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtepi64_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtepi64_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtsepi64_epi32(arg1: __m512i) -> __m256i;
@@ -22485,11 +19243,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtsepi64_epi32(arg1: __mmask8, arg2: __m512i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtsepi64_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtsepi64_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtusepi64_epi32(arg1: __m512i) -> __m256i;
@@ -22501,11 +19255,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtusepi64_epi32(arg1: __mmask8, arg2: __m512i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtusepi64_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtusepi64_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtepu8_epi32(arg1: __m128i) -> __m512i;
@@ -22573,11 +19323,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundps_epi32(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundps_epi32(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvttps_epi32(arg1: __m512) -> __m512i;
@@ -22600,11 +19346,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundps_epi32(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundps_epi32(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvtps_epu32(arg1: __m512) -> __m512i;
@@ -22627,11 +19369,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundps_epu32(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundps_epu32(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvttps_epu32(arg1: __m512) -> __m512i;
@@ -22654,11 +19392,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundps_epu32(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundps_epu32(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvtpd_epi32(arg1: __m512d) -> __m256i;
@@ -22681,11 +19415,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundpd_epi32(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm512_maskz_cvt_roundpd_epi32(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_cvttpd_epi32(arg1: __m512d) -> __m256i;
@@ -22708,11 +19438,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundpd_epi32(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm512_maskz_cvtt_roundpd_epi32(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_cvtpd_epu32(arg1: __m512d) -> __m256i;
@@ -22735,11 +19461,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundpd_epu32(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm512_maskz_cvt_roundpd_epu32(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_cvttpd_epu32(arg1: __m512d) -> __m256i;
@@ -22762,11 +19484,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundpd_epu32(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm512_maskz_cvtt_roundpd_epu32(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_cvtepi8_epi16(arg1: __m256i) -> __m512i;
@@ -22796,11 +19514,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtepi16_epi8(arg1: __mmask32, arg2: __m512i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtepi16_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask32,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtepi16_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask32, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtsepi16_epi8(arg1: __m512i) -> __m256i;
@@ -22812,11 +19526,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtsepi16_epi8(arg1: __mmask32, arg2: __m512i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtsepi16_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask32,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtsepi16_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask32, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtusepi16_epi8(arg1: __m512i) -> __m256i;
@@ -22828,11 +19538,7 @@ extern "C" {
     pub fn _mm512_maskz_cvtusepi16_epi8(arg1: __mmask32, arg2: __m512i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtusepi16_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask32,
-        arg3: __m512i,
-    );
+    pub fn _mm512_mask_cvtusepi16_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask32, arg3: __m512i);
 }
 extern "C" {
     pub fn _mm512_cvtepi64_pd(arg1: __m512i) -> __m512d;
@@ -22855,11 +19561,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepi64_pd(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_cvt_roundepi64_pd(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_cvtepu64_pd(arg1: __m512i) -> __m512d;
@@ -22882,11 +19584,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepu64_pd(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_cvt_roundepu64_pd(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_cvtpd_epi64(arg1: __m512d) -> __m512i;
@@ -22909,11 +19607,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundpd_epi64(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundpd_epi64(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvtpd_epu64(arg1: __m512d) -> __m512i;
@@ -22936,11 +19630,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundpd_epu64(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundpd_epu64(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvttpd_epi64(arg1: __m512d) -> __m512i;
@@ -22963,11 +19653,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundpd_epi64(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundpd_epi64(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvttpd_epu64(arg1: __m512d) -> __m512i;
@@ -22990,11 +19676,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundpd_epu64(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundpd_epu64(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvtps_epi64(arg1: __m256) -> __m512i;
@@ -23017,11 +19699,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundps_epi64(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundps_epi64(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvtps_epu64(arg1: __m256) -> __m512i;
@@ -23044,11 +19722,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundps_epu64(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundps_epu64(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvttps_epi64(arg1: __m256) -> __m512i;
@@ -23071,11 +19745,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundps_epi64(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundps_epi64(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cvttps_epu64(arg1: __m256) -> __m512i;
@@ -23098,11 +19768,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundps_epu64(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundps_epu64(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_cmpeq_epi8_mask(arg1: __m512i, arg2: __m512i) -> __mmask64;
@@ -23156,8 +19822,7 @@ extern "C" {
     pub fn _mm512_mask_cmplt_epi8_mask(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __mmask64;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpneq_epi8_mask(arg1: __mmask64, arg2: __m512i, arg3: __m512i)
-        -> __mmask64;
+    pub fn _mm512_mask_cmpneq_epi8_mask(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __mmask64;
 }
 extern "C" {
     pub fn _mm512_mask_cmpeq_epu8_mask(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __mmask64;
@@ -23175,8 +19840,7 @@ extern "C" {
     pub fn _mm512_mask_cmplt_epu8_mask(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __mmask64;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpneq_epu8_mask(arg1: __mmask64, arg2: __m512i, arg3: __m512i)
-        -> __mmask64;
+    pub fn _mm512_mask_cmpneq_epu8_mask(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __mmask64;
 }
 extern "C" {
     pub fn _mm512_cmpeq_epi16_mask(arg1: __m512i, arg2: __m512i) -> __mmask32;
@@ -23215,58 +19879,40 @@ extern "C" {
     pub fn _mm512_cmpneq_epu16_mask(arg1: __m512i, arg2: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpeq_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmpeq_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpge_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmpge_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpgt_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmpgt_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmple_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmple_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmplt_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmplt_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpneq_epi16_mask(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: __m512i,
-    ) -> __mmask32;
+    pub fn _mm512_mask_cmpneq_epi16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpeq_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmpeq_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpge_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmpge_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpgt_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmpgt_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmple_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmple_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmplt_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i)
-        -> __mmask32;
+    pub fn _mm512_mask_cmplt_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpneq_epu16_mask(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: __m512i,
-    ) -> __mmask32;
+    pub fn _mm512_mask_cmpneq_epu16_mask(arg1: __mmask32, arg2: __m512i, arg3: __m512i) -> __mmask32;
 }
 extern "C" {
     pub fn _mm512_cmpeq_epi32_mask(arg1: __m512i, arg2: __m512i) -> __mmask16;
@@ -23305,58 +19951,40 @@ extern "C" {
     pub fn _mm512_cmpneq_epu32_mask(arg1: __m512i, arg2: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpeq_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmpeq_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpge_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmpge_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpgt_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmpgt_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmple_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmple_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmplt_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmplt_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpneq_epi32_mask(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: __m512i,
-    ) -> __mmask16;
+    pub fn _mm512_mask_cmpneq_epi32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpeq_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmpeq_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpge_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmpge_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpgt_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmpgt_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmple_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmple_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmplt_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i)
-        -> __mmask16;
+    pub fn _mm512_mask_cmplt_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_mask_cmpneq_epu32_mask(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: __m512i,
-    ) -> __mmask16;
+    pub fn _mm512_mask_cmpneq_epu32_mask(arg1: __mmask16, arg2: __m512i, arg3: __m512i) -> __mmask16;
 }
 extern "C" {
     pub fn _mm512_cmpeq_epi64_mask(arg1: __m512i, arg2: __m512i) -> __mmask8;
@@ -23485,89 +20113,49 @@ extern "C" {
     pub fn _mm256_maskz_abs_epi8(arg1: __mmask32, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_add_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_add_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_add_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_add_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_add_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_add_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_add_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_add_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_add_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_add_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_add_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_add_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_add_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_add_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_add_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_add_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_add_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_add_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_add_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_add_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_add_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_add_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_add_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_add_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -23579,12 +20167,7 @@ extern "C" {
     pub fn _mm_maskz_add_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_add_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_add_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_add_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -23602,89 +20185,49 @@ extern "C" {
     pub fn _mm256_maskz_add_ps(arg1: __mmask8, arg2: __m256, arg3: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_adds_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_adds_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_adds_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_adds_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_adds_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_adds_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_adds_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_adds_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_adds_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_adds_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_adds_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_adds_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_adds_epu16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_adds_epu16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_adds_epu16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_adds_epu16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_adds_epu16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_adds_epu16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_adds_epu8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_adds_epu8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_adds_epu8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_adds_epu8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_adds_epu8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_adds_epu8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -23702,19 +20245,11 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_alignr_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_alignr_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int)
+        -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_alignr_epi32(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_alignr_epi32(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_alignr_epi32(
@@ -23746,19 +20281,11 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_alignr_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_alignr_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int)
+        -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_alignr_epi64(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_alignr_epi64(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_alignr_epi64(
@@ -23787,12 +20314,8 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_alignr_epi8(
-        arg1: __mmask16,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_alignr_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int)
+        -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_alignr_epi8(
@@ -23815,12 +20338,7 @@ extern "C" {
     pub fn _mm_and_epi32(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_and_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_and_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_and_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -23829,12 +20347,7 @@ extern "C" {
     pub fn _mm256_and_epi32(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_and_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_and_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_and_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -23843,12 +20356,7 @@ extern "C" {
     pub fn _mm_and_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_and_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_and_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_and_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -23857,12 +20365,7 @@ extern "C" {
     pub fn _mm256_and_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_and_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_and_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_and_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -23874,12 +20377,7 @@ extern "C" {
     pub fn _mm_maskz_and_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_and_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_and_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_and_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -23900,12 +20398,7 @@ extern "C" {
     pub fn _mm_andnot_epi32(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_andnot_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_andnot_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_andnot_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -23914,12 +20407,7 @@ extern "C" {
     pub fn _mm256_andnot_epi32(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_andnot_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_andnot_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_andnot_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -23928,12 +20416,7 @@ extern "C" {
     pub fn _mm_andnot_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_andnot_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_andnot_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_andnot_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -23942,34 +20425,19 @@ extern "C" {
     pub fn _mm256_andnot_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_andnot_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_andnot_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_andnot_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_andnot_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_andnot_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_andnot_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_andnot_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_andnot_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_andnot_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -23981,56 +20449,31 @@ extern "C" {
     pub fn _mm_maskz_andnot_ps(arg1: __mmask8, arg2: __m128, arg3: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_andnot_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_andnot_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
     pub fn _mm256_maskz_andnot_ps(arg1: __mmask8, arg2: __m256, arg3: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_avg_epu16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_avg_epu16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_avg_epu16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_avg_epu16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_avg_epu16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_avg_epu16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_avg_epu8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_avg_epu8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_avg_epu8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_avg_epu8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_avg_epu8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_avg_epu8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -24213,11 +20656,7 @@ extern "C" {
     pub fn _mm256_maskz_broadcastw_epi16(arg1: __mmask16, arg2: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_cmp_epi16_mask(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_cmp_epi16_mask(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_mask_cmp_epi16_mask(
@@ -24228,11 +20667,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_cmp_epi16_mask(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask16;
+    pub fn _mm256_cmp_epi16_mask(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_epi16_mask(
@@ -24243,11 +20678,7 @@ extern "C" {
     ) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm_cmp_epi32_mask(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_cmp_epi32_mask(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_mask_cmp_epi32_mask(
@@ -24258,11 +20689,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_cmp_epi32_mask(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm256_cmp_epi32_mask(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_epi32_mask(
@@ -24273,11 +20700,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_cmp_epi64_mask(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_cmp_epi64_mask(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_mask_cmp_epi64_mask(
@@ -24288,11 +20711,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_cmp_epi64_mask(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm256_cmp_epi64_mask(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_epi64_mask(
@@ -24303,11 +20722,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_cmp_epi8_mask(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask16;
+    pub fn _mm_cmp_epi8_mask(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm_mask_cmp_epi8_mask(
@@ -24318,11 +20733,7 @@ extern "C" {
     ) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_cmp_epi8_mask(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask32;
+    pub fn _mm256_cmp_epi8_mask(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __mmask32;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_epi8_mask(
@@ -24333,11 +20744,7 @@ extern "C" {
     ) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm_cmp_epu16_mask(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_cmp_epu16_mask(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_mask_cmp_epu16_mask(
@@ -24348,11 +20755,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_cmp_epu16_mask(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask16;
+    pub fn _mm256_cmp_epu16_mask(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_epu16_mask(
@@ -24363,11 +20766,7 @@ extern "C" {
     ) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm_cmp_epu32_mask(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_cmp_epu32_mask(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_mask_cmp_epu32_mask(
@@ -24378,11 +20777,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_cmp_epu32_mask(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm256_cmp_epu32_mask(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_epu32_mask(
@@ -24393,11 +20788,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_cmp_epu64_mask(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_cmp_epu64_mask(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_mask_cmp_epu64_mask(
@@ -24408,11 +20799,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_cmp_epu64_mask(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm256_cmp_epu64_mask(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_epu64_mask(
@@ -24423,11 +20810,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_cmp_epu8_mask(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask16;
+    pub fn _mm_cmp_epu8_mask(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm_mask_cmp_epu8_mask(
@@ -24438,11 +20821,7 @@ extern "C" {
     ) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_cmp_epu8_mask(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask32;
+    pub fn _mm256_cmp_epu8_mask(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __mmask32;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_epu8_mask(
@@ -24456,19 +20835,10 @@ extern "C" {
     pub fn _mm_cmp_pd_mask(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_cmp_pd_mask(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_cmp_pd_mask(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_cmp_pd_mask(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm256_cmp_pd_mask(arg1: __m256d, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_pd_mask(
@@ -24482,23 +20852,14 @@ extern "C" {
     pub fn _mm_cmp_ps_mask(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_cmp_ps_mask(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_cmp_ps_mask(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm256_cmp_ps_mask(arg1: __m256, arg2: __m256, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_mask_cmp_ps_mask(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm256_mask_cmp_ps_mask(arg1: __mmask8, arg2: __m256, arg3: __m256, arg4: ::std::os::raw::c_int)
+        -> __mmask8;
 }
 extern "C" {
     pub fn _mm_mask_compress_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i) -> __m128i;
@@ -24573,88 +20934,40 @@ extern "C" {
     pub fn _mm256_maskz_compress_ps(arg1: __mmask8, arg2: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_compressstoreu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_compressstoreu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_compressstoreu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask32,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_compressstoreu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask32, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_compressstoreu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_compressstoreu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_compressstoreu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_compressstoreu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_compressstoreu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_compressstoreu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_compressstoreu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_compressstoreu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_compressstoreu_epi64(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_compressstoreu_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_compressstoreu_epi64(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_compressstoreu_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_compressstoreu_pd(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128d,
-    );
+    pub fn _mm_mask_compressstoreu_pd(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128d);
 }
 extern "C" {
-    pub fn _mm256_mask_compressstoreu_pd(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256d,
-    );
+    pub fn _mm256_mask_compressstoreu_pd(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256d);
 }
 extern "C" {
-    pub fn _mm_mask_compressstoreu_ps(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128,
-    );
+    pub fn _mm_mask_compressstoreu_ps(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128);
 }
 extern "C" {
-    pub fn _mm256_mask_compressstoreu_ps(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256,
-    );
+    pub fn _mm256_mask_compressstoreu_ps(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256);
 }
 extern "C" {
     pub fn _mm_conflict_epi32(arg1: __m128i) -> __m128i;
@@ -24693,46 +21006,23 @@ extern "C" {
     pub fn _mm256_maskz_conflict_epi64(arg1: __mmask8, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_cvtps_ph(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_mask_cvtps_ph(arg1: __m128i, arg2: __mmask8, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_cvtps_ph(arg1: __mmask8, arg2: __m128, arg3: ::std::os::raw::c_int)
+    pub fn _mm_maskz_cvtps_ph(arg1: __mmask8, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128i;
+}
+extern "C" {
+    pub fn _mm_mask_cvt_roundps_ph(arg1: __m128i, arg2: __mmask8, arg3: __m128, arg4: ::std::os::raw::c_int)
         -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_cvt_roundps_ph(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_cvt_roundps_ph(arg1: __mmask8, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_cvt_roundps_ph(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm256_mask_cvtps_ph(arg1: __m128i, arg2: __mmask8, arg3: __m256, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_cvtps_ph(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
-}
-extern "C" {
-    pub fn _mm256_maskz_cvtps_ph(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm256_maskz_cvtps_ph(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_cvt_roundps_ph(
@@ -24743,11 +21033,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_maskz_cvt_roundps_ph(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm256_maskz_cvt_roundps_ph(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_mask_cvtepi16_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i) -> __m128i;
@@ -24792,18 +21078,10 @@ extern "C" {
     pub fn _mm256_maskz_cvtepi16_epi8(arg1: __mmask16, arg2: __m256i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_cvtepi16_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtepi16_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtepi16_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtepi16_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_cvtepi32_epi16(arg1: __m128i) -> __m128i;
@@ -24878,32 +21156,16 @@ extern "C" {
     pub fn _mm256_maskz_cvtepi32_ps(arg1: __mmask8, arg2: __m256i) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_cvtepi32_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtepi32_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtepi32_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtepi32_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_cvtepi32_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtepi32_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtepi32_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtepi32_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_cvtepi64_epi16(arg1: __m128i) -> __m128i;
@@ -24996,46 +21258,22 @@ extern "C" {
     pub fn _mm256_maskz_cvtepi64_ps(arg1: __mmask8, arg2: __m256i) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_cvtepi64_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtepi64_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtepi64_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtepi64_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_cvtepi64_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtepi64_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtepi64_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtepi64_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_cvtepi64_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtepi64_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtepi64_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtepi64_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_mask_cvtepi8_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i) -> __m128i;
@@ -25404,18 +21642,10 @@ extern "C" {
     pub fn _mm256_maskz_cvtsepi16_epi8(arg1: __mmask16, arg2: __m256i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_cvtsepi16_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtsepi16_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtsepi16_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtsepi16_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_cvtsepi32_epi16(arg1: __m128i) -> __m128i;
@@ -25454,32 +21684,16 @@ extern "C" {
     pub fn _mm256_maskz_cvtsepi32_epi8(arg1: __mmask8, arg2: __m256i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_cvtsepi32_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtsepi32_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtsepi32_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtsepi32_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_cvtsepi32_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtsepi32_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtsepi32_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtsepi32_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_cvtsepi64_epi16(arg1: __m128i) -> __m128i;
@@ -25536,46 +21750,22 @@ extern "C" {
     pub fn _mm256_maskz_cvtsepi64_epi8(arg1: __mmask8, arg2: __m256i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_cvtsepi64_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtsepi64_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtsepi64_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtsepi64_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_cvtsepi64_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtsepi64_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtsepi64_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtsepi64_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_cvtsepi64_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtsepi64_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtsepi64_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtsepi64_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_mask_cvttpd_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128d) -> __m128i;
@@ -25728,18 +21918,10 @@ extern "C" {
     pub fn _mm256_maskz_cvtusepi16_epi8(arg1: __mmask16, arg2: __m256i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_cvtusepi16_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtusepi16_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtusepi16_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtusepi16_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_cvtusepi32_epi16(arg1: __m128i) -> __m128i;
@@ -25778,32 +21960,16 @@ extern "C" {
     pub fn _mm256_maskz_cvtusepi32_epi8(arg1: __mmask8, arg2: __m256i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_cvtusepi32_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtusepi32_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtusepi32_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtusepi32_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_cvtusepi32_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtusepi32_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtusepi32_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtusepi32_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_cvtusepi64_epi16(arg1: __m128i) -> __m128i;
@@ -25860,46 +22026,22 @@ extern "C" {
     pub fn _mm256_maskz_cvtusepi64_epi8(arg1: __mmask8, arg2: __m256i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_cvtusepi64_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtusepi64_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtusepi64_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtusepi64_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_cvtusepi64_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtusepi64_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtusepi64_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtusepi64_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
-    pub fn _mm_mask_cvtusepi64_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m128i,
-    );
+    pub fn _mm_mask_cvtusepi64_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_cvtusepi64_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_cvtusepi64_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_dbsad_epu8(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
@@ -25914,12 +22056,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_dbsad_epu8(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_dbsad_epu8(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_dbsad_epu8(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
@@ -25948,12 +22085,7 @@ extern "C" {
     pub fn _mm_maskz_div_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_div_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_div_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_div_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -26043,43 +22175,23 @@ extern "C" {
     pub fn _mm256_maskz_expand_ps(arg1: __mmask8, arg2: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_expandloadu_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_expandloadu_epi8(arg1: __m128i, arg2: __mmask16, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_expandloadu_epi8(
-        arg1: __mmask16,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_maskz_expandloadu_epi8(arg1: __mmask16, arg2: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_expandloadu_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_mask_expandloadu_epi8(arg1: __m256i, arg2: __mmask32, arg3: *const ::std::os::raw::c_void)
+        -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_expandloadu_epi8(
-        arg1: __mmask32,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_maskz_expandloadu_epi8(arg1: __mmask32, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_expandloadu_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_expandloadu_epi16(arg1: __m128i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_expandloadu_epi16(
-        arg1: __mmask8,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_maskz_expandloadu_epi16(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_expandloadu_epi16(
@@ -26089,109 +22201,57 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_expandloadu_epi16(
-        arg1: __mmask16,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_maskz_expandloadu_epi16(arg1: __mmask16, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_expandloadu_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_expandloadu_epi32(arg1: __m128i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_expandloadu_epi32(
-        arg1: __mmask8,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_maskz_expandloadu_epi32(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_expandloadu_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_mask_expandloadu_epi32(arg1: __m256i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void)
+        -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_expandloadu_epi32(
-        arg1: __mmask8,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_maskz_expandloadu_epi32(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_expandloadu_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_expandloadu_epi64(arg1: __m128i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_expandloadu_epi64(
-        arg1: __mmask8,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_maskz_expandloadu_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_expandloadu_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_mask_expandloadu_epi64(arg1: __m256i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void)
+        -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_expandloadu_epi64(
-        arg1: __mmask8,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_maskz_expandloadu_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_expandloadu_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128d;
+    pub fn _mm_mask_expandloadu_pd(arg1: __m128d, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_expandloadu_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void)
-        -> __m128d;
+    pub fn _mm_maskz_expandloadu_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_expandloadu_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256d;
+    pub fn _mm256_mask_expandloadu_pd(arg1: __m256d, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_expandloadu_pd(
-        arg1: __mmask8,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m256d;
+    pub fn _mm256_maskz_expandloadu_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_expandloadu_ps(
-        arg1: __m128,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128;
+    pub fn _mm_mask_expandloadu_ps(arg1: __m128, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128;
 }
 extern "C" {
     pub fn _mm_maskz_expandloadu_ps(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_expandloadu_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256;
+    pub fn _mm256_mask_expandloadu_ps(arg1: __m256, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_expandloadu_ps(
-        arg1: __mmask8,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m256;
+    pub fn _mm256_maskz_expandloadu_ps(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256;
 }
 extern "C" {
     pub fn _mm256_extractf32x4_ps(arg1: __m256, arg2: ::std::os::raw::c_int) -> __m128;
@@ -26205,11 +22265,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_maskz_extractf32x4_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm256_maskz_extractf32x4_ps(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm256_extractf64x2_pd(arg1: __m256d, arg2: ::std::os::raw::c_int) -> __m128d;
@@ -26223,11 +22279,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_maskz_extractf64x2_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm256_maskz_extractf64x2_pd(arg1: __mmask8, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm256_extracti32x4_epi32(arg1: __m256i, arg2: ::std::os::raw::c_int) -> __m128i;
@@ -26241,11 +22293,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_maskz_extracti32x4_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm256_maskz_extracti32x4_epi32(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_extracti64x2_epi64(arg1: __m256i, arg2: ::std::os::raw::c_int) -> __m128i;
@@ -26259,19 +22307,10 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_maskz_extracti64x2_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm256_maskz_extracti64x2_epi64(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_fixupimm_pd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_fixupimm_pd(arg1: __m128d, arg2: __m128d, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fixupimm_pd(
@@ -26292,12 +22331,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_fixupimm_pd(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: __m256i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_fixupimm_pd(arg1: __m256d, arg2: __m256d, arg3: __m256i, arg4: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_mask_fixupimm_pd(
@@ -26318,12 +22352,7 @@ extern "C" {
     ) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_fixupimm_ps(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_fixupimm_ps(arg1: __m128, arg2: __m128, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mask_fixupimm_ps(
@@ -26344,12 +22373,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_fixupimm_ps(
-        arg1: __m256,
-        arg2: __m256,
-        arg3: __m256i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_fixupimm_ps(arg1: __m256, arg2: __m256, arg3: __m256i, arg4: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm256_mask_fixupimm_ps(
@@ -26370,52 +22394,22 @@ extern "C" {
     ) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_fmadd_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fmadd_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fmadd_pd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fmadd_pd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fmadd_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fmadd_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_fmadd_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_fmadd_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmadd_pd(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __mmask8,
-    ) -> __m256d;
+    pub fn _mm256_mask3_fmadd_pd(arg1: __m256d, arg2: __m256d, arg3: __m256d, arg4: __mmask8) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmadd_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_maskz_fmadd_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm_mask_fmadd_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
@@ -26427,164 +22421,67 @@ extern "C" {
     pub fn _mm_maskz_fmadd_ps(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_fmadd_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256)
-        -> __m256;
+    pub fn _mm256_mask_fmadd_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmadd_ps(
-        arg1: __m256,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __mmask8,
-    ) -> __m256;
+    pub fn _mm256_mask3_fmadd_ps(arg1: __m256, arg2: __m256, arg3: __m256, arg4: __mmask8) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmadd_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_maskz_fmadd_ps(arg1: __mmask8, arg2: __m256, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_fmaddsub_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fmaddsub_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fmaddsub_pd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fmaddsub_pd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fmaddsub_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fmaddsub_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_fmaddsub_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_fmaddsub_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmaddsub_pd(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __mmask8,
-    ) -> __m256d;
+    pub fn _mm256_mask3_fmaddsub_pd(arg1: __m256d, arg2: __m256d, arg3: __m256d, arg4: __mmask8) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmaddsub_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_maskz_fmaddsub_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_fmaddsub_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128)
-        -> __m128;
+    pub fn _mm_mask_fmaddsub_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask3_fmaddsub_ps(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: __mmask8,
-    ) -> __m128;
+    pub fn _mm_mask3_fmaddsub_ps(arg1: __m128, arg2: __m128, arg3: __m128, arg4: __mmask8) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_fmaddsub_ps(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: __m128,
-    ) -> __m128;
+    pub fn _mm_maskz_fmaddsub_ps(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_fmaddsub_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_fmaddsub_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmaddsub_ps(
-        arg1: __m256,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __mmask8,
-    ) -> __m256;
+    pub fn _mm256_mask3_fmaddsub_ps(arg1: __m256, arg2: __m256, arg3: __m256, arg4: __mmask8) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmaddsub_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_maskz_fmaddsub_ps(arg1: __mmask8, arg2: __m256, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_fmsub_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fmsub_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fmsub_pd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fmsub_pd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fmsub_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fmsub_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_fmsub_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_fmsub_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmsub_pd(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __mmask8,
-    ) -> __m256d;
+    pub fn _mm256_mask3_fmsub_pd(arg1: __m256d, arg2: __m256d, arg3: __m256d, arg4: __mmask8) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmsub_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_maskz_fmsub_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm_mask_fmsub_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
@@ -26596,164 +22493,67 @@ extern "C" {
     pub fn _mm_maskz_fmsub_ps(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_fmsub_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256)
-        -> __m256;
+    pub fn _mm256_mask_fmsub_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmsub_ps(
-        arg1: __m256,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __mmask8,
-    ) -> __m256;
+    pub fn _mm256_mask3_fmsub_ps(arg1: __m256, arg2: __m256, arg3: __m256, arg4: __mmask8) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmsub_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_maskz_fmsub_ps(arg1: __mmask8, arg2: __m256, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_fmsubadd_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fmsubadd_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fmsubadd_pd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fmsubadd_pd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fmsubadd_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fmsubadd_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_fmsubadd_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_fmsubadd_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmsubadd_pd(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __mmask8,
-    ) -> __m256d;
+    pub fn _mm256_mask3_fmsubadd_pd(arg1: __m256d, arg2: __m256d, arg3: __m256d, arg4: __mmask8) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmsubadd_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_maskz_fmsubadd_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_fmsubadd_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128)
-        -> __m128;
+    pub fn _mm_mask_fmsubadd_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask3_fmsubadd_ps(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: __mmask8,
-    ) -> __m128;
+    pub fn _mm_mask3_fmsubadd_ps(arg1: __m128, arg2: __m128, arg3: __m128, arg4: __mmask8) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_fmsubadd_ps(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: __m128,
-    ) -> __m128;
+    pub fn _mm_maskz_fmsubadd_ps(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_fmsubadd_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_fmsubadd_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmsubadd_ps(
-        arg1: __m256,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __mmask8,
-    ) -> __m256;
+    pub fn _mm256_mask3_fmsubadd_ps(arg1: __m256, arg2: __m256, arg3: __m256, arg4: __mmask8) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmsubadd_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_maskz_fmsubadd_ps(arg1: __mmask8, arg2: __m256, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_fnmadd_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fnmadd_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fnmadd_pd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fnmadd_pd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fnmadd_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fnmadd_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_fnmadd_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_fnmadd_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_mask3_fnmadd_pd(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __mmask8,
-    ) -> __m256d;
+    pub fn _mm256_mask3_fnmadd_pd(arg1: __m256d, arg2: __m256d, arg3: __m256d, arg4: __mmask8) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_fnmadd_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_maskz_fnmadd_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm_mask_fnmadd_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
@@ -26765,76 +22565,31 @@ extern "C" {
     pub fn _mm_maskz_fnmadd_ps(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_fnmadd_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_fnmadd_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_mask3_fnmadd_ps(
-        arg1: __m256,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __mmask8,
-    ) -> __m256;
+    pub fn _mm256_mask3_fnmadd_ps(arg1: __m256, arg2: __m256, arg3: __m256, arg4: __mmask8) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_fnmadd_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_maskz_fnmadd_ps(arg1: __mmask8, arg2: __m256, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_fnmsub_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fnmsub_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fnmsub_pd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fnmsub_pd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fnmsub_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fnmsub_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_fnmsub_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_fnmsub_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_mask3_fnmsub_pd(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __mmask8,
-    ) -> __m256d;
+    pub fn _mm256_mask3_fnmsub_pd(arg1: __m256d, arg2: __m256d, arg3: __m256d, arg4: __mmask8) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_fnmsub_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_maskz_fnmsub_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm_mask_fnmsub_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
@@ -26846,68 +22601,37 @@ extern "C" {
     pub fn _mm_maskz_fnmsub_ps(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_fnmsub_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_fnmsub_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_mask3_fnmsub_ps(
-        arg1: __m256,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __mmask8,
-    ) -> __m256;
+    pub fn _mm256_mask3_fnmsub_ps(arg1: __m256, arg2: __m256, arg3: __m256, arg4: __mmask8) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_fnmsub_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_maskz_fnmsub_ps(arg1: __mmask8, arg2: __m256, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
     pub fn _mm_fpclass_pd_mask(arg1: __m128d, arg2: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_fpclass_pd_mask(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_fpclass_pd_mask(arg1: __mmask8, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm256_fpclass_pd_mask(arg1: __m256d, arg2: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_mask_fpclass_pd_mask(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm256_mask_fpclass_pd_mask(arg1: __mmask8, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_fpclass_ps_mask(arg1: __m128, arg2: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_fpclass_ps_mask(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_fpclass_ps_mask(arg1: __mmask8, arg2: __m128, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm256_fpclass_ps_mask(arg1: __m256, arg2: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_mask_fpclass_ps_mask(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm256_mask_fpclass_ps_mask(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_getexp_pd(arg1: __m128d) -> __m128d;
@@ -26946,11 +22670,7 @@ extern "C" {
     pub fn _mm256_maskz_getexp_ps(arg1: __mmask8, arg2: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_getmant_pd(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_getmant_pd(arg1: __m128d, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_getmant_pd(
@@ -26970,11 +22690,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_getmant_pd(
-        arg1: __m256d,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_getmant_pd(arg1: __m256d, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_mask_getmant_pd(
@@ -26994,11 +22710,7 @@ extern "C" {
     ) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_getmant_ps(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_getmant_ps(arg1: __m128, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mask_getmant_ps(
@@ -27018,11 +22730,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_getmant_ps(
-        arg1: __m256,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_getmant_ps(arg1: __m256, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm256_mask_getmant_ps(
@@ -27470,16 +23178,10 @@ extern "C" {
     ) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_insertf32x4(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_maskz_insertf32x4(arg1: __mmask8, arg2: __m256, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_insertf64x2(arg1: __m256d, arg2: __m128d, arg3: ::std::os::raw::c_int)
-        -> __m256d;
+    pub fn _mm256_insertf64x2(arg1: __m256d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_mask_insertf64x2(
@@ -27499,8 +23201,7 @@ extern "C" {
     ) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_inserti32x4(arg1: __m256i, arg2: __m128i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_inserti32x4(arg1: __m256i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_inserti32x4(
@@ -27520,8 +23221,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_inserti64x2(arg1: __m256i, arg2: __m128i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_inserti64x2(arg1: __m256i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_inserti64x2(
@@ -27541,81 +23241,49 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_load_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_load_epi32(arg1: __m128i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_load_epi32(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_load_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_mask_load_epi32(arg1: __m256i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_load_epi32(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_load_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_load_epi64(arg1: __m128i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_load_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_load_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_mask_load_epi64(arg1: __m256i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_load_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_load_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128d;
+    pub fn _mm_mask_load_pd(arg1: __m128d, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_load_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_load_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256d;
+    pub fn _mm256_mask_load_pd(arg1: __m256d, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_load_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_load_ps(
-        arg1: __m128,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128;
+    pub fn _mm_mask_load_ps(arg1: __m128, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128;
 }
 extern "C" {
     pub fn _mm_maskz_load_ps(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_load_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256;
+    pub fn _mm256_mask_load_ps(arg1: __m256, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256;
 }
 extern "C" {
     pub fn _mm256_maskz_load_ps(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256;
@@ -27624,11 +23292,7 @@ extern "C" {
     pub fn _mm_loadu_epi16(arg1: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_loadu_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_loadu_epi16(arg1: __m128i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_loadu_epi16(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128i;
@@ -27637,27 +23301,16 @@ extern "C" {
     pub fn _mm256_loadu_epi16(arg1: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_loadu_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_mask_loadu_epi16(arg1: __m256i, arg2: __mmask16, arg3: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_loadu_epi16(
-        arg1: __mmask16,
-        arg2: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_maskz_loadu_epi16(arg1: __mmask16, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
     pub fn _mm_loadu_epi32(arg1: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_loadu_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_loadu_epi32(arg1: __m128i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_loadu_epi32(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128i;
@@ -27666,25 +23319,16 @@ extern "C" {
     pub fn _mm256_loadu_epi32(arg1: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_loadu_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_mask_loadu_epi32(arg1: __m256i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_loadu_epi32(arg1: __mmask8, arg2: *const ::std::os::raw::c_void)
-        -> __m256i;
+    pub fn _mm256_maskz_loadu_epi32(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
     pub fn _mm_loadu_epi64(arg1: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_loadu_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_loadu_epi64(arg1: __m128i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_loadu_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128i;
@@ -27693,25 +23337,16 @@ extern "C" {
     pub fn _mm256_loadu_epi64(arg1: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_loadu_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_mask_loadu_epi64(arg1: __m256i, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_loadu_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void)
-        -> __m256i;
+    pub fn _mm256_maskz_loadu_epi64(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
     pub fn _mm_loadu_epi8(arg1: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_loadu_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128i;
+    pub fn _mm_mask_loadu_epi8(arg1: __m128i, arg2: __mmask16, arg3: *const ::std::os::raw::c_void) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_loadu_epi8(arg1: __mmask16, arg2: *const ::std::os::raw::c_void) -> __m128i;
@@ -27720,52 +23355,31 @@ extern "C" {
     pub fn _mm256_loadu_epi8(arg1: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_loadu_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256i;
+    pub fn _mm256_mask_loadu_epi8(arg1: __m256i, arg2: __mmask32, arg3: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_loadu_epi8(arg1: __mmask32, arg2: *const ::std::os::raw::c_void)
-        -> __m256i;
+    pub fn _mm256_maskz_loadu_epi8(arg1: __mmask32, arg2: *const ::std::os::raw::c_void) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_loadu_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128d;
+    pub fn _mm_mask_loadu_pd(arg1: __m128d, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_loadu_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_loadu_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256d;
+    pub fn _mm256_mask_loadu_pd(arg1: __m256d, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_loadu_pd(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_loadu_ps(
-        arg1: __m128,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128;
+    pub fn _mm_mask_loadu_ps(arg1: __m128, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128;
 }
 extern "C" {
     pub fn _mm_maskz_loadu_ps(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_loadu_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m256;
+    pub fn _mm256_mask_loadu_ps(arg1: __m256, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m256;
 }
 extern "C" {
     pub fn _mm256_maskz_loadu_ps(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m256;
@@ -27807,100 +23421,55 @@ extern "C" {
     pub fn _mm256_maskz_lzcnt_epi64(arg1: __mmask8, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_madd_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_madd_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_madd_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_madd_epi16(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_madd_epi16(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_madd_epi16(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_maddubs_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_maddubs_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_maddubs_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_maddubs_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_maddubs_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_maddubs_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_max_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_max_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_max_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_max_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_max_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_max_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_max_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_max_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_max_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_max_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_max_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_max_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_max_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_max_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_max_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -27909,12 +23478,7 @@ extern "C" {
     pub fn _mm_max_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_max_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_max_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_max_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -27923,78 +23487,43 @@ extern "C" {
     pub fn _mm256_max_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_max_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_max_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_max_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_max_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_max_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_max_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_max_epu16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_max_epu16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_max_epu16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_max_epu16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_max_epu16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_max_epu16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_max_epu32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_max_epu32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_max_epu32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_max_epu32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_max_epu32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_max_epu32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_max_epu64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_max_epu64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_max_epu64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -28003,12 +23532,7 @@ extern "C" {
     pub fn _mm_max_epu64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_max_epu64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_max_epu64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_max_epu64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -28017,23 +23541,13 @@ extern "C" {
     pub fn _mm256_max_epu64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_max_epu8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_max_epu8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_max_epu8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_max_epu8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_max_epu8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_max_epu8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -28045,12 +23559,7 @@ extern "C" {
     pub fn _mm_maskz_max_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_max_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_max_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_max_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -28068,56 +23577,31 @@ extern "C" {
     pub fn _mm256_maskz_max_ps(arg1: __mmask8, arg2: __m256, arg3: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_min_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_min_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_min_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_min_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_min_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_min_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_min_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_min_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_min_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_min_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_min_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_min_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_min_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_min_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_min_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -28126,12 +23610,7 @@ extern "C" {
     pub fn _mm_min_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_min_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_min_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_min_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -28140,78 +23619,43 @@ extern "C" {
     pub fn _mm256_min_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_min_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_min_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_min_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_min_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_min_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_min_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_min_epu16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_min_epu16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_min_epu16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_min_epu16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_min_epu16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_min_epu16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_min_epu32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_min_epu32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_min_epu32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_min_epu32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_min_epu32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_min_epu32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_min_epu64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_min_epu64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_min_epu64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -28220,12 +23664,7 @@ extern "C" {
     pub fn _mm_min_epu64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_min_epu64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_min_epu64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_min_epu64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -28234,23 +23673,13 @@ extern "C" {
     pub fn _mm256_min_epu64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_min_epu8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_min_epu8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_min_epu8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_min_epu8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_min_epu8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_min_epu8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -28262,12 +23691,7 @@ extern "C" {
     pub fn _mm_maskz_min_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_min_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_min_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_min_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -28441,45 +23865,25 @@ extern "C" {
     pub fn _mm256_movm_epi8(arg1: __mmask32) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_mul_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_mul_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_mul_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_mul_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_mul_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_mul_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_mul_epu32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_mul_epu32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_mul_epu32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_mul_epu32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_mul_epu32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_mul_epu32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -28491,12 +23895,7 @@ extern "C" {
     pub fn _mm_maskz_mul_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_mul_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_mul_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_mul_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -28514,122 +23913,67 @@ extern "C" {
     pub fn _mm256_maskz_mul_ps(arg1: __mmask8, arg2: __m256, arg3: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_mulhi_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_mulhi_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_mulhi_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_mulhi_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_mulhi_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_mulhi_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_mulhi_epu16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_mulhi_epu16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_mulhi_epu16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_mulhi_epu16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_mulhi_epu16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_mulhi_epu16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_mulhrs_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_mulhrs_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_mulhrs_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_mulhrs_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_mulhrs_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_mulhrs_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_mullo_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_mullo_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_mullo_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_mullo_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_mullo_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_mullo_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_mullo_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_mullo_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_mullo_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_mullo_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_mullo_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_mullo_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_mullo_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_mullo_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_mullo_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -28638,12 +23982,7 @@ extern "C" {
     pub fn _mm_mullo_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_mullo_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_mullo_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_mullo_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -28655,12 +23994,7 @@ extern "C" {
     pub fn _mm_or_epi32(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_or_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_or_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_or_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -28669,12 +24003,7 @@ extern "C" {
     pub fn _mm256_or_epi32(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_or_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_or_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_or_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -28683,12 +24012,7 @@ extern "C" {
     pub fn _mm_or_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_or_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_or_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_or_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -28697,12 +24021,7 @@ extern "C" {
     pub fn _mm256_or_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_or_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_or_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_or_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -28714,12 +24033,7 @@ extern "C" {
     pub fn _mm_maskz_or_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_or_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_or_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_or_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -28737,193 +24051,98 @@ extern "C" {
     pub fn _mm256_maskz_or_ps(arg1: __mmask8, arg2: __m256, arg3: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_packs_epi16(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_packs_epi16(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_packs_epi16(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_packs_epi16(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_packs_epi16(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_packs_epi16(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_packs_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_packs_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_packs_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_packs_epi32(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_packs_epi32(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_packs_epi32(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_packus_epi16(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_packus_epi16(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_packus_epi16(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_packus_epi16(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_packus_epi16(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_packus_epi16(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_packus_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_packus_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_packus_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_packus_epi32(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_packus_epi32(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_packus_epi32(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_permute_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_mask_permute_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_permute_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_permute_pd(arg1: __mmask8, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_permute_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_mask_permute_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: ::std::os::raw::c_int)
+        -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_permute_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_maskz_permute_pd(arg1: __mmask8, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_permute_ps(
-        arg1: __m128,
-        arg2: __mmask8,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_mask_permute_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_permute_ps(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_permute_ps(arg1: __mmask8, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_permute_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_mask_permute_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_permute_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_maskz_permute_ps(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_permutevar_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128i,
-    ) -> __m128d;
+    pub fn _mm_mask_permutevar_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128i) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_permutevar_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128i) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_permutevar_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256i,
-    ) -> __m256d;
+    pub fn _mm256_mask_permutevar_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256i) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_permutevar_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256i) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_permutevar_ps(
-        arg1: __m128,
-        arg2: __mmask8,
-        arg3: __m128,
-        arg4: __m128i,
-    ) -> __m128;
+    pub fn _mm_mask_permutevar_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128i) -> __m128;
 }
 extern "C" {
     pub fn _mm_maskz_permutevar_ps(arg1: __mmask8, arg2: __m128, arg3: __m128i) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_permutevar_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: __m256i,
-    ) -> __m256;
+    pub fn _mm256_mask_permutevar_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256i) -> __m256;
 }
 extern "C" {
     pub fn _mm256_maskz_permutevar_ps(arg1: __mmask8, arg2: __m256, arg3: __m256i) -> __m256;
@@ -28937,11 +24156,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_permutex_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_maskz_permutex_epi64(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_permutex_epi64(arg1: __m256i, arg2: ::std::os::raw::c_int) -> __m256i;
@@ -28955,292 +24170,133 @@ extern "C" {
     ) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_permutex_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_maskz_permutex_pd(arg1: __mmask8, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_permutex_pd(arg1: __m256d, arg2: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_permutex2var_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_permutex2var_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask2_permutex2var_epi16(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: __mmask8,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask2_permutex2var_epi16(arg1: __m128i, arg2: __m128i, arg3: __mmask8, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_permutex2var_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_permutex2var_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_permutex2var_epi16(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_permutex2var_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_permutex2var_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask2_permutex2var_epi16(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: __mmask16,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask2_permutex2var_epi16(arg1: __m256i, arg2: __m256i, arg3: __mmask16, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_permutex2var_epi16(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_permutex2var_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_permutex2var_epi16(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_permutex2var_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_permutex2var_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask2_permutex2var_epi32(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: __mmask8,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask2_permutex2var_epi32(arg1: __m128i, arg2: __m128i, arg3: __mmask8, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_permutex2var_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_permutex2var_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_permutex2var_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_permutex2var_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_permutex2var_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask2_permutex2var_epi32(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: __mmask8,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask2_permutex2var_epi32(arg1: __m256i, arg2: __m256i, arg3: __mmask8, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_permutex2var_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_permutex2var_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_permutex2var_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_permutex2var_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_permutex2var_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask2_permutex2var_epi64(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: __mmask8,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask2_permutex2var_epi64(arg1: __m128i, arg2: __m128i, arg3: __mmask8, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_permutex2var_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_permutex2var_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_permutex2var_epi64(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_permutex2var_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_permutex2var_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask2_permutex2var_epi64(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: __mmask8,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask2_permutex2var_epi64(arg1: __m256i, arg2: __m256i, arg3: __mmask8, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_permutex2var_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_permutex2var_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_permutex2var_epi64(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_permutex2var_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_permutex2var_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128i, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask2_permutex2var_pd(
-        arg1: __m128d,
-        arg2: __m128i,
-        arg3: __mmask8,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask2_permutex2var_pd(arg1: __m128d, arg2: __m128i, arg3: __mmask8, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_permutex2var_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128i,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_permutex2var_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128i, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_permutex2var_pd(arg1: __m128d, arg2: __m128i, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_permutex2var_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_permutex2var_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256i, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_mask2_permutex2var_pd(
-        arg1: __m256d,
-        arg2: __m256i,
-        arg3: __mmask8,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask2_permutex2var_pd(arg1: __m256d, arg2: __m256i, arg3: __mmask8, arg4: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_permutex2var_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: __m256i,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_maskz_permutex2var_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256i, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_permutex2var_pd(arg1: __m256d, arg2: __m256i, arg3: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_permutex2var_ps(
-        arg1: __m128,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128,
-    ) -> __m128;
+    pub fn _mm_mask_permutex2var_ps(arg1: __m128, arg2: __mmask8, arg3: __m128i, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask2_permutex2var_ps(
-        arg1: __m128,
-        arg2: __m128i,
-        arg3: __mmask8,
-        arg4: __m128,
-    ) -> __m128;
+    pub fn _mm_mask2_permutex2var_ps(arg1: __m128, arg2: __m128i, arg3: __mmask8, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_permutex2var_ps(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128i,
-        arg4: __m128,
-    ) -> __m128;
+    pub fn _mm_maskz_permutex2var_ps(arg1: __mmask8, arg2: __m128, arg3: __m128i, arg4: __m128) -> __m128;
 }
 extern "C" {
     pub fn _mm_permutex2var_ps(arg1: __m128, arg2: __m128i, arg3: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_permutex2var_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_permutex2var_ps(arg1: __m256, arg2: __mmask8, arg3: __m256i, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_mask2_permutex2var_ps(
-        arg1: __m256,
-        arg2: __m256i,
-        arg3: __mmask8,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask2_permutex2var_ps(arg1: __m256, arg2: __m256i, arg3: __mmask8, arg4: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_permutex2var_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256i,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_maskz_permutex2var_ps(arg1: __mmask8, arg2: __m256, arg3: __m256i, arg4: __m256) -> __m256;
 }
 extern "C" {
     pub fn _mm256_permutex2var_ps(arg1: __m256, arg2: __m256i, arg3: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_permutexvar_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_permutexvar_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_permutexvar_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -29249,27 +24305,16 @@ extern "C" {
     pub fn _mm_permutexvar_epi16(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_permutexvar_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_permutexvar_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_permutexvar_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __m256i;
+    pub fn _mm256_maskz_permutexvar_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_permutexvar_epi16(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_permutexvar_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_permutexvar_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_permutexvar_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -29278,12 +24323,7 @@ extern "C" {
     pub fn _mm256_permutexvar_epi32(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_permutexvar_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_permutexvar_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_permutexvar_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -29292,12 +24332,7 @@ extern "C" {
     pub fn _mm256_permutexvar_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_permutexvar_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_permutexvar_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256i, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_permutexvar_pd(arg1: __mmask8, arg2: __m256i, arg3: __m256d) -> __m256d;
@@ -29306,12 +24341,7 @@ extern "C" {
     pub fn _mm256_permutexvar_pd(arg1: __m256i, arg2: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_mask_permutexvar_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_permutexvar_ps(arg1: __m256, arg2: __mmask8, arg3: __m256i, arg4: __m256) -> __m256;
 }
 extern "C" {
     pub fn _mm256_maskz_permutexvar_ps(arg1: __mmask8, arg2: __m256i, arg3: __m256) -> __m256;
@@ -29329,12 +24359,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_range_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_range_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_range_pd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
@@ -29349,12 +24374,7 @@ extern "C" {
     ) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_range_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: __m256d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_maskz_range_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d, arg4: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_range_pd(arg1: __m256d, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __m256d;
@@ -29369,12 +24389,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_range_ps(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_range_ps(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_range_ps(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
@@ -29389,12 +24404,7 @@ extern "C" {
     ) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_range_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_maskz_range_ps(arg1: __mmask8, arg2: __m256, arg3: __m256, arg4: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm256_range_ps(arg1: __m256, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m256;
@@ -29436,153 +24446,79 @@ extern "C" {
     pub fn _mm256_rcp14_ps(arg1: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_reduce_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_mask_reduce_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_reduce_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_reduce_pd(arg1: __mmask8, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_reduce_pd(arg1: __m128d, arg2: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_reduce_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_mask_reduce_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_reduce_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_maskz_reduce_pd(arg1: __mmask8, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_reduce_pd(arg1: __m256d, arg2: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_reduce_ps(
-        arg1: __m128,
-        arg2: __mmask8,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_mask_reduce_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_reduce_ps(arg1: __mmask8, arg2: __m128, arg3: ::std::os::raw::c_int)
-        -> __m128;
+    pub fn _mm_maskz_reduce_ps(arg1: __mmask8, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_reduce_ps(arg1: __m128, arg2: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_reduce_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_mask_reduce_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_reduce_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_maskz_reduce_ps(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm256_reduce_ps(arg1: __m256, arg2: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_rol_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_mask_rol_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_rol_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_rol_epi32(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_rol_epi32(arg1: __m128i, arg2: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_rol_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_mask_rol_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_rol_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_maskz_rol_epi32(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_rol_epi32(arg1: __m256i, arg2: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_rol_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_mask_rol_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_rol_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_rol_epi64(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_rol_epi64(arg1: __m128i, arg2: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_rol_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_mask_rol_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_rol_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_maskz_rol_epi64(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_rol_epi64(arg1: __m256i, arg2: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_rolv_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_rolv_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_rolv_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -29591,12 +24527,7 @@ extern "C" {
     pub fn _mm_rolv_epi32(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_rolv_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_rolv_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_rolv_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -29605,12 +24536,7 @@ extern "C" {
     pub fn _mm256_rolv_epi32(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_rolv_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_rolv_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_rolv_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -29619,12 +24545,7 @@ extern "C" {
     pub fn _mm_rolv_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_rolv_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_rolv_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_rolv_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -29633,84 +24554,43 @@ extern "C" {
     pub fn _mm256_rolv_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_ror_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_mask_ror_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_ror_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_ror_epi32(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_ror_epi32(arg1: __m128i, arg2: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_ror_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_mask_ror_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_ror_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_maskz_ror_epi32(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_ror_epi32(arg1: __m256i, arg2: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_ror_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_mask_ror_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_ror_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_ror_epi64(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_ror_epi64(arg1: __m128i, arg2: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_ror_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_mask_ror_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_ror_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_maskz_ror_epi64(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_ror_epi64(arg1: __m256i, arg2: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_rorv_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_rorv_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_rorv_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -29719,12 +24599,7 @@ extern "C" {
     pub fn _mm_rorv_epi32(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_rorv_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_rorv_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_rorv_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -29733,12 +24608,7 @@ extern "C" {
     pub fn _mm256_rorv_epi32(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_rorv_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_rorv_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_rorv_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -29747,12 +24617,7 @@ extern "C" {
     pub fn _mm_rorv_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_rorv_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_rorv_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_rorv_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -29761,19 +24626,11 @@ extern "C" {
     pub fn _mm256_rorv_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_roundscale_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_mask_roundscale_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: ::std::os::raw::c_int)
+        -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_roundscale_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_roundscale_pd(arg1: __mmask8, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_roundscale_pd(arg1: __m128d, arg2: ::std::os::raw::c_int) -> __m128d;
@@ -29787,47 +24644,26 @@ extern "C" {
     ) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_maskz_roundscale_pd(
-        arg1: __mmask8,
-        arg2: __m256d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_maskz_roundscale_pd(arg1: __mmask8, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_roundscale_pd(arg1: __m256d, arg2: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_roundscale_ps(
-        arg1: __m128,
-        arg2: __mmask8,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_mask_roundscale_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_roundscale_ps(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_roundscale_ps(arg1: __mmask8, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_roundscale_ps(arg1: __m128, arg2: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_roundscale_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_mask_roundscale_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: ::std::os::raw::c_int)
+        -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_roundscale_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_maskz_roundscale_ps(arg1: __mmask8, arg2: __m256, arg3: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm256_roundscale_ps(arg1: __m256, arg2: ::std::os::raw::c_int) -> __m256;
@@ -29857,12 +24693,7 @@ extern "C" {
     pub fn _mm256_maskz_rsqrt14_ps(arg1: __mmask8, arg2: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_scalef_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_scalef_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_scalef_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
@@ -29871,12 +24702,7 @@ extern "C" {
     pub fn _mm_scalef_pd(arg1: __m128d, arg2: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_scalef_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_scalef_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_scalef_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -29894,12 +24720,7 @@ extern "C" {
     pub fn _mm_scalef_ps(arg1: __m128, arg2: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_scalef_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_scalef_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
     pub fn _mm256_maskz_scalef_ps(arg1: __mmask8, arg2: __m256, arg3: __m256) -> __m256;
@@ -29908,99 +24729,59 @@ extern "C" {
     pub fn _mm256_scalef_ps(arg1: __m256, arg2: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_set1_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: ::std::os::raw::c_short,
-    ) -> __m128i;
+    pub fn _mm_mask_set1_epi16(arg1: __m128i, arg2: __mmask8, arg3: ::std::os::raw::c_short) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_set1_epi16(arg1: __mmask8, arg2: ::std::os::raw::c_short) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_set1_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: ::std::os::raw::c_short,
-    ) -> __m256i;
+    pub fn _mm256_mask_set1_epi16(arg1: __m256i, arg2: __mmask16, arg3: ::std::os::raw::c_short) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_set1_epi16(arg1: __mmask16, arg2: ::std::os::raw::c_short) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_set1_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_mask_set1_epi32(arg1: __m128i, arg2: __mmask8, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_set1_epi32(arg1: __mmask8, arg2: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_set1_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_mask_set1_epi32(arg1: __m256i, arg2: __mmask8, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_set1_epi32(arg1: __mmask8, arg2: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_set1_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: ::std::os::raw::c_longlong,
-    ) -> __m128i;
+    pub fn _mm_mask_set1_epi64(arg1: __m128i, arg2: __mmask8, arg3: ::std::os::raw::c_longlong) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_set1_epi64(arg1: __mmask8, arg2: ::std::os::raw::c_longlong) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_set1_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: ::std::os::raw::c_longlong,
-    ) -> __m256i;
+    pub fn _mm256_mask_set1_epi64(arg1: __m256i, arg2: __mmask8, arg3: ::std::os::raw::c_longlong) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_set1_epi64(arg1: __mmask8, arg2: ::std::os::raw::c_longlong) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_set1_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: ::std::os::raw::c_char,
-    ) -> __m128i;
+    pub fn _mm_mask_set1_epi8(arg1: __m128i, arg2: __mmask16, arg3: ::std::os::raw::c_char) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_set1_epi8(arg1: __mmask16, arg2: ::std::os::raw::c_char) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_set1_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: ::std::os::raw::c_char,
-    ) -> __m256i;
+    pub fn _mm256_mask_set1_epi8(arg1: __m256i, arg2: __mmask32, arg3: ::std::os::raw::c_char) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_set1_epi8(arg1: __mmask32, arg2: ::std::os::raw::c_char) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_shuffle_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_mask_shuffle_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_int)
+        -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shuffle_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_shuffle_epi32(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_shuffle_epi32(
@@ -30011,30 +24792,16 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_shuffle_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_maskz_shuffle_epi32(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_shuffle_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_shuffle_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_shuffle_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_shuffle_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_shuffle_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_shuffle_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -30077,11 +24844,7 @@ extern "C" {
     ) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_shuffle_f64x2(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_shuffle_f64x2(arg1: __m256d, arg2: __m256d, arg3: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_mask_shuffle_i32x4(
@@ -30101,11 +24864,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_shuffle_i32x4(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_shuffle_i32x4(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_shuffle_i64x2(
@@ -30125,11 +24884,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_shuffle_i64x2(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_shuffle_i64x2(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm_mask_shuffle_pd(
@@ -30141,12 +24896,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_shuffle_pd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_shuffle_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm256_mask_shuffle_pd(
@@ -30175,12 +24925,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_shuffle_ps(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_shuffle_ps(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm256_mask_shuffle_ps(
@@ -30192,12 +24937,7 @@ extern "C" {
     ) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_shuffle_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_maskz_shuffle_ps(arg1: __mmask8, arg2: __m256, arg3: __m256, arg4: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
     pub fn _mm_mask_shufflehi_epi16(
@@ -30208,11 +24948,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shufflehi_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_shufflehi_epi16(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_shufflehi_epi16(
@@ -30223,11 +24959,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_shufflehi_epi16(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_maskz_shufflehi_epi16(arg1: __mmask16, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm_mask_shufflelo_epi16(
@@ -30238,11 +24970,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shufflelo_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_shufflelo_epi16(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_shufflelo_epi16(
@@ -30253,92 +24981,49 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_shufflelo_epi16(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_maskz_shufflelo_epi16(arg1: __mmask16, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sll_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sll_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sll_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sll_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m128i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sll_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m128i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sll_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sll_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sll_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sll_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sll_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m128i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sll_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m128i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sll_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sll_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sll_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sll_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sll_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m128i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sll_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m128i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sll_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_slli_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_mask_slli_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_slli_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_maskz_slli_epi16(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_slli_epi16(
@@ -30349,26 +25034,13 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_slli_epi16(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m256i;
+    pub fn _mm256_maskz_slli_epi16(arg1: __mmask16, arg2: __m256i, arg3: ::std::os::raw::c_uint) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_slli_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_mask_slli_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_slli_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_maskz_slli_epi32(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_slli_epi32(
@@ -30379,26 +25051,13 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_slli_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m256i;
+    pub fn _mm256_maskz_slli_epi32(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_uint) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_slli_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_mask_slli_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_slli_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_maskz_slli_epi64(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_slli_epi64(
@@ -30409,19 +25068,10 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_slli_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m256i;
+    pub fn _mm256_maskz_slli_epi64(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_uint) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sllv_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sllv_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sllv_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -30430,12 +25080,7 @@ extern "C" {
     pub fn _mm_sllv_epi16(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sllv_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sllv_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sllv_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -30444,45 +25089,25 @@ extern "C" {
     pub fn _mm256_sllv_epi16(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sllv_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sllv_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sllv_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sllv_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sllv_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sllv_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sllv_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sllv_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sllv_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sllv_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sllv_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sllv_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -30512,56 +25137,31 @@ extern "C" {
     pub fn _mm256_maskz_sqrt_ps(arg1: __mmask8, arg2: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_sra_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sra_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sra_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sra_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m128i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sra_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m128i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sra_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sra_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sra_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sra_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sra_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m128i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sra_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m128i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sra_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sra_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sra_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sra_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -30570,12 +25170,7 @@ extern "C" {
     pub fn _mm_sra_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sra_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m128i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sra_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m128i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sra_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m128i) -> __m256i;
@@ -30584,19 +25179,10 @@ extern "C" {
     pub fn _mm256_sra_epi64(arg1: __m256i, arg2: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srai_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_mask_srai_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_srai_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_maskz_srai_epi16(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_srai_epi16(
@@ -30607,26 +25193,13 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_srai_epi16(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m256i;
+    pub fn _mm256_maskz_srai_epi16(arg1: __mmask16, arg2: __m256i, arg3: ::std::os::raw::c_uint) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srai_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_mask_srai_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_srai_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_maskz_srai_epi32(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_srai_epi32(
@@ -30637,26 +25210,13 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_srai_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m256i;
+    pub fn _mm256_maskz_srai_epi32(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_uint) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srai_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_mask_srai_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_srai_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_maskz_srai_epi64(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
     pub fn _mm_srai_epi64(arg1: __m128i, arg2: ::std::os::raw::c_uint) -> __m128i;
@@ -30670,22 +25230,13 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_srai_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m256i;
+    pub fn _mm256_maskz_srai_epi64(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_uint) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_srai_epi64(arg1: __m256i, arg2: ::std::os::raw::c_uint) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srav_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_srav_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_srav_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -30694,12 +25245,7 @@ extern "C" {
     pub fn _mm_srav_epi16(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_srav_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_srav_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_srav_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -30708,34 +25254,19 @@ extern "C" {
     pub fn _mm256_srav_epi16(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srav_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_srav_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_srav_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_srav_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_srav_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_srav_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srav_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_srav_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_srav_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -30744,12 +25275,7 @@ extern "C" {
     pub fn _mm_srav_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_srav_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_srav_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_srav_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -30758,85 +25284,46 @@ extern "C" {
     pub fn _mm256_srav_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srl_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_srl_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_srl_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_srl_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m128i,
-    ) -> __m256i;
+    pub fn _mm256_mask_srl_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m128i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_srl_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srl_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_srl_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_srl_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_srl_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m128i,
-    ) -> __m256i;
+    pub fn _mm256_mask_srl_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m128i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_srl_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srl_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_srl_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_srl_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_srl_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m128i,
-    ) -> __m256i;
+    pub fn _mm256_mask_srl_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m128i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_srl_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m128i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srli_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_mask_srli_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_srli_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_srli_epi16(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_srli_epi16(
@@ -30847,26 +25334,13 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_srli_epi16(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_maskz_srli_epi16(arg1: __mmask16, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srli_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_mask_srli_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_srli_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_maskz_srli_epi32(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_srli_epi32(
@@ -30877,26 +25351,13 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_srli_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m256i;
+    pub fn _mm256_maskz_srli_epi32(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_uint) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srli_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_mask_srli_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_srli_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m128i;
+    pub fn _mm_maskz_srli_epi64(arg1: __mmask8, arg2: __m128i, arg3: ::std::os::raw::c_uint) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_srli_epi64(
@@ -30907,19 +25368,10 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_srli_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_uint,
-    ) -> __m256i;
+    pub fn _mm256_maskz_srli_epi64(arg1: __mmask8, arg2: __m256i, arg3: ::std::os::raw::c_uint) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srlv_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_srlv_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_srlv_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -30928,12 +25380,7 @@ extern "C" {
     pub fn _mm_srlv_epi16(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_srlv_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_srlv_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_srlv_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -30942,45 +25389,25 @@ extern "C" {
     pub fn _mm256_srlv_epi16(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srlv_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_srlv_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_srlv_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_srlv_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_srlv_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_srlv_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_srlv_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_srlv_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_srlv_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_srlv_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_srlv_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_srlv_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -30989,21 +25416,13 @@ extern "C" {
     pub fn _mm_mask_store_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_store_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_store_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_mask_store_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_store_epi64(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_store_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_mask_store_pd(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128d);
@@ -31027,11 +25446,7 @@ extern "C" {
     pub fn _mm_mask_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_storeu_epi16(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask16,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_storeu_epi16(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __m128i);
@@ -31043,11 +25458,7 @@ extern "C" {
     pub fn _mm_mask_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_storeu_epi32(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_storeu_epi32(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_storeu_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __m128i);
@@ -31059,11 +25470,7 @@ extern "C" {
     pub fn _mm_mask_storeu_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_storeu_epi64(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask8,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_storeu_epi64(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __m128i);
@@ -31075,11 +25482,7 @@ extern "C" {
     pub fn _mm_mask_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask16, arg3: __m128i);
 }
 extern "C" {
-    pub fn _mm256_mask_storeu_epi8(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: __mmask32,
-        arg3: __m256i,
-    );
+    pub fn _mm256_mask_storeu_epi8(arg1: *mut ::std::os::raw::c_void, arg2: __mmask32, arg3: __m256i);
 }
 extern "C" {
     pub fn _mm_mask_storeu_pd(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m128d);
@@ -31094,89 +25497,49 @@ extern "C" {
     pub fn _mm256_mask_storeu_ps(arg1: *mut ::std::os::raw::c_void, arg2: __mmask8, arg3: __m256);
 }
 extern "C" {
-    pub fn _mm_mask_sub_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sub_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sub_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sub_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sub_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sub_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sub_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sub_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sub_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sub_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sub_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sub_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sub_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sub_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sub_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sub_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sub_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sub_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_sub_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_sub_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_sub_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_sub_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_sub_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_sub_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -31188,12 +25551,7 @@ extern "C" {
     pub fn _mm_maskz_sub_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_sub_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_sub_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_sub_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -31211,89 +25569,49 @@ extern "C" {
     pub fn _mm256_maskz_sub_ps(arg1: __mmask8, arg2: __m256, arg3: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_subs_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_subs_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_subs_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_subs_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_subs_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_subs_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_subs_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_subs_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_subs_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_subs_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_subs_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_subs_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_subs_epu16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_subs_epu16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_subs_epu16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_subs_epu16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_subs_epu16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_subs_epu16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_subs_epu8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_subs_epu8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_subs_epu8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_subs_epu8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_subs_epu8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_subs_epu8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -31317,12 +25635,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_ternarylogic_epi32(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_ternarylogic_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_ternarylogic_epi32(
@@ -31369,12 +25682,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_ternarylogic_epi64(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_ternarylogic_epi64(arg1: __m128i, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_mask_ternarylogic_epi64(
@@ -31457,8 +25765,7 @@ extern "C" {
     pub fn _mm_testn_epi16_mask(arg1: __m128i, arg2: __m128i) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_mask_testn_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_testn_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
     pub fn _mm256_testn_epi16_mask(arg1: __m256i, arg2: __m256i) -> __mmask16;
@@ -31500,257 +25807,145 @@ extern "C" {
     pub fn _mm256_testn_epi8_mask(arg1: __m256i, arg2: __m256i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm_mask_unpackhi_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_unpackhi_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_unpackhi_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_unpackhi_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_unpackhi_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_unpackhi_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_unpackhi_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_unpackhi_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_unpackhi_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_unpackhi_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_unpackhi_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_unpackhi_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_unpackhi_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_unpackhi_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_unpackhi_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_unpackhi_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_unpackhi_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_unpackhi_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_unpackhi_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_unpackhi_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_unpackhi_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_unpackhi_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_unpackhi_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_unpackhi_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_unpackhi_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_unpackhi_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_unpackhi_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_unpackhi_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_unpackhi_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_unpackhi_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_unpackhi_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128)
-        -> __m128;
+    pub fn _mm_mask_unpackhi_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
     pub fn _mm_maskz_unpackhi_ps(arg1: __mmask8, arg2: __m128, arg3: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_unpackhi_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_unpackhi_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
     pub fn _mm256_maskz_unpackhi_ps(arg1: __mmask8, arg2: __m256, arg3: __m256) -> __m256;
 }
 extern "C" {
-    pub fn _mm_mask_unpacklo_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_unpacklo_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_unpacklo_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_unpacklo_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_unpacklo_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_unpacklo_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_unpacklo_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_unpacklo_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_unpacklo_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_unpacklo_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_unpacklo_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_unpacklo_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_unpacklo_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_unpacklo_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_unpacklo_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_unpacklo_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_unpacklo_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_unpacklo_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_unpacklo_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_unpacklo_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_unpacklo_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_mask_unpacklo_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_unpacklo_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_unpacklo_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm_mask_unpacklo_pd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_unpacklo_pd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_unpacklo_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_unpacklo_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_unpacklo_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_unpacklo_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm_mask_unpacklo_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128)
-        -> __m128;
+    pub fn _mm_mask_unpacklo_ps(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
     pub fn _mm_maskz_unpacklo_ps(arg1: __mmask8, arg2: __m128, arg3: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm256_mask_unpacklo_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256;
+    pub fn _mm256_mask_unpacklo_ps(arg1: __m256, arg2: __mmask8, arg3: __m256, arg4: __m256) -> __m256;
 }
 extern "C" {
     pub fn _mm256_maskz_unpacklo_ps(arg1: __mmask8, arg2: __m256, arg3: __m256) -> __m256;
@@ -31759,12 +25954,7 @@ extern "C" {
     pub fn _mm_xor_epi32(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_xor_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_xor_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_xor_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -31773,12 +25963,7 @@ extern "C" {
     pub fn _mm256_xor_epi32(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_xor_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_xor_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_xor_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -31787,12 +25972,7 @@ extern "C" {
     pub fn _mm_xor_epi64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_xor_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_xor_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_xor_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -31801,12 +25981,7 @@ extern "C" {
     pub fn _mm256_xor_epi64(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_xor_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_xor_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_xor_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -31818,12 +25993,7 @@ extern "C" {
     pub fn _mm_maskz_xor_pd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm256_mask_xor_pd(
-        arg1: __m256d,
-        arg2: __mmask8,
-        arg3: __m256d,
-        arg4: __m256d,
-    ) -> __m256d;
+    pub fn _mm256_mask_xor_pd(arg1: __m256d, arg2: __mmask8, arg3: __m256d, arg4: __m256d) -> __m256d;
 }
 extern "C" {
     pub fn _mm256_maskz_xor_pd(arg1: __mmask8, arg2: __m256d, arg3: __m256d) -> __m256d;
@@ -32180,8 +26350,7 @@ extern "C" {
     pub fn _mm256_mask_cmplt_epi8_mask(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpneq_epi8_mask(arg1: __mmask32, arg2: __m256i, arg3: __m256i)
-        -> __mmask32;
+    pub fn _mm256_mask_cmpneq_epi8_mask(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __mmask32;
 }
 extern "C" {
     pub fn _mm256_mask_cmpeq_epu8_mask(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __mmask32;
@@ -32199,8 +26368,7 @@ extern "C" {
     pub fn _mm256_mask_cmplt_epu8_mask(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpneq_epu8_mask(arg1: __mmask32, arg2: __m256i, arg3: __m256i)
-        -> __mmask32;
+    pub fn _mm256_mask_cmpneq_epu8_mask(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __mmask32;
 }
 extern "C" {
     pub fn _mm256_cmpeq_epi16_mask(arg1: __m256i, arg2: __m256i) -> __mmask16;
@@ -32239,58 +26407,40 @@ extern "C" {
     pub fn _mm256_cmpneq_epu16_mask(arg1: __m256i, arg2: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpeq_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmpeq_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpge_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmpge_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpgt_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmpgt_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmple_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmple_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmplt_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmplt_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpneq_epi16_mask(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: __m256i,
-    ) -> __mmask16;
+    pub fn _mm256_mask_cmpneq_epi16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpeq_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmpeq_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpge_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmpge_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpgt_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmpgt_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmple_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmple_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmplt_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i)
-        -> __mmask16;
+    pub fn _mm256_mask_cmplt_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_cmpneq_epu16_mask(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: __m256i,
-    ) -> __mmask16;
+    pub fn _mm256_mask_cmpneq_epu16_mask(arg1: __mmask16, arg2: __m256i, arg3: __m256i) -> __mmask16;
 }
 extern "C" {
     pub fn _mm256_cmpeq_epi32_mask(arg1: __m256i, arg2: __m256i) -> __mmask8;
@@ -32449,12 +26599,8 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_add_round_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_add_round_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int)
+        -> __m128d;
 }
 extern "C" {
     pub fn _mm_add_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
@@ -32469,12 +26615,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_add_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_add_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mask_add_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
@@ -32526,23 +26667,13 @@ extern "C" {
     pub fn _mm_cmp_sd_mask(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_cmp_sd_mask(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_cmp_sd_mask(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_cmp_ss_mask(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_cmp_ss_mask(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_cmp_ss_mask(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_comi_round_sd(
@@ -32561,21 +26692,13 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cvt_roundi32_ss(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_cvt_roundi32_ss(arg1: __m128, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsd_i32(arg1: __m128d, arg2: ::std::os::raw::c_int)
-        -> ::std::os::raw::c_int;
+    pub fn _mm_cvt_roundsd_i32(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsd_si32(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cvt_roundsd_si32(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _mm_cvt_roundsd_ss(arg1: __m128, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128;
@@ -32590,25 +26713,14 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_cvt_roundsd_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_cvt_roundsd_ss(arg1: __mmask8, arg2: __m128, arg3: __m128d, arg4: ::std::os::raw::c_int)
+        -> __m128;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsd_u32(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _mm_cvt_roundsd_u32(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsi32_ss(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_cvt_roundsi32_ss(arg1: __m128, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_cvt_roundss_i32(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
@@ -32634,19 +26746,13 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_cvt_roundss_si32(arg1: __m128, arg2: ::std::os::raw::c_int)
-        -> ::std::os::raw::c_int;
+    pub fn _mm_cvt_roundss_si32(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cvt_roundss_u32(arg1: __m128, arg2: ::std::os::raw::c_int)
-        -> ::std::os::raw::c_uint;
+    pub fn _mm_cvt_roundss_u32(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _mm_cvt_roundu32_ss(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_uint,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_cvt_roundu32_ss(arg1: __m128, arg2: ::std::os::raw::c_uint, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_cvti32_sd(arg1: __m128d, arg2: ::std::os::raw::c_int) -> __m128d;
@@ -32670,8 +26776,7 @@ extern "C" {
     pub fn _mm_cvtss_i32(arg1: __m128) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_mask_cvtss_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128)
-        -> __m128d;
+    pub fn _mm_mask_cvtss_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_cvtss_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128) -> __m128d;
@@ -32680,38 +26785,22 @@ extern "C" {
     pub fn _mm_cvtss_u32(arg1: __m128) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsd_i32(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cvtt_roundsd_i32(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsd_si32(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cvtt_roundsd_si32(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsd_u32(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _mm_cvtt_roundsd_u32(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundss_i32(arg1: __m128, arg2: ::std::os::raw::c_int)
-        -> ::std::os::raw::c_int;
+    pub fn _mm_cvtt_roundss_i32(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundss_si32(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cvtt_roundss_si32(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundss_u32(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _mm_cvtt_roundss_u32(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_uint;
 }
 extern "C" {
     pub fn _mm_cvttsd_i32(arg1: __m128d) -> ::std::os::raw::c_int;
@@ -32744,12 +26833,8 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_div_round_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_div_round_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int)
+        -> __m128d;
 }
 extern "C" {
     pub fn _mm_div_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
@@ -32764,12 +26849,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_div_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_div_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mask_div_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
@@ -32842,12 +26922,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_fixupimm_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_fixupimm_sd(arg1: __m128d, arg2: __m128d, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fixupimm_sd(
@@ -32868,12 +26943,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_fixupimm_ss(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_fixupimm_ss(arg1: __m128, arg2: __m128, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mask_fixupimm_ss(
@@ -32894,12 +26964,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_fmadd_round_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_fmadd_round_sd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fmadd_round_sd(
@@ -32929,12 +26994,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_fmadd_round_ss(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_fmadd_round_ss(arg1: __m128, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mask_fmadd_round_ss(
@@ -32964,28 +27024,13 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_fmadd_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fmadd_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fmadd_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fmadd_sd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fmadd_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fmadd_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fmadd_ss(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
@@ -32997,12 +27042,7 @@ extern "C" {
     pub fn _mm_maskz_fmadd_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm_fmsub_round_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_fmsub_round_sd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fmsub_round_sd(
@@ -33032,12 +27072,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_fmsub_round_ss(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_fmsub_round_ss(arg1: __m128, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mask_fmsub_round_ss(
@@ -33067,28 +27102,13 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_fmsub_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fmsub_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fmsub_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fmsub_sd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fmsub_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fmsub_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fmsub_ss(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
@@ -33100,12 +27120,7 @@ extern "C" {
     pub fn _mm_maskz_fmsub_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm_fnmadd_round_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_fnmadd_round_sd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fnmadd_round_sd(
@@ -33135,12 +27150,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_fnmadd_round_ss(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_fnmadd_round_ss(arg1: __m128, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mask_fnmadd_round_ss(
@@ -33170,28 +27180,13 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_fnmadd_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fnmadd_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fnmadd_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fnmadd_sd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fnmadd_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fnmadd_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fnmadd_ss(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
@@ -33203,12 +27198,7 @@ extern "C" {
     pub fn _mm_maskz_fnmadd_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm_fnmsub_round_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_fnmsub_round_sd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fnmsub_round_sd(
@@ -33238,12 +27228,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_fnmsub_round_ss(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_fnmsub_round_ss(arg1: __m128, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mask_fnmsub_round_ss(
@@ -33273,28 +27258,13 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_fnmsub_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_fnmsub_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask3_fnmsub_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __mmask8,
-    ) -> __m128d;
+    pub fn _mm_mask3_fnmsub_sd(arg1: __m128d, arg2: __m128d, arg3: __m128d, arg4: __mmask8) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_fnmsub_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_maskz_fnmsub_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_fnmsub_ss(arg1: __m128, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128;
@@ -33309,28 +27279,16 @@ extern "C" {
     pub fn _mm_fpclass_sd_mask(arg1: __m128d, arg2: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_fpclass_sd_mask(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_fpclass_sd_mask(arg1: __mmask8, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_fpclass_ss_mask(arg1: __m128, arg2: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_fpclass_ss_mask(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_fpclass_ss_mask(arg1: __mmask8, arg2: __m128, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_getexp_round_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_getexp_round_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_getexp_round_sd(
@@ -33362,23 +27320,14 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_getexp_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_getexp_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int)
+        -> __m128;
 }
 extern "C" {
     pub fn _mm_getexp_sd(arg1: __m128d, arg2: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask_getexp_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_getexp_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_getexp_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
@@ -33528,12 +27477,8 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_max_round_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_max_round_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int)
+        -> __m128d;
 }
 extern "C" {
     pub fn _mm_max_round_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
@@ -33548,12 +27493,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_max_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_max_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_max_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
@@ -33580,12 +27520,8 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_min_round_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_min_round_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int)
+        -> __m128d;
 }
 extern "C" {
     pub fn _mm_min_round_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
@@ -33600,12 +27536,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_min_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_min_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_min_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
@@ -33623,8 +27554,7 @@ extern "C" {
     pub fn _mm_maskz_min_ss(arg1: __mmask8, arg2: __m128, arg3: __m128) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_move_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d)
-        -> __m128d;
+    pub fn _mm_mask_move_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_move_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
@@ -33645,12 +27575,8 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_mul_round_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_mul_round_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int)
+        -> __m128d;
 }
 extern "C" {
     pub fn _mm_mul_round_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
@@ -33665,12 +27591,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_mul_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_mul_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_mul_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
@@ -33700,12 +27621,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_range_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_range_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_range_round_sd(
@@ -33747,12 +27663,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_range_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_range_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_range_round_ss(
@@ -33782,12 +27693,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_rcp14_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_rcp14_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_rcp14_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
@@ -33822,8 +27728,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_rcp28_round_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int)
-        -> __m128d;
+    pub fn _mm_rcp28_round_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_rcp28_round_ss(
@@ -33835,23 +27740,13 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_rcp28_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_rcp28_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_rcp28_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_rcp28_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_rcp28_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_rcp28_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
@@ -33932,12 +27827,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_reduce_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_reduce_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_reduce_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
@@ -33952,12 +27842,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_reduce_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_reduce_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_reduce_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
@@ -34046,23 +27931,13 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_roundscale_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_roundscale_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_roundscale_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_rsqrt14_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_rsqrt14_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_rsqrt14_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
@@ -34097,11 +27972,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_rsqrt28_round_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_rsqrt28_round_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_rsqrt28_round_ss(
@@ -34124,12 +27995,7 @@ extern "C" {
     pub fn _mm_rsqrt28_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_rsqrt28_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_rsqrt28_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_rsqrt28_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
@@ -34164,11 +28030,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_scalef_round_sd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_scalef_round_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_scalef_round_ss(
@@ -34180,23 +28042,14 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_scalef_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_scalef_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int)
+        -> __m128;
 }
 extern "C" {
     pub fn _mm_scalef_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_scalef_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128d,
-    ) -> __m128d;
+    pub fn _mm_mask_scalef_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_scalef_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
@@ -34243,19 +28096,13 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_sqrt_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_sqrt_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_sqrt_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_sqrt_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d)
-        -> __m128d;
+    pub fn _mm_mask_sqrt_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128d) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_sqrt_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d) -> __m128d;
@@ -34282,12 +28129,8 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_maskz_sub_round_sd(
-        arg1: __mmask8,
-        arg2: __m128d,
-        arg3: __m128d,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_maskz_sub_round_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128d, arg4: ::std::os::raw::c_int)
+        -> __m128d;
 }
 extern "C" {
     pub fn _mm_sub_round_sd(arg1: __m128d, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128d;
@@ -34302,12 +28145,7 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_sub_round_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_sub_round_ss(arg1: __mmask8, arg2: __m128, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm_sub_round_ss(arg1: __m128, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128;
@@ -34337,28 +28175,16 @@ extern "C" {
     pub fn _mm_cvttss_u64(arg1: __m128) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsd_u64(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _mm_cvt_roundsd_u64(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _mm_cvt_roundss_u64(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _mm_cvt_roundss_u64(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsd_u64(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _mm_cvtt_roundsd_u64(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundss_u64(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _mm_cvtt_roundss_u64(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn _mm_cvti64_sd(arg1: __m128d, arg2: ::std::os::raw::c_longlong) -> __m128d;
@@ -34379,28 +28205,16 @@ extern "C" {
     pub fn _mm_cvttss_i64(arg1: __m128) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsd_i64(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvtt_roundsd_i64(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsd_si64(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvtt_roundsd_si64(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundss_i64(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvtt_roundss_i64(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundss_si64(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvtt_roundss_si64(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm_cvtu64_sd(arg1: __m128d, arg2: ::std::os::raw::c_ulonglong) -> __m128d;
@@ -34409,30 +28223,17 @@ extern "C" {
     pub fn _mm_cvtu64_ss(arg1: __m128, arg2: ::std::os::raw::c_ulonglong) -> __m128;
 }
 extern "C" {
-    pub fn _mm_cvt_roundi64_sd(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_longlong,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_cvt_roundi64_sd(arg1: __m128d, arg2: ::std::os::raw::c_longlong, arg3: ::std::os::raw::c_int)
+        -> __m128d;
 }
 extern "C" {
-    pub fn _mm_cvt_roundi64_ss(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_longlong,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_cvt_roundi64_ss(arg1: __m128, arg2: ::std::os::raw::c_longlong, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsd_i64(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvt_roundsd_i64(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsd_si64(
-        arg1: __m128d,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvt_roundsd_si64(arg1: __m128d, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm_cvt_roundsi64_sd(
@@ -34442,23 +28243,13 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsi64_ss(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_longlong,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_cvt_roundsi64_ss(arg1: __m128, arg2: ::std::os::raw::c_longlong, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_cvt_roundss_i64(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvt_roundss_i64(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm_cvt_roundss_si64(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvt_roundss_si64(arg1: __m128, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm_cvt_roundu64_sd(
@@ -34468,11 +28259,7 @@ extern "C" {
     ) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_cvt_roundu64_ss(
-        arg1: __m128,
-        arg2: ::std::os::raw::c_ulonglong,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_cvt_roundu64_ss(arg1: __m128, arg2: ::std::os::raw::c_ulonglong, arg3: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
     pub fn _mm512_zextpd128_pd512(arg1: __m128d) -> __m512d;
@@ -34496,126 +28283,61 @@ extern "C" {
     pub fn _mm_madd52hi_epu64(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_madd52hi_epu64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_madd52hi_epu64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_madd52hi_epu64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_madd52hi_epu64(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_madd52hi_epu64(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_madd52hi_epu64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_madd52hi_epu64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_madd52hi_epu64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_madd52hi_epu64(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_madd52hi_epu64(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_madd52hi_epu64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_madd52hi_epu64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_madd52hi_epu64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_madd52hi_epu64(arg1: __mmask8, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_madd52lo_epu64(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_madd52lo_epu64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_madd52lo_epu64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_madd52lo_epu64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_madd52lo_epu64(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_madd52lo_epu64(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_madd52lo_epu64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_madd52lo_epu64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_madd52lo_epu64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_madd52lo_epu64(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_madd52lo_epu64(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_madd52lo_epu64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_madd52lo_epu64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_madd52lo_epu64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_madd52lo_epu64(arg1: __mmask8, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_permutexvar_epi8(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_permutexvar_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_permutexvar_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_permutexvar_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -34624,12 +28346,7 @@ extern "C" {
     pub fn _mm256_permutexvar_epi8(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_permutexvar_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_permutexvar_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_permutexvar_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -34638,12 +28355,7 @@ extern "C" {
     pub fn _mm512_permutexvar_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_permutexvar_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_permutexvar_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_permutexvar_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -34652,364 +28364,172 @@ extern "C" {
     pub fn _mm_permutex2var_epi8(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_permutex2var_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_permutex2var_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask2_permutex2var_epi8(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: __mmask16,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask2_permutex2var_epi8(arg1: __m128i, arg2: __m128i, arg3: __mmask16, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_permutex2var_epi8(
-        arg1: __mmask16,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_permutex2var_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_permutex2var_epi8(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_permutex2var_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_permutex2var_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask2_permutex2var_epi8(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: __mmask32,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask2_permutex2var_epi8(arg1: __m256i, arg2: __m256i, arg3: __mmask32, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_permutex2var_epi8(
-        arg1: __mmask32,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_permutex2var_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_permutex2var_epi8(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_permutex2var_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_permutex2var_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask2_permutex2var_epi8(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: __mmask64,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask2_permutex2var_epi8(arg1: __m512i, arg2: __m512i, arg3: __mmask64, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_permutex2var_epi8(
-        arg1: __mmask64,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_permutex2var_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_multishift_epi64_epi8(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_multishift_epi64_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_multishift_epi64_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_multishift_epi64_epi8(
-        arg1: __mmask16,
-        arg2: __m128i,
-        arg3: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_multishift_epi64_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_multishift_epi64_epi8(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_multishift_epi64_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_multishift_epi64_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_multishift_epi64_epi8(
-        arg1: __mmask32,
-        arg2: __m256i,
-        arg3: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_multishift_epi64_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_multishift_epi64_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_multishift_epi64_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_multishift_epi64_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_multishift_epi64_epi8(
-        arg1: __mmask64,
-        arg2: __m512i,
-        arg3: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_multishift_epi64_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_dpbusd_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_dpbusd_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_dpbusd_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_dpbusd_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_dpbusd_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_dpbusd_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_dpbusd_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_dpbusd_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_dpbusd_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_dpbusd_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_dpbusd_epi32(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_dpbusd_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_dpbusd_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_dpbusd_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_dpbusd_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_dpbusds_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_dpbusds_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_dpbusds_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_dpbusds_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_dpbusds_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_dpbusds_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_dpbusds_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_dpbusds_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_dpbusds_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_dpbusds_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_dpbusds_epi32(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_dpbusds_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_dpbusds_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_dpbusds_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_dpbusds_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_dpwssd_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_dpwssd_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_dpwssd_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_dpwssd_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_dpwssd_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_dpwssd_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_dpwssd_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_dpwssd_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_dpwssd_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_dpwssd_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_dpwssd_epi32(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_dpwssd_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_dpwssd_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_dpwssd_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_dpwssd_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_dpwssds_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_dpwssds_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_dpwssds_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_dpwssds_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_dpwssds_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_dpwssds_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_dpwssds_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_dpwssds_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_dpwssds_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_dpwssds_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_dpwssds_epi32(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_dpwssds_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_dpwssds_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_dpwssds_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_dpwssds_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm256_aesenc_epi128(arg1: __m256i, arg2: __m256i) -> __m256i;
@@ -35036,18 +28556,10 @@ extern "C" {
     pub fn _mm512_aesdeclast_epi128(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm256_clmulepi64_epi128(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_clmulepi64_epi128(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_clmulepi64_epi128(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_clmulepi64_epi128(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_popcnt_epi32(arg1: __m128i) -> __m128i;
@@ -35161,38 +28673,22 @@ extern "C" {
     pub fn _mm_bitshuffle_epi64_mask(arg1: __m128i, arg2: __m128i) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm_mask_bitshuffle_epi64_mask(
-        arg1: __mmask16,
-        arg2: __m128i,
-        arg3: __m128i,
-    ) -> __mmask16;
+    pub fn _mm_mask_bitshuffle_epi64_mask(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __mmask16;
 }
 extern "C" {
     pub fn _mm256_bitshuffle_epi64_mask(arg1: __m256i, arg2: __m256i) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm256_mask_bitshuffle_epi64_mask(
-        arg1: __mmask32,
-        arg2: __m256i,
-        arg3: __m256i,
-    ) -> __mmask32;
+    pub fn _mm256_mask_bitshuffle_epi64_mask(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __mmask32;
 }
 extern "C" {
     pub fn _mm512_bitshuffle_epi64_mask(arg1: __m512i, arg2: __m512i) -> __mmask64;
 }
 extern "C" {
-    pub fn _mm512_mask_bitshuffle_epi64_mask(
-        arg1: __mmask64,
-        arg2: __m512i,
-        arg3: __m512i,
-    ) -> __mmask64;
+    pub fn _mm512_mask_bitshuffle_epi64_mask(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __mmask64;
 }
 extern "C" {
-    pub fn _mm_gf2p8affineinv_epi64_epi8(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_gf2p8affineinv_epi64_epi8(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_mask_gf2p8affineinv_epi64_epi8(
@@ -35212,11 +28708,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_gf2p8affineinv_epi64_epi8(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_gf2p8affineinv_epi64_epi8(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_gf2p8affineinv_epi64_epi8(
@@ -35236,11 +28728,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_gf2p8affineinv_epi64_epi8(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_gf2p8affineinv_epi64_epi8(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_gf2p8affineinv_epi64_epi8(
@@ -35260,11 +28748,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm_gf2p8affine_epi64_epi8(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_gf2p8affine_epi64_epi8(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_mask_gf2p8affine_epi64_epi8(
@@ -35284,11 +28768,7 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_gf2p8affine_epi64_epi8(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256i;
+    pub fn _mm256_gf2p8affine_epi64_epi8(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_gf2p8affine_epi64_epi8(
@@ -35308,11 +28788,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_gf2p8affine_epi64_epi8(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_gf2p8affine_epi64_epi8(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_gf2p8affine_epi64_epi8(
@@ -35335,12 +28811,7 @@ extern "C" {
     pub fn _mm_gf2p8mul_epi8(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_gf2p8mul_epi8(
-        arg1: __m128i,
-        arg2: __mmask16,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_gf2p8mul_epi8(arg1: __m128i, arg2: __mmask16, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm_maskz_gf2p8mul_epi8(arg1: __mmask16, arg2: __m128i, arg3: __m128i) -> __m128i;
@@ -35349,12 +28820,7 @@ extern "C" {
     pub fn _mm256_gf2p8mul_epi8(arg1: __m256i, arg2: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_gf2p8mul_epi8(
-        arg1: __m256i,
-        arg2: __mmask32,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_gf2p8mul_epi8(arg1: __m256i, arg2: __mmask32, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_maskz_gf2p8mul_epi8(arg1: __mmask32, arg2: __m256i, arg3: __m256i) -> __m256i;
@@ -35363,12 +28829,7 @@ extern "C" {
     pub fn _mm512_gf2p8mul_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_gf2p8mul_epi8(
-        arg1: __m512i,
-        arg2: __mmask64,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_gf2p8mul_epi8(arg1: __m512i, arg2: __mmask64, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_maskz_gf2p8mul_epi8(arg1: __mmask64, arg2: __m512i, arg3: __m512i) -> __m512i;
@@ -35386,16 +28847,10 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shldi_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_shldi_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_shldi_epi16(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_shldi_epi16(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_shldi_epi16(
@@ -35415,8 +28870,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_shldi_epi16(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_shldi_epi16(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_shldi_epi16(
@@ -35448,16 +28902,10 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shldi_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_shldi_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_shldi_epi32(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_shldi_epi32(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_shldi_epi32(
@@ -35477,8 +28925,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_shldi_epi32(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_shldi_epi32(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_shldi_epi32(
@@ -35510,16 +28957,10 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shldi_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_shldi_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_shldi_epi64(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_shldi_epi64(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_shldi_epi64(
@@ -35539,8 +28980,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_shldi_epi64(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_shldi_epi64(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_shldi_epi64(
@@ -35563,172 +29003,82 @@ extern "C" {
     pub fn _mm_shldv_epi16(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_shldv_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_shldv_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shldv_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_shldv_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_shldv_epi16(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_shldv_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_shldv_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_shldv_epi16(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_shldv_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_shldv_epi16(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_shldv_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_shldv_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_shldv_epi16(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_shldv_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_shldv_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_shldv_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_shldv_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shldv_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_shldv_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_shldv_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_shldv_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_shldv_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_shldv_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_shldv_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_shldv_epi32(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_shldv_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_shldv_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_shldv_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_shldv_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_shldv_epi64(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_shldv_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_shldv_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shldv_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_shldv_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_shldv_epi64(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_shldv_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_shldv_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_shldv_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_shldv_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_shldv_epi64(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_shldv_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_shldv_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_shldv_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_shldv_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_shrdi_epi16(arg1: __m128i, arg2: __m128i, arg3: ::std::os::raw::c_int) -> __m128i;
@@ -35743,16 +29093,10 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shrdi_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_shrdi_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_shrdi_epi16(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_shrdi_epi16(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_shrdi_epi16(
@@ -35772,8 +29116,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_shrdi_epi16(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_shrdi_epi16(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_shrdi_epi16(
@@ -35805,16 +29148,10 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shrdi_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_shrdi_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_shrdi_epi32(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_shrdi_epi32(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_shrdi_epi32(
@@ -35834,8 +29171,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_shrdi_epi32(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_shrdi_epi32(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_shrdi_epi32(
@@ -35867,16 +29203,10 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shrdi_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_maskz_shrdi_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
-    pub fn _mm256_shrdi_epi64(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int)
-        -> __m256i;
+    pub fn _mm256_shrdi_epi64(arg1: __m256i, arg2: __m256i, arg3: ::std::os::raw::c_int) -> __m256i;
 }
 extern "C" {
     pub fn _mm256_mask_shrdi_epi64(
@@ -35896,8 +29226,7 @@ extern "C" {
     ) -> __m256i;
 }
 extern "C" {
-    pub fn _mm512_shrdi_epi64(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int)
-        -> __m512i;
+    pub fn _mm512_shrdi_epi64(arg1: __m512i, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_mask_shrdi_epi64(
@@ -35920,172 +29249,82 @@ extern "C" {
     pub fn _mm_shrdv_epi16(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_shrdv_epi16(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_shrdv_epi16(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shrdv_epi16(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_shrdv_epi16(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_shrdv_epi16(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_shrdv_epi16(
-        arg1: __m256i,
-        arg2: __mmask16,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_shrdv_epi16(arg1: __m256i, arg2: __mmask16, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_shrdv_epi16(
-        arg1: __mmask16,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_shrdv_epi16(arg1: __mmask16, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_shrdv_epi16(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_shrdv_epi16(
-        arg1: __m512i,
-        arg2: __mmask32,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_shrdv_epi16(arg1: __m512i, arg2: __mmask32, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_shrdv_epi16(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_shrdv_epi16(arg1: __mmask32, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_shrdv_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_shrdv_epi32(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_shrdv_epi32(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shrdv_epi32(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_shrdv_epi32(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_shrdv_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_shrdv_epi32(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_shrdv_epi32(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_shrdv_epi32(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_shrdv_epi32(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_shrdv_epi32(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_shrdv_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_shrdv_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_shrdv_epi32(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_shrdv_epi32(arg1: __mmask16, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm_shrdv_epi64(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_mask_shrdv_epi64(
-        arg1: __m128i,
-        arg2: __mmask8,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_mask_shrdv_epi64(arg1: __m128i, arg2: __mmask8, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_maskz_shrdv_epi64(
-        arg1: __mmask8,
-        arg2: __m128i,
-        arg3: __m128i,
-        arg4: __m128i,
-    ) -> __m128i;
+    pub fn _mm_maskz_shrdv_epi64(arg1: __mmask8, arg2: __m128i, arg3: __m128i, arg4: __m128i) -> __m128i;
 }
 extern "C" {
     pub fn _mm256_shrdv_epi64(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_mask_shrdv_epi64(
-        arg1: __m256i,
-        arg2: __mmask8,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_mask_shrdv_epi64(arg1: __m256i, arg2: __mmask8, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
-    pub fn _mm256_maskz_shrdv_epi64(
-        arg1: __mmask8,
-        arg2: __m256i,
-        arg3: __m256i,
-        arg4: __m256i,
-    ) -> __m256i;
+    pub fn _mm256_maskz_shrdv_epi64(arg1: __mmask8, arg2: __m256i, arg3: __m256i, arg4: __m256i) -> __m256i;
 }
 extern "C" {
     pub fn _mm512_shrdv_epi64(arg1: __m512i, arg2: __m512i, arg3: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_shrdv_epi64(
-        arg1: __m512i,
-        arg2: __mmask8,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_shrdv_epi64(arg1: __m512i, arg2: __mmask8, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_shrdv_epi64(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_maskz_shrdv_epi64(arg1: __mmask8, arg2: __m512i, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_div_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
@@ -36112,20 +29351,10 @@ extern "C" {
     pub fn _mm512_div_epu64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_div_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_div_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_div_epu32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_div_epu32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_rem_epi8(arg1: __m512i, arg2: __m512i) -> __m512i;
@@ -36152,20 +29381,10 @@ extern "C" {
     pub fn _mm512_rem_epu64(arg1: __m512i, arg2: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_rem_epi32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_rem_epi32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_mask_rem_epu32(
-        arg1: __m512i,
-        arg2: __mmask16,
-        arg3: __m512i,
-        arg4: __m512i,
-    ) -> __m512i;
+    pub fn _mm512_mask_rem_epu32(arg1: __m512i, arg2: __mmask16, arg3: __m512i, arg4: __m512i) -> __m512i;
 }
 extern "C" {
     pub fn _mm512_sin_ps(arg1: __m512) -> __m512;
@@ -36267,23 +29486,13 @@ extern "C" {
     pub fn _mm512_atan2_ps(arg1: __m512, arg2: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_atan2_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_atan2_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
     pub fn _mm512_atan2_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_atan2_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_atan2_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_sind_ps(arg1: __m512) -> __m512;
@@ -36511,12 +29720,7 @@ extern "C" {
     pub fn _mm512_pow_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_pow_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_pow_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_trunc_ps(arg1: __m512) -> __m512;
@@ -36570,19 +29774,13 @@ extern "C" {
     pub fn _mm512_fmod_ps(arg1: __m512, arg2: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_fmod_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512)
-        -> __m512;
+    pub fn _mm512_mask_fmod_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
     pub fn _mm512_fmod_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_fmod_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_fmod_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_rint_ps(arg1: __m512) -> __m512;
@@ -36636,23 +29834,13 @@ extern "C" {
     pub fn _mm512_hypot_ps(arg1: __m512, arg2: __m512) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_hypot_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512;
+    pub fn _mm512_mask_hypot_ps(arg1: __m512, arg2: __mmask16, arg3: __m512, arg4: __m512) -> __m512;
 }
 extern "C" {
     pub fn _mm512_hypot_pd(arg1: __m512d, arg2: __m512d) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_mask_hypot_pd(
-        arg1: __m512d,
-        arg2: __mmask8,
-        arg3: __m512d,
-        arg4: __m512d,
-    ) -> __m512d;
+    pub fn _mm512_mask_hypot_pd(arg1: __m512d, arg2: __mmask8, arg3: __m512d, arg4: __m512d) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_cdfnorm_ps(arg1: __m512) -> __m512;
@@ -36755,12 +29943,7 @@ extern "C" {
     pub fn _mm_cvtne2ps_pbh(arg1: __m128, arg2: __m128) -> __m128bh;
 }
 extern "C" {
-    pub fn _mm_mask_cvtne2ps_pbh(
-        arg1: __m128bh,
-        arg2: __mmask8,
-        arg3: __m128,
-        arg4: __m128,
-    ) -> __m128bh;
+    pub fn _mm_mask_cvtne2ps_pbh(arg1: __m128bh, arg2: __mmask8, arg3: __m128, arg4: __m128) -> __m128bh;
 }
 extern "C" {
     pub fn _mm_maskz_cvtne2ps_pbh(arg1: __mmask8, arg2: __m128, arg3: __m128) -> __m128bh;
@@ -36769,20 +29952,10 @@ extern "C" {
     pub fn _mm_dpbf16_ps(arg1: __m128, arg2: __m128bh, arg3: __m128bh) -> __m128;
 }
 extern "C" {
-    pub fn _mm_mask_dpbf16_ps(
-        arg1: __m128,
-        arg2: __mmask8,
-        arg3: __m128bh,
-        arg4: __m128bh,
-    ) -> __m128;
+    pub fn _mm_mask_dpbf16_ps(arg1: __m128, arg2: __mmask8, arg3: __m128bh, arg4: __m128bh) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_dpbf16_ps(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128bh,
-        arg4: __m128bh,
-    ) -> __m128;
+    pub fn _mm_maskz_dpbf16_ps(arg1: __mmask8, arg2: __m128, arg3: __m128bh, arg4: __m128bh) -> __m128;
 }
 extern "C" {
     pub fn _mm256_cvtneps_pbh(arg1: __m256) -> __m128bh;
@@ -36797,12 +29970,7 @@ extern "C" {
     pub fn _mm256_cvtne2ps_pbh(arg1: __m256, arg2: __m256) -> __m256bh;
 }
 extern "C" {
-    pub fn _mm256_mask_cvtne2ps_pbh(
-        arg1: __m256bh,
-        arg2: __mmask16,
-        arg3: __m256,
-        arg4: __m256,
-    ) -> __m256bh;
+    pub fn _mm256_mask_cvtne2ps_pbh(arg1: __m256bh, arg2: __mmask16, arg3: __m256, arg4: __m256) -> __m256bh;
 }
 extern "C" {
     pub fn _mm256_maskz_cvtne2ps_pbh(arg1: __mmask16, arg2: __m256, arg3: __m256) -> __m256bh;
@@ -36811,20 +29979,10 @@ extern "C" {
     pub fn _mm256_dpbf16_ps(arg1: __m256, arg2: __m256bh, arg3: __m256bh) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_mask_dpbf16_ps(
-        arg1: __m256,
-        arg2: __mmask8,
-        arg3: __m256bh,
-        arg4: __m256bh,
-    ) -> __m256;
+    pub fn _mm256_mask_dpbf16_ps(arg1: __m256, arg2: __mmask8, arg3: __m256bh, arg4: __m256bh) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_maskz_dpbf16_ps(
-        arg1: __mmask8,
-        arg2: __m256,
-        arg3: __m256bh,
-        arg4: __m256bh,
-    ) -> __m256;
+    pub fn _mm256_maskz_dpbf16_ps(arg1: __mmask8, arg2: __m256, arg3: __m256bh, arg4: __m256bh) -> __m256;
 }
 extern "C" {
     pub fn _mm512_cvtneps_pbh(arg1: __m512) -> __m256bh;
@@ -36839,12 +29997,7 @@ extern "C" {
     pub fn _mm512_cvtne2ps_pbh(arg1: __m512, arg2: __m512) -> __m512bh;
 }
 extern "C" {
-    pub fn _mm512_mask_cvtne2ps_pbh(
-        arg1: __m512bh,
-        arg2: __mmask32,
-        arg3: __m512,
-        arg4: __m512,
-    ) -> __m512bh;
+    pub fn _mm512_mask_cvtne2ps_pbh(arg1: __m512bh, arg2: __mmask32, arg3: __m512, arg4: __m512) -> __m512bh;
 }
 extern "C" {
     pub fn _mm512_maskz_cvtne2ps_pbh(arg1: __mmask32, arg2: __m512, arg3: __m512) -> __m512bh;
@@ -36853,20 +30006,10 @@ extern "C" {
     pub fn _mm512_dpbf16_ps(arg1: __m512, arg2: __m512bh, arg3: __m512bh) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_mask_dpbf16_ps(
-        arg1: __m512,
-        arg2: __mmask16,
-        arg3: __m512bh,
-        arg4: __m512bh,
-    ) -> __m512;
+    pub fn _mm512_mask_dpbf16_ps(arg1: __m512, arg2: __mmask16, arg3: __m512bh, arg4: __m512bh) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_dpbf16_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: __m512bh,
-        arg4: __m512bh,
-    ) -> __m512;
+    pub fn _mm512_maskz_dpbf16_ps(arg1: __mmask16, arg2: __m512, arg3: __m512bh, arg4: __m512bh) -> __m512;
 }
 extern "C" {
     pub fn _mm_cvtness_sbh(arg1: f32) -> __bfloat16;
@@ -37125,11 +30268,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_exp2a23_round_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_exp2a23_round_ps(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_exp2a23_round_pd(
@@ -37140,11 +30279,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_exp2a23_round_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_exp2a23_round_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_rcp28_round_ps(
@@ -37155,11 +30290,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_rcp28_round_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_rcp28_round_ps(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_rcp28_round_pd(
@@ -37170,11 +30301,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_rcp28_round_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_rcp28_round_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_mask_rsqrt28_round_ps(
@@ -37185,11 +30312,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_rsqrt28_round_ps(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_rsqrt28_round_ps(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm512_mask_rsqrt28_round_pd(
@@ -37200,11 +30323,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_rsqrt28_round_pd(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_rsqrt28_round_pd(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm512_prefetch_i32gather_pd(
@@ -37343,52 +30462,22 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn _mm_2intersect_epi32(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: *mut __mmask8,
-        arg4: *mut __mmask8,
-    );
+    pub fn _mm_2intersect_epi32(arg1: __m128i, arg2: __m128i, arg3: *mut __mmask8, arg4: *mut __mmask8);
 }
 extern "C" {
-    pub fn _mm256_2intersect_epi32(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: *mut __mmask8,
-        arg4: *mut __mmask8,
-    );
+    pub fn _mm256_2intersect_epi32(arg1: __m256i, arg2: __m256i, arg3: *mut __mmask8, arg4: *mut __mmask8);
 }
 extern "C" {
-    pub fn _mm512_2intersect_epi32(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: *mut __mmask16,
-        arg4: *mut __mmask16,
-    );
+    pub fn _mm512_2intersect_epi32(arg1: __m512i, arg2: __m512i, arg3: *mut __mmask16, arg4: *mut __mmask16);
 }
 extern "C" {
-    pub fn _mm_2intersect_epi64(
-        arg1: __m128i,
-        arg2: __m128i,
-        arg3: *mut __mmask8,
-        arg4: *mut __mmask8,
-    );
+    pub fn _mm_2intersect_epi64(arg1: __m128i, arg2: __m128i, arg3: *mut __mmask8, arg4: *mut __mmask8);
 }
 extern "C" {
-    pub fn _mm256_2intersect_epi64(
-        arg1: __m256i,
-        arg2: __m256i,
-        arg3: *mut __mmask8,
-        arg4: *mut __mmask8,
-    );
+    pub fn _mm256_2intersect_epi64(arg1: __m256i, arg2: __m256i, arg3: *mut __mmask8, arg4: *mut __mmask8);
 }
 extern "C" {
-    pub fn _mm512_2intersect_epi64(
-        arg1: __m512i,
-        arg2: __m512i,
-        arg3: *mut __mmask8,
-        arg4: *mut __mmask8,
-    );
+    pub fn _mm512_2intersect_epi64(arg1: __m512i, arg2: __m512i, arg3: *mut __mmask8, arg4: *mut __mmask8);
 }
 pub type __tile = ::std::os::raw::c_int;
 extern "C" {
@@ -37401,25 +30490,13 @@ extern "C" {
     pub fn _tile_release();
 }
 extern "C" {
-    pub fn _tile_loadd(
-        dst: __tile,
-        base: *const ::std::os::raw::c_void,
-        stride: ::std::os::raw::c_int,
-    );
+    pub fn _tile_loadd(dst: __tile, base: *const ::std::os::raw::c_void, stride: ::std::os::raw::c_int);
 }
 extern "C" {
-    pub fn _tile_stream_loadd(
-        dst: __tile,
-        base: *const ::std::os::raw::c_void,
-        stride: ::std::os::raw::c_int,
-    );
+    pub fn _tile_stream_loadd(dst: __tile, base: *const ::std::os::raw::c_void, stride: ::std::os::raw::c_int);
 }
 extern "C" {
-    pub fn _tile_stored(
-        src: __tile,
-        base: *mut ::std::os::raw::c_void,
-        stride: ::std::os::raw::c_int,
-    );
+    pub fn _tile_stored(src: __tile, base: *mut ::std::os::raw::c_void, stride: ::std::os::raw::c_int);
 }
 extern "C" {
     pub fn _tile_zero(dst: __tile);
@@ -37455,12 +30532,7 @@ extern "C" {
     pub fn _mm256_add_ph(arg1: __m256h, arg2: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_add_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_add_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_maskz_add_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h) -> __m256h;
@@ -37469,22 +30541,13 @@ extern "C" {
     pub fn _mm512_add_ph(arg1: __m512h, arg2: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_add_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_add_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_maskz_add_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_add_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_add_round_ph(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_add_round_ph(
@@ -37525,30 +30588,17 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_add_round_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_add_round_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int)
+        -> __m128h;
 }
 extern "C" {
     pub fn _mm_cmp_ph_mask(arg1: __m128h, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_cmp_ph_mask(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_cmp_ph_mask(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm256_cmp_ph_mask(
-        arg1: __m256h,
-        arg2: __m256h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask16;
+    pub fn _mm256_cmp_ph_mask(arg1: __m256h, arg2: __m256h, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm256_mask_cmp_ph_mask(
@@ -37559,11 +30609,7 @@ extern "C" {
     ) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm512_cmp_ph_mask(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask32;
+    pub fn _mm512_cmp_ph_mask(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __mmask32;
 }
 extern "C" {
     pub fn _mm512_mask_cmp_ph_mask(
@@ -37594,12 +30640,7 @@ extern "C" {
     pub fn _mm_cmp_sh_mask(arg1: __m128h, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_cmp_sh_mask(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_cmp_sh_mask(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_cmp_round_sh_mask(
@@ -37619,11 +30660,7 @@ extern "C" {
     ) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_comi_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_comi_sh(arg1: __m128h, arg2: __m128h, arg3: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn _mm_comi_round_sh(
@@ -37672,11 +30709,7 @@ extern "C" {
     ) -> __m256h;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepi32_ph(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256h;
+    pub fn _mm512_maskz_cvt_roundepi32_ph(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m256h;
 }
 extern "C" {
     pub fn _mm_cvtpd_ph(arg1: __m128d) -> __m128h;
@@ -37717,11 +30750,7 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundpd_ph(
-        arg1: __mmask8,
-        arg2: __m512d,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm512_maskz_cvt_roundpd_ph(arg1: __mmask8, arg2: __m512d, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_cvtph_epi32(arg1: __m128h) -> __m128i;
@@ -37762,11 +30791,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundph_epi32(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundph_epi32(arg1: __mmask16, arg2: __m256h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvtph_pd(arg1: __m128h) -> __m128d;
@@ -37807,11 +30832,7 @@ extern "C" {
     ) -> __m512d;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundph_pd(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512d;
+    pub fn _mm512_maskz_cvt_roundph_pd(arg1: __mmask8, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m512d;
 }
 extern "C" {
     pub fn _mm_cvtxph_ps(arg1: __m128h) -> __m128;
@@ -37852,11 +30873,7 @@ extern "C" {
     ) -> __m512;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtx_roundph_ps(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512;
+    pub fn _mm512_maskz_cvtx_roundph_ps(arg1: __mmask16, arg2: __m256h, arg3: ::std::os::raw::c_int) -> __m512;
 }
 extern "C" {
     pub fn _mm_cvtph_epi64(arg1: __m128h) -> __m128i;
@@ -37897,11 +30914,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundph_epi64(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundph_epi64(arg1: __mmask8, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvtph_epu32(arg1: __m128h) -> __m128i;
@@ -37942,11 +30955,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundph_epu32(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundph_epu32(arg1: __mmask16, arg2: __m256h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvtph_epu64(arg1: __m128h) -> __m128i;
@@ -37987,11 +30996,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundph_epu64(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundph_epu64(arg1: __mmask8, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvtph_epu16(arg1: __m128h) -> __m128i;
@@ -38032,11 +31037,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundph_epu16(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundph_epu16(arg1: __mmask32, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvtph_epi16(arg1: __m128h) -> __m128i;
@@ -38077,11 +31078,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundph_epi16(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvt_roundph_epi16(arg1: __mmask32, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvtxps_ph(arg1: __m128) -> __m128h;
@@ -38122,11 +31119,7 @@ extern "C" {
     ) -> __m256h;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtx_roundps_ph(
-        arg1: __mmask16,
-        arg2: __m512,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256h;
+    pub fn _mm512_maskz_cvtx_roundps_ph(arg1: __mmask16, arg2: __m512, arg3: ::std::os::raw::c_int) -> __m256h;
 }
 extern "C" {
     pub fn _mm_cvtepi64_ph(arg1: __m128i) -> __m128h;
@@ -38167,29 +31160,19 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepi64_ph(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm512_maskz_cvt_roundepi64_ph(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_cvtsd_sh(arg1: __m128h, arg2: __m128d) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_cvtsd_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128d,
-    ) -> __m128h;
+    pub fn _mm_mask_cvtsd_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128d) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_cvtsd_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128d) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsd_sh(arg1: __m128h, arg2: __m128d, arg3: ::std::os::raw::c_int)
-        -> __m128h;
+    pub fn _mm_cvt_roundsd_sh(arg1: __m128h, arg2: __m128d, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_cvt_roundsd_sh(
@@ -38212,19 +31195,13 @@ extern "C" {
     pub fn _mm_cvtsh_sd(arg1: __m128d, arg2: __m128h) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_mask_cvtsh_sd(
-        arg1: __m128d,
-        arg2: __mmask8,
-        arg3: __m128d,
-        arg4: __m128h,
-    ) -> __m128d;
+    pub fn _mm_mask_cvtsh_sd(arg1: __m128d, arg2: __mmask8, arg3: __m128d, arg4: __m128h) -> __m128d;
 }
 extern "C" {
     pub fn _mm_maskz_cvtsh_sd(arg1: __mmask8, arg2: __m128d, arg3: __m128h) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsh_sd(arg1: __m128d, arg2: __m128h, arg3: ::std::os::raw::c_int)
-        -> __m128d;
+    pub fn _mm_cvt_roundsh_sd(arg1: __m128d, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm_mask_cvt_roundsh_sd(
@@ -38250,14 +31227,10 @@ extern "C" {
     pub fn _mm_cvtsh_i64(arg1: __m128h) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsh_i32(arg1: __m128h, arg2: ::std::os::raw::c_int)
-        -> ::std::os::raw::c_int;
+    pub fn _mm_cvt_roundsh_i32(arg1: __m128h, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsh_i64(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvt_roundsh_i64(arg1: __m128h, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm_cvtsh_ss(arg1: __m128, arg2: __m128h) -> __m128;
@@ -38281,12 +31254,8 @@ extern "C" {
     ) -> __m128;
 }
 extern "C" {
-    pub fn _mm_maskz_cvt_roundsh_ss(
-        arg1: __mmask8,
-        arg2: __m128,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_maskz_cvt_roundsh_ss(arg1: __mmask8, arg2: __m128, arg3: __m128h, arg4: ::std::os::raw::c_int)
+        -> __m128;
 }
 extern "C" {
     pub fn _mm_cvtsh_u32(arg1: __m128h) -> ::std::os::raw::c_uint;
@@ -38295,16 +31264,10 @@ extern "C" {
     pub fn _mm_cvtsh_u64(arg1: __m128h) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsh_u32(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _mm_cvt_roundsh_u32(arg1: __m128h, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _mm_cvt_roundsh_u64(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _mm_cvt_roundsh_u64(arg1: __m128h, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn _mm_cvti32_sh(arg1: __m128h, arg2: ::std::os::raw::c_int) -> __m128h;
@@ -38313,18 +31276,11 @@ extern "C" {
     pub fn _mm_cvti64_sh(arg1: __m128h, arg2: ::std::os::raw::c_longlong) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_cvt_roundi32_sh(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_cvt_roundi32_sh(arg1: __m128h, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_cvt_roundi64_sh(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_longlong,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_cvt_roundi64_sh(arg1: __m128h, arg2: ::std::os::raw::c_longlong, arg3: ::std::os::raw::c_int)
+        -> __m128h;
 }
 extern "C" {
     pub fn _mm_cvtss_sh(arg1: __m128h, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128h;
@@ -38339,12 +31295,7 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_cvtss_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_cvtss_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_cvt_roundss_sh(arg1: __m128h, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128h;
@@ -38405,11 +31356,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundph_epi32(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundph_epi32(arg1: __mmask16, arg2: __m256h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvttph_epi64(arg1: __m128h) -> __m128i;
@@ -38450,11 +31397,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundph_epi64(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundph_epi64(arg1: __mmask8, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvttph_epu32(arg1: __m128h) -> __m128i;
@@ -38495,11 +31438,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundph_epu32(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundph_epu32(arg1: __mmask16, arg2: __m256h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvttph_epu64(arg1: __m128h) -> __m128i;
@@ -38540,11 +31479,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundph_epu64(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundph_epu64(arg1: __mmask8, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvttph_epu16(arg1: __m128h) -> __m128i;
@@ -38585,11 +31520,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundph_epu16(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundph_epu16(arg1: __mmask32, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvttph_epi16(arg1: __m128h) -> __m128i;
@@ -38630,11 +31561,7 @@ extern "C" {
     ) -> __m512i;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvtt_roundph_epi16(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512i;
+    pub fn _mm512_maskz_cvtt_roundph_epi16(arg1: __mmask32, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512i;
 }
 extern "C" {
     pub fn _mm_cvttsh_i32(arg1: __m128h) -> ::std::os::raw::c_int;
@@ -38643,16 +31570,10 @@ extern "C" {
     pub fn _mm_cvttsh_i64(arg1: __m128h) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsh_i32(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+    pub fn _mm_cvtt_roundsh_i32(arg1: __m128h, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsh_i64(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn _mm_cvtt_roundsh_i64(arg1: __m128h, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn _mm_cvttsh_u32(arg1: __m128h) -> ::std::os::raw::c_uint;
@@ -38661,16 +31582,10 @@ extern "C" {
     pub fn _mm_cvttsh_u64(arg1: __m128h) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsh_u32(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _mm_cvtt_roundsh_u32(arg1: __m128h, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _mm_cvtt_roundsh_u64(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _mm_cvtt_roundsh_u64(arg1: __m128h, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn _mm_cvtepu32_ph(arg1: __m128i) -> __m128h;
@@ -38711,11 +31626,7 @@ extern "C" {
     ) -> __m256h;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepu32_ph(
-        arg1: __mmask16,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256h;
+    pub fn _mm512_maskz_cvt_roundepu32_ph(arg1: __mmask16, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m256h;
 }
 extern "C" {
     pub fn _mm_cvtepu64_ph(arg1: __m128i) -> __m128h;
@@ -38756,11 +31667,7 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepu64_ph(
-        arg1: __mmask8,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm512_maskz_cvt_roundepu64_ph(arg1: __mmask8, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_cvtu32_sh(arg1: __m128h, arg2: ::std::os::raw::c_uint) -> __m128h;
@@ -38769,11 +31676,7 @@ extern "C" {
     pub fn _mm_cvtu64_sh(arg1: __m128h, arg2: ::std::os::raw::c_ulonglong) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_cvt_roundu32_sh(
-        arg1: __m128h,
-        arg2: ::std::os::raw::c_uint,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_cvt_roundu32_sh(arg1: __m128h, arg2: ::std::os::raw::c_uint, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_cvt_roundu64_sh(
@@ -38821,11 +31724,7 @@ extern "C" {
     ) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepu16_ph(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_maskz_cvt_roundepu16_ph(arg1: __mmask32, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm_cvtepi16_ph(arg1: __m128i) -> __m128h;
@@ -38866,11 +31765,7 @@ extern "C" {
     ) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_cvt_roundepi16_ph(
-        arg1: __mmask32,
-        arg2: __m512i,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_maskz_cvt_roundepi16_ph(arg1: __mmask32, arg2: __m512i, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm_div_ph(arg1: __m128h, arg2: __m128h) -> __m128h;
@@ -38885,12 +31780,7 @@ extern "C" {
     pub fn _mm256_div_ph(arg1: __m256h, arg2: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_div_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_div_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_maskz_div_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h) -> __m256h;
@@ -38899,22 +31789,13 @@ extern "C" {
     pub fn _mm512_div_ph(arg1: __m512h, arg2: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_div_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_div_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_maskz_div_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_div_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_div_round_ph(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_div_round_ph(
@@ -38955,93 +31836,44 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_div_round_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_div_round_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int)
+        -> __m128h;
 }
 extern "C" {
     pub fn _mm_fmaddsub_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmaddsub_ph(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmaddsub_ph(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fmaddsub_ph(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fmaddsub_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fmaddsub_ph(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fmaddsub_ph(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_fmaddsub_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fmaddsub_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fmaddsub_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmaddsub_ph(
-        arg1: __m256h,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __mmask16,
-    ) -> __m256h;
+    pub fn _mm256_mask3_fmaddsub_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h, arg4: __mmask16) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmaddsub_ph(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_maskz_fmaddsub_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_fmaddsub_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fmaddsub_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fmaddsub_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmaddsub_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __mmask32,
-    ) -> __m512h;
+    pub fn _mm512_mask3_fmaddsub_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: __mmask32) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmaddsub_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_maskz_fmaddsub_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_fmaddsub_round_ph(
@@ -39082,82 +31914,37 @@ extern "C" {
     pub fn _mm_fmsubadd_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmsubadd_ph(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmsubadd_ph(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fmsubadd_ph(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fmsubadd_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fmsubadd_ph(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fmsubadd_ph(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_fmsubadd_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fmsubadd_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fmsubadd_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmsubadd_ph(
-        arg1: __m256h,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __mmask16,
-    ) -> __m256h;
+    pub fn _mm256_mask3_fmsubadd_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h, arg4: __mmask16) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmsubadd_ph(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_maskz_fmsubadd_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_fmsubadd_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fmsubadd_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fmsubadd_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmsubadd_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __mmask32,
-    ) -> __m512h;
+    pub fn _mm512_mask3_fmsubadd_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: __mmask32) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmsubadd_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_maskz_fmsubadd_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_fmsubadd_round_ph(
@@ -39198,130 +31985,64 @@ extern "C" {
     pub fn _mm_fpclass_ph_mask(arg1: __m128h, arg2: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_fpclass_ph_mask(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_fpclass_ph_mask(arg1: __mmask8, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm256_fpclass_ph_mask(arg1: __m256h, arg2: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
-    pub fn _mm256_mask_fpclass_ph_mask(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask16;
+    pub fn _mm256_mask_fpclass_ph_mask(arg1: __mmask16, arg2: __m256h, arg3: ::std::os::raw::c_int) -> __mmask16;
 }
 extern "C" {
     pub fn _mm512_fpclass_ph_mask(arg1: __m512h, arg2: ::std::os::raw::c_int) -> __mmask32;
 }
 extern "C" {
-    pub fn _mm512_mask_fpclass_ph_mask(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask32;
+    pub fn _mm512_mask_fpclass_ph_mask(arg1: __mmask32, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __mmask32;
 }
 extern "C" {
     pub fn _mm_fpclass_sh_mask(arg1: __m128h, arg2: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
-    pub fn _mm_mask_fpclass_sh_mask(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __mmask8;
+    pub fn _mm_mask_fpclass_sh_mask(arg1: __mmask8, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __mmask8;
 }
 extern "C" {
     pub fn _mm_fmadd_pch(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmadd_pch(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmadd_pch(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fmadd_pch(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fmadd_pch(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fmadd_pch(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fmadd_pch(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_fmadd_pch(arg1: __m256h, arg2: __m256h, arg3: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fmadd_pch(
-        arg1: __m256h,
-        arg2: __mmask8,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fmadd_pch(arg1: __m256h, arg2: __mmask8, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmadd_pch(
-        arg1: __m256h,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __mmask8,
-    ) -> __m256h;
+    pub fn _mm256_mask3_fmadd_pch(arg1: __m256h, arg2: __m256h, arg3: __m256h, arg4: __mmask8) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmadd_pch(
-        arg1: __mmask8,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_maskz_fmadd_pch(arg1: __mmask8, arg2: __m256h, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_fmadd_pch(arg1: __m512h, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fmadd_pch(
-        arg1: __m512h,
-        arg2: __mmask16,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fmadd_pch(arg1: __m512h, arg2: __mmask16, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmadd_pch(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __mmask16,
-    ) -> __m512h;
+    pub fn _mm512_mask3_fmadd_pch(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: __mmask16) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmadd_pch(
-        arg1: __mmask16,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_maskz_fmadd_pch(arg1: __mmask16, arg2: __m512h, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_fmadd_round_pch(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_fmadd_round_pch(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_fmadd_round_pch(
@@ -39354,90 +32075,41 @@ extern "C" {
     pub fn _mm_fcmadd_pch(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fcmadd_pch(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fcmadd_pch(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fcmadd_pch(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fcmadd_pch(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fcmadd_pch(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fcmadd_pch(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_fcmadd_pch(arg1: __m256h, arg2: __m256h, arg3: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fcmadd_pch(
-        arg1: __m256h,
-        arg2: __mmask8,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fcmadd_pch(arg1: __m256h, arg2: __mmask8, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask3_fcmadd_pch(
-        arg1: __m256h,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __mmask8,
-    ) -> __m256h;
+    pub fn _mm256_mask3_fcmadd_pch(arg1: __m256h, arg2: __m256h, arg3: __m256h, arg4: __mmask8) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_fcmadd_pch(
-        arg1: __mmask8,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_maskz_fcmadd_pch(arg1: __mmask8, arg2: __m256h, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_fcmadd_pch(arg1: __m512h, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fcmadd_pch(
-        arg1: __m512h,
-        arg2: __mmask16,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fcmadd_pch(arg1: __m512h, arg2: __mmask16, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask3_fcmadd_pch(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __mmask16,
-    ) -> __m512h;
+    pub fn _mm512_mask3_fcmadd_pch(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: __mmask16) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_fcmadd_pch(
-        arg1: __mmask16,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_maskz_fcmadd_pch(arg1: __mmask16, arg2: __m512h, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_fcmadd_round_pch(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_fcmadd_round_pch(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: ::std::os::raw::c_int)
+        -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_fcmadd_round_pch(
@@ -39470,36 +32142,16 @@ extern "C" {
     pub fn _mm_fcmadd_sch(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fcmadd_sch(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fcmadd_sch(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fcmadd_sch(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fcmadd_sch(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fcmadd_sch(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fcmadd_sch(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_fcmadd_round_sch(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_fcmadd_round_sch(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_fcmadd_round_sch(
@@ -39532,28 +32184,13 @@ extern "C" {
     pub fn _mm_fmadd_sch(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmadd_sch(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmadd_sch(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fmadd_sch(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fmadd_sch(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_fmadd_round_sch(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_fmadd_round_sch(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_fmadd_round_sch(
@@ -39577,12 +32214,7 @@ extern "C" {
     pub fn _mm_fcmul_pch(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fcmul_pch(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fcmul_pch(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_fcmul_pch(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
@@ -39591,12 +32223,7 @@ extern "C" {
     pub fn _mm256_fcmul_pch(arg1: __m256h, arg2: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fcmul_pch(
-        arg1: __m256h,
-        arg2: __mmask8,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fcmul_pch(arg1: __m256h, arg2: __mmask8, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_maskz_fcmul_pch(arg1: __mmask8, arg2: __m256h, arg3: __m256h) -> __m256h;
@@ -39605,22 +32232,13 @@ extern "C" {
     pub fn _mm512_fcmul_pch(arg1: __m512h, arg2: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fcmul_pch(
-        arg1: __m512h,
-        arg2: __mmask16,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fcmul_pch(arg1: __m512h, arg2: __mmask16, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_maskz_fcmul_pch(arg1: __mmask16, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_fcmul_round_pch(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_fcmul_round_pch(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_fcmul_round_pch(
@@ -39643,12 +32261,7 @@ extern "C" {
     pub fn _mm_fmul_pch(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmul_pch(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmul_pch(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_fmul_pch(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
@@ -39657,12 +32270,7 @@ extern "C" {
     pub fn _mm256_fmul_pch(arg1: __m256h, arg2: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fmul_pch(
-        arg1: __m256h,
-        arg2: __mmask8,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fmul_pch(arg1: __m256h, arg2: __mmask8, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_maskz_fmul_pch(arg1: __mmask8, arg2: __m256h, arg3: __m256h) -> __m256h;
@@ -39671,22 +32279,13 @@ extern "C" {
     pub fn _mm512_fmul_pch(arg1: __m512h, arg2: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fmul_pch(
-        arg1: __m512h,
-        arg2: __mmask16,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fmul_pch(arg1: __m512h, arg2: __mmask16, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_maskz_fmul_pch(arg1: __mmask16, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_fmul_round_pch(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_fmul_round_pch(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_fmul_round_pch(
@@ -39709,22 +32308,13 @@ extern "C" {
     pub fn _mm_fcmul_sch(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fcmul_sch(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fcmul_sch(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_fcmul_sch(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_fcmul_round_sch(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_fcmul_round_sch(arg1: __m128h, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_fcmul_round_sch(
@@ -39747,19 +32337,13 @@ extern "C" {
     pub fn _mm_fmul_sch(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmul_sch(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmul_sch(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_fmul_sch(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_fmul_round_sch(arg1: __m128h, arg2: __m128h, arg3: ::std::os::raw::c_int)
-        -> __m128h;
+    pub fn _mm_fmul_round_sch(arg1: __m128h, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_fmul_round_sch(
@@ -39782,90 +32366,40 @@ extern "C" {
     pub fn _mm_fnmadd_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fnmadd_ph(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fnmadd_ph(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fnmadd_ph(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fnmadd_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fnmadd_ph(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fnmadd_ph(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_fnmadd_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fnmadd_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fnmadd_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask3_fnmadd_ph(
-        arg1: __m256h,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __mmask16,
-    ) -> __m256h;
+    pub fn _mm256_mask3_fnmadd_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h, arg4: __mmask16) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_fnmadd_ph(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_maskz_fnmadd_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_fnmadd_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fnmadd_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fnmadd_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask3_fnmadd_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __mmask32,
-    ) -> __m512h;
+    pub fn _mm512_mask3_fnmadd_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: __mmask32) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_fnmadd_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_maskz_fnmadd_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_fnmadd_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_fnmadd_round_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_fnmadd_round_ph(
@@ -39898,90 +32432,40 @@ extern "C" {
     pub fn _mm_fmadd_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmadd_ph(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmadd_ph(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fmadd_ph(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fmadd_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fmadd_ph(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fmadd_ph(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_fmadd_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fmadd_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fmadd_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmadd_ph(
-        arg1: __m256h,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __mmask16,
-    ) -> __m256h;
+    pub fn _mm256_mask3_fmadd_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h, arg4: __mmask16) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmadd_ph(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_maskz_fmadd_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_fmadd_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fmadd_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fmadd_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmadd_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __mmask32,
-    ) -> __m512h;
+    pub fn _mm512_mask3_fmadd_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: __mmask32) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmadd_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_maskz_fmadd_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_fmadd_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_fmadd_round_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_fmadd_round_ph(
@@ -40014,36 +32498,16 @@ extern "C" {
     pub fn _mm_fnmadd_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fnmadd_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fnmadd_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fnmadd_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fnmadd_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fnmadd_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fnmadd_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_fnmadd_round_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_fnmadd_round_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_fnmadd_round_sh(
@@ -40076,36 +32540,16 @@ extern "C" {
     pub fn _mm_fmadd_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmadd_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmadd_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fmadd_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fmadd_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fmadd_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fmadd_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_fmadd_round_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_fmadd_round_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_fmadd_round_sh(
@@ -40138,90 +32582,40 @@ extern "C" {
     pub fn _mm_fnmsub_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fnmsub_ph(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fnmsub_ph(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fnmsub_ph(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fnmsub_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fnmsub_ph(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fnmsub_ph(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_fnmsub_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fnmsub_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fnmsub_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask3_fnmsub_ph(
-        arg1: __m256h,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __mmask16,
-    ) -> __m256h;
+    pub fn _mm256_mask3_fnmsub_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h, arg4: __mmask16) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_fnmsub_ph(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_maskz_fnmsub_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_fnmsub_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fnmsub_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fnmsub_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask3_fnmsub_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __mmask32,
-    ) -> __m512h;
+    pub fn _mm512_mask3_fnmsub_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: __mmask32) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_fnmsub_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_maskz_fnmsub_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_fnmsub_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_fnmsub_round_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_fnmsub_round_ph(
@@ -40254,90 +32648,40 @@ extern "C" {
     pub fn _mm_fmsub_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmsub_ph(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmsub_ph(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fmsub_ph(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fmsub_ph(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fmsub_ph(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fmsub_ph(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_fmsub_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_fmsub_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_fmsub_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask3_fmsub_ph(
-        arg1: __m256h,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __mmask16,
-    ) -> __m256h;
+    pub fn _mm256_mask3_fmsub_ph(arg1: __m256h, arg2: __m256h, arg3: __m256h, arg4: __mmask16) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_fmsub_ph(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_maskz_fmsub_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_fmsub_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_fmsub_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_fmsub_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask3_fmsub_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __mmask32,
-    ) -> __m512h;
+    pub fn _mm512_mask3_fmsub_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: __mmask32) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_fmsub_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_maskz_fmsub_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_fmsub_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: __m512h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_fmsub_round_ph(arg1: __m512h, arg2: __m512h, arg3: __m512h, arg4: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_fmsub_round_ph(
@@ -40370,36 +32714,16 @@ extern "C" {
     pub fn _mm_fnmsub_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fnmsub_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fnmsub_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fnmsub_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fnmsub_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fnmsub_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fnmsub_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_fnmsub_round_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_fnmsub_round_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_fnmsub_round_sh(
@@ -40432,36 +32756,16 @@ extern "C" {
     pub fn _mm_fmsub_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_fmsub_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_fmsub_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask3_fmsub_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __mmask8,
-    ) -> __m128h;
+    pub fn _mm_mask3_fmsub_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_fmsub_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_maskz_fmsub_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_fmsub_round_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_fmsub_round_sh(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_fmsub_round_sh(
@@ -40529,32 +32833,19 @@ extern "C" {
     ) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_getexp_round_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_maskz_getexp_round_ph(arg1: __mmask32, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm_getexp_sh(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_getexp_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_getexp_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_getexp_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_getexp_round_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_getexp_round_sh(arg1: __m128h, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_getexp_round_sh(
@@ -40574,11 +32865,7 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_getmant_ph(
-        arg1: __m128h,
-        arg2: _MM_MANTISSA_NORM_ENUM,
-        arg3: _MM_MANTISSA_SIGN_ENUM,
-    ) -> __m128h;
+    pub fn _mm_getmant_ph(arg1: __m128h, arg2: _MM_MANTISSA_NORM_ENUM, arg3: _MM_MANTISSA_SIGN_ENUM) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_getmant_ph(
@@ -40598,11 +32885,7 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm256_getmant_ph(
-        arg1: __m256h,
-        arg2: _MM_MANTISSA_NORM_ENUM,
-        arg3: _MM_MANTISSA_SIGN_ENUM,
-    ) -> __m256h;
+    pub fn _mm256_getmant_ph(arg1: __m256h, arg2: _MM_MANTISSA_NORM_ENUM, arg3: _MM_MANTISSA_SIGN_ENUM) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_mask_getmant_ph(
@@ -40622,11 +32905,7 @@ extern "C" {
     ) -> __m256h;
 }
 extern "C" {
-    pub fn _mm512_getmant_ph(
-        arg1: __m512h,
-        arg2: _MM_MANTISSA_NORM_ENUM,
-        arg3: _MM_MANTISSA_SIGN_ENUM,
-    ) -> __m512h;
+    pub fn _mm512_getmant_ph(arg1: __m512h, arg2: _MM_MANTISSA_NORM_ENUM, arg3: _MM_MANTISSA_SIGN_ENUM) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_getmant_ph(
@@ -40742,12 +33021,7 @@ extern "C" {
     pub fn _mm256_max_ph(arg1: __m256h, arg2: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_max_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_max_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_maskz_max_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h) -> __m256h;
@@ -40756,22 +33030,13 @@ extern "C" {
     pub fn _mm512_max_ph(arg1: __m512h, arg2: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_max_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_max_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_maskz_max_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_max_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_max_round_ph(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_max_round_ph(
@@ -40812,12 +33077,8 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_max_round_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_max_round_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int)
+        -> __m128h;
 }
 extern "C" {
     pub fn _mm_min_ph(arg1: __m128h, arg2: __m128h) -> __m128h;
@@ -40832,12 +33093,7 @@ extern "C" {
     pub fn _mm256_min_ph(arg1: __m256h, arg2: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_min_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_min_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_maskz_min_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h) -> __m256h;
@@ -40846,22 +33102,13 @@ extern "C" {
     pub fn _mm512_min_ph(arg1: __m512h, arg2: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_min_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_min_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_maskz_min_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_min_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_min_round_ph(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_min_round_ph(
@@ -40902,22 +33149,14 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_min_round_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_min_round_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int)
+        -> __m128h;
 }
 extern "C" {
     pub fn _mm_load_sh(arg1: *const ::std::os::raw::c_void) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_load_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: *const ::std::os::raw::c_void,
-    ) -> __m128h;
+    pub fn _mm_mask_load_sh(arg1: __m128h, arg2: __mmask8, arg3: *const ::std::os::raw::c_void) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_load_sh(arg1: __mmask8, arg2: *const ::std::os::raw::c_void) -> __m128h;
@@ -40932,8 +33171,7 @@ extern "C" {
     pub fn _mm_move_sh(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_move_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h)
-        -> __m128h;
+    pub fn _mm_mask_move_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_move_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
@@ -40957,12 +33195,7 @@ extern "C" {
     pub fn _mm256_mul_ph(arg1: __m256h, arg2: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_mul_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_mul_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_maskz_mul_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h) -> __m256h;
@@ -40971,22 +33204,13 @@ extern "C" {
     pub fn _mm512_mul_ph(arg1: __m512h, arg2: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_mul_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_mul_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_maskz_mul_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mul_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_mul_round_ph(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_mul_round_ph(
@@ -41027,12 +33251,8 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_mul_round_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_mul_round_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int)
+        -> __m128h;
 }
 extern "C" {
     pub fn _mm_rcp_ph(arg1: __m128h) -> __m128h;
@@ -41074,62 +33294,33 @@ extern "C" {
     pub fn _mm_reduce_ph(arg1: __m128h, arg2: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_reduce_ph(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_mask_reduce_ph(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_reduce_ph(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_reduce_ph(arg1: __mmask8, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_reduce_ph(arg1: __m256h, arg2: ::std::os::raw::c_int) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_reduce_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256h;
+    pub fn _mm256_mask_reduce_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: ::std::os::raw::c_int)
+        -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_reduce_ph(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256h;
+    pub fn _mm256_maskz_reduce_ph(arg1: __mmask16, arg2: __m256h, arg3: ::std::os::raw::c_int) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_reduce_ph(arg1: __m512h, arg2: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_reduce_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_mask_reduce_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: ::std::os::raw::c_int)
+        -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_reduce_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_maskz_reduce_ph(arg1: __mmask32, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_reduce_round_ph(
-        arg1: __m512h,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_reduce_round_ph(arg1: __m512h, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_reduce_round_ph(
@@ -41161,12 +33352,7 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_reduce_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_reduce_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_reduce_round_sh(
@@ -41199,19 +33385,11 @@ extern "C" {
     pub fn _mm_roundscale_ph(arg1: __m128h, arg2: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_roundscale_ph(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_mask_roundscale_ph(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: ::std::os::raw::c_int)
+        -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_roundscale_ph(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_roundscale_ph(arg1: __mmask8, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm256_roundscale_ph(arg1: __m256h, arg2: ::std::os::raw::c_int) -> __m256h;
@@ -41225,11 +33403,7 @@ extern "C" {
     ) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_maskz_roundscale_ph(
-        arg1: __mmask16,
-        arg2: __m256h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m256h;
+    pub fn _mm256_maskz_roundscale_ph(arg1: __mmask16, arg2: __m256h, arg3: ::std::os::raw::c_int) -> __m256h;
 }
 extern "C" {
     pub fn _mm512_roundscale_ph(arg1: __m512h, arg2: ::std::os::raw::c_int) -> __m512h;
@@ -41243,11 +33417,7 @@ extern "C" {
     ) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_roundscale_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_maskz_roundscale_ph(arg1: __mmask32, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_roundscale_round_ph(
@@ -41351,12 +33521,7 @@ extern "C" {
     pub fn _mm_rsqrt_sh(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_rsqrt_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_rsqrt_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_rsqrt_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
@@ -41365,12 +33530,7 @@ extern "C" {
     pub fn _mm_scalef_ph(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_scalef_ph(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_scalef_ph(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_scalef_ph(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
@@ -41379,12 +33539,7 @@ extern "C" {
     pub fn _mm256_scalef_ph(arg1: __m256h, arg2: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_scalef_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_scalef_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_maskz_scalef_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h) -> __m256h;
@@ -41393,22 +33548,13 @@ extern "C" {
     pub fn _mm512_scalef_ph(arg1: __m512h, arg2: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_scalef_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_scalef_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_maskz_scalef_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_scalef_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_scalef_round_ph(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_scalef_round_ph(
@@ -41431,22 +33577,13 @@ extern "C" {
     pub fn _mm_scalef_sh(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_scalef_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128h,
-    ) -> __m128h;
+    pub fn _mm_mask_scalef_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_scalef_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_scalef_round_sh(
-        arg1: __m128h,
-        arg2: __m128h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_scalef_round_sh(arg1: __m128h, arg2: __m128h, arg3: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_scalef_round_sh(
@@ -41504,18 +33641,13 @@ extern "C" {
     ) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_maskz_sqrt_round_ph(
-        arg1: __mmask32,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_maskz_sqrt_round_ph(arg1: __mmask32, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm_sqrt_sh(arg1: __m128h, arg2: __m128h) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_mask_sqrt_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h)
-        -> __m128h;
+    pub fn _mm_mask_sqrt_sh(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
     pub fn _mm_maskz_sqrt_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
@@ -41553,12 +33685,7 @@ extern "C" {
     pub fn _mm256_sub_ph(arg1: __m256h, arg2: __m256h) -> __m256h;
 }
 extern "C" {
-    pub fn _mm256_mask_sub_ph(
-        arg1: __m256h,
-        arg2: __mmask16,
-        arg3: __m256h,
-        arg4: __m256h,
-    ) -> __m256h;
+    pub fn _mm256_mask_sub_ph(arg1: __m256h, arg2: __mmask16, arg3: __m256h, arg4: __m256h) -> __m256h;
 }
 extern "C" {
     pub fn _mm256_maskz_sub_ph(arg1: __mmask16, arg2: __m256h, arg3: __m256h) -> __m256h;
@@ -41567,22 +33694,13 @@ extern "C" {
     pub fn _mm512_sub_ph(arg1: __m512h, arg2: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_mask_sub_ph(
-        arg1: __m512h,
-        arg2: __mmask32,
-        arg3: __m512h,
-        arg4: __m512h,
-    ) -> __m512h;
+    pub fn _mm512_mask_sub_ph(arg1: __m512h, arg2: __mmask32, arg3: __m512h, arg4: __m512h) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_maskz_sub_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
-    pub fn _mm512_sub_round_ph(
-        arg1: __m512h,
-        arg2: __m512h,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m512h;
+    pub fn _mm512_sub_round_ph(arg1: __m512h, arg2: __m512h, arg3: ::std::os::raw::c_int) -> __m512h;
 }
 extern "C" {
     pub fn _mm512_mask_sub_round_ph(
@@ -41623,12 +33741,8 @@ extern "C" {
     ) -> __m128h;
 }
 extern "C" {
-    pub fn _mm_maskz_sub_round_sh(
-        arg1: __mmask8,
-        arg2: __m128h,
-        arg3: __m128h,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128h;
+    pub fn _mm_maskz_sub_round_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: ::std::os::raw::c_int)
+        -> __m128h;
 }
 extern "C" {
     pub fn _mm_mask_blend_ph(arg1: __mmask8, arg2: __m128h, arg3: __m128h) -> __m128h;
@@ -41871,20 +33985,10 @@ extern "C" {
     pub fn _mm_frcz_sd(arg1: __m128d, arg2: __m128d) -> __m128d;
 }
 extern "C" {
-    pub fn _mm_permute2_ps(
-        arg1: __m128,
-        arg2: __m128,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128;
+    pub fn _mm_permute2_ps(arg1: __m128, arg2: __m128, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128;
 }
 extern "C" {
-    pub fn _mm_permute2_pd(
-        arg1: __m128d,
-        arg2: __m128d,
-        arg3: __m128i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m128d;
+    pub fn _mm_permute2_pd(arg1: __m128d, arg2: __m128d, arg3: __m128i, arg4: ::std::os::raw::c_int) -> __m128d;
 }
 extern "C" {
     pub fn _mm256_macc_ps(arg1: __m256, arg2: __m256, arg3: __m256) -> __m256;
@@ -41932,20 +34036,10 @@ extern "C" {
     pub fn _mm256_frcz_pd(arg1: __m256d) -> __m256d;
 }
 extern "C" {
-    pub fn _mm256_permute2_ps(
-        arg1: __m256,
-        arg2: __m256,
-        arg3: __m256i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256;
+    pub fn _mm256_permute2_ps(arg1: __m256, arg2: __m256, arg3: __m256i, arg4: ::std::os::raw::c_int) -> __m256;
 }
 extern "C" {
-    pub fn _mm256_permute2_pd(
-        arg1: __m256d,
-        arg2: __m256d,
-        arg3: __m256i,
-        arg4: ::std::os::raw::c_int,
-    ) -> __m256d;
+    pub fn _mm256_permute2_pd(arg1: __m256d, arg2: __m256d, arg3: __m256i, arg4: ::std::os::raw::c_int) -> __m256d;
 }
 extern "C" {
     pub fn __llwpcb(arg1: *mut ::std::os::raw::c_void);
@@ -41954,11 +34048,7 @@ extern "C" {
     pub fn __slwpcb() -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn __lwpval32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-        arg3: ::std::os::raw::c_uint,
-    );
+    pub fn __lwpval32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint, arg3: ::std::os::raw::c_uint);
 }
 extern "C" {
     pub fn __lwpins32(
@@ -41968,11 +34058,7 @@ extern "C" {
     ) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
-    pub fn __lwpval64(
-        arg1: ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_uint,
-        arg3: ::std::os::raw::c_uint,
-    );
+    pub fn __lwpval64(arg1: ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_uint, arg3: ::std::os::raw::c_uint);
 }
 extern "C" {
     pub fn __lwpins64(
@@ -41982,10 +34068,7 @@ extern "C" {
     ) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
-    pub fn _andn_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _andn_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
     pub fn _andn_u64(
@@ -41994,10 +34077,7 @@ extern "C" {
     ) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn _bextri_u32(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+    pub fn _bextri_u32(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
     pub fn _blcfill_u32(arg1: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
@@ -42027,10 +34107,7 @@ extern "C" {
     pub fn _blci_u32(arg1: ::std::os::raw::c_uint) -> ::std::os::raw::c_uint;
 }
 extern "C" {
-    pub fn _bextri_u64(
-        arg1: ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn _bextri_u64(arg1: ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn _blcfill_u64(arg1: ::std::os::raw::c_ulonglong) -> ::std::os::raw::c_ulonglong;
@@ -42067,11 +34144,7 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn _mm_mwaitx(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-        arg3: ::std::os::raw::c_uint,
-    );
+    pub fn _mm_mwaitx(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint, arg3: ::std::os::raw::c_uint);
 }
 extern "C" {
     pub fn _mm_clzero(arg1: *const ::std::os::raw::c_void);
@@ -42103,62 +34176,32 @@ fn bindgen_test_layout_rmp_seg() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).rmp_gpa) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(rmp_seg),
-            "::",
-            stringify!(rmp_gpa)
-        )
+        concat!("Offset of field: ", stringify!(rmp_seg), "::", stringify!(rmp_gpa))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).rmp_entry) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(rmp_seg),
-            "::",
-            stringify!(rmp_entry)
-        )
+        concat!("Offset of field: ", stringify!(rmp_seg), "::", stringify!(rmp_entry))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).rmp_pageSize) as usize - ptr as usize },
         9usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(rmp_seg),
-            "::",
-            stringify!(rmp_pageSize)
-        )
+        concat!("Offset of field: ", stringify!(rmp_seg), "::", stringify!(rmp_pageSize))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).rmp_pageMark) as usize - ptr as usize },
         10usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(rmp_seg),
-            "::",
-            stringify!(rmp_pageMark)
-        )
+        concat!("Offset of field: ", stringify!(rmp_seg), "::", stringify!(rmp_pageMark))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).rmp_reserved) as usize - ptr as usize },
         11usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(rmp_seg),
-            "::",
-            stringify!(rmp_reserved)
-        )
+        concat!("Offset of field: ", stringify!(rmp_seg), "::", stringify!(rmp_reserved))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).rmp_ASID) as usize - ptr as usize },
         12usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(rmp_seg),
-            "::",
-            stringify!(rmp_ASID)
-        )
+        concat!("Offset of field: ", stringify!(rmp_seg), "::", stringify!(rmp_ASID))
     );
 }
 extern "C" {
@@ -42444,26 +34487,16 @@ extern "C" {
     pub fn __cpuid(arg1: *mut ::std::os::raw::c_int, arg2: ::std::os::raw::c_int);
 }
 extern "C" {
-    pub fn __cpuidex(
-        arg1: *mut ::std::os::raw::c_int,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    );
+    pub fn __cpuidex(arg1: *mut ::std::os::raw::c_int, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int);
 }
 extern "C" {
     pub fn __debugbreak();
 }
 extern "C" {
-    pub fn __emul(
-        arg1: ::std::os::raw::c_int,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn __emul(arg1: ::std::os::raw::c_int, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn __emulu(
-        arg1: ::std::os::raw::c_uint,
-        arg2: ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn __emulu(arg1: ::std::os::raw::c_uint, arg2: ::std::os::raw::c_uint) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn __fastfail(arg1: ::std::os::raw::c_uint) -> !;
@@ -42529,50 +34562,25 @@ extern "C" {
     pub fn __lidt(arg1: *mut ::std::os::raw::c_void);
 }
 extern "C" {
-    pub fn __ll_lshift(
-        arg1: ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn __ll_lshift(arg1: ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn __ll_rshift(
-        arg1: ::std::os::raw::c_longlong,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn __ll_rshift(arg1: ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn __movsb(
-        arg1: *mut ::std::os::raw::c_uchar,
-        arg2: *const ::std::os::raw::c_uchar,
-        arg3: usize,
-    );
+    pub fn __movsb(arg1: *mut ::std::os::raw::c_uchar, arg2: *const ::std::os::raw::c_uchar, arg3: usize);
 }
 extern "C" {
-    pub fn __movsd(
-        arg1: *mut ::std::os::raw::c_ulong,
-        arg2: *const ::std::os::raw::c_ulong,
-        arg3: usize,
-    );
+    pub fn __movsd(arg1: *mut ::std::os::raw::c_ulong, arg2: *const ::std::os::raw::c_ulong, arg3: usize);
 }
 extern "C" {
-    pub fn __movsq(
-        arg1: *mut ::std::os::raw::c_ulonglong,
-        arg2: *const ::std::os::raw::c_ulonglong,
-        arg3: usize,
-    );
+    pub fn __movsq(arg1: *mut ::std::os::raw::c_ulonglong, arg2: *const ::std::os::raw::c_ulonglong, arg3: usize);
 }
 extern "C" {
-    pub fn __movsw(
-        arg1: *mut ::std::os::raw::c_ushort,
-        arg2: *const ::std::os::raw::c_ushort,
-        arg3: usize,
-    );
+    pub fn __movsw(arg1: *mut ::std::os::raw::c_ushort, arg2: *const ::std::os::raw::c_ushort, arg3: usize);
 }
 extern "C" {
-    pub fn __mulh(
-        arg1: ::std::os::raw::c_longlong,
-        arg2: ::std::os::raw::c_longlong,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn __mulh(arg1: ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_longlong) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn __nop();
@@ -42675,18 +34683,10 @@ extern "C" {
     pub fn __stosd(arg1: *mut ::std::os::raw::c_ulong, arg2: ::std::os::raw::c_ulong, arg3: usize);
 }
 extern "C" {
-    pub fn __stosq(
-        arg1: *mut ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_ulonglong,
-        arg3: usize,
-    );
+    pub fn __stosq(arg1: *mut ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_ulonglong, arg3: usize);
 }
 extern "C" {
-    pub fn __stosw(
-        arg1: *mut ::std::os::raw::c_ushort,
-        arg2: ::std::os::raw::c_ushort,
-        arg3: usize,
-    );
+    pub fn __stosw(arg1: *mut ::std::os::raw::c_ushort, arg2: ::std::os::raw::c_ushort, arg3: usize);
 }
 extern "C" {
     pub fn __svm_clgi();
@@ -42713,16 +34713,11 @@ extern "C" {
     pub fn __ud2() -> !;
 }
 extern "C" {
-    pub fn __ull_rshift(
-        arg1: ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn __ull_rshift(arg1: ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
-    pub fn __umulh(
-        arg1: ::std::os::raw::c_ulonglong,
-        arg2: ::std::os::raw::c_ulonglong,
-    ) -> ::std::os::raw::c_ulonglong;
+    pub fn __umulh(arg1: ::std::os::raw::c_ulonglong, arg2: ::std::os::raw::c_ulonglong)
+        -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
     pub fn __vmx_off();
@@ -42809,10 +34804,8 @@ extern "C" {
     ) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
-    pub fn _bittestandreset(
-        arg1: *mut ::std::os::raw::c_long,
-        arg2: ::std::os::raw::c_long,
-    ) -> ::std::os::raw::c_uchar;
+    pub fn _bittestandreset(arg1: *mut ::std::os::raw::c_long, arg2: ::std::os::raw::c_long)
+        -> ::std::os::raw::c_uchar;
 }
 extern "C" {
     pub fn _bittestandreset64(
@@ -42821,10 +34814,7 @@ extern "C" {
     ) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
-    pub fn _bittestandset(
-        arg1: *mut ::std::os::raw::c_long,
-        arg2: ::std::os::raw::c_long,
-    ) -> ::std::os::raw::c_uchar;
+    pub fn _bittestandset(arg1: *mut ::std::os::raw::c_long, arg2: ::std::os::raw::c_long) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
     pub fn _bittestandset64(
@@ -42896,11 +34886,7 @@ extern "C" {
     pub fn _mm_extract_si64(arg1: __m128i, arg2: __m128i) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_extracti_si64(
-        arg1: __m128i,
-        arg2: ::std::os::raw::c_int,
-        arg3: ::std::os::raw::c_int,
-    ) -> __m128i;
+    pub fn _mm_extracti_si64(arg1: __m128i, arg2: ::std::os::raw::c_int, arg3: ::std::os::raw::c_int) -> __m128i;
 }
 extern "C" {
     pub fn _mm_insert_si64(arg1: __m128i, arg2: __m128i) -> __m128i;
@@ -42914,19 +34900,13 @@ extern "C" {
     ) -> __m128i;
 }
 extern "C" {
-    pub fn _mm_setr_epi64x(
-        arg1: ::std::os::raw::c_longlong,
-        arg2: ::std::os::raw::c_longlong,
-    ) -> __m128i;
+    pub fn _mm_setr_epi64x(arg1: ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_longlong) -> __m128i;
 }
 extern "C" {
     pub fn _mm_stream_sd(arg1: *mut f64, arg2: __m128d);
 }
 extern "C" {
-    pub fn _mm_stream_si64x(
-        arg1: *mut ::std::os::raw::c_longlong,
-        arg2: ::std::os::raw::c_longlong,
-    );
+    pub fn _mm_stream_si64x(arg1: *mut ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_longlong);
 }
 extern "C" {
     pub fn _mm_stream_ss(arg1: *mut f32, arg2: __m128);
@@ -43065,32 +35045,17 @@ fn bindgen_test_layout_audio_data() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).data) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(audio_data),
-            "::",
-            stringify!(data)
-        )
+        concat!("Offset of field: ", stringify!(audio_data), "::", stringify!(data))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).frames) as usize - ptr as usize },
         64usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(audio_data),
-            "::",
-            stringify!(frames)
-        )
+        concat!("Offset of field: ", stringify!(audio_data), "::", stringify!(frames))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).timestamp) as usize - ptr as usize },
         72usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(audio_data),
-            "::",
-            stringify!(timestamp)
-        )
+        concat!("Offset of field: ", stringify!(audio_data), "::", stringify!(timestamp))
     );
 }
 #[repr(C)]
@@ -43282,10 +35247,7 @@ fn bindgen_test_layout_audio_convert_info() {
     );
 }
 extern "C" {
-    pub fn audio_output_open(
-        audio: *mut *mut audio_t,
-        info: *mut audio_output_info,
-    ) -> ::std::os::raw::c_int;
+    pub fn audio_output_open(audio: *mut *mut audio_t, info: *mut audio_output_info) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn audio_output_close(audio: *mut audio_t);
@@ -43405,32 +35367,17 @@ fn bindgen_test_layout_video_data() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).data) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(video_data),
-            "::",
-            stringify!(data)
-        )
+        concat!("Offset of field: ", stringify!(video_data), "::", stringify!(data))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).linesize) as usize - ptr as usize },
         64usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(video_data),
-            "::",
-            stringify!(linesize)
-        )
+        concat!("Offset of field: ", stringify!(video_data), "::", stringify!(linesize))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).timestamp) as usize - ptr as usize },
         96usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(video_data),
-            "::",
-            stringify!(timestamp)
-        )
+        concat!("Offset of field: ", stringify!(video_data), "::", stringify!(timestamp))
     );
 }
 #[repr(C)]
@@ -43654,10 +35601,7 @@ extern "C" {
     ) -> bool;
 }
 extern "C" {
-    pub fn video_output_open(
-        video: *mut *mut video_t,
-        info: *mut video_output_info,
-    ) -> ::std::os::raw::c_int;
+    pub fn video_output_open(video: *mut *mut video_t, info: *mut video_output_info) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn video_output_close(video: *mut video_t);
@@ -43769,42 +35713,22 @@ fn bindgen_test_layout_calldata() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).stack) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(calldata),
-            "::",
-            stringify!(stack)
-        )
+        concat!("Offset of field: ", stringify!(calldata), "::", stringify!(stack))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).size) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(calldata),
-            "::",
-            stringify!(size)
-        )
+        concat!("Offset of field: ", stringify!(calldata), "::", stringify!(size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).capacity) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(calldata),
-            "::",
-            stringify!(capacity)
-        )
+        concat!("Offset of field: ", stringify!(calldata), "::", stringify!(capacity))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).fixed) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(calldata),
-            "::",
-            stringify!(fixed)
-        )
+        concat!("Offset of field: ", stringify!(calldata), "::", stringify!(fixed))
     );
 }
 pub type calldata_t = calldata;
@@ -43838,15 +35762,10 @@ pub struct signal_handler {
 }
 pub type signal_handler_t = signal_handler;
 pub type global_signal_callback_t = ::std::option::Option<
-    unsafe extern "C" fn(
-        arg1: *mut ::std::os::raw::c_void,
-        arg2: *const ::std::os::raw::c_char,
-        arg3: *mut calldata_t,
-    ),
+    unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *const ::std::os::raw::c_char, arg3: *mut calldata_t),
 >;
-pub type signal_callback_t = ::std::option::Option<
-    unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut calldata_t),
->;
+pub type signal_callback_t =
+    ::std::option::Option<unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut calldata_t)>;
 extern "C" {
     pub fn signal_handler_create() -> *mut signal_handler_t;
 }
@@ -43854,10 +35773,7 @@ extern "C" {
     pub fn signal_handler_destroy(handler: *mut signal_handler_t);
 }
 extern "C" {
-    pub fn signal_handler_add(
-        handler: *mut signal_handler_t,
-        signal_decl: *const ::std::os::raw::c_char,
-    ) -> bool;
+    pub fn signal_handler_add(handler: *mut signal_handler_t, signal_decl: *const ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
     pub fn signal_handler_connect(
@@ -43913,9 +35829,8 @@ pub struct proc_handler {
     _unused: [u8; 0],
 }
 pub type proc_handler_t = proc_handler;
-pub type proc_handler_proc_t = ::std::option::Option<
-    unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut calldata_t),
->;
+pub type proc_handler_proc_t =
+    ::std::option::Option<unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut calldata_t)>;
 extern "C" {
     pub fn proc_handler_create() -> *mut proc_handler_t;
 }
@@ -43946,8 +35861,7 @@ pub struct media_frames_per_second {
 }
 #[test]
 fn bindgen_test_layout_media_frames_per_second() {
-    const UNINIT: ::std::mem::MaybeUninit<media_frames_per_second> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<media_frames_per_second> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<media_frames_per_second>(),
@@ -44013,13 +35927,10 @@ extern "C" {
     pub fn obs_data_create() -> *mut obs_data_t;
 }
 extern "C" {
-    pub fn obs_data_create_from_json(json_string: *const ::std::os::raw::c_char)
-        -> *mut obs_data_t;
+    pub fn obs_data_create_from_json(json_string: *const ::std::os::raw::c_char) -> *mut obs_data_t;
 }
 extern "C" {
-    pub fn obs_data_create_from_json_file(
-        json_file: *const ::std::os::raw::c_char,
-    ) -> *mut obs_data_t;
+    pub fn obs_data_create_from_json_file(json_file: *const ::std::os::raw::c_char) -> *mut obs_data_t;
 }
 extern "C" {
     pub fn obs_data_create_from_json_file_safe(
@@ -44085,28 +35996,16 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn obs_data_set_double(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: f64,
-    );
+    pub fn obs_data_set_double(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: f64);
 }
 extern "C" {
     pub fn obs_data_set_bool(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: bool);
 }
 extern "C" {
-    pub fn obs_data_set_obj(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        obj: *mut obs_data_t,
-    );
+    pub fn obs_data_set_obj(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, obj: *mut obs_data_t);
 }
 extern "C" {
-    pub fn obs_data_set_array(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        array: *mut obs_data_array_t,
-    );
+    pub fn obs_data_set_array(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, array: *mut obs_data_array_t);
 }
 extern "C" {
     pub fn obs_data_get_defaults(data: *mut obs_data_t) -> *mut obs_data_t;
@@ -44126,25 +36025,13 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn obs_data_set_default_double(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: f64,
-    );
+    pub fn obs_data_set_default_double(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: f64);
 }
 extern "C" {
-    pub fn obs_data_set_default_bool(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: bool,
-    );
+    pub fn obs_data_set_default_bool(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: bool);
 }
 extern "C" {
-    pub fn obs_data_set_default_obj(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        obj: *mut obs_data_t,
-    );
+    pub fn obs_data_set_default_obj(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, obj: *mut obs_data_t);
 }
 extern "C" {
     pub fn obs_data_set_default_array(
@@ -44168,18 +36055,10 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn obs_data_set_autoselect_double(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: f64,
-    );
+    pub fn obs_data_set_autoselect_double(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: f64);
 }
 extern "C" {
-    pub fn obs_data_set_autoselect_bool(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: bool,
-    );
+    pub fn obs_data_set_autoselect_bool(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: bool);
 }
 extern "C" {
     pub fn obs_data_set_autoselect_obj(
@@ -44195,10 +36074,7 @@ extern "C" {
     ) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_data_get_int(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn obs_data_get_int(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn obs_data_get_double(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> f64;
@@ -44207,16 +36083,10 @@ extern "C" {
     pub fn obs_data_get_bool(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
-    pub fn obs_data_get_obj(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> *mut obs_data_t;
+    pub fn obs_data_get_obj(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> *mut obs_data_t;
 }
 extern "C" {
-    pub fn obs_data_get_array(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> *mut obs_data_array_t;
+    pub fn obs_data_get_array(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> *mut obs_data_array_t;
 }
 extern "C" {
     pub fn obs_data_get_default_string(
@@ -44231,22 +36101,13 @@ extern "C" {
     ) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn obs_data_get_default_double(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> f64;
+    pub fn obs_data_get_default_double(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> f64;
 }
 extern "C" {
-    pub fn obs_data_get_default_bool(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> bool;
+    pub fn obs_data_get_default_bool(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
-    pub fn obs_data_get_default_obj(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> *mut obs_data_t;
+    pub fn obs_data_get_default_obj(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> *mut obs_data_t;
 }
 extern "C" {
     pub fn obs_data_get_default_array(
@@ -44267,22 +36128,13 @@ extern "C" {
     ) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
-    pub fn obs_data_get_autoselect_double(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> f64;
+    pub fn obs_data_get_autoselect_double(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> f64;
 }
 extern "C" {
-    pub fn obs_data_get_autoselect_bool(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> bool;
+    pub fn obs_data_get_autoselect_bool(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
-    pub fn obs_data_get_autoselect_obj(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> *mut obs_data_t;
+    pub fn obs_data_get_autoselect_obj(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> *mut obs_data_t;
 }
 extern "C" {
     pub fn obs_data_get_autoselect_array(
@@ -44312,10 +36164,7 @@ extern "C" {
     pub fn obs_data_array_insert(array: *mut obs_data_array_t, idx: usize, obj: *mut obs_data_t);
 }
 extern "C" {
-    pub fn obs_data_array_push_back_array(
-        array: *mut obs_data_array_t,
-        array2: *mut obs_data_array_t,
-    );
+    pub fn obs_data_array_push_back_array(array: *mut obs_data_array_t, array2: *mut obs_data_array_t);
 }
 extern "C" {
     pub fn obs_data_array_erase(array: *mut obs_data_array_t, idx: usize);
@@ -44323,29 +36172,18 @@ extern "C" {
 extern "C" {
     pub fn obs_data_array_enum(
         array: *mut obs_data_array_t,
-        cb: ::std::option::Option<
-            unsafe extern "C" fn(data: *mut obs_data_t, param: *mut ::std::os::raw::c_void),
-        >,
+        cb: ::std::option::Option<unsafe extern "C" fn(data: *mut obs_data_t, param: *mut ::std::os::raw::c_void)>,
         param: *mut ::std::os::raw::c_void,
     );
 }
 extern "C" {
-    pub fn obs_data_has_user_value(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> bool;
+    pub fn obs_data_has_user_value(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
-    pub fn obs_data_has_default_value(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> bool;
+    pub fn obs_data_has_default_value(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
-    pub fn obs_data_has_autoselect_value(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> bool;
+    pub fn obs_data_has_autoselect_value(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
     pub fn obs_data_item_has_user_value(data: *mut obs_data_item_t) -> bool;
@@ -44363,10 +36201,7 @@ extern "C" {
     pub fn obs_data_unset_default_value(data: *mut obs_data_t, name: *const ::std::os::raw::c_char);
 }
 extern "C" {
-    pub fn obs_data_unset_autoselect_value(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_data_unset_autoselect_value(data: *mut obs_data_t, name: *const ::std::os::raw::c_char);
 }
 extern "C" {
     pub fn obs_data_item_unset_user_value(data: *mut obs_data_item_t);
@@ -44381,10 +36216,7 @@ extern "C" {
     pub fn obs_data_first(data: *mut obs_data_t) -> *mut obs_data_item_t;
 }
 extern "C" {
-    pub fn obs_data_item_byname(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> *mut obs_data_item_t;
+    pub fn obs_data_item_byname(data: *mut obs_data_t, name: *const ::std::os::raw::c_char) -> *mut obs_data_item_t;
 }
 extern "C" {
     pub fn obs_data_item_next(item: *mut *mut obs_data_item_t) -> bool;
@@ -44405,10 +36237,7 @@ extern "C" {
     pub fn obs_data_item_get_name(item: *mut obs_data_item_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_data_item_set_string(
-        item: *mut *mut obs_data_item_t,
-        val: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_data_item_set_string(item: *mut *mut obs_data_item_t, val: *const ::std::os::raw::c_char);
 }
 extern "C" {
     pub fn obs_data_item_set_int(item: *mut *mut obs_data_item_t, val: ::std::os::raw::c_longlong);
@@ -44426,16 +36255,10 @@ extern "C" {
     pub fn obs_data_item_set_array(item: *mut *mut obs_data_item_t, val: *mut obs_data_array_t);
 }
 extern "C" {
-    pub fn obs_data_item_set_default_string(
-        item: *mut *mut obs_data_item_t,
-        val: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_data_item_set_default_string(item: *mut *mut obs_data_item_t, val: *const ::std::os::raw::c_char);
 }
 extern "C" {
-    pub fn obs_data_item_set_default_int(
-        item: *mut *mut obs_data_item_t,
-        val: ::std::os::raw::c_longlong,
-    );
+    pub fn obs_data_item_set_default_int(item: *mut *mut obs_data_item_t, val: ::std::os::raw::c_longlong);
 }
 extern "C" {
     pub fn obs_data_item_set_default_double(item: *mut *mut obs_data_item_t, val: f64);
@@ -44447,22 +36270,13 @@ extern "C" {
     pub fn obs_data_item_set_default_obj(item: *mut *mut obs_data_item_t, val: *mut obs_data_t);
 }
 extern "C" {
-    pub fn obs_data_item_set_default_array(
-        item: *mut *mut obs_data_item_t,
-        val: *mut obs_data_array_t,
-    );
+    pub fn obs_data_item_set_default_array(item: *mut *mut obs_data_item_t, val: *mut obs_data_array_t);
 }
 extern "C" {
-    pub fn obs_data_item_set_autoselect_string(
-        item: *mut *mut obs_data_item_t,
-        val: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_data_item_set_autoselect_string(item: *mut *mut obs_data_item_t, val: *const ::std::os::raw::c_char);
 }
 extern "C" {
-    pub fn obs_data_item_set_autoselect_int(
-        item: *mut *mut obs_data_item_t,
-        val: ::std::os::raw::c_longlong,
-    );
+    pub fn obs_data_item_set_autoselect_int(item: *mut *mut obs_data_item_t, val: ::std::os::raw::c_longlong);
 }
 extern "C" {
     pub fn obs_data_item_set_autoselect_double(item: *mut *mut obs_data_item_t, val: f64);
@@ -44474,10 +36288,7 @@ extern "C" {
     pub fn obs_data_item_set_autoselect_obj(item: *mut *mut obs_data_item_t, val: *mut obs_data_t);
 }
 extern "C" {
-    pub fn obs_data_item_set_autoselect_array(
-        item: *mut *mut obs_data_item_t,
-        val: *mut obs_data_array_t,
-    );
+    pub fn obs_data_item_set_autoselect_array(item: *mut *mut obs_data_item_t, val: *mut obs_data_array_t);
 }
 extern "C" {
     pub fn obs_data_item_get_string(item: *mut obs_data_item_t) -> *const ::std::os::raw::c_char;
@@ -44498,9 +36309,7 @@ extern "C" {
     pub fn obs_data_item_get_array(item: *mut obs_data_item_t) -> *mut obs_data_array_t;
 }
 extern "C" {
-    pub fn obs_data_item_get_default_string(
-        item: *mut obs_data_item_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_data_item_get_default_string(item: *mut obs_data_item_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn obs_data_item_get_default_int(item: *mut obs_data_item_t) -> ::std::os::raw::c_longlong;
@@ -44518,14 +36327,10 @@ extern "C" {
     pub fn obs_data_item_get_default_array(item: *mut obs_data_item_t) -> *mut obs_data_array_t;
 }
 extern "C" {
-    pub fn obs_data_item_get_autoselect_string(
-        item: *mut obs_data_item_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_data_item_get_autoselect_string(item: *mut obs_data_item_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_data_item_get_autoselect_int(
-        item: *mut obs_data_item_t,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn obs_data_item_get_autoselect_int(item: *mut obs_data_item_t) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn obs_data_item_get_autoselect_double(item: *mut obs_data_item_t) -> f64;
@@ -44540,172 +36345,76 @@ extern "C" {
     pub fn obs_data_item_get_autoselect_array(item: *mut obs_data_item_t) -> *mut obs_data_array_t;
 }
 extern "C" {
-    pub fn obs_data_set_vec2(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const vec2,
-    );
+    pub fn obs_data_set_vec2(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const vec2);
 }
 extern "C" {
-    pub fn obs_data_set_vec3(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const vec3,
-    );
+    pub fn obs_data_set_vec3(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const vec3);
 }
 extern "C" {
-    pub fn obs_data_set_vec4(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const vec4,
-    );
+    pub fn obs_data_set_vec4(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const vec4);
 }
 extern "C" {
-    pub fn obs_data_set_quat(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const quat,
-    );
+    pub fn obs_data_set_quat(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const quat);
 }
 extern "C" {
-    pub fn obs_data_set_default_vec2(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const vec2,
-    );
+    pub fn obs_data_set_default_vec2(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const vec2);
 }
 extern "C" {
-    pub fn obs_data_set_default_vec3(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const vec3,
-    );
+    pub fn obs_data_set_default_vec3(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const vec3);
 }
 extern "C" {
-    pub fn obs_data_set_default_vec4(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const vec4,
-    );
+    pub fn obs_data_set_default_vec4(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const vec4);
 }
 extern "C" {
-    pub fn obs_data_set_default_quat(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const quat,
-    );
+    pub fn obs_data_set_default_quat(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const quat);
 }
 extern "C" {
-    pub fn obs_data_set_autoselect_vec2(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const vec2,
-    );
+    pub fn obs_data_set_autoselect_vec2(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const vec2);
 }
 extern "C" {
-    pub fn obs_data_set_autoselect_vec3(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const vec3,
-    );
+    pub fn obs_data_set_autoselect_vec3(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const vec3);
 }
 extern "C" {
-    pub fn obs_data_set_autoselect_vec4(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const vec4,
-    );
+    pub fn obs_data_set_autoselect_vec4(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const vec4);
 }
 extern "C" {
-    pub fn obs_data_set_autoselect_quat(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *const quat,
-    );
+    pub fn obs_data_set_autoselect_quat(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *const quat);
 }
 extern "C" {
-    pub fn obs_data_get_vec2(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut vec2,
-    );
+    pub fn obs_data_get_vec2(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut vec2);
 }
 extern "C" {
-    pub fn obs_data_get_vec3(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut vec3,
-    );
+    pub fn obs_data_get_vec3(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut vec3);
 }
 extern "C" {
-    pub fn obs_data_get_vec4(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut vec4,
-    );
+    pub fn obs_data_get_vec4(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut vec4);
 }
 extern "C" {
-    pub fn obs_data_get_quat(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut quat,
-    );
+    pub fn obs_data_get_quat(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut quat);
 }
 extern "C" {
-    pub fn obs_data_get_default_vec2(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut vec2,
-    );
+    pub fn obs_data_get_default_vec2(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut vec2);
 }
 extern "C" {
-    pub fn obs_data_get_default_vec3(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut vec3,
-    );
+    pub fn obs_data_get_default_vec3(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut vec3);
 }
 extern "C" {
-    pub fn obs_data_get_default_vec4(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut vec4,
-    );
+    pub fn obs_data_get_default_vec4(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut vec4);
 }
 extern "C" {
-    pub fn obs_data_get_default_quat(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut quat,
-    );
+    pub fn obs_data_get_default_quat(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut quat);
 }
 extern "C" {
-    pub fn obs_data_get_autoselect_vec2(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut vec2,
-    );
+    pub fn obs_data_get_autoselect_vec2(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut vec2);
 }
 extern "C" {
-    pub fn obs_data_get_autoselect_vec3(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut vec3,
-    );
+    pub fn obs_data_get_autoselect_vec3(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut vec3);
 }
 extern "C" {
-    pub fn obs_data_get_autoselect_vec4(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut vec4,
-    );
+    pub fn obs_data_get_autoselect_vec4(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut vec4);
 }
 extern "C" {
-    pub fn obs_data_get_autoselect_quat(
-        data: *mut obs_data_t,
-        name: *const ::std::os::raw::c_char,
-        val: *mut quat,
-    );
+    pub fn obs_data_get_autoselect_quat(data: *mut obs_data_t, name: *const ::std::os::raw::c_char, val: *mut quat);
 }
 extern "C" {
     pub fn obs_data_set_frames_per_second(
@@ -44809,14 +36518,10 @@ pub struct obs_modal_ui {
     pub target: *const ::std::os::raw::c_char,
     #[doc = " Callback to execute modal interface.\n\n The @b object variable points to the input/output/encoder/etc.  The\n @b ui_data variable points to the UI parent or UI-specific data to\n be used with the custom user interface.\n\n What @b ui_data points to differs depending on the target, and you\n should use discretion and consistency when using this variable to\n relay information to the UI function.  For example, it would be\n ideal to have @b ui_data point to a parent, QWidget for Qt, or a\n wxWindow for wxWidgets, etc., though it's up to the discretion of\n the developer to define that value.  Because of the nature of void\n pointers, discretion and consistency is advised.\n\n @param  object   Pointer/handle to the data associated with this\n                  call.\n @param  ui_data  UI data to pass associated with this specific\n                  target, if any.\n @return          @b true if user completed the task, or\n                  @b false if user cancelled the task."]
     pub exec: ::std::option::Option<
-        unsafe extern "C" fn(
-            object: *mut ::std::os::raw::c_void,
-            ui_data: *mut ::std::os::raw::c_void,
-        ) -> bool,
+        unsafe extern "C" fn(object: *mut ::std::os::raw::c_void, ui_data: *mut ::std::os::raw::c_void) -> bool,
     >,
     pub type_data: *mut ::std::os::raw::c_void,
-    pub free_type_data:
-        ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
+    pub free_type_data: ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
 }
 #[test]
 fn bindgen_test_layout_obs_modal_ui() {
@@ -44835,42 +36540,22 @@ fn bindgen_test_layout_obs_modal_ui() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).id) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_modal_ui),
-            "::",
-            stringify!(id)
-        )
+        concat!("Offset of field: ", stringify!(obs_modal_ui), "::", stringify!(id))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).task) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_modal_ui),
-            "::",
-            stringify!(task)
-        )
+        concat!("Offset of field: ", stringify!(obs_modal_ui), "::", stringify!(task))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).target) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_modal_ui),
-            "::",
-            stringify!(target)
-        )
+        concat!("Offset of field: ", stringify!(obs_modal_ui), "::", stringify!(target))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).exec) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_modal_ui),
-            "::",
-            stringify!(exec)
-        )
+        concat!("Offset of field: ", stringify!(obs_modal_ui), "::", stringify!(exec))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).type_data) as usize - ptr as usize },
@@ -44915,8 +36600,7 @@ pub struct obs_modeless_ui {
         ) -> *mut ::std::os::raw::c_void,
     >,
     pub type_data: *mut ::std::os::raw::c_void,
-    pub free_type_data:
-        ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
+    pub free_type_data: ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
 }
 #[test]
 fn bindgen_test_layout_obs_modeless_ui() {
@@ -44935,22 +36619,12 @@ fn bindgen_test_layout_obs_modeless_ui() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).id) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_modeless_ui),
-            "::",
-            stringify!(id)
-        )
+        concat!("Offset of field: ", stringify!(obs_modeless_ui), "::", stringify!(id))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).task) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_modeless_ui),
-            "::",
-            stringify!(task)
-        )
+        concat!("Offset of field: ", stringify!(obs_modeless_ui), "::", stringify!(task))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).target) as usize - ptr as usize },
@@ -45122,10 +36796,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Remove a property from a properties list.\n\n Removes a property from a properties list. Only valid in either\n get_properties or modified_callback(2). modified_callback(2) must return\n true so that all UI properties are rebuilt and returning false is undefined\n behavior.\n\n @param props Properties to remove from.\n @param property Name of the property to remove."]
-    pub fn obs_properties_remove_by_name(
-        props: *mut obs_properties_t,
-        property: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_properties_remove_by_name(props: *mut obs_properties_t, property: *const ::std::os::raw::c_char);
 }
 extern "C" {
     #[doc = " Applies settings to the properties by calling all the necessary\n modification callbacks"]
@@ -45296,10 +36967,7 @@ pub type obs_property_modified2_t = ::std::option::Option<
     ) -> bool,
 >;
 extern "C" {
-    pub fn obs_property_set_modified_callback(
-        p: *mut obs_property_t,
-        modified: obs_property_modified_t,
-    );
+    pub fn obs_property_set_modified_callback(p: *mut obs_property_t, modified: obs_property_modified_t);
 }
 extern "C" {
     pub fn obs_property_set_modified_callback2(
@@ -45312,10 +36980,7 @@ extern "C" {
     pub fn obs_property_modified(p: *mut obs_property_t, settings: *mut obs_data_t) -> bool;
 }
 extern "C" {
-    pub fn obs_property_button_clicked(
-        p: *mut obs_property_t,
-        obj: *mut ::std::os::raw::c_void,
-    ) -> bool;
+    pub fn obs_property_button_clicked(p: *mut obs_property_t, obj: *mut ::std::os::raw::c_void) -> bool;
 }
 extern "C" {
     pub fn obs_property_set_visible(p: *mut obs_property_t, visible: bool);
@@ -45324,16 +36989,10 @@ extern "C" {
     pub fn obs_property_set_enabled(p: *mut obs_property_t, enabled: bool);
 }
 extern "C" {
-    pub fn obs_property_set_description(
-        p: *mut obs_property_t,
-        description: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_property_set_description(p: *mut obs_property_t, description: *const ::std::os::raw::c_char);
 }
 extern "C" {
-    pub fn obs_property_set_long_description(
-        p: *mut obs_property_t,
-        long_description: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_property_set_long_description(p: *mut obs_property_t, long_description: *const ::std::os::raw::c_char);
 }
 extern "C" {
     pub fn obs_property_name(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
@@ -45425,16 +37084,10 @@ extern "C" {
     pub fn obs_property_float_set_limits(p: *mut obs_property_t, min: f64, max: f64, step: f64);
 }
 extern "C" {
-    pub fn obs_property_int_set_suffix(
-        p: *mut obs_property_t,
-        suffix: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_property_int_set_suffix(p: *mut obs_property_t, suffix: *const ::std::os::raw::c_char);
 }
 extern "C" {
-    pub fn obs_property_float_set_suffix(
-        p: *mut obs_property_t,
-        suffix: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_property_float_set_suffix(p: *mut obs_property_t, suffix: *const ::std::os::raw::c_char);
 }
 extern "C" {
     pub fn obs_property_text_set_monospace(p: *mut obs_property_t, monospace: bool);
@@ -45469,11 +37122,7 @@ extern "C" {
     ) -> usize;
 }
 extern "C" {
-    pub fn obs_property_list_add_float(
-        p: *mut obs_property_t,
-        name: *const ::std::os::raw::c_char,
-        val: f64,
-    ) -> usize;
+    pub fn obs_property_list_add_float(p: *mut obs_property_t, name: *const ::std::os::raw::c_char, val: f64) -> usize;
 }
 extern "C" {
     pub fn obs_property_list_insert_string(
@@ -45512,22 +37161,13 @@ extern "C" {
     pub fn obs_property_list_item_count(p: *mut obs_property_t) -> usize;
 }
 extern "C" {
-    pub fn obs_property_list_item_name(
-        p: *mut obs_property_t,
-        idx: usize,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_property_list_item_name(p: *mut obs_property_t, idx: usize) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_property_list_item_string(
-        p: *mut obs_property_t,
-        idx: usize,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_property_list_item_string(p: *mut obs_property_t, idx: usize) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_property_list_item_int(
-        p: *mut obs_property_t,
-        idx: usize,
-    ) -> ::std::os::raw::c_longlong;
+    pub fn obs_property_list_item_int(p: *mut obs_property_t, idx: usize) -> ::std::os::raw::c_longlong;
 }
 extern "C" {
     pub fn obs_property_list_item_float(p: *mut obs_property_t, idx: usize) -> f64;
@@ -45536,14 +37176,10 @@ extern "C" {
     pub fn obs_property_editable_list_type(p: *mut obs_property_t) -> obs_editable_list_type;
 }
 extern "C" {
-    pub fn obs_property_editable_list_filter(
-        p: *mut obs_property_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_property_editable_list_filter(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_property_editable_list_default_path(
-        p: *mut obs_property_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_property_editable_list_default_path(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn obs_property_frame_rate_clear(p: *mut obs_property_t);
@@ -45588,10 +37224,7 @@ extern "C" {
     pub fn obs_property_frame_rate_options_count(p: *mut obs_property_t) -> usize;
 }
 extern "C" {
-    pub fn obs_property_frame_rate_option_name(
-        p: *mut obs_property_t,
-        idx: usize,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_property_frame_rate_option_name(p: *mut obs_property_t, idx: usize) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn obs_property_frame_rate_option_description(
@@ -45603,16 +37236,10 @@ extern "C" {
     pub fn obs_property_frame_rate_fps_ranges_count(p: *mut obs_property_t) -> usize;
 }
 extern "C" {
-    pub fn obs_property_frame_rate_fps_range_min(
-        p: *mut obs_property_t,
-        idx: usize,
-    ) -> media_frames_per_second;
+    pub fn obs_property_frame_rate_fps_range_min(p: *mut obs_property_t, idx: usize) -> media_frames_per_second;
 }
 extern "C" {
-    pub fn obs_property_frame_rate_fps_range_max(
-        p: *mut obs_property_t,
-        idx: usize,
-    ) -> media_frames_per_second;
+    pub fn obs_property_frame_rate_fps_range_max(p: *mut obs_property_t, idx: usize) -> media_frames_per_second;
 }
 extern "C" {
     pub fn obs_property_group_type(p: *mut obs_property_t) -> obs_group_type;
@@ -45681,22 +37308,12 @@ fn bindgen_test_layout_obs_mouse_event() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).x) as usize - ptr as usize },
         4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_mouse_event),
-            "::",
-            stringify!(x)
-        )
+        concat!("Offset of field: ", stringify!(obs_mouse_event), "::", stringify!(x))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).y) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_mouse_event),
-            "::",
-            stringify!(y)
-        )
+        concat!("Offset of field: ", stringify!(obs_mouse_event), "::", stringify!(y))
     );
 }
 #[repr(C)]
@@ -45735,12 +37352,7 @@ fn bindgen_test_layout_obs_key_event() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).text) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_key_event),
-            "::",
-            stringify!(text)
-        )
+        concat!("Offset of field: ", stringify!(obs_key_event), "::", stringify!(text))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).native_modifiers) as usize - ptr as usize },
@@ -45910,10 +37522,7 @@ extern "C" {
     ) -> *mut obs_missing_file_t;
 }
 extern "C" {
-    pub fn obs_missing_files_add_file(
-        files: *mut obs_missing_files_t,
-        file: *mut obs_missing_file_t,
-    );
+    pub fn obs_missing_files_add_file(files: *mut obs_missing_files_t, file: *mut obs_missing_file_t);
 }
 extern "C" {
     pub fn obs_missing_files_count(files: *mut obs_missing_files_t) -> usize;
@@ -45931,20 +37540,13 @@ extern "C" {
     pub fn obs_missing_files_append(dst: *mut obs_missing_files_t, src: *mut obs_missing_files_t);
 }
 extern "C" {
-    pub fn obs_missing_file_issue_callback(
-        file: *mut obs_missing_file_t,
-        new_path: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_missing_file_issue_callback(file: *mut obs_missing_file_t, new_path: *const ::std::os::raw::c_char);
 }
 extern "C" {
-    pub fn obs_missing_file_get_path(
-        file: *mut obs_missing_file_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_missing_file_get_path(file: *mut obs_missing_file_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_missing_file_get_source_name(
-        file: *mut obs_missing_file_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_missing_file_get_source_name(file: *mut obs_missing_file_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn obs_missing_file_release(file: *mut obs_missing_file_t);
@@ -45988,11 +37590,7 @@ pub const obs_media_state_OBS_MEDIA_STATE_ERROR: obs_media_state = 7;
 pub type obs_media_state = ::std::os::raw::c_int;
 #[doc = " @}"]
 pub type obs_source_enum_proc_t = ::std::option::Option<
-    unsafe extern "C" fn(
-        parent: *mut obs_source_t,
-        child: *mut obs_source_t,
-        param: *mut ::std::os::raw::c_void,
-    ),
+    unsafe extern "C" fn(parent: *mut obs_source_t, child: *mut obs_source_t, param: *mut ::std::os::raw::c_void),
 >;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -46036,35 +37634,26 @@ pub struct obs_source_info {
     pub output_flags: u32,
     #[doc = " Get the translated name of the source type\n\n @param  type_data  The type_data variable of this structure\n @return               The translated name of the source type"]
     pub get_name: ::std::option::Option<
-        unsafe extern "C" fn(
-            type_data: *mut ::std::os::raw::c_void,
-        ) -> *const ::std::os::raw::c_char,
+        unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
     >,
     #[doc = " Creates the source data for the source\n\n @param  settings  Settings to initialize the source with\n @param  source    Source that this data is associated with\n @return           The data associated with this source"]
     pub create: ::std::option::Option<
-        unsafe extern "C" fn(
-            settings: *mut obs_data_t,
-            source: *mut obs_source_t,
-        ) -> *mut ::std::os::raw::c_void,
+        unsafe extern "C" fn(settings: *mut obs_data_t, source: *mut obs_source_t) -> *mut ::std::os::raw::c_void,
     >,
     #[doc = " Destroys the private data for the source\n\n Async sources must not call obs_source_output_video after returning\n from destroy"]
     pub destroy: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
     #[doc = " Returns the width of the source.  Required if this is an input\n source and has non-async video"]
-    pub get_width:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> u32>,
+    pub get_width: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> u32>,
     #[doc = " Returns the height of the source.  Required if this is an input\n source and has non-async video"]
-    pub get_height:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> u32>,
+    pub get_height: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> u32>,
     #[doc = " Gets the default settings for this source\n\n @param[out]  settings  Data to assign default settings to\n @deprecated            Use get_defaults2 if type_data is needed"]
     pub get_defaults: ::std::option::Option<unsafe extern "C" fn(settings: *mut obs_data_t)>,
     #[doc = " Gets the property information of this source\n\n @return         The properties data\n @deprecated     Use get_properties2 if type_data is needed"]
-    pub get_properties: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_properties_t,
-    >,
+    pub get_properties:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_properties_t>,
     #[doc = " Updates the settings for this source\n\n @param data      Source data\n @param settings  New settings for this source"]
-    pub update: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t),
-    >,
+    pub update:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t)>,
     #[doc = " Called when the source has been activated in the main view"]
     pub activate: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
     #[doc = " Called when the source has been deactivated from the main view\n (no longer being played/displayed)"]
@@ -46074,26 +37663,17 @@ pub struct obs_source_info {
     #[doc = " Called when the source is no longer visible"]
     pub hide: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
     #[doc = " Called each video frame with the time elapsed\n\n @param  data     Source data\n @param  seconds  Seconds elapsed since the last frame"]
-    pub video_tick: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, seconds: f32),
-    >,
+    pub video_tick: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, seconds: f32)>,
     #[doc = " Called when rendering the source with the graphics subsystem.\n\n If this is an input/transition source, this is called to draw the\n source texture with the graphics subsystem using the specified\n effect.\n\n If this is a filter source, it wraps source draw calls (for\n example applying a custom effect with custom parameters to a\n source).  In this case, it's highly recommended to use the\n obs_source_process_filter function to automatically handle\n effect-based filter processing.  However, you can implement custom\n draw handling as desired as well.\n\n If the source output flags do not include SOURCE_CUSTOM_DRAW, all\n a source needs to do is set the \"image\" parameter of the effect to\n the desired texture, and then draw.  If the output flags include\n SOURCE_COLOR_MATRIX, you may optionally set the \"color_matrix\"\n parameter of the effect to a custom 4x4 conversion matrix (by\n default it will be set to an YUV->RGB conversion matrix)\n\n @param data    Source data\n @param effect  Effect to be used with this source.  If the source\n                output flags include SOURCE_CUSTOM_DRAW, this will\n                be NULL, and the source is expected to process with\n                an effect manually."]
-    pub video_render: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, effect: *mut gs_effect_t),
-    >,
+    pub video_render:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, effect: *mut gs_effect_t)>,
     #[doc = " Called to filter raw async video data.\n\n @note          This function is only used with filter sources.\n\n @param  data   Filter data\n @param  frame  Video frame to filter\n @return        New video frame data.  This can defer video data to\n                be drawn later if time is needed for processing"]
     pub filter_video: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-            frame: *mut obs_source_frame,
-        ) -> *mut obs_source_frame,
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, frame: *mut obs_source_frame) -> *mut obs_source_frame,
     >,
     #[doc = " Called to filter raw audio data.\n\n @note          This function is only used with filter sources.\n\n @param  data   Filter data\n @param  audio  Audio data to filter.\n @return        Modified or new audio data.  You can directly modify\n                the data passed and return it, or you can defer audio\n                data for later if time is needed for processing.  If\n                you are returning new data, that data must exist\n                until the next call to the filter_audio callback or\n                until the filter is removed/destroyed."]
     pub filter_audio: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-            audio: *mut obs_audio_data,
-        ) -> *mut obs_audio_data,
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, audio: *mut obs_audio_data) -> *mut obs_audio_data,
     >,
     #[doc = " Called to enumerate all active sources being used within this\n source.  If the source has children that render audio/video it must\n implement this callback.\n\n @param  data           Filter data\n @param  enum_callback  Enumeration callback\n @param  param          User data to pass to callback"]
     pub enum_active_sources: ::std::option::Option<
@@ -46104,13 +37684,9 @@ pub struct obs_source_info {
         ),
     >,
     #[doc = " Called when saving a source.  This is a separate function because\n sometimes a source needs to know when it is being saved so it\n doesn't always have to update the current settings until a certain\n point.\n\n @param  data      Source data\n @param  settings  Settings"]
-    pub save: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t),
-    >,
+    pub save: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t)>,
     #[doc = " Called when loading a source from saved data.  This should be called\n after all the loading sources have actually been created because\n sometimes there are sources that depend on each other.\n\n @param  data      Source data\n @param  settings  Settings"]
-    pub load: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t),
-    >,
+    pub load: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t)>,
     #[doc = " Called when interacting with a source and a mouse-down or mouse-up\n occurs.\n\n @param data         Source data\n @param event        Mouse event properties\n @param type         Mouse button pushed\n @param mouse_up     Mouse event type (true if mouse-up)\n @param click_count  Mouse click count (1 for single click, etc.)"]
     pub mouse_click: ::std::option::Option<
         unsafe extern "C" fn(
@@ -46123,11 +37699,7 @@ pub struct obs_source_info {
     >,
     #[doc = " Called when interacting with a source and a mouse-move occurs.\n\n @param data         Source data\n @param event        Mouse event properties\n @param mouse_leave  Mouse leave state (true if mouse left source)"]
     pub mouse_move: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-            event: *const obs_mouse_event,
-            mouse_leave: bool,
-        ),
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, event: *const obs_mouse_event, mouse_leave: bool),
     >,
     #[doc = " Called when interacting with a source and a mouse-wheel occurs.\n\n @param data         Source data\n @param event        Mouse event properties\n @param x_delta      Movement delta in the horizontal direction\n @param y_delta      Movement delta in the vertical direction"]
     pub mouse_wheel: ::std::option::Option<
@@ -46139,25 +37711,18 @@ pub struct obs_source_info {
         ),
     >,
     #[doc = " Called when interacting with a source and gain focus/lost focus event\n occurs.\n\n @param data         Source data\n @param focus        Focus state (true if focus gained)"]
-    pub focus:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, focus: bool)>,
+    pub focus: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, focus: bool)>,
     #[doc = " Called when interacting with a source and a key-up or key-down\n occurs.\n\n @param data         Source data\n @param event        Key event properties\n @param focus        Key event type (true if mouse-up)"]
     pub key_click: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-            event: *const obs_key_event,
-            key_up: bool,
-        ),
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, event: *const obs_key_event, key_up: bool),
     >,
     #[doc = " Called when the filter is removed from a source\n\n @param  data    Filter data\n @param  source  Source that the filter being removed from"]
-    pub filter_remove: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, source: *mut obs_source_t),
-    >,
+    pub filter_remove:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, source: *mut obs_source_t)>,
     #[doc = " Private data associated with this entry"]
     pub type_data: *mut ::std::os::raw::c_void,
     #[doc = " If defined, called to free private data on shutdown"]
-    pub free_type_data:
-        ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
+    pub free_type_data: ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
     pub audio_render: ::std::option::Option<
         unsafe extern "C" fn(
             data: *mut ::std::os::raw::c_void,
@@ -46176,14 +37741,11 @@ pub struct obs_source_info {
             param: *mut ::std::os::raw::c_void,
         ),
     >,
-    pub transition_start:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
-    pub transition_stop:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
+    pub transition_start: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
+    pub transition_stop: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
     #[doc = " Gets the default settings for this source\n\n If get_defaults is also defined both will be called, and the first\n call will be to get_defaults, then to get_defaults2.\n\n @param       type_data The type_data variable of this structure\n @param[out]  settings  Data to assign default settings to"]
-    pub get_defaults2: ::std::option::Option<
-        unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t),
-    >,
+    pub get_defaults2:
+        ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t)>,
     #[doc = " Gets the property information of this source\n\n @param data      Source data\n @param type_data The type_data variable of this structure\n @return          The properties data"]
     pub get_properties2: ::std::option::Option<
         unsafe extern "C" fn(
@@ -46203,30 +37765,22 @@ pub struct obs_source_info {
     #[doc = " Icon type for the source"]
     pub icon_type: obs_icon_type,
     #[doc = " Media controls"]
-    pub media_play_pause:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, pause: bool)>,
-    pub media_restart:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
+    pub media_play_pause: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, pause: bool)>,
+    pub media_restart: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
     pub media_stop: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
     pub media_next: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
-    pub media_previous:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
-    pub media_get_duration:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> i64>,
-    pub media_get_time:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> i64>,
-    pub media_set_time: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, miliseconds: i64),
-    >,
-    pub media_get_state: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> obs_media_state,
-    >,
+    pub media_previous: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
+    pub media_get_duration: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> i64>,
+    pub media_get_time: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> i64>,
+    pub media_set_time:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, miliseconds: i64)>,
+    pub media_get_state:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> obs_media_state>,
     pub version: u32,
     pub unversioned_id: *const ::std::os::raw::c_char,
     #[doc = " Missing files"]
-    pub missing_files: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_missing_files_t,
-    >,
+    pub missing_files:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_missing_files_t>,
     #[doc = " Get color space"]
     pub video_get_color_space: ::std::option::Option<
         unsafe extern "C" fn(
@@ -46253,12 +37807,7 @@ fn bindgen_test_layout_obs_source_info() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).id) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_source_info),
-            "::",
-            stringify!(id)
-        )
+        concat!("Offset of field: ", stringify!(obs_source_info), "::", stringify!(id))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).type_) as usize - ptr as usize },
@@ -46383,22 +37932,12 @@ fn bindgen_test_layout_obs_source_info() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).show) as usize - ptr as usize },
         96usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_source_info),
-            "::",
-            stringify!(show)
-        )
+        concat!("Offset of field: ", stringify!(obs_source_info), "::", stringify!(show))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).hide) as usize - ptr as usize },
         104usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_source_info),
-            "::",
-            stringify!(hide)
-        )
+        concat!("Offset of field: ", stringify!(obs_source_info), "::", stringify!(hide))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).video_tick) as usize - ptr as usize },
@@ -46453,22 +37992,12 @@ fn bindgen_test_layout_obs_source_info() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).save) as usize - ptr as usize },
         152usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_source_info),
-            "::",
-            stringify!(save)
-        )
+        concat!("Offset of field: ", stringify!(obs_source_info), "::", stringify!(save))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).load) as usize - ptr as usize },
         160usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_source_info),
-            "::",
-            stringify!(load)
-        )
+        concat!("Offset of field: ", stringify!(obs_source_info), "::", stringify!(load))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).mouse_click) as usize - ptr as usize },
@@ -46818,42 +38347,22 @@ fn bindgen_test_layout_encoder_packet() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).data) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(encoder_packet),
-            "::",
-            stringify!(data)
-        )
+        concat!("Offset of field: ", stringify!(encoder_packet), "::", stringify!(data))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).size) as usize - ptr as usize },
         8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(encoder_packet),
-            "::",
-            stringify!(size)
-        )
+        concat!("Offset of field: ", stringify!(encoder_packet), "::", stringify!(size))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).pts) as usize - ptr as usize },
         16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(encoder_packet),
-            "::",
-            stringify!(pts)
-        )
+        concat!("Offset of field: ", stringify!(encoder_packet), "::", stringify!(pts))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).dts) as usize - ptr as usize },
         24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(encoder_packet),
-            "::",
-            stringify!(dts)
-        )
+        concat!("Offset of field: ", stringify!(encoder_packet), "::", stringify!(dts))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).timebase_num) as usize - ptr as usize },
@@ -46878,12 +38387,7 @@ fn bindgen_test_layout_encoder_packet() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).type_) as usize - ptr as usize },
         40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(encoder_packet),
-            "::",
-            stringify!(type_)
-        )
+        concat!("Offset of field: ", stringify!(encoder_packet), "::", stringify!(type_))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).keyframe) as usize - ptr as usize },
@@ -46986,12 +38490,7 @@ fn bindgen_test_layout_encoder_frame() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).data) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(encoder_frame),
-            "::",
-            stringify!(data)
-        )
+        concat!("Offset of field: ", stringify!(encoder_frame), "::", stringify!(data))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).linesize) as usize - ptr as usize },
@@ -47006,22 +38505,12 @@ fn bindgen_test_layout_encoder_frame() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).frames) as usize - ptr as usize },
         96usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(encoder_frame),
-            "::",
-            stringify!(frames)
-        )
+        concat!("Offset of field: ", stringify!(encoder_frame), "::", stringify!(frames))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).pts) as usize - ptr as usize },
         104usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(encoder_frame),
-            "::",
-            stringify!(pts)
-        )
+        concat!("Offset of field: ", stringify!(encoder_frame), "::", stringify!(pts))
     );
 }
 #[doc = " Encoder interface\n\n Encoders have a limited usage with OBS.  You are not generally supposed to\n implement every encoder out there.  Generally, these are limited or specific\n encoders for h264/aac for streaming and recording.  It doesn't have to be\n *just* h264 or aac of course, but generally those are the expected encoders.\n\n That being said, other encoders will be kept in mind for future use."]
@@ -47036,16 +38525,11 @@ pub struct obs_encoder_info {
     pub codec: *const ::std::os::raw::c_char,
     #[doc = " Gets the full translated name of this encoder\n\n @param  type_data  The type_data variable of this structure\n @return            Translated name of the encoder"]
     pub get_name: ::std::option::Option<
-        unsafe extern "C" fn(
-            type_data: *mut ::std::os::raw::c_void,
-        ) -> *const ::std::os::raw::c_char,
+        unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
     >,
     #[doc = " Creates the encoder with the specified settings\n\n @param  settings  Settings for the encoder\n @param  encoder   OBS encoder context\n @return           Data associated with this encoder context, or\n                   NULL if initialization failed."]
     pub create: ::std::option::Option<
-        unsafe extern "C" fn(
-            settings: *mut obs_data_t,
-            encoder: *mut obs_encoder_t,
-        ) -> *mut ::std::os::raw::c_void,
+        unsafe extern "C" fn(settings: *mut obs_data_t, encoder: *mut obs_encoder_t) -> *mut ::std::os::raw::c_void,
     >,
     #[doc = " Destroys the encoder data\n\n @param  data  Data associated with this encoder context"]
     pub destroy: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
@@ -47059,50 +38543,36 @@ pub struct obs_encoder_info {
         ) -> bool,
     >,
     #[doc = " Audio encoder only:  Returns the frame size for this encoder"]
-    pub get_frame_size:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> usize>,
+    pub get_frame_size: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> usize>,
     #[doc = " Gets the default settings for this encoder\n\n @param[out]  settings  Data to assign default settings to"]
     pub get_defaults: ::std::option::Option<unsafe extern "C" fn(settings: *mut obs_data_t)>,
     #[doc = " Gets the property information of this encoder\n\n @return         The properties data"]
-    pub get_properties: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_properties_t,
-    >,
+    pub get_properties:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_properties_t>,
     #[doc = " Updates the settings for this encoder (usually used for things like\n changing bitrate while active)\n\n @param  data      Data associated with this encoder context\n @param  settings  New settings for this encoder\n @return           true if successful, false otherwise"]
     pub update: ::std::option::Option<
         unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t) -> bool,
     >,
     #[doc = " Returns extra data associated with this encoder (usually header)\n\n @param  data             Data associated with this encoder context\n @param[out]  extra_data  Pointer to receive the extra data\n @param[out]  size        Pointer to receive the size of the extra\n                          data\n @return                  true if extra data available, false\n                          otherwise"]
     pub get_extra_data: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-            extra_data: *mut *mut u8,
-            size: *mut usize,
-        ) -> bool,
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, extra_data: *mut *mut u8, size: *mut usize) -> bool,
     >,
     #[doc = " Gets the SEI data, if any\n\n @param       data      Data associated with this encoder context\n @param[out]  sei_data  Pointer to receive the SEI data\n @param[out]  size      Pointer to receive the SEI data size\n @return                true if SEI data available, false otherwise"]
     pub get_sei_data: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-            sei_data: *mut *mut u8,
-            size: *mut usize,
-        ) -> bool,
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, sei_data: *mut *mut u8, size: *mut usize) -> bool,
     >,
     #[doc = " Returns desired audio format and sample information\n\n @param          data  Data associated with this encoder context\n @param[in/out]  info  Audio format information"]
-    pub get_audio_info: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, info: *mut audio_convert_info),
-    >,
+    pub get_audio_info:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, info: *mut audio_convert_info)>,
     #[doc = " Returns desired video format information\n\n @param          data  Data associated with this encoder context\n @param[in/out]  info  Video format information"]
-    pub get_video_info: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, info: *mut video_scale_info),
-    >,
+    pub get_video_info:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, info: *mut video_scale_info)>,
     pub type_data: *mut ::std::os::raw::c_void,
-    pub free_type_data:
-        ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
+    pub free_type_data: ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
     pub caps: u32,
     #[doc = " Gets the default settings for this encoder\n\n If get_defaults is also defined both will be called, and the first\n call will be to get_defaults, then to get_defaults2.\n\n @param[out]  settings  Data to assign default settings to\n @param[in]   typedata  Type Data"]
-    pub get_defaults2: ::std::option::Option<
-        unsafe extern "C" fn(settings: *mut obs_data_t, type_data: *mut ::std::os::raw::c_void),
-    >,
+    pub get_defaults2:
+        ::std::option::Option<unsafe extern "C" fn(settings: *mut obs_data_t, type_data: *mut ::std::os::raw::c_void)>,
     #[doc = " Gets the property information of this encoder\n\n @param[in]   data      Pointer from create (or null)\n @param[in]   typedata  Type Data\n @return                The properties data"]
     pub get_properties2: ::std::option::Option<
         unsafe extern "C" fn(
@@ -47139,12 +38609,7 @@ fn bindgen_test_layout_obs_encoder_info() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).id) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_encoder_info),
-            "::",
-            stringify!(id)
-        )
+        concat!("Offset of field: ", stringify!(obs_encoder_info), "::", stringify!(id))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).type_) as usize - ptr as usize },
@@ -47356,59 +38821,38 @@ pub struct obs_output_info {
     pub id: *const ::std::os::raw::c_char,
     pub flags: u32,
     pub get_name: ::std::option::Option<
-        unsafe extern "C" fn(
-            type_data: *mut ::std::os::raw::c_void,
-        ) -> *const ::std::os::raw::c_char,
+        unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
     >,
     pub create: ::std::option::Option<
-        unsafe extern "C" fn(
-            settings: *mut obs_data_t,
-            output: *mut obs_output_t,
-        ) -> *mut ::std::os::raw::c_void,
+        unsafe extern "C" fn(settings: *mut obs_data_t, output: *mut obs_output_t) -> *mut ::std::os::raw::c_void,
     >,
     pub destroy: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
-    pub start:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> bool>,
-    pub stop:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, ts: u64)>,
-    pub raw_video: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, frame: *mut video_data),
-    >,
-    pub raw_audio: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, frames: *mut audio_data),
-    >,
-    pub encoded_packet: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, packet: *mut encoder_packet),
-    >,
-    pub update: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t),
-    >,
+    pub start: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> bool>,
+    pub stop: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, ts: u64)>,
+    pub raw_video:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, frame: *mut video_data)>,
+    pub raw_audio:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, frames: *mut audio_data)>,
+    pub encoded_packet:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, packet: *mut encoder_packet)>,
+    pub update:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t)>,
     pub get_defaults: ::std::option::Option<unsafe extern "C" fn(settings: *mut obs_data_t)>,
-    pub get_properties: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_properties_t,
-    >,
+    pub get_properties:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_properties_t>,
     pub unused1: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
-    pub get_total_bytes:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> u64>,
-    pub get_dropped_frames: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> ::std::os::raw::c_int,
-    >,
+    pub get_total_bytes: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> u64>,
+    pub get_dropped_frames:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> ::std::os::raw::c_int>,
     pub type_data: *mut ::std::os::raw::c_void,
-    pub free_type_data:
-        ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
-    pub get_congestion:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> f32>,
-    pub get_connect_time_ms: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> ::std::os::raw::c_int,
-    >,
+    pub free_type_data: ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
+    pub get_congestion: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> f32>,
+    pub get_connect_time_ms:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> ::std::os::raw::c_int>,
     pub encoded_video_codecs: *const ::std::os::raw::c_char,
     pub encoded_audio_codecs: *const ::std::os::raw::c_char,
     pub raw_audio2: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-            idx: usize,
-            frames: *mut audio_data,
-        ),
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, idx: usize, frames: *mut audio_data),
     >,
     pub protocols: *const ::std::os::raw::c_char,
 }
@@ -47429,12 +38873,7 @@ fn bindgen_test_layout_obs_output_info() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).id) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_output_info),
-            "::",
-            stringify!(id)
-        )
+        concat!("Offset of field: ", stringify!(obs_output_info), "::", stringify!(id))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).flags) as usize - ptr as usize },
@@ -47489,12 +38928,7 @@ fn bindgen_test_layout_obs_output_info() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).stop) as usize - ptr as usize },
         48usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_output_info),
-            "::",
-            stringify!(stop)
-        )
+        concat!("Offset of field: ", stringify!(obs_output_info), "::", stringify!(stop))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).raw_video) as usize - ptr as usize },
@@ -47678,8 +39112,7 @@ pub struct obs_service_resolution {
 }
 #[test]
 fn bindgen_test_layout_obs_service_resolution() {
-    const UNINIT: ::std::mem::MaybeUninit<obs_service_resolution> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<obs_service_resolution> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<obs_service_resolution>(),
@@ -47712,59 +39145,44 @@ fn bindgen_test_layout_obs_service_resolution() {
         )
     );
 }
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_SERVER_URL: obs_service_connect_info =
-    0;
+pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_SERVER_URL: obs_service_connect_info = 0;
 pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_STREAM_ID: obs_service_connect_info = 2;
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_STREAM_KEY: obs_service_connect_info =
-    2;
+pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_STREAM_KEY: obs_service_connect_info = 2;
 pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_USERNAME: obs_service_connect_info = 4;
 pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_PASSWORD: obs_service_connect_info = 6;
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_ENCRYPT_PASSPHRASE:
-    obs_service_connect_info = 8;
+pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_ENCRYPT_PASSPHRASE: obs_service_connect_info = 8;
 pub type obs_service_connect_info = ::std::os::raw::c_int;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct obs_service_info {
     pub id: *const ::std::os::raw::c_char,
     pub get_name: ::std::option::Option<
-        unsafe extern "C" fn(
-            type_data: *mut ::std::os::raw::c_void,
-        ) -> *const ::std::os::raw::c_char,
+        unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
     >,
     pub create: ::std::option::Option<
-        unsafe extern "C" fn(
-            settings: *mut obs_data_t,
-            service: *mut obs_service_t,
-        ) -> *mut ::std::os::raw::c_void,
+        unsafe extern "C" fn(settings: *mut obs_data_t, service: *mut obs_service_t) -> *mut ::std::os::raw::c_void,
     >,
     pub destroy: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
-    pub activate: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t),
-    >,
+    pub activate:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t)>,
     pub deactivate: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void)>,
-    pub update: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t),
-    >,
+    pub update:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, settings: *mut obs_data_t)>,
     pub get_defaults: ::std::option::Option<unsafe extern "C" fn(settings: *mut obs_data_t)>,
-    pub get_properties: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_properties_t,
-    >,
+    pub get_properties:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_properties_t>,
     #[doc = " Called when getting ready to start up an output, before the encoders\n and output are initialized\n\n @param  data    Internal service data\n @param  output  Output context\n @return         true to allow the output to start up,\n                 false to prevent output from starting up"]
     pub initialize: ::std::option::Option<
         unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, output: *mut obs_output_t) -> bool,
     >,
-    pub get_url: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
-    >,
-    pub get_key: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
-    >,
-    pub get_username: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
-    >,
-    pub get_password: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
-    >,
+    pub get_url:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char>,
+    pub get_key:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char>,
+    pub get_username:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char>,
+    pub get_password:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char>,
     pub deprecated_1: ::std::option::Option<unsafe extern "C" fn() -> bool>,
     pub apply_encoder_settings: ::std::option::Option<
         unsafe extern "C" fn(
@@ -47774,11 +39192,9 @@ pub struct obs_service_info {
         ),
     >,
     pub type_data: *mut ::std::os::raw::c_void,
-    pub free_type_data:
-        ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
-    pub get_output_type: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
-    >,
+    pub free_type_data: ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
+    pub get_output_type:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char>,
     pub get_supported_resolutions: ::std::option::Option<
         unsafe extern "C" fn(
             data: *mut ::std::os::raw::c_void,
@@ -47786,9 +39202,8 @@ pub struct obs_service_info {
             count: *mut usize,
         ),
     >,
-    pub get_max_fps: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, fps: *mut ::std::os::raw::c_int),
-    >,
+    pub get_max_fps:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, fps: *mut ::std::os::raw::c_int)>,
     pub get_max_bitrate: ::std::option::Option<
         unsafe extern "C" fn(
             data: *mut ::std::os::raw::c_void,
@@ -47797,26 +39212,17 @@ pub struct obs_service_info {
         ),
     >,
     pub get_supported_video_codecs: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-        ) -> *mut *const ::std::os::raw::c_char,
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut *const ::std::os::raw::c_char,
     >,
-    pub get_protocol: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char,
-    >,
+    pub get_protocol:
+        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char>,
     pub get_supported_audio_codecs: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-        ) -> *mut *const ::std::os::raw::c_char,
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut *const ::std::os::raw::c_char,
     >,
     pub get_connect_info: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-            type_: u32,
-        ) -> *const ::std::os::raw::c_char,
+        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, type_: u32) -> *const ::std::os::raw::c_char,
     >,
-    pub can_try_to_connect:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> bool>,
+    pub can_try_to_connect: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> bool>,
 }
 #[test]
 fn bindgen_test_layout_obs_service_info() {
@@ -47835,12 +39241,7 @@ fn bindgen_test_layout_obs_service_info() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).id) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_service_info),
-            "::",
-            stringify!(id)
-        )
+        concat!("Offset of field: ", stringify!(obs_service_info), "::", stringify!(id))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).get_name) as usize - ptr as usize },
@@ -48160,8 +39561,7 @@ extern "C" {
     #[doc = " @brief Detach the fader from the currently attached source\n @param fader pointer to the fader object"]
     pub fn obs_fader_detach_source(fader: *mut obs_fader_t);
 }
-pub type obs_fader_changed_t =
-    ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, db: f32)>;
+pub type obs_fader_changed_t = ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, db: f32)>;
 extern "C" {
     pub fn obs_fader_add_callback(
         fader: *mut obs_fader_t,
@@ -48186,10 +39586,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " @brief Attach the volume meter to a source\n @param volmeter pointer to the volume meter object\n @param source pointer to the source object\n @return true on success\n\n When the volume meter is attached to a source it will start to listen to\n volume updates on the source and after preparing the data emit its own\n signal."]
-    pub fn obs_volmeter_attach_source(
-        volmeter: *mut obs_volmeter_t,
-        source: *mut obs_source_t,
-    ) -> bool;
+    pub fn obs_volmeter_attach_source(volmeter: *mut obs_volmeter_t, source: *mut obs_source_t) -> bool;
 }
 extern "C" {
     #[doc = " @brief Detach the volume meter from the currently attached source\n @param volmeter pointer to the volume meter object"]
@@ -48197,23 +39594,15 @@ extern "C" {
 }
 extern "C" {
     #[doc = " @brief Set the peak meter type for the volume meter\n @param volmeter pointer to the volume meter object\n @param peak_meter_type set if true-peak needs to be measured."]
-    pub fn obs_volmeter_set_peak_meter_type(
-        volmeter: *mut obs_volmeter_t,
-        peak_meter_type: obs_peak_meter_type,
-    );
+    pub fn obs_volmeter_set_peak_meter_type(volmeter: *mut obs_volmeter_t, peak_meter_type: obs_peak_meter_type);
 }
 extern "C" {
     #[doc = " @brief Set the update interval for the volume meter\n @param volmeter pointer to the volume meter object\n @param ms update interval in ms\n\n This sets the update interval in milliseconds that should be processed before\n the resulting values are emitted by the levels_updated signal. The resulting\n number of audio samples is rounded to an integer.\n\n Please note that due to way obs does receive audio data from the sources\n this is no hard guarantee for the timing of the signal itself. When the\n volume meter receives a chunk of data that is multiple the size of the sample\n interval, all data will be sampled and the values updated accordingly, but\n only the signal for the last segment is actually emitted.\n On the other hand data might be received in a way that will cause the signal\n to be emitted in shorter intervals than specified here under some\n circumstances."]
-    pub fn obs_volmeter_set_update_interval(
-        volmeter: *mut obs_volmeter_t,
-        ms: ::std::os::raw::c_uint,
-    );
+    pub fn obs_volmeter_set_update_interval(volmeter: *mut obs_volmeter_t, ms: ::std::os::raw::c_uint);
 }
 extern "C" {
     #[doc = " @brief Get the update interval currently used for the volume meter\n @param volmeter pointer to the volume meter object\n @return update interval in ms"]
-    pub fn obs_volmeter_get_update_interval(
-        volmeter: *mut obs_volmeter_t,
-    ) -> ::std::os::raw::c_uint;
+    pub fn obs_volmeter_get_update_interval(volmeter: *mut obs_volmeter_t) -> ::std::os::raw::c_uint;
 }
 extern "C" {
     #[doc = " @brief Get the number of channels which are configured for this source.\n @param volmeter pointer to the volume meter object"]
@@ -48968,9 +40357,7 @@ extern "C" {
     pub fn obs_hotkey_get_pair_partner_id(key: *const obs_hotkey_t) -> obs_hotkey_id;
 }
 extern "C" {
-    pub fn obs_hotkey_binding_get_key_combination(
-        binding: *mut obs_hotkey_binding_t,
-    ) -> obs_key_combination_t;
+    pub fn obs_hotkey_binding_get_key_combination(binding: *mut obs_hotkey_binding_t) -> obs_key_combination_t;
 }
 extern "C" {
     pub fn obs_hotkey_binding_get_hotkey_id(binding: *mut obs_hotkey_binding_t) -> obs_hotkey_id;
@@ -49042,8 +40429,7 @@ pub struct obs_hotkeys_translations {
 }
 #[test]
 fn bindgen_test_layout_obs_hotkeys_translations() {
-    const UNINIT: ::std::mem::MaybeUninit<obs_hotkeys_translations> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<obs_hotkeys_translations> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<obs_hotkeys_translations>(),
@@ -49584,11 +40970,7 @@ extern "C" {
     pub fn obs_hotkey_pair_unregister(id: obs_hotkey_pair_id);
 }
 extern "C" {
-    pub fn obs_hotkey_load_bindings(
-        id: obs_hotkey_id,
-        combinations: *mut obs_key_combination_t,
-        num: usize,
-    );
+    pub fn obs_hotkey_load_bindings(id: obs_hotkey_id, combinations: *mut obs_key_combination_t, num: usize);
 }
 extern "C" {
     pub fn obs_hotkey_load(id: obs_hotkey_id, data: *mut obs_data_array_t);
@@ -49606,11 +40988,7 @@ extern "C" {
     pub fn obs_hotkeys_load_source(source: *mut obs_source_t, hotkeys: *mut obs_data_t);
 }
 extern "C" {
-    pub fn obs_hotkey_pair_load(
-        id: obs_hotkey_pair_id,
-        data0: *mut obs_data_array_t,
-        data1: *mut obs_data_array_t,
-    );
+    pub fn obs_hotkey_pair_load(id: obs_hotkey_pair_id, data0: *mut obs_data_array_t, data1: *mut obs_data_array_t);
 }
 extern "C" {
     pub fn obs_hotkey_save(id: obs_hotkey_id) -> *mut obs_data_array_t;
@@ -49635,27 +41013,16 @@ extern "C" {
     pub fn obs_hotkeys_save_source(source: *mut obs_source_t) -> *mut obs_data_t;
 }
 pub type obs_hotkey_enum_func = ::std::option::Option<
-    unsafe extern "C" fn(
-        data: *mut ::std::os::raw::c_void,
-        id: obs_hotkey_id,
-        key: *mut obs_hotkey_t,
-    ) -> bool,
+    unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, id: obs_hotkey_id, key: *mut obs_hotkey_t) -> bool,
 >;
 extern "C" {
     pub fn obs_enum_hotkeys(func: obs_hotkey_enum_func, data: *mut ::std::os::raw::c_void);
 }
 pub type obs_hotkey_binding_enum_func = ::std::option::Option<
-    unsafe extern "C" fn(
-        data: *mut ::std::os::raw::c_void,
-        idx: usize,
-        binding: *mut obs_hotkey_binding_t,
-    ) -> bool,
+    unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, idx: usize, binding: *mut obs_hotkey_binding_t) -> bool,
 >;
 extern "C" {
-    pub fn obs_enum_hotkey_bindings(
-        func: obs_hotkey_binding_enum_func,
-        data: *mut ::std::os::raw::c_void,
-    );
+    pub fn obs_enum_hotkey_bindings(func: obs_hotkey_binding_enum_func, data: *mut ::std::os::raw::c_void);
 }
 extern "C" {
     pub fn obs_hotkey_inject_event(hotkey: obs_key_combination_t, pressed: bool);
@@ -49666,9 +41033,8 @@ extern "C" {
 extern "C" {
     pub fn obs_hotkey_enable_strict_modifiers(enable: bool);
 }
-pub type obs_hotkey_callback_router_func = ::std::option::Option<
-    unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, id: obs_hotkey_id, pressed: bool),
->;
+pub type obs_hotkey_callback_router_func =
+    ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, id: obs_hotkey_id, pressed: bool)>;
 extern "C" {
     pub fn obs_hotkey_set_callback_routing_func(
         func: obs_hotkey_callback_router_func,
@@ -49681,13 +41047,9 @@ extern "C" {
 extern "C" {
     pub fn obs_hotkey_enable_callback_rerouting(enable: bool);
 }
-pub type obs_hotkey_atomic_update_func =
-    ::std::option::Option<unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void)>;
+pub type obs_hotkey_atomic_update_func = ::std::option::Option<unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void)>;
 extern "C" {
-    pub fn obs_hotkey_update_atomic(
-        func: obs_hotkey_atomic_update_func,
-        data: *mut ::std::os::raw::c_void,
-    );
+    pub fn obs_hotkey_update_atomic(func: obs_hotkey_atomic_update_func, data: *mut ::std::os::raw::c_void);
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -50010,12 +41372,7 @@ fn bindgen_test_layout_obs_video_info() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).range) as usize - ptr as usize },
         48usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_video_info),
-            "::",
-            stringify!(range)
-        )
+        concat!("Offset of field: ", stringify!(obs_video_info), "::", stringify!(range))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).scale_type) as usize - ptr as usize },
@@ -50158,12 +41515,7 @@ fn bindgen_test_layout_obs_audio_data() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).data) as usize - ptr as usize },
         0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_audio_data),
-            "::",
-            stringify!(data)
-        )
+        concat!("Offset of field: ", stringify!(obs_audio_data), "::", stringify!(data))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).frames) as usize - ptr as usize },
@@ -50492,12 +41844,7 @@ fn bindgen_test_layout_obs_source_frame() {
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).trc) as usize - ptr as usize },
         210usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(obs_source_frame),
-            "::",
-            stringify!(trc)
-        )
+        concat!("Offset of field: ", stringify!(obs_source_frame), "::", stringify!(trc))
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).refs) as usize - ptr as usize },
@@ -50762,10 +42109,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Sets things up for calls to obs_get_cmdline_args. Called only once at startup\n and safely copies argv/argc from main(). Subsequent calls do nothing.\n\n @param  argc  The count of command line arguments, from main()\n @param  argv  An array of command line arguments, copied from main() and ends\n               with NULL."]
-    pub fn obs_set_cmdline_args(
-        argc: ::std::os::raw::c_int,
-        argv: *const *const ::std::os::raw::c_char,
-    );
+    pub fn obs_set_cmdline_args(argc: ::std::os::raw::c_int, argv: *const *const ::std::os::raw::c_char);
 }
 extern "C" {
     #[doc = " Get the argc/argv used to start OBS\n\n @return  The command line arguments used for main(). Don't modify this or\n          you'll mess things up for other callers."]
@@ -50881,10 +42225,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Adds a module search path to be used with obs_find_modules.  If the search\n path strings contain %module%, that text will be replaced with the module\n name when used.\n\n @param  bin   Specifies the module's binary directory search path.\n @param  data  Specifies the module's data directory search path."]
-    pub fn obs_add_module_path(
-        bin: *const ::std::os::raw::c_char,
-        data: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_add_module_path(bin: *const ::std::os::raw::c_char, data: *const ::std::os::raw::c_char);
 }
 extern "C" {
     #[doc = " Automatically loads all modules from module paths (convenience function)"]
@@ -50898,8 +42239,7 @@ pub struct obs_module_failure_info {
 }
 #[test]
 fn bindgen_test_layout_obs_module_failure_info() {
-    const UNINIT: ::std::mem::MaybeUninit<obs_module_failure_info> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<obs_module_failure_info> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<obs_module_failure_info>(),
@@ -50983,15 +42323,11 @@ fn bindgen_test_layout_obs_module_info() {
         )
     );
 }
-pub type obs_find_module_callback_t = ::std::option::Option<
-    unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, info: *const obs_module_info),
->;
+pub type obs_find_module_callback_t =
+    ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, info: *const obs_module_info)>;
 extern "C" {
     #[doc = " Finds all modules within the search paths added by obs_add_module_path."]
-    pub fn obs_find_modules(
-        callback: obs_find_module_callback_t,
-        param: *mut ::std::os::raw::c_void,
-    );
+    pub fn obs_find_modules(callback: obs_find_module_callback_t, param: *mut ::std::os::raw::c_void);
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -51045,25 +42381,17 @@ fn bindgen_test_layout_obs_module_info2() {
         )
     );
 }
-pub type obs_find_module_callback2_t = ::std::option::Option<
-    unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, info: *const obs_module_info2),
->;
+pub type obs_find_module_callback2_t =
+    ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, info: *const obs_module_info2)>;
 extern "C" {
     #[doc = " Finds all modules within the search paths added by obs_add_module_path."]
-    pub fn obs_find_modules2(
-        callback: obs_find_module_callback2_t,
-        param: *mut ::std::os::raw::c_void,
-    );
+    pub fn obs_find_modules2(callback: obs_find_module_callback2_t, param: *mut ::std::os::raw::c_void);
 }
-pub type obs_enum_module_callback_t = ::std::option::Option<
-    unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, module: *mut obs_module_t),
->;
+pub type obs_enum_module_callback_t =
+    ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, module: *mut obs_module_t)>;
 extern "C" {
     #[doc = " Enumerates all loaded modules"]
-    pub fn obs_enum_modules(
-        callback: obs_enum_module_callback_t,
-        param: *mut ::std::os::raw::c_void,
-    );
+    pub fn obs_enum_modules(callback: obs_enum_module_callback_t, param: *mut ::std::os::raw::c_void);
 }
 extern "C" {
     #[doc = " Helper function for using default module locale"]
@@ -51103,9 +42431,8 @@ extern "C" {
     ) -> bool;
 }
 extern "C" {
-    pub fn obs_get_latest_input_type_id(
-        unversioned_id: *const ::std::os::raw::c_char,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_get_latest_input_type_id(unversioned_id: *const ::std::os::raw::c_char)
+        -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     #[doc = " Enumerates all available filter source types.\n\n   Filters are sources that are used to modify the video/audio output of\n other sources."]
@@ -51159,10 +42486,7 @@ extern "C" {
     #[doc = " Enumerates all input sources\n\n   Callback function returns true to continue enumeration, or false to end\n enumeration.\n\n   Use obs_source_get_ref or obs_source_get_weak_source if you want to retain\n a reference after obs_enum_sources finishes"]
     pub fn obs_enum_sources(
         enum_proc: ::std::option::Option<
-            unsafe extern "C" fn(
-                arg1: *mut ::std::os::raw::c_void,
-                arg2: *mut obs_source_t,
-            ) -> bool,
+            unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut obs_source_t) -> bool,
         >,
         param: *mut ::std::os::raw::c_void,
     );
@@ -51171,10 +42495,7 @@ extern "C" {
     #[doc = " Enumerates scenes"]
     pub fn obs_enum_scenes(
         enum_proc: ::std::option::Option<
-            unsafe extern "C" fn(
-                arg1: *mut ::std::os::raw::c_void,
-                arg2: *mut obs_source_t,
-            ) -> bool,
+            unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut obs_source_t) -> bool,
         >,
         param: *mut ::std::os::raw::c_void,
     );
@@ -51183,10 +42504,7 @@ extern "C" {
     #[doc = " Enumerates all sources (regardless of type)"]
     pub fn obs_enum_all_sources(
         enum_proc: ::std::option::Option<
-            unsafe extern "C" fn(
-                arg1: *mut ::std::os::raw::c_void,
-                arg2: *mut obs_source_t,
-            ) -> bool,
+            unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut obs_source_t) -> bool,
         >,
         param: *mut ::std::os::raw::c_void,
     );
@@ -51195,10 +42513,7 @@ extern "C" {
     #[doc = " Enumerates outputs"]
     pub fn obs_enum_outputs(
         enum_proc: ::std::option::Option<
-            unsafe extern "C" fn(
-                arg1: *mut ::std::os::raw::c_void,
-                arg2: *mut obs_output_t,
-            ) -> bool,
+            unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut obs_output_t) -> bool,
         >,
         param: *mut ::std::os::raw::c_void,
     );
@@ -51207,10 +42522,7 @@ extern "C" {
     #[doc = " Enumerates encoders"]
     pub fn obs_enum_encoders(
         enum_proc: ::std::option::Option<
-            unsafe extern "C" fn(
-                arg1: *mut ::std::os::raw::c_void,
-                arg2: *mut obs_encoder_t,
-            ) -> bool,
+            unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut obs_encoder_t) -> bool,
         >,
         param: *mut ::std::os::raw::c_void,
     );
@@ -51219,10 +42531,7 @@ extern "C" {
     #[doc = " Enumerates encoders"]
     pub fn obs_enum_services(
         enum_proc: ::std::option::Option<
-            unsafe extern "C" fn(
-                arg1: *mut ::std::os::raw::c_void,
-                arg2: *mut obs_service_t,
-            ) -> bool,
+            unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut obs_service_t) -> bool,
         >,
         param: *mut ::std::os::raw::c_void,
     );
@@ -51339,9 +42648,8 @@ extern "C" {
     #[doc = " Send a load signal to sources"]
     pub fn obs_source_load2(source: *mut obs_source_t);
 }
-pub type obs_load_source_cb = ::std::option::Option<
-    unsafe extern "C" fn(private_data: *mut ::std::os::raw::c_void, source: *mut obs_source_t),
->;
+pub type obs_load_source_cb =
+    ::std::option::Option<unsafe extern "C" fn(private_data: *mut ::std::os::raw::c_void, source: *mut obs_source_t)>;
 extern "C" {
     #[doc = " Loads sources from a data array"]
     pub fn obs_load_sources(
@@ -51354,9 +42662,8 @@ extern "C" {
     #[doc = " Saves sources to a data array"]
     pub fn obs_save_sources() -> *mut obs_data_array_t;
 }
-pub type obs_save_source_filter_cb = ::std::option::Option<
-    unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, source: *mut obs_source_t) -> bool,
->;
+pub type obs_save_source_filter_cb =
+    ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, source: *mut obs_source_t) -> bool>;
 extern "C" {
     pub fn obs_save_sources_filtered(
         cb: obs_save_source_filter_cb,
@@ -51399,10 +42706,7 @@ extern "C" {
     pub fn obs_audio_monitoring_available() -> bool;
 }
 extern "C" {
-    pub fn obs_enum_audio_monitoring_devices(
-        cb: obs_enum_audio_device_cb,
-        data: *mut ::std::os::raw::c_void,
-    );
+    pub fn obs_enum_audio_monitoring_devices(cb: obs_enum_audio_device_cb, data: *mut ::std::os::raw::c_void);
 }
 extern "C" {
     pub fn obs_set_audio_monitoring_device(
@@ -51418,33 +42722,25 @@ extern "C" {
 }
 extern "C" {
     pub fn obs_add_tick_callback(
-        tick: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, seconds: f32),
-        >,
+        tick: ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, seconds: f32)>,
         param: *mut ::std::os::raw::c_void,
     );
 }
 extern "C" {
     pub fn obs_remove_tick_callback(
-        tick: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, seconds: f32),
-        >,
+        tick: ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, seconds: f32)>,
         param: *mut ::std::os::raw::c_void,
     );
 }
 extern "C" {
     pub fn obs_add_main_render_callback(
-        draw: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, cx: u32, cy: u32),
-        >,
+        draw: ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, cx: u32, cy: u32)>,
         param: *mut ::std::os::raw::c_void,
     );
 }
 extern "C" {
     pub fn obs_remove_main_render_callback(
-        draw: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, cx: u32, cy: u32),
-        >,
+        draw: ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, cx: u32, cy: u32)>,
         param: *mut ::std::os::raw::c_void,
     );
 }
@@ -51525,20 +42821,14 @@ extern "C" {
 extern "C" {
     pub fn obs_get_private_data() -> *mut obs_data_t;
 }
-pub type obs_task_t =
-    ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void)>;
+pub type obs_task_t = ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void)>;
 pub const obs_task_type_OBS_TASK_UI: obs_task_type = 0;
 pub const obs_task_type_OBS_TASK_GRAPHICS: obs_task_type = 1;
 pub const obs_task_type_OBS_TASK_AUDIO: obs_task_type = 2;
 pub const obs_task_type_OBS_TASK_DESTROY: obs_task_type = 3;
 pub type obs_task_type = ::std::os::raw::c_int;
 extern "C" {
-    pub fn obs_queue_task(
-        type_: obs_task_type,
-        task: obs_task_t,
-        param: *mut ::std::os::raw::c_void,
-        wait: bool,
-    );
+    pub fn obs_queue_task(type_: obs_task_type, task: obs_task_t, param: *mut ::std::os::raw::c_void, wait: bool);
 }
 extern "C" {
     pub fn obs_in_task_thread(type_: obs_task_type) -> bool;
@@ -51546,9 +42836,8 @@ extern "C" {
 extern "C" {
     pub fn obs_wait_for_destroy_queue() -> bool;
 }
-pub type obs_task_handler_t = ::std::option::Option<
-    unsafe extern "C" fn(task: obs_task_t, param: *mut ::std::os::raw::c_void, wait: bool),
->;
+pub type obs_task_handler_t =
+    ::std::option::Option<unsafe extern "C" fn(task: obs_task_t, param: *mut ::std::os::raw::c_void, wait: bool)>;
 extern "C" {
     pub fn obs_set_ui_task_handler(handler: obs_task_handler_t);
 }
@@ -51574,10 +42863,7 @@ extern "C" {
     pub fn obs_weak_object_expired(weak: *mut obs_weak_object_t) -> bool;
 }
 extern "C" {
-    pub fn obs_weak_object_references_object(
-        weak: *mut obs_weak_object_t,
-        object: *mut obs_object_t,
-    ) -> bool;
+    pub fn obs_weak_object_references_object(weak: *mut obs_weak_object_t, object: *mut obs_object_t) -> bool;
 }
 extern "C" {
     #[doc = " Creates a view context.\n\n   A view can be used for things like separate previews, or drawing\n sources separately."]
@@ -51617,10 +42903,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Adds a new window display linked to the main render pipeline.  This creates\n a new swap chain which updates every frame.\n\n @param  graphics_data  The swap chain initialization data.\n @return                The new display context, or NULL if failed."]
-    pub fn obs_display_create(
-        graphics_data: *const gs_init_data,
-        backround_color: u32,
-    ) -> *mut obs_display_t;
+    pub fn obs_display_create(graphics_data: *const gs_init_data, backround_color: u32) -> *mut obs_display_t;
 }
 extern "C" {
     #[doc = " Destroys a display context"]
@@ -51638,9 +42921,7 @@ extern "C" {
     #[doc = " Adds a draw callback for this display context\n\n @param  display  The display context.\n @param  draw     The draw callback which is called each time a frame\n                  updates.\n @param  param    The user data to be associated with this draw callback."]
     pub fn obs_display_add_draw_callback(
         display: *mut obs_display_t,
-        draw: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, cx: u32, cy: u32),
-        >,
+        draw: ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, cx: u32, cy: u32)>,
         param: *mut ::std::os::raw::c_void,
     );
 }
@@ -51648,9 +42929,7 @@ extern "C" {
     #[doc = " Removes a draw callback for this display context"]
     pub fn obs_display_remove_draw_callback(
         display: *mut obs_display_t,
-        draw: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, cx: u32, cy: u32),
-        >,
+        draw: ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, cx: u32, cy: u32)>,
         param: *mut ::std::os::raw::c_void,
     );
 }
@@ -51668,9 +42947,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Returns the translated display name of a source"]
-    pub fn obs_source_get_display_name(
-        id: *const ::std::os::raw::c_char,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_source_get_display_name(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     #[doc = " Creates a source of the specified type with the specified settings.\n\n   The \"source\" context is used for anything related to presenting\n or modifying video/audio.  Use obs_source_release to release it."]
@@ -51721,10 +42998,7 @@ extern "C" {
     pub fn obs_weak_source_expired(weak: *mut obs_weak_source_t) -> bool;
 }
 extern "C" {
-    pub fn obs_weak_source_references_source(
-        weak: *mut obs_weak_source_t,
-        source: *mut obs_source_t,
-    ) -> bool;
+    pub fn obs_weak_source_references_source(weak: *mut obs_weak_source_t, source: *mut obs_source_t) -> bool;
 }
 extern "C" {
     #[doc = " Notifies all references that the source should be released"]
@@ -51864,9 +43138,7 @@ extern "C" {
     pub fn obs_source_get_id(source: *const obs_source_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_source_get_unversioned_id(
-        source: *const obs_source_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_source_get_unversioned_id(source: *const obs_source_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     #[doc = " Returns the signal handler for a source"]
@@ -52080,10 +43352,8 @@ pub const obs_deinterlace_mode_OBS_DEINTERLACE_MODE_LINEAR_2X: obs_deinterlace_m
 pub const obs_deinterlace_mode_OBS_DEINTERLACE_MODE_YADIF: obs_deinterlace_mode = 7;
 pub const obs_deinterlace_mode_OBS_DEINTERLACE_MODE_YADIF_2X: obs_deinterlace_mode = 8;
 pub type obs_deinterlace_mode = ::std::os::raw::c_int;
-pub const obs_deinterlace_field_order_OBS_DEINTERLACE_FIELD_ORDER_TOP: obs_deinterlace_field_order =
-    0;
-pub const obs_deinterlace_field_order_OBS_DEINTERLACE_FIELD_ORDER_BOTTOM:
-    obs_deinterlace_field_order = 1;
+pub const obs_deinterlace_field_order_OBS_DEINTERLACE_FIELD_ORDER_TOP: obs_deinterlace_field_order = 0;
+pub const obs_deinterlace_field_order_OBS_DEINTERLACE_FIELD_ORDER_BOTTOM: obs_deinterlace_field_order = 1;
 pub type obs_deinterlace_field_order = ::std::os::raw::c_int;
 extern "C" {
     pub fn obs_source_set_deinterlace_mode(source: *mut obs_source_t, mode: obs_deinterlace_mode);
@@ -52092,15 +43362,10 @@ extern "C" {
     pub fn obs_source_get_deinterlace_mode(source: *const obs_source_t) -> obs_deinterlace_mode;
 }
 extern "C" {
-    pub fn obs_source_set_deinterlace_field_order(
-        source: *mut obs_source_t,
-        field_order: obs_deinterlace_field_order,
-    );
+    pub fn obs_source_set_deinterlace_field_order(source: *mut obs_source_t, field_order: obs_deinterlace_field_order);
 }
 extern "C" {
-    pub fn obs_source_get_deinterlace_field_order(
-        source: *const obs_source_t,
-    ) -> obs_deinterlace_field_order;
+    pub fn obs_source_get_deinterlace_field_order(source: *const obs_source_t) -> obs_deinterlace_field_order;
 }
 pub const obs_monitoring_type_OBS_MONITORING_TYPE_NONE: obs_monitoring_type = 0;
 pub const obs_monitoring_type_OBS_MONITORING_TYPE_MONITOR_ONLY: obs_monitoring_type = 1;
@@ -52152,10 +43417,7 @@ extern "C" {
     pub fn obs_source_output_video2(source: *mut obs_source_t, frame: *const obs_source_frame2);
 }
 extern "C" {
-    pub fn obs_source_set_async_rotation(
-        source: *mut obs_source_t,
-        rotation: ::std::os::raw::c_long,
-    );
+    pub fn obs_source_set_async_rotation(source: *mut obs_source_t, rotation: ::std::os::raw::c_long);
 }
 extern "C" {
     pub fn obs_source_output_cea708(source: *mut obs_source_t, captions: *const obs_source_cea_708);
@@ -52212,12 +43474,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Draws the filter.\n\n Before calling this function, first call obs_source_process_filter_begin and\n then set the effect parameters, and then call this function to finalize the\n filter."]
-    pub fn obs_source_process_filter_end(
-        filter: *mut obs_source_t,
-        effect: *mut gs_effect_t,
-        width: u32,
-        height: u32,
-    );
+    pub fn obs_source_process_filter_end(filter: *mut obs_source_t, effect: *mut gs_effect_t, width: u32, height: u32);
 }
 extern "C" {
     #[doc = " Draws the filter with a specific technique.\n\n Before calling this function, first call obs_source_process_filter_begin and\n then set the effect parameters, and then call this function to finalize the\n filter."]
@@ -52235,8 +43492,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Adds an active child source.  Must be called by parent sources on child\n sources when the child is added and active.  This ensures that the source is\n properly activated if the parent is active.\n\n @returns true if source can be added, false if it causes recursion"]
-    pub fn obs_source_add_active_child(parent: *mut obs_source_t, child: *mut obs_source_t)
-        -> bool;
+    pub fn obs_source_add_active_child(parent: *mut obs_source_t, child: *mut obs_source_t) -> bool;
 }
 extern "C" {
     #[doc = " Removes an active child source.  Must be called by parent sources on child\n sources when the child is removed or inactive.  This ensures that the source\n is properly deactivated if the parent is no longer active."]
@@ -52254,11 +43510,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Sends a mouse move event to a source."]
-    pub fn obs_source_send_mouse_move(
-        source: *mut obs_source_t,
-        event: *const obs_mouse_event,
-        mouse_leave: bool,
-    );
+    pub fn obs_source_send_mouse_move(source: *mut obs_source_t, event: *const obs_mouse_event, mouse_leave: bool);
 }
 extern "C" {
     #[doc = " Sends a mouse wheel event to a source"]
@@ -52275,11 +43527,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Sends a key up/down event to a source"]
-    pub fn obs_source_send_key_click(
-        source: *mut obs_source_t,
-        event: *const obs_key_event,
-        key_up: bool,
-    );
+    pub fn obs_source_send_key_click(source: *mut obs_source_t, event: *const obs_key_event, key_up: bool);
 }
 extern "C" {
     #[doc = " Sets the default source flags."]
@@ -52362,10 +43610,8 @@ pub const obs_transition_target_OBS_TRANSITION_SOURCE_A: obs_transition_target =
 pub const obs_transition_target_OBS_TRANSITION_SOURCE_B: obs_transition_target = 1;
 pub type obs_transition_target = ::std::os::raw::c_int;
 extern "C" {
-    pub fn obs_transition_get_source(
-        transition: *mut obs_source_t,
-        target: obs_transition_target,
-    ) -> *mut obs_source_t;
+    pub fn obs_transition_get_source(transition: *mut obs_source_t, target: obs_transition_target)
+        -> *mut obs_source_t;
 }
 extern "C" {
     pub fn obs_transition_clear(transition: *mut obs_source_t);
@@ -52398,15 +43644,10 @@ pub const obs_transition_scale_type_OBS_TRANSITION_SCALE_ASPECT: obs_transition_
 pub const obs_transition_scale_type_OBS_TRANSITION_SCALE_STRETCH: obs_transition_scale_type = 2;
 pub type obs_transition_scale_type = ::std::os::raw::c_int;
 extern "C" {
-    pub fn obs_transition_set_scale_type(
-        transition: *mut obs_source_t,
-        type_: obs_transition_scale_type,
-    );
+    pub fn obs_transition_set_scale_type(transition: *mut obs_source_t, type_: obs_transition_scale_type);
 }
 extern "C" {
-    pub fn obs_transition_get_scale_type(
-        transition: *const obs_source_t,
-    ) -> obs_transition_scale_type;
+    pub fn obs_transition_get_scale_type(transition: *const obs_source_t) -> obs_transition_scale_type;
 }
 extern "C" {
     pub fn obs_transition_set_alignment(transition: *mut obs_source_t, alignment: u32);
@@ -52422,11 +43663,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Enables fixed transitions (videos or specific types of transitions that\n are of fixed duration and linearly interpolated"]
-    pub fn obs_transition_enable_fixed(
-        transition: *mut obs_source_t,
-        enable: bool,
-        duration_ms: u32,
-    );
+    pub fn obs_transition_enable_fixed(transition: *mut obs_source_t, enable: bool, duration_ms: u32);
 }
 extern "C" {
     pub fn obs_transition_fixed(transition: *mut obs_source_t) -> bool;
@@ -52450,10 +43687,7 @@ extern "C" {
     pub fn obs_transition_force_stop(transition: *mut obs_source_t);
 }
 extern "C" {
-    pub fn obs_transition_video_render(
-        transition: *mut obs_source_t,
-        callback: obs_transition_video_render_callback_t,
-    );
+    pub fn obs_transition_video_render(transition: *mut obs_source_t, callback: obs_transition_video_render_callback_t);
 }
 extern "C" {
     pub fn obs_transition_video_render2(
@@ -52467,10 +43701,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Directly renders its sub-source instead of to texture.  Returns false if no\n longer transitioning"]
-    pub fn obs_transition_video_render_direct(
-        transition: *mut obs_source_t,
-        target: obs_transition_target,
-    ) -> bool;
+    pub fn obs_transition_video_render_direct(transition: *mut obs_source_t, target: obs_transition_target) -> bool;
 }
 extern "C" {
     pub fn obs_transition_audio_render(
@@ -52533,10 +43764,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Determines whether a source is within a scene"]
-    pub fn obs_scene_find_source(
-        scene: *mut obs_scene_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> *mut obs_sceneitem_t;
+    pub fn obs_scene_find_source(scene: *mut obs_scene_t, name: *const ::std::os::raw::c_char) -> *mut obs_sceneitem_t;
 }
 extern "C" {
     pub fn obs_scene_find_source_recursive(
@@ -52545,8 +43773,7 @@ extern "C" {
     ) -> *mut obs_sceneitem_t;
 }
 extern "C" {
-    pub fn obs_scene_find_sceneitem_by_id(scene: *mut obs_scene_t, id: i64)
-        -> *mut obs_sceneitem_t;
+    pub fn obs_scene_find_sceneitem_by_id(scene: *mut obs_scene_t, id: i64) -> *mut obs_sceneitem_t;
 }
 extern "C" {
     #[doc = " Enumerates sources within a scene"]
@@ -52577,8 +43804,7 @@ pub struct obs_sceneitem_order_info {
 }
 #[test]
 fn bindgen_test_layout_obs_sceneitem_order_info() {
-    const UNINIT: ::std::mem::MaybeUninit<obs_sceneitem_order_info> =
-        ::std::mem::MaybeUninit::uninit();
+    const UNINIT: ::std::mem::MaybeUninit<obs_sceneitem_order_info> = ::std::mem::MaybeUninit::uninit();
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::std::mem::size_of::<obs_sceneitem_order_info>(),
@@ -52623,14 +43849,10 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Adds/creates a new scene item for a source"]
-    pub fn obs_scene_add(
-        scene: *mut obs_scene_t,
-        source: *mut obs_source_t,
-    ) -> *mut obs_sceneitem_t;
+    pub fn obs_scene_add(scene: *mut obs_scene_t, source: *mut obs_source_t) -> *mut obs_sceneitem_t;
 }
-pub type obs_scene_atomic_update_func = ::std::option::Option<
-    unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, scene: *mut obs_scene_t),
->;
+pub type obs_scene_atomic_update_func =
+    ::std::option::Option<unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, scene: *mut obs_scene_t)>;
 extern "C" {
     pub fn obs_scene_atomic_update(
         scene: *mut obs_scene_t,
@@ -52662,17 +43884,11 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Tries to find the sceneitem of the source in a given scene. Returns NULL if not found"]
-    pub fn obs_scene_sceneitem_from_source(
-        scene: *mut obs_scene_t,
-        source: *mut obs_source_t,
-    ) -> *mut obs_sceneitem_t;
+    pub fn obs_scene_sceneitem_from_source(scene: *mut obs_scene_t, source: *mut obs_source_t) -> *mut obs_sceneitem_t;
 }
 extern "C" {
     #[doc = " Save all the transform states for a current scene's sceneitems"]
-    pub fn obs_scene_save_transform_states(
-        scene: *mut obs_scene_t,
-        all_items: bool,
-    ) -> *mut obs_data_t;
+    pub fn obs_scene_save_transform_states(scene: *mut obs_scene_t, all_items: bool) -> *mut obs_data_t;
 }
 extern "C" {
     #[doc = " Load all the transform states of sceneitems in that scene"]
@@ -52718,10 +43934,7 @@ extern "C" {
     pub fn obs_sceneitem_set_order(item: *mut obs_sceneitem_t, movement: obs_order_movement);
 }
 extern "C" {
-    pub fn obs_sceneitem_set_order_position(
-        item: *mut obs_sceneitem_t,
-        position: ::std::os::raw::c_int,
-    );
+    pub fn obs_sceneitem_set_order_position(item: *mut obs_sceneitem_t, position: ::std::os::raw::c_int);
 }
 extern "C" {
     pub fn obs_sceneitem_set_bounds_type(item: *mut obs_sceneitem_t, type_: obs_bounds_type);
@@ -52853,10 +44066,7 @@ extern "C" {
     pub fn obs_sceneitem_get_scale_filter(item: *mut obs_sceneitem_t) -> obs_scale_type;
 }
 extern "C" {
-    pub fn obs_sceneitem_set_blending_method(
-        item: *mut obs_sceneitem_t,
-        method: obs_blending_method,
-    );
+    pub fn obs_sceneitem_set_blending_method(item: *mut obs_sceneitem_t, method: obs_blending_method);
 }
 extern "C" {
     pub fn obs_sceneitem_get_blending_method(item: *mut obs_sceneitem_t) -> obs_blending_method;
@@ -52881,10 +44091,7 @@ extern "C" {
     pub fn obs_sceneitem_get_private_settings(item: *mut obs_sceneitem_t) -> *mut obs_data_t;
 }
 extern "C" {
-    pub fn obs_scene_add_group(
-        scene: *mut obs_scene_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> *mut obs_sceneitem_t;
+    pub fn obs_scene_add_group(scene: *mut obs_scene_t, name: *const ::std::os::raw::c_char) -> *mut obs_sceneitem_t;
 }
 extern "C" {
     pub fn obs_scene_insert_group(
@@ -52911,10 +44118,7 @@ extern "C" {
     ) -> *mut obs_sceneitem_t;
 }
 extern "C" {
-    pub fn obs_scene_get_group(
-        scene: *mut obs_scene_t,
-        name: *const ::std::os::raw::c_char,
-    ) -> *mut obs_sceneitem_t;
+    pub fn obs_scene_get_group(scene: *mut obs_scene_t, name: *const ::std::os::raw::c_char) -> *mut obs_sceneitem_t;
 }
 extern "C" {
     pub fn obs_sceneitem_is_group(item: *mut obs_sceneitem_t) -> bool;
@@ -52935,10 +44139,7 @@ extern "C" {
     pub fn obs_sceneitem_group_remove_item(group: *mut obs_sceneitem_t, item: *mut obs_sceneitem_t);
 }
 extern "C" {
-    pub fn obs_sceneitem_get_group(
-        scene: *mut obs_scene_t,
-        item: *mut obs_sceneitem_t,
-    ) -> *mut obs_sceneitem_t;
+    pub fn obs_sceneitem_get_group(scene: *mut obs_scene_t, item: *mut obs_sceneitem_t) -> *mut obs_sceneitem_t;
 }
 extern "C" {
     pub fn obs_source_is_group(source: *const obs_source_t) -> bool;
@@ -52970,10 +44171,7 @@ extern "C" {
     pub fn obs_sceneitem_defer_group_resize_end(item: *mut obs_sceneitem_t);
 }
 extern "C" {
-    pub fn obs_sceneitem_set_show_transition(
-        item: *mut obs_sceneitem_t,
-        transition: *mut obs_source_t,
-    );
+    pub fn obs_sceneitem_set_show_transition(item: *mut obs_sceneitem_t, transition: *mut obs_source_t);
 }
 extern "C" {
     pub fn obs_sceneitem_set_show_transition_duration(item: *mut obs_sceneitem_t, duration_ms: u32);
@@ -52985,10 +44183,7 @@ extern "C" {
     pub fn obs_sceneitem_get_show_transition_duration(item: *mut obs_sceneitem_t) -> u32;
 }
 extern "C" {
-    pub fn obs_sceneitem_set_hide_transition(
-        item: *mut obs_sceneitem_t,
-        transition: *mut obs_source_t,
-    );
+    pub fn obs_sceneitem_set_hide_transition(item: *mut obs_sceneitem_t, transition: *mut obs_source_t);
 }
 extern "C" {
     pub fn obs_sceneitem_set_hide_transition_duration(item: *mut obs_sceneitem_t, duration_ms: u32);
@@ -53000,24 +44195,13 @@ extern "C" {
     pub fn obs_sceneitem_get_hide_transition_duration(item: *mut obs_sceneitem_t) -> u32;
 }
 extern "C" {
-    pub fn obs_sceneitem_set_transition(
-        item: *mut obs_sceneitem_t,
-        show: bool,
-        transition: *mut obs_source_t,
-    );
+    pub fn obs_sceneitem_set_transition(item: *mut obs_sceneitem_t, show: bool, transition: *mut obs_source_t);
 }
 extern "C" {
-    pub fn obs_sceneitem_get_transition(
-        item: *mut obs_sceneitem_t,
-        show: bool,
-    ) -> *mut obs_source_t;
+    pub fn obs_sceneitem_get_transition(item: *mut obs_sceneitem_t, show: bool) -> *mut obs_source_t;
 }
 extern "C" {
-    pub fn obs_sceneitem_set_transition_duration(
-        item: *mut obs_sceneitem_t,
-        show: bool,
-        duration_ms: u32,
-    );
+    pub fn obs_sceneitem_set_transition_duration(item: *mut obs_sceneitem_t, show: bool, duration_ms: u32);
 }
 extern "C" {
     pub fn obs_sceneitem_get_transition_duration(item: *mut obs_sceneitem_t, show: bool) -> u32;
@@ -53026,11 +44210,7 @@ extern "C" {
     pub fn obs_sceneitem_do_transition(item: *mut obs_sceneitem_t, visible: bool);
 }
 extern "C" {
-    pub fn obs_sceneitem_transition_load(
-        item: *mut obs_scene_item,
-        data: *mut obs_data_t,
-        show: bool,
-    );
+    pub fn obs_sceneitem_transition_load(item: *mut obs_scene_item, data: *mut obs_data_t, show: bool);
 }
 extern "C" {
     pub fn obs_sceneitem_transition_save(item: *mut obs_scene_item, show: bool) -> *mut obs_data_t;
@@ -53039,9 +44219,7 @@ extern "C" {
     pub fn obs_scene_prune_sources(scene: *mut obs_scene_t);
 }
 extern "C" {
-    pub fn obs_output_get_display_name(
-        id: *const ::std::os::raw::c_char,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_output_get_display_name(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     #[doc = " Creates an output.\n\n   Outputs allow outputting to file, outputting to network, outputting to\n directshow, or other custom outputs."]
@@ -53075,10 +44253,7 @@ extern "C" {
     pub fn obs_weak_output_get_output(weak: *mut obs_weak_output_t) -> *mut obs_output_t;
 }
 extern "C" {
-    pub fn obs_weak_output_references_output(
-        weak: *mut obs_weak_output_t,
-        output: *mut obs_output_t,
-    ) -> bool;
+    pub fn obs_weak_output_references_output(weak: *mut obs_weak_output_t, output: *mut obs_output_t) -> bool;
 }
 extern "C" {
     pub fn obs_output_get_name(output: *const obs_output_t) -> *const ::std::os::raw::c_char;
@@ -53160,11 +44335,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Sets the current audio/video media contexts associated with this output,\n required for non-encoded outputs.  Can be null."]
-    pub fn obs_output_set_media(
-        output: *mut obs_output_t,
-        video: *mut video_t,
-        audio: *mut audio_t,
-    );
+    pub fn obs_output_set_media(output: *mut obs_output_t, video: *mut video_t, audio: *mut audio_t);
 }
 extern "C" {
     #[doc = " Returns the video media context associated with this output"]
@@ -53196,11 +44367,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Sets the current audio encoder associated with this output,\n required for encoded outputs.\n\n The idx parameter specifies the audio encoder index to set the encoder to.\n Only used with outputs that have multiple audio outputs (RTMP typically),\n otherwise the parameter is ignored."]
-    pub fn obs_output_set_audio_encoder(
-        output: *mut obs_output_t,
-        encoder: *mut obs_encoder_t,
-        idx: usize,
-    );
+    pub fn obs_output_set_audio_encoder(output: *mut obs_output_t, encoder: *mut obs_encoder_t, idx: usize);
 }
 extern "C" {
     #[doc = " Returns the current video encoder associated with this output"]
@@ -53208,10 +44375,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Returns the current audio encoder associated with this output\n\n The idx parameter specifies the audio encoder index.  Only used with\n outputs that have multiple audio outputs, otherwise the parameter is\n ignored."]
-    pub fn obs_output_get_audio_encoder(
-        output: *const obs_output_t,
-        idx: usize,
-    ) -> *mut obs_encoder_t;
+    pub fn obs_output_get_audio_encoder(output: *const obs_output_t, idx: usize) -> *mut obs_encoder_t;
 }
 extern "C" {
     #[doc = " Sets the current service associated with this output."]
@@ -53257,10 +44421,7 @@ extern "C" {
     pub fn obs_output_caption(output: *mut obs_output_t, captions: *const obs_source_cea_708);
 }
 extern "C" {
-    pub fn obs_output_output_caption_text1(
-        output: *mut obs_output_t,
-        text: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_output_output_caption_text1(output: *mut obs_output_t, text: *const ::std::os::raw::c_char);
 }
 extern "C" {
     pub fn obs_output_output_caption_text2(
@@ -53280,23 +44441,16 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Pass a string of the last output error, for UI use"]
-    pub fn obs_output_set_last_error(
-        output: *mut obs_output_t,
-        message: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_output_set_last_error(output: *mut obs_output_t, message: *const ::std::os::raw::c_char);
 }
 extern "C" {
     pub fn obs_output_get_last_error(output: *mut obs_output_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_output_get_supported_video_codecs(
-        output: *const obs_output_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_output_get_supported_video_codecs(output: *const obs_output_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_output_get_supported_audio_codecs(
-        output: *const obs_output_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_output_get_supported_audio_codecs(output: *const obs_output_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn obs_output_get_protocols(output: *const obs_output_t) -> *const ::std::os::raw::c_char;
@@ -53305,32 +44459,22 @@ extern "C" {
     pub fn obs_is_output_protocol_registered(protocol: *const ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
-    pub fn obs_enum_output_protocols(
-        idx: usize,
-        protocol: *mut *mut ::std::os::raw::c_char,
-    ) -> bool;
+    pub fn obs_enum_output_protocols(idx: usize, protocol: *mut *mut ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
     pub fn obs_enum_output_types_with_protocol(
         protocol: *const ::std::os::raw::c_char,
         data: *mut ::std::os::raw::c_void,
         enum_cb: ::std::option::Option<
-            unsafe extern "C" fn(
-                data: *mut ::std::os::raw::c_void,
-                id: *const ::std::os::raw::c_char,
-            ) -> bool,
+            unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, id: *const ::std::os::raw::c_char) -> bool,
         >,
     );
 }
 extern "C" {
-    pub fn obs_get_output_supported_video_codecs(
-        id: *const ::std::os::raw::c_char,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_get_output_supported_video_codecs(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_get_output_supported_audio_codecs(
-        id: *const ::std::os::raw::c_char,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_get_output_supported_audio_codecs(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn obs_output_get_type_data(output: *mut obs_output_t) -> *mut ::std::os::raw::c_void;
@@ -53341,17 +44485,11 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Optionally sets the video conversion info.  Used only for raw output"]
-    pub fn obs_output_set_video_conversion(
-        output: *mut obs_output_t,
-        conversion: *const video_scale_info,
-    );
+    pub fn obs_output_set_video_conversion(output: *mut obs_output_t, conversion: *const video_scale_info);
 }
 extern "C" {
     #[doc = " Optionally sets the audio conversion info.  Used only for raw output"]
-    pub fn obs_output_set_audio_conversion(
-        output: *mut obs_output_t,
-        conversion: *const audio_convert_info,
-    );
+    pub fn obs_output_set_audio_conversion(output: *mut obs_output_t, conversion: *const audio_convert_info);
 }
 extern "C" {
     #[doc = " Returns whether data capture can begin with the specified flags"]
@@ -53377,9 +44515,7 @@ extern "C" {
     pub fn obs_output_get_pause_offset(output: *mut obs_output_t) -> u64;
 }
 extern "C" {
-    pub fn obs_encoder_get_display_name(
-        id: *const ::std::os::raw::c_char,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_encoder_get_display_name(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     #[doc = " Creates a video encoder context\n\n @param  id        Video encoder ID\n @param  name      Name to assign to this context\n @param  settings  Settings\n @return           The video encoder context, or NULL if failed or not found."]
@@ -53423,10 +44559,7 @@ extern "C" {
     pub fn obs_weak_encoder_get_encoder(weak: *mut obs_weak_encoder_t) -> *mut obs_encoder_t;
 }
 extern "C" {
-    pub fn obs_weak_encoder_references_encoder(
-        weak: *mut obs_weak_encoder_t,
-        encoder: *mut obs_encoder_t,
-    ) -> bool;
+    pub fn obs_weak_encoder_references_encoder(weak: *mut obs_weak_encoder_t, encoder: *mut obs_encoder_t) -> bool;
 }
 extern "C" {
     pub fn obs_encoder_set_name(encoder: *mut obs_encoder_t, name: *const ::std::os::raw::c_char);
@@ -53436,9 +44569,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Returns the codec of an encoder by the id"]
-    pub fn obs_get_encoder_codec(
-        id: *const ::std::os::raw::c_char,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_get_encoder_codec(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     #[doc = " Returns the type of an encoder by the id"]
@@ -53478,10 +44609,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Sets the preferred video format for a video encoder.  If the encoder can use\n the format specified, it will force a conversion to that format if the\n obs output format does not match the preferred format.\n\n If the format is set to VIDEO_FORMAT_NONE, will revert to the default\n functionality of converting only when absolutely necessary."]
-    pub fn obs_encoder_set_preferred_video_format(
-        encoder: *mut obs_encoder_t,
-        format: video_format,
-    );
+    pub fn obs_encoder_set_preferred_video_format(encoder: *mut obs_encoder_t, format: video_format);
 }
 extern "C" {
     pub fn obs_encoder_get_preferred_video_format(encoder: *const obs_encoder_t) -> video_format;
@@ -53573,22 +44701,16 @@ extern "C" {
     pub fn obs_encoder_paused(output: *const obs_encoder_t) -> bool;
 }
 extern "C" {
-    pub fn obs_encoder_get_last_error(encoder: *mut obs_encoder_t)
-        -> *const ::std::os::raw::c_char;
+    pub fn obs_encoder_get_last_error(encoder: *mut obs_encoder_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_encoder_set_last_error(
-        encoder: *mut obs_encoder_t,
-        message: *const ::std::os::raw::c_char,
-    );
+    pub fn obs_encoder_set_last_error(encoder: *mut obs_encoder_t, message: *const ::std::os::raw::c_char);
 }
 extern "C" {
     pub fn obs_encoder_get_pause_offset(encoder: *const obs_encoder_t) -> u64;
 }
 extern "C" {
-    pub fn obs_service_get_display_name(
-        id: *const ::std::os::raw::c_char,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_service_get_display_name(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn obs_service_create(
@@ -53628,10 +44750,7 @@ extern "C" {
     pub fn obs_weak_service_get_service(weak: *mut obs_weak_service_t) -> *mut obs_service_t;
 }
 extern "C" {
-    pub fn obs_weak_service_references_service(
-        weak: *mut obs_weak_service_t,
-        service: *mut obs_service_t,
-    ) -> bool;
+    pub fn obs_weak_service_references_service(weak: *mut obs_weak_service_t, service: *mut obs_service_t) -> bool;
 }
 extern "C" {
     pub fn obs_service_get_name(service: *const obs_service_t) -> *const ::std::os::raw::c_char;
@@ -53670,13 +44789,11 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Returns the username (if any) for this service context"]
-    pub fn obs_service_get_username(service: *const obs_service_t)
-        -> *const ::std::os::raw::c_char;
+    pub fn obs_service_get_username(service: *const obs_service_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     #[doc = " Returns the password (if any) for this service context"]
-    pub fn obs_service_get_password(service: *const obs_service_t)
-        -> *const ::std::os::raw::c_char;
+    pub fn obs_service_get_password(service: *const obs_service_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     #[doc = " Applies service-specific video encoder settings.\n\n @param  video_encoder_settings  Video encoder settings.  Optional.\n @param  audio_encoder_settings  Audio encoder settings.  Optional."]
@@ -53710,46 +44827,29 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn obs_service_get_supported_video_codecs(
-        service: *const obs_service_t,
-    ) -> *mut *const ::std::os::raw::c_char;
+    pub fn obs_service_get_supported_video_codecs(service: *const obs_service_t) -> *mut *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_service_get_supported_audio_codecs(
-        service: *const obs_service_t,
-    ) -> *mut *const ::std::os::raw::c_char;
+    pub fn obs_service_get_supported_audio_codecs(service: *const obs_service_t) -> *mut *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_service_get_output_type(
-        service: *const obs_service_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_service_get_output_type(service: *const obs_service_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     #[doc = " Returns the protocol for this service context"]
-    pub fn obs_service_get_protocol(service: *const obs_service_t)
-        -> *const ::std::os::raw::c_char;
+    pub fn obs_service_get_protocol(service: *const obs_service_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_service_get_preferred_output_type(
-        service: *const obs_service_t,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_service_get_preferred_output_type(service: *const obs_service_t) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn obs_service_get_connect_info(
-        service: *const obs_service_t,
-        type_: u32,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn obs_service_get_connect_info(service: *const obs_service_t, type_: u32) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn obs_service_can_try_to_connect(service: *const obs_service_t) -> bool;
 }
 extern "C" {
-    pub fn obs_source_frame_init(
-        frame: *mut obs_source_frame,
-        format: video_format,
-        width: u32,
-        height: u32,
-    );
+    pub fn obs_source_frame_init(frame: *mut obs_source_frame, format: video_format, width: u32, height: u32);
 }
 extern "C" {
     pub fn obs_source_frame_copy(dst: *mut obs_source_frame, src: *const obs_source_frame);

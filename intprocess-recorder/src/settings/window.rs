@@ -40,6 +40,7 @@ pub enum Resolution {
 }
 
 impl Resolution {
+    #[must_use]
     pub fn get_size(&self) -> Size {
         match self {
             Resolution::_480p => Size {
@@ -77,12 +78,17 @@ pub struct Size {
 }
 
 impl Size {
+    #[must_use]
     pub fn new(width: u32, height: u32) -> Self {
         Size { width, height }
     }
+
+    #[must_use]
     pub fn width(&self) -> u32 {
         self.width
     }
+
+    #[must_use]
     pub fn height(&self) -> u32 {
         self.height
     }

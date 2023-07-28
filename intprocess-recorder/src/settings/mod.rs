@@ -1,9 +1,3 @@
-mod audio;
-mod encoders;
-mod framerate;
-mod rate_control;
-mod window;
-
 pub use self::{
     audio::AudioSource,
     encoders::Encoder,
@@ -12,7 +6,13 @@ pub use self::{
     window::{Resolution, Size, Window},
 };
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Debug, PartialEq)]
+mod audio;
+mod encoders;
+mod framerate;
+mod rate_control;
+mod window;
+
+#[derive(serde::Serialize, serde::Deserialize, Clone, Debug, PartialEq, Default)]
 pub struct RecorderSettings {
     pub(crate) window: Option<Window>,
     pub(crate) input_size: Option<Size>,
@@ -25,17 +25,9 @@ pub struct RecorderSettings {
 }
 
 impl RecorderSettings {
+    #[must_use]
     pub fn new() -> Self {
-        RecorderSettings {
-            window: None,
-            input_size: None,
-            output_resolution: None,
-            framerate: None,
-            rate_control: None,
-            record_audio: None,
-            output_path: None,
-            encoder: None,
-        }
+        Self::default()
     }
 
     pub fn set_window(&mut self, window: Window) {

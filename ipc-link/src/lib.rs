@@ -40,11 +40,7 @@ impl IpcLinkMaster {
         let mut child_process = Command::new(executable.as_os_str())
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
-            .current_dir(
-                executable
-                    .parent()
-                    .unwrap_or_else(|| Path::new(&Component::RootDir)),
-            )
+            .current_dir(executable.parent().unwrap_or_else(|| Path::new(&Component::RootDir)))
             .spawn()?;
 
         Ok(Self {
@@ -108,6 +104,7 @@ pub struct IpcLinkSlave<'a> {
 }
 
 impl IpcLinkSlave<'_> {
+    #[must_use]
     pub fn new() -> Self {
         Self {
             tx: BufWriter::new(io::stdout().lock()),

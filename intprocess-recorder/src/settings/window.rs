@@ -31,11 +31,17 @@ impl Window {
 
 #[derive(serde::Serialize, serde::Deserialize, Copy, Clone, Debug, PartialEq)]
 pub enum Resolution {
+    #[serde(rename = "480p")]
     _480p,
+    #[serde(rename = "720p")]
     _720p,
+    #[serde(rename = "1080p")]
     _1080p,
+    #[serde(rename = "1440p")]
     _1440p,
+    #[serde(rename = "2160p")]
     _2160p,
+    #[serde(rename = "4320p")]
     _4320p,
 }
 

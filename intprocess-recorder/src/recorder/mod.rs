@@ -13,8 +13,8 @@ use libobs_sys::{
     base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path, obs_audio_encoder_create,
     obs_audio_info, obs_encoder, obs_encoder_release, obs_encoder_set_audio, obs_encoder_set_video, obs_encoder_update,
     obs_enum_encoder_types, obs_get_audio, obs_get_encoder_by_name, obs_get_output_by_name, obs_get_source_by_name,
-    obs_get_video, obs_get_video_info, obs_initialized, obs_load_all_modules, obs_log_loaded_modules, obs_output,
-    obs_output_active, obs_output_create, obs_output_force_stop, obs_output_release, obs_output_set_audio_encoder,
+    obs_get_video, obs_get_video_info, obs_load_all_modules, obs_log_loaded_modules, obs_output, obs_output_active,
+    obs_output_create, obs_output_force_stop, obs_output_release, obs_output_set_audio_encoder,
     obs_output_set_video_encoder, obs_output_start, obs_output_stop, obs_output_update, obs_post_load_modules,
     obs_reset_audio, obs_reset_video, obs_scale_type_OBS_SCALE_LANCZOS, obs_set_output_source, obs_shutdown,
     obs_source, obs_source_create, obs_source_release, obs_source_update, obs_startup, obs_video_encoder_create,
@@ -64,6 +64,8 @@ static LIBOBS_SHUTDOWN: Once = Once::new();
 
 // stores how many instances of Recorder exist in each thread
 // it is only possible to create instances of Recorder on one thread due to LIBOBS_THREAD
+//
+// these are thread local so I don't have to make them thread-safe
 thread_local! {
     static REF_COUNT: Cell<u32> = Cell::new(0);
     static CURRENT_ENCODER: Cell<Encoder> = Cell::new(Encoder::OBS_X264);
@@ -98,7 +100,7 @@ impl InpRecorder {
         plugin_data_path: Option<&str>,
     ) -> Result<(), &'static str> {
         // libobs currently cant be reinitialized after being shutdown
-        // I assume this is a limitation of the library
+        // I assume this is a limitation of libobs
         if LIBOBS_SHUTDOWN.is_completed() {
             return Err("libobs has already been shut down");
         }
@@ -239,9 +241,7 @@ impl InpRecorder {
     }
 
     pub fn get_handle() -> Result<Self, &'static str> {
-        if LIBOBS_THREAD.get() != Some(&thread::current().id()) {
-            return Err("wrong thread - only able to get handle to recorder in the thread in which ");
-        }
+        Self::check_thread_initialized()?;
 
         unsafe {
             let output = NonNull::new(obs_get_output_by_name(OUTPUT)).ok_or("got nullpointer instead of output")?;
@@ -276,13 +276,12 @@ impl InpRecorder {
     }
 
     pub fn shutdown() -> Result<(), &'static str> {
-        if unsafe { !obs_initialized() } {
-            return Err("libobs was never initialized");
-        }
-
         if LIBOBS_SHUTDOWN.is_completed() {
             return Ok(());
         }
+
+        Self::check_thread_initialized()?;
+
         if Self::get_refcount() > 0 {
             return Err("libobs can't be shut down due to existing Recorder instances");
         }
@@ -375,6 +374,14 @@ impl InpRecorder {
         }
         encoders.sort();
         encoders
+    }
+
+    fn check_thread_initialized() -> Result<(), &'static str> {
+        match LIBOBS_THREAD.get() {
+            Some(thread_id) if thread_id == &thread::current().id() => Ok(()),
+            Some(_) => return Err("wrong thread - libobs was initialized in another thread"),
+            None => return Err("libos has not been initialized yet"),
+        }
     }
 
     unsafe extern "C" fn empty_log_handler(

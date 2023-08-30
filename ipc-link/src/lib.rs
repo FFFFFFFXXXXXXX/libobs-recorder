@@ -5,6 +5,8 @@ use std::{
     time::Duration,
 };
 
+use intprocess_recorder::settings::{Encoder, RecorderSettings};
+
 #[derive(serde::Serialize, serde::Deserialize)]
 pub enum IpcCommand {
     Init {
@@ -12,7 +14,8 @@ pub enum IpcCommand {
         plugin_bin_path: Option<String>,
         plugin_data_path: Option<String>,
     },
-    Configure(intprocess_recorder::settings::RecorderSettings),
+    Configure(RecorderSettings),
+    Encoders,
     StartRecording,
     StopRecording,
     Shutdown,
@@ -22,6 +25,7 @@ pub enum IpcCommand {
 #[derive(PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum IpcResponse {
     Ok,
+    Encoders { available: Vec<Encoder>, selected: Encoder },
     Err(String),
 }
 
@@ -31,10 +35,11 @@ pub struct IpcLinkMaster {
     rx: BufReader<ChildStdout>,
     buffer: String,
     child_process: Child,
+    logging_enabled: bool,
 }
 
 impl IpcLinkMaster {
-    pub fn new(executable: impl AsRef<Path>) -> io::Result<Self> {
+    pub fn new(executable: impl AsRef<Path>, enable_logging: bool) -> io::Result<Self> {
         let executable = executable.as_ref().canonicalize()?;
 
         let mut child_process = Command::new(executable.as_os_str())
@@ -48,31 +53,43 @@ impl IpcLinkMaster {
             rx: BufReader::new(child_process.stdout.take().unwrap()),
             buffer: String::with_capacity(512),
             child_process,
+            logging_enabled: enable_logging,
         })
     }
 
-    pub fn send(&mut self, cmd: IpcCommand) -> bool {
+    pub fn send(&mut self, cmd: IpcCommand) -> IpcResponse {
         _ = serde_json::to_writer(&mut self.tx, &cmd);
         _ = self.tx.write(&[b'\n']);
         _ = self.tx.flush();
 
+        let logging = self.logging_enabled;
         loop {
-            let line = self.read_line();
+            let Ok(line) = self.read_line() else { return IpcResponse::Err("failed to read from recorder".into())};
             match serde_json::from_str::<IpcResponse>(line) {
-                Ok(IpcResponse::Ok) => return true,
-                Ok(IpcResponse::Err(e)) => {
-                    println!("ipc_link error: {e}");
-                    return false;
-                }
-                _ => print!("ipc_link log: {line}"),
+                Ok(response) => return response,
+                Err(_) if logging => print!("ipc_link: {line}"),
+                Err(_) => { /* do nothing */ }
             }
         }
     }
 
-    fn read_line(&mut self) -> &str {
+    pub fn drain_logs(&mut self) {
+        if !self.logging_enabled {
+            return;
+        }
+
+        while let Ok(log) = self.read_line() {
+            print!("ipc_link: {log}");
+        }
+    }
+
+    fn read_line(&mut self) -> Result<&str, ()> {
         self.buffer.clear();
-        self.rx.read_line(&mut self.buffer).unwrap();
-        &self.buffer
+
+        match self.rx.read_line(&mut self.buffer) {
+            Ok(0) | Err(_) => Err(()),
+            Ok(_) => Ok(&self.buffer),
+        }
     }
 }
 
@@ -90,7 +107,7 @@ impl Drop for IpcLinkMaster {
         _ = self.tx.write(&[b'\n']);
         _ = self.tx.flush();
 
-        match self.child_process.wait_timeout(Duration::from_secs(1)) {
+        match self.child_process.wait_timeout(Duration::from_secs(3)) {
             Ok(Some(status)) if status.success() => { /* process exited successfully */ }
             _ => _ = self.child_process.kill(),
         }

@@ -19,8 +19,8 @@ intprocess-recorder = { path = "intprocess-recorder" }
 ipc-link = { path = "ipc-link" }
 
 [features]
-debug = ["intprocess-recorder/debug"] # prints a log to stdout
-bindgen = ["intprocess-recorder/bindgen"] # regenerates libobs-sys bindings
+disable_logging = ["intprocess-recorder/disable_logging"] # prints a log to stdout
+bindgen = ["intprocess-recorder/bindgen"]                 # regenerates libobs-sys bindings
 
 [workspace]
 members = [

@@ -29,10 +29,10 @@ use self::{get::Get, obs_data::ObsData};
 mod get;
 pub(crate) mod obs_data;
 
-#[cfg(feature = "debug")]
-const DEBUG: bool = true;
-#[cfg(not(feature = "debug"))]
-const DEBUG: bool = false;
+#[cfg(feature = "disable_logging")]
+const LOGGING: bool = false;
+#[cfg(not(feature = "disable_logging"))]
+const LOGGING: bool = true;
 
 #[cfg(target_os = "windows")]
 const GRAPHICS_MODULE: &str = "libobs-d3d11.dll";
@@ -121,7 +121,7 @@ impl InpRecorder {
             std::thread::current().id()
         });
 
-        if DEBUG {
+        if LOGGING {
             println!("libobs initialized");
         }
 
@@ -136,7 +136,7 @@ impl InpRecorder {
         unsafe {
             // INITIALIZE
             let mut get = Get::new();
-            if !DEBUG {
+            if !LOGGING {
                 base_set_log_handler(Some(Self::empty_log_handler), null_mut());
             }
 
@@ -153,7 +153,7 @@ impl InpRecorder {
             obs_add_module_path(get.c_str(plugin_bin_path), get.c_str(plugin_data_path));
             obs_load_all_modules();
             obs_post_load_modules();
-            if DEBUG {
+            if LOGGING {
                 obs_log_loaded_modules();
             }
 
@@ -416,7 +416,7 @@ impl InpRecorder {
 
 impl InpRecorder {
     pub fn start_recording(&mut self) -> bool {
-        if DEBUG {
+        if LOGGING {
             println!("Recording Start: {}", unsafe { bnum_allocs() });
         }
         if self.is_recording() {
@@ -429,7 +429,7 @@ impl InpRecorder {
     pub fn stop_recording(&mut self) {
         if self.is_recording() {
             unsafe { obs_output_stop(self.output.as_ptr()) }
-            if DEBUG {
+            if LOGGING {
                 println!("Recording Stop: {}", unsafe { bnum_allocs() });
             }
         }
@@ -451,7 +451,7 @@ impl InpRecorder {
             return Err("can't change settings while recording");
         }
 
-        if DEBUG {
+        if LOGGING {
             println!("before get: {}", unsafe { bnum_allocs() });
         }
 
@@ -561,7 +561,7 @@ impl InpRecorder {
                 obs_set_output_source(AUDIO_CHANNEL3, audio_source3);
             }
 
-            if DEBUG {
+            if LOGGING {
                 println!("after get: {}", bnum_allocs());
             }
         }
@@ -577,6 +577,11 @@ impl InpRecorder {
         // public version of internal function that is only available after libobs is initialized
         // due to requiring &self
         Self::get_available_encoders_internal()
+    }
+
+    // re-export function as only available through a reference to a Recorder
+    pub fn selected_encoder(&self) -> Encoder {
+        Self::get_current_encoder()
     }
 }
 
@@ -594,7 +599,7 @@ impl Drop for InpRecorder {
             obs_source_release(self.audio_source2.as_ptr());
             obs_source_release(self.audio_source3.as_ptr());
 
-            if DEBUG {
+            if LOGGING {
                 println!("bnum_allocs: {}", bnum_allocs());
             }
         }

@@ -2,15 +2,16 @@ use intprocess_recorder::settings::{AudioSource, Framerate, RateControl, Resolut
 use libobs_recorder::{Recorder, RecorderSettings};
 
 fn main() {
-    let mut rec = Recorder::new().unwrap();
+    let mut rec = Recorder::new(true).unwrap();
 
-    println!("configure start");
-    rec.configure(&settings());
-    println!("configure stop");
+    println!("configured: {:?}", rec.configure(&settings()));
 
-    rec.start_recording();
+    println!("available encoders: {:?}", rec.available_encoders());
+    println!("selected encoder: {:?}", rec.selected_encoder());
+
+    println!("started recording: {:?}", rec.start_recording());
     std::thread::sleep(std::time::Duration::from_secs(15));
-    rec.stop_recording();
+    println!("stopped recording: {:?}", rec.stop_recording());
 }
 
 fn settings() -> RecorderSettings {

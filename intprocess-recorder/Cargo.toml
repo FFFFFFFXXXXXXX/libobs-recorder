@@ -11,5 +11,5 @@ libobs-sys = { path = "../libobs-sys" }
 serde = { version = "1.0.163", features = ["derive"] }
 
 [features]
-debug = []
+disable_logging = []
 bindgen = ["libobs-sys/bindgen"]

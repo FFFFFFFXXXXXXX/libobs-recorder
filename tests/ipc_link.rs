@@ -7,7 +7,7 @@ const WINDOW_CLASS: &str = "RiotWindowClass";
 const WINDOW_PROCESS: &str = "League of Legends.exe";
 
 fn main() {
-    let mut link = IpcLinkMaster::new("./libobs/extprocess_recorder.exe").unwrap();
+    let mut link = IpcLinkMaster::new("./libobs/extprocess_recorder.exe", true).unwrap();
 
     link.send(IpcCommand::Init {
         libobs_data_path: None,
@@ -15,19 +15,19 @@ fn main() {
         plugin_data_path: None,
     });
 
-    println!("Configure: {}", link.send(IpcCommand::Configure(settings())));
+    println!("Configure: {:?}", link.send(IpcCommand::Configure(settings())));
 
     std::thread::sleep(std::time::Duration::from_secs(3));
 
-    println!("Start: {}", link.send(IpcCommand::StartRecording));
+    println!("Start: {:?}", link.send(IpcCommand::StartRecording));
     std::thread::sleep(std::time::Duration::from_secs(30));
-    println!("Stop: {}", link.send(IpcCommand::StopRecording));
+    println!("Stop: {:?}", link.send(IpcCommand::StopRecording));
 
     std::thread::sleep(std::time::Duration::from_secs(3));
 
-    println!("Shutdown: {}", link.send(IpcCommand::Shutdown));
+    println!("Shutdown: {:?}", link.send(IpcCommand::Shutdown));
     std::thread::sleep(std::time::Duration::from_secs(3));
-    println!("Exit: {}", link.send(IpcCommand::Exit));
+    println!("Exit: {:?}", link.send(IpcCommand::Exit));
 }
 
 fn settings() -> RecorderSettings {

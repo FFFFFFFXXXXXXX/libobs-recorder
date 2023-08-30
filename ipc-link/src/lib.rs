@@ -7,7 +7,7 @@ use std::{
 
 use intprocess_recorder::settings::{Encoder, RecorderSettings};
 
-#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub enum IpcCommand {
     Init {
         libobs_data_path: Option<String>,
@@ -22,7 +22,7 @@ pub enum IpcCommand {
     Exit,
 }
 
-#[derive(PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum IpcResponse {
     Ok,
     Encoders { available: Vec<Encoder>, selected: Encoder },

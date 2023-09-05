@@ -457,12 +457,12 @@ impl InpRecorder {
 
         // RESET VIDEO
         let ovi = Self::get_video_info()?;
-        let input_size = match settings.input_size {
+        let input_size = match settings.input_resolution {
             Some(size) => size,
             None => Size::new(ovi.base_width, ovi.base_height),
         };
         let output_size = match settings.output_resolution {
-            Some(resolution) => resolution.get_size(),
+            Some(size) => size,
             None => Size::new(ovi.output_width, ovi.output_height),
         };
         let framerate = match settings.framerate {

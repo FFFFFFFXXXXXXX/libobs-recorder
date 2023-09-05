@@ -39,8 +39,8 @@ fn settings() -> RecorderSettings {
         Some(WINDOW_PROCESS.into()),
     ));
 
-    settings.set_input_size(Resolution::_1440p.get_size());
-    settings.set_output_resolution(Resolution::_1440p);
+    settings.set_input_resolution(Resolution::_2560x1440p);
+    settings.set_output_resolution(Resolution::_2560x1440p);
     settings.set_framerate(Framerate::new(45, 1));
     settings.set_rate_control(RateControl::CQP(25));
     settings.record_audio(AudioSource::ALL);

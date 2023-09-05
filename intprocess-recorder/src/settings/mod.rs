@@ -15,8 +15,8 @@ mod window;
 #[derive(serde::Serialize, serde::Deserialize, Clone, Debug, PartialEq, Default)]
 pub struct RecorderSettings {
     pub(crate) window: Option<Window>,
-    pub(crate) input_size: Option<Size>,
-    pub(crate) output_resolution: Option<Resolution>,
+    pub(crate) input_resolution: Option<Size>,
+    pub(crate) output_resolution: Option<Size>,
     pub(crate) framerate: Option<Framerate>,
     pub(crate) rate_control: Option<RateControl>,
     pub(crate) record_audio: Option<AudioSource>,
@@ -34,12 +34,12 @@ impl RecorderSettings {
         self.window = Some(window);
     }
 
-    pub fn set_input_size(&mut self, size: Size) {
-        self.input_size = Some(size);
+    pub fn set_input_resolution(&mut self, size: impl Into<Size>) {
+        self.input_resolution = Some(size.into());
     }
 
-    pub fn set_output_resolution(&mut self, resolution: Resolution) {
-        self.output_resolution = Some(resolution);
+    pub fn set_output_resolution(&mut self, resolution: impl Into<Size>) {
+        self.output_resolution = Some(resolution.into());
     }
 
     pub fn set_framerate(&mut self, framerate: Framerate) {

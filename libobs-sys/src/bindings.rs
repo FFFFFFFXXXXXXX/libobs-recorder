@@ -309,6 +309,8 @@ pub const _MM_HINT_T0: u32 = 1;
 pub const _MM_HINT_T1: u32 = 2;
 pub const _MM_HINT_T2: u32 = 3;
 pub const _MM_HINT_ENTA: u32 = 4;
+pub const _MM_HINT_IT0: u32 = 7;
+pub const _MM_HINT_IT1: u32 = 6;
 pub const _MM_EXCEPT_MASK: u32 = 63;
 pub const _MM_EXCEPT_INVALID: u32 = 1;
 pub const _MM_EXCEPT_DENORM: u32 = 2;
@@ -332,6 +334,7 @@ pub const _MM_FLUSH_ZERO_MASK: u32 = 32768;
 pub const _MM_FLUSH_ZERO_ON: u32 = 32768;
 pub const _MM_FLUSH_ZERO_OFF: u32 = 0;
 pub const MAX_AV_PLANES: u32 = 8;
+pub const _HAS_ARM64_LOAD_ACQUIRE: u32 = 1;
 pub const _JBLEN: u32 = 16;
 pub const _MM_DENORMALS_ZERO_MASK: u32 = 64;
 pub const _MM_DENORMALS_ZERO_ON: u32 = 64;
@@ -8167,6 +8170,12 @@ extern "C" {
 }
 extern "C" {
     pub fn _mm_prefetch(_A: *const ::std::os::raw::c_char, _Sel: ::std::os::raw::c_int);
+}
+extern "C" {
+    pub fn _m_prefetchit0(arg1: *const ::std::os::raw::c_void);
+}
+extern "C" {
+    pub fn _m_prefetchit1(arg1: *const ::std::os::raw::c_void);
 }
 extern "C" {
     pub fn _mm_stream_ps(arg1: *mut f32, arg2: __m128);
@@ -30505,6 +30514,9 @@ extern "C" {
     pub fn _tile_dpbf16ps(dst: __tile, src1: __tile, src2: __tile);
 }
 extern "C" {
+    pub fn _tile_dpfp16ps(dst: __tile, src1: __tile, src2: __tile);
+}
+extern "C" {
     pub fn _tile_dpbssd(dst: __tile, src1: __tile, src2: __tile);
 }
 extern "C" {
@@ -30515,6 +30527,12 @@ extern "C" {
 }
 extern "C" {
     pub fn _tile_dpbuud(dst: __tile, src1: __tile, src2: __tile);
+}
+extern "C" {
+    pub fn _tile_cmmimfp16ps(dst: __tile, src1: __tile, src2: __tile);
+}
+extern "C" {
+    pub fn _tile_cmmrlfp16ps(dst: __tile, src1: __tile, src2: __tile);
 }
 pub type __m128h = __m128i;
 pub type __m256h = __m256i;
@@ -31281,21 +31299,6 @@ extern "C" {
 extern "C" {
     pub fn _mm_cvt_roundi64_sh(arg1: __m128h, arg2: ::std::os::raw::c_longlong, arg3: ::std::os::raw::c_int)
         -> __m128h;
-}
-extern "C" {
-    pub fn _mm_cvtss_sh(arg1: __m128h, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128h;
-}
-extern "C" {
-    pub fn _mm_mask_cvtss_sh(
-        arg1: __m128h,
-        arg2: __mmask8,
-        arg3: __m128h,
-        arg4: __m128,
-        arg5: ::std::os::raw::c_int,
-    ) -> __m128h;
-}
-extern "C" {
-    pub fn _mm_maskz_cvtss_sh(arg1: __mmask8, arg2: __m128h, arg3: __m128, arg4: ::std::os::raw::c_int) -> __m128h;
 }
 extern "C" {
     pub fn _mm_cvt_roundss_sh(arg1: __m128h, arg2: __m128, arg3: ::std::os::raw::c_int) -> __m128h;
@@ -32187,6 +32190,9 @@ extern "C" {
     pub fn _mm_mask_fmadd_sch(arg1: __m128h, arg2: __mmask8, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
+    pub fn _mm_mask3_fmadd_sch(arg1: __m128h, arg2: __m128h, arg3: __m128h, arg4: __mmask8) -> __m128h;
+}
+extern "C" {
     pub fn _mm_maskz_fmadd_sch(arg1: __mmask8, arg2: __m128h, arg3: __m128h, arg4: __m128h) -> __m128h;
 }
 extern "C" {
@@ -32198,6 +32204,15 @@ extern "C" {
         arg2: __mmask8,
         arg3: __m128h,
         arg4: __m128h,
+        arg5: ::std::os::raw::c_int,
+    ) -> __m128h;
+}
+extern "C" {
+    pub fn _mm_mask3_fmadd_round_sch(
+        arg1: __m128h,
+        arg2: __m128h,
+        arg3: __m128h,
+        arg4: __mmask8,
         arg5: ::std::os::raw::c_int,
     ) -> __m128h;
 }
@@ -33754,6 +33769,153 @@ extern "C" {
     pub fn _mm512_mask_blend_ph(arg1: __mmask32, arg2: __m512h, arg3: __m512h) -> __m512h;
 }
 extern "C" {
+    pub fn _mm_madd52hi_avx_epu64(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
+}
+extern "C" {
+    pub fn _mm256_madd52hi_avx_epu64(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
+}
+extern "C" {
+    pub fn _mm_madd52lo_avx_epu64(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
+}
+extern "C" {
+    pub fn _mm256_madd52lo_avx_epu64(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
+}
+extern "C" {
+    pub fn _mm_bcstnebf16_ps(arg1: *const __bfloat16) -> __m128;
+}
+extern "C" {
+    pub fn _mm256_bcstnebf16_ps(arg1: *const __bfloat16) -> __m256;
+}
+extern "C" {
+    pub fn _mm_bcstnesh_ps(arg1: *const ::std::os::raw::c_void) -> __m128;
+}
+extern "C" {
+    pub fn _mm256_bcstnesh_ps(arg1: *const ::std::os::raw::c_void) -> __m256;
+}
+extern "C" {
+    pub fn _mm_cvtneebf16_ps(arg1: *const __m128bh) -> __m128;
+}
+extern "C" {
+    pub fn _mm256_cvtneebf16_ps(arg1: *const __m256bh) -> __m256;
+}
+extern "C" {
+    pub fn _mm_cvtneeph_ps(arg1: *const __m128h) -> __m128;
+}
+extern "C" {
+    pub fn _mm256_cvtneeph_ps(arg1: *const __m256h) -> __m256;
+}
+extern "C" {
+    pub fn _mm_cvtneobf16_ps(arg1: *const __m128bh) -> __m128;
+}
+extern "C" {
+    pub fn _mm256_cvtneobf16_ps(arg1: *const __m256bh) -> __m256;
+}
+extern "C" {
+    pub fn _mm_cvtneoph_ps(arg1: *const __m128h) -> __m128;
+}
+extern "C" {
+    pub fn _mm256_cvtneoph_ps(arg1: *const __m256h) -> __m256;
+}
+extern "C" {
+    pub fn _mm_cvtneps_avx_pbh(arg1: __m128) -> __m128bh;
+}
+extern "C" {
+    pub fn _mm256_cvtneps_avx_pbh(arg1: __m256) -> __m128bh;
+}
+extern "C" {
+    pub fn _mm_dpbssd_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
+}
+extern "C" {
+    pub fn _mm256_dpbssd_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
+}
+extern "C" {
+    pub fn _mm_dpbssds_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
+}
+extern "C" {
+    pub fn _mm256_dpbssds_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
+}
+extern "C" {
+    pub fn _mm_dpbsud_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
+}
+extern "C" {
+    pub fn _mm256_dpbsud_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
+}
+extern "C" {
+    pub fn _mm_dpbsuds_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
+}
+extern "C" {
+    pub fn _mm256_dpbsuds_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
+}
+extern "C" {
+    pub fn _mm_dpbuud_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
+}
+extern "C" {
+    pub fn _mm256_dpbuud_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
+}
+extern "C" {
+    pub fn _mm_dpbuuds_epi32(arg1: __m128i, arg2: __m128i, arg3: __m128i) -> __m128i;
+}
+extern "C" {
+    pub fn _mm256_dpbuuds_epi32(arg1: __m256i, arg2: __m256i, arg3: __m256i) -> __m256i;
+}
+extern "C" {
+    pub fn _aadd_i32(arg1: *mut ::std::os::raw::c_int, arg2: ::std::os::raw::c_int);
+}
+extern "C" {
+    pub fn _aand_i32(arg1: *mut ::std::os::raw::c_int, arg2: ::std::os::raw::c_int);
+}
+extern "C" {
+    pub fn _aor_i32(arg1: *mut ::std::os::raw::c_int, arg2: ::std::os::raw::c_int);
+}
+extern "C" {
+    pub fn _axor_i32(arg1: *mut ::std::os::raw::c_int, arg2: ::std::os::raw::c_int);
+}
+extern "C" {
+    pub fn _aadd_i64(arg1: *mut ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_longlong);
+}
+extern "C" {
+    pub fn _aand_i64(arg1: *mut ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_longlong);
+}
+extern "C" {
+    pub fn _aor_i64(arg1: *mut ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_longlong);
+}
+extern "C" {
+    pub fn _axor_i64(arg1: *mut ::std::os::raw::c_longlong, arg2: ::std::os::raw::c_longlong);
+}
+pub const _CMPCCX_ENUM__CMPCCX_O: _CMPCCX_ENUM = 0;
+pub const _CMPCCX_ENUM__CMPCCX_NO: _CMPCCX_ENUM = 1;
+pub const _CMPCCX_ENUM__CMPCCX_B: _CMPCCX_ENUM = 2;
+pub const _CMPCCX_ENUM__CMPCCX_NB: _CMPCCX_ENUM = 3;
+pub const _CMPCCX_ENUM__CMPCCX_Z: _CMPCCX_ENUM = 4;
+pub const _CMPCCX_ENUM__CMPCCX_NZ: _CMPCCX_ENUM = 5;
+pub const _CMPCCX_ENUM__CMPCCX_BE: _CMPCCX_ENUM = 6;
+pub const _CMPCCX_ENUM__CMPCCX_NBE: _CMPCCX_ENUM = 7;
+pub const _CMPCCX_ENUM__CMPCCX_S: _CMPCCX_ENUM = 8;
+pub const _CMPCCX_ENUM__CMPCCX_NS: _CMPCCX_ENUM = 9;
+pub const _CMPCCX_ENUM__CMPCCX_P: _CMPCCX_ENUM = 10;
+pub const _CMPCCX_ENUM__CMPCCX_NP: _CMPCCX_ENUM = 11;
+pub const _CMPCCX_ENUM__CMPCCX_L: _CMPCCX_ENUM = 12;
+pub const _CMPCCX_ENUM__CMPCCX_NL: _CMPCCX_ENUM = 13;
+pub const _CMPCCX_ENUM__CMPCCX_LE: _CMPCCX_ENUM = 14;
+pub const _CMPCCX_ENUM__CMPCCX_NLE: _CMPCCX_ENUM = 15;
+pub type _CMPCCX_ENUM = ::std::os::raw::c_int;
+extern "C" {
+    pub fn _cmpccxadd_epi32(
+        arg1: *mut ::std::os::raw::c_void,
+        arg2: ::std::os::raw::c_int,
+        arg3: ::std::os::raw::c_int,
+        arg4: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn _cmpccxadd_epi64(
+        arg1: *mut ::std::os::raw::c_void,
+        arg2: ::std::os::raw::c_longlong,
+        arg3: ::std::os::raw::c_longlong,
+        arg4: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_longlong;
+}
+extern "C" {
     pub fn _mm_macc_ps(arg1: __m128, arg2: __m128, arg3: __m128) -> __m128;
 }
 extern "C" {
@@ -34148,6 +34310,9 @@ extern "C" {
 }
 extern "C" {
     pub fn _mm_clzero(arg1: *const ::std::os::raw::c_void);
+}
+extern "C" {
+    pub fn _rdpru(arg1: ::std::os::raw::c_uint) -> ::std::os::raw::c_ulonglong;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -34664,6 +34829,13 @@ extern "C" {
     pub fn __readmsr(arg1: ::std::os::raw::c_ulong) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
+    pub fn __readmsrlist(
+        arg1: ::std::os::raw::c_ulonglong,
+        arg2: *mut ::std::os::raw::c_ulonglong,
+        arg3: *mut ::std::os::raw::c_ulonglong,
+    );
+}
+extern "C" {
     pub fn __readpmc(arg1: ::std::os::raw::c_ulong) -> ::std::os::raw::c_ulonglong;
 }
 extern "C" {
@@ -34784,6 +34956,16 @@ extern "C" {
 }
 extern "C" {
     pub fn __writemsr(arg1: ::std::os::raw::c_ulong, arg2: ::std::os::raw::c_ulonglong);
+}
+extern "C" {
+    pub fn __writemsrlist(
+        arg1: ::std::os::raw::c_ulonglong,
+        arg2: *mut ::std::os::raw::c_ulonglong,
+        arg3: *mut ::std::os::raw::c_ulonglong,
+    );
+}
+extern "C" {
+    pub fn __writemsrns(arg1: ::std::os::raw::c_ulong, arg2: ::std::os::raw::c_ulonglong);
 }
 extern "C" {
     pub fn _bittest64(
@@ -34985,7 +35167,226 @@ extern "C" {
     ) -> ::std::os::raw::c_uchar;
 }
 extern "C" {
+    pub fn _add_overflow_i8(
+        arg1: ::std::os::raw::c_uchar,
+        arg2: ::std::os::raw::c_schar,
+        arg3: ::std::os::raw::c_schar,
+        arg4: *mut ::std::os::raw::c_schar,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _add_overflow_i16(
+        arg1: ::std::os::raw::c_uchar,
+        arg2: ::std::os::raw::c_short,
+        arg3: ::std::os::raw::c_short,
+        arg4: *mut ::std::os::raw::c_short,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _add_overflow_i32(
+        arg1: ::std::os::raw::c_uchar,
+        arg2: ::std::os::raw::c_int,
+        arg3: ::std::os::raw::c_int,
+        arg4: *mut ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _add_overflow_i64(
+        arg1: ::std::os::raw::c_uchar,
+        arg2: ::std::os::raw::c_longlong,
+        arg3: ::std::os::raw::c_longlong,
+        arg4: *mut ::std::os::raw::c_longlong,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _sub_overflow_i8(
+        arg1: ::std::os::raw::c_uchar,
+        arg2: ::std::os::raw::c_schar,
+        arg3: ::std::os::raw::c_schar,
+        arg4: *mut ::std::os::raw::c_schar,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _sub_overflow_i16(
+        arg1: ::std::os::raw::c_uchar,
+        arg2: ::std::os::raw::c_short,
+        arg3: ::std::os::raw::c_short,
+        arg4: *mut ::std::os::raw::c_short,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _sub_overflow_i32(
+        arg1: ::std::os::raw::c_uchar,
+        arg2: ::std::os::raw::c_int,
+        arg3: ::std::os::raw::c_int,
+        arg4: *mut ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _sub_overflow_i64(
+        arg1: ::std::os::raw::c_uchar,
+        arg2: ::std::os::raw::c_longlong,
+        arg3: ::std::os::raw::c_longlong,
+        arg4: *mut ::std::os::raw::c_longlong,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_overflow_i16(
+        arg1: ::std::os::raw::c_short,
+        arg2: ::std::os::raw::c_short,
+        arg3: *mut ::std::os::raw::c_short,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_overflow_i32(
+        arg1: ::std::os::raw::c_int,
+        arg2: ::std::os::raw::c_int,
+        arg3: *mut ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_overflow_i64(
+        arg1: ::std::os::raw::c_longlong,
+        arg2: ::std::os::raw::c_longlong,
+        arg3: *mut ::std::os::raw::c_longlong,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_full_overflow_i8(
+        arg1: ::std::os::raw::c_schar,
+        arg2: ::std::os::raw::c_schar,
+        arg3: *mut ::std::os::raw::c_short,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_full_overflow_i16(
+        arg1: ::std::os::raw::c_short,
+        arg2: ::std::os::raw::c_short,
+        arg3: *mut ::std::os::raw::c_short,
+        arg4: *mut ::std::os::raw::c_short,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_full_overflow_i32(
+        arg1: ::std::os::raw::c_int,
+        arg2: ::std::os::raw::c_int,
+        arg3: *mut ::std::os::raw::c_int,
+        arg4: *mut ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_full_overflow_i64(
+        arg1: ::std::os::raw::c_longlong,
+        arg2: ::std::os::raw::c_longlong,
+        arg3: *mut ::std::os::raw::c_longlong,
+        arg4: *mut ::std::os::raw::c_longlong,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_full_overflow_u8(
+        arg1: ::std::os::raw::c_uchar,
+        arg2: ::std::os::raw::c_uchar,
+        arg3: *mut ::std::os::raw::c_ushort,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_full_overflow_u16(
+        arg1: ::std::os::raw::c_ushort,
+        arg2: ::std::os::raw::c_ushort,
+        arg3: *mut ::std::os::raw::c_ushort,
+        arg4: *mut ::std::os::raw::c_ushort,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_full_overflow_u32(
+        arg1: ::std::os::raw::c_uint,
+        arg2: ::std::os::raw::c_uint,
+        arg3: *mut ::std::os::raw::c_uint,
+        arg4: *mut ::std::os::raw::c_uint,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn _mul_full_overflow_u64(
+        arg1: ::std::os::raw::c_ulonglong,
+        arg2: ::std::os::raw::c_ulonglong,
+        arg3: *mut ::std::os::raw::c_ulonglong,
+        arg4: *mut ::std::os::raw::c_ulonglong,
+    ) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
     pub fn _AddressOfNextInstruction() -> *mut ::std::os::raw::c_void;
+}
+extern "C" {
+    pub fn __is_unorderedf(arg1: f32, arg2: f32) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_unordered(arg1: f64, arg2: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_unorderedl(arg1: f64, arg2: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_nanf(arg1: f32) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_nan(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_nanl(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_normalf(arg1: f32) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_normal(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_normall(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_finitef(arg1: f32) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_finite(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_finitel(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_infinityf(arg1: f32) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_infinity(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_infinityl(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_subnormalf(arg1: f32) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_subnormal(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __is_subnormall(arg1: f64) -> ::std::os::raw::c_uchar;
+}
+extern "C" {
+    pub fn __fminf(arg1: f32, arg2: f32) -> f32;
+}
+extern "C" {
+    pub fn __fmin(arg1: f64, arg2: f64) -> f64;
+}
+extern "C" {
+    pub fn __fminl(arg1: f64, arg2: f64) -> f64;
+}
+extern "C" {
+    pub fn __fmaxf(arg1: f32, arg2: f32) -> f32;
+}
+extern "C" {
+    pub fn __fmax(arg1: f64, arg2: f64) -> f64;
+}
+extern "C" {
+    pub fn __fmaxl(arg1: f64, arg2: f64) -> f64;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]

@@ -282,7 +282,7 @@ impl InpRecorder {
 
         Self::check_thread_initialized()?;
 
-        if Self::get_refcount() > 0 {
+        if REF_COUNT.get() > 0 {
             return Err("libobs can't be shut down due to existing Recorder instances");
         }
 
@@ -407,10 +407,6 @@ impl InpRecorder {
 
     fn decrement_refcount() {
         REF_COUNT.with(|cell| cell.set(cell.get() - 1));
-    }
-
-    fn get_refcount() -> u32 {
-        REF_COUNT.with(Cell::get)
     }
 }
 

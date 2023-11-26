@@ -7,7 +7,7 @@ links = "obs"
 build = "build.rs"
 
 [build-dependencies]
-bindgen = { version = "0.66.1", optional = true }
+bindgen = { version = "0.69.1", optional = true }
 
 [features]
 bindgen = ["dep:bindgen"]

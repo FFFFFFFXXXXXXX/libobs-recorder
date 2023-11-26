@@ -4,5 +4,6 @@
 #[allow(improper_ctypes)]
 #[allow(clippy::approx_constant)]
 #[allow(clippy::unreadable_literal)]
+#[allow(rustdoc::bare_urls)]
 mod bindings;
 pub use bindings::*;

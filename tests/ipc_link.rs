@@ -7,9 +7,9 @@ const EXECUTABLE: &str = "./extprocess_recorder.exe";
 #[cfg(target_family = "unix")]
 const EXECUTABLE: &str = "./extprocess_recorder";
 
-const WINDOW_TITLE: String = String::from("League of Legends (TM) Client");
-const WINDOW_CLASS: String = String::from("RiotWindowClass");
-const WINDOW_PROCESS: String = String::from("League of Legends.exe");
+const WINDOW_TITLE: &'static str = "League of Legends (TM) Client";
+const WINDOW_CLASS: &'static str = "RiotWindowClass";
+const WINDOW_PROCESS: &'static str = "League of Legends.exe";
 
 fn main() {
     let mut link = IpcLinkMaster::new(format!("./libobs/{EXECUTABLE}"), true).unwrap();
@@ -40,8 +40,8 @@ fn settings() -> RecorderSettings {
 
     settings.set_window(Window::new(
         WINDOW_TITLE,
-        Some(WINDOW_CLASS),
-        Some(WINDOW_PROCESS),
+        Some(WINDOW_CLASS.into()),
+        Some(WINDOW_PROCESS.into()),
     ));
 
     settings.set_input_resolution(Resolution::_2560x1440p);

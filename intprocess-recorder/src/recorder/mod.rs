@@ -1,7 +1,6 @@
 use std::{
     cell::Cell,
     ffi::CStr,
-    mem::MaybeUninit,
     os::raw::c_char,
     ptr::{addr_of_mut, null_mut, NonNull},
     sync::{Once, OnceLock},
@@ -71,8 +70,8 @@ thread_local! {
     static CURRENT_ENCODER: Cell<Encoder> = Cell::new(Encoder::OBS_X264);
 }
 
-type PhantomUnsync = std::marker::PhantomData<std::cell::Cell<()>>;
-type PhantomUnsend = std::marker::PhantomData<std::sync::MutexGuard<'static, ()>>;
+type PhantomUnsync = std::marker::PhantomData<Cell<()>>;
+type PhantomUnsend = std::marker::PhantomData<*mut ()>;
 
 pub struct InpRecorder {
     output: NonNull<obs_output>,
@@ -118,7 +117,7 @@ impl InpRecorder {
                 panic!("Error initializing libobs: {e}");
             }
 
-            std::thread::current().id()
+            thread::current().id()
         });
 
         if LOGGING {
@@ -361,15 +360,13 @@ impl InpRecorder {
         // GET AVAILABLE ENCODERS
         let mut n = 0;
         let mut encoders = Vec::new();
-        let mut ptr = MaybeUninit::<*const c_char>::uninit();
-        unsafe {
-            while obs_enum_encoder_types(n, ptr.as_mut_ptr()) {
-                n += 1;
-                let encoder = ptr.assume_init();
-                if let Ok(enc) = CStr::from_ptr(encoder).to_str() {
-                    let Ok(enc) = Encoder::try_from(enc) else { continue };
-                    encoders.push(enc);
-                }
+        let mut ptr: *const c_char = unsafe { std::mem::zeroed() };
+        while unsafe { obs_enum_encoder_types(n, &mut ptr) } {
+            n += 1;
+            let cstring = unsafe { CStr::from_ptr(ptr) };
+            if let Ok(enc) = cstring.to_str() {
+                let Ok(enc) = Encoder::try_from(enc) else { continue };
+                encoders.push(enc);
             }
         }
         encoders.sort();

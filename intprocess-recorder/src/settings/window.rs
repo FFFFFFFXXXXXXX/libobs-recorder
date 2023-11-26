@@ -118,10 +118,32 @@ pub enum Resolution {
     _3840x1200p,
 }
 
-impl Resolution {
+#[derive(serde::Serialize, serde::Deserialize, Copy, Clone, Debug, PartialEq)]
+pub struct Size {
+    width: u32,
+    height: u32,
+}
+
+impl Size {
     #[must_use]
-    pub fn get_size(&self) -> Size {
-        match self {
+    pub fn new(width: u32, height: u32) -> Self {
+        Size { width, height }
+    }
+
+    #[must_use]
+    pub fn width(&self) -> u32 {
+        self.width
+    }
+
+    #[must_use]
+    pub fn height(&self) -> u32 {
+        self.height
+    }
+}
+
+impl From<Resolution> for Size {
+    fn from(res: Resolution) -> Self {
+        match res {
             Resolution::_1024x768p => Size { width: 1024, height: 768 },
             Resolution::_1600x1200p => Size { width: 1600, height: 1200 },
             Resolution::_1280x1024p => Size { width: 1280, height: 1024 },
@@ -147,34 +169,5 @@ impl Resolution {
             Resolution::_5120x1440p => Size { width: 5120, height: 1440 },
             Resolution::_3840x1200p => Size { width: 3840, height: 1200 },
         }
-    }
-}
-
-impl Into<Size> for Resolution {
-    fn into(self) -> Size {
-        self.get_size()
-    }
-}
-
-#[derive(serde::Serialize, serde::Deserialize, Copy, Clone, Debug, PartialEq)]
-pub struct Size {
-    width: u32,
-    height: u32,
-}
-
-impl Size {
-    #[must_use]
-    pub fn new(width: u32, height: u32) -> Self {
-        Size { width, height }
-    }
-
-    #[must_use]
-    pub fn width(&self) -> u32 {
-        self.width
-    }
-
-    #[must_use]
-    pub fn height(&self) -> u32 {
-        self.height
     }
 }

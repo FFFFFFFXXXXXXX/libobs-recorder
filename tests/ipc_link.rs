@@ -2,12 +2,17 @@ use intprocess_recorder::settings::{AudioSource, Framerate, RateControl, Resolut
 use ipc_link::{IpcCommand, IpcLinkMaster};
 use libobs_recorder::RecorderSettings;
 
-const WINDOW_TITLE: &str = "League of Legends (TM) Client";
-const WINDOW_CLASS: &str = "RiotWindowClass";
-const WINDOW_PROCESS: &str = "League of Legends.exe";
+#[cfg(target_family = "windows")]
+const EXECUTABLE: &str = "./extprocess_recorder.exe";
+#[cfg(target_family = "unix")]
+const EXECUTABLE: &str = "./extprocess_recorder";
+
+const WINDOW_TITLE: String = String::from("League of Legends (TM) Client");
+const WINDOW_CLASS: String = String::from("RiotWindowClass");
+const WINDOW_PROCESS: String = String::from("League of Legends.exe");
 
 fn main() {
-    let mut link = IpcLinkMaster::new("./libobs/extprocess_recorder.exe", true).unwrap();
+    let mut link = IpcLinkMaster::new(format!("./libobs/{EXECUTABLE}"), true).unwrap();
 
     link.send(IpcCommand::Init {
         libobs_data_path: None,
@@ -35,8 +40,8 @@ fn settings() -> RecorderSettings {
 
     settings.set_window(Window::new(
         WINDOW_TITLE,
-        Some(WINDOW_CLASS.into()),
-        Some(WINDOW_PROCESS.into()),
+        Some(WINDOW_CLASS),
+        Some(WINDOW_PROCESS),
     ));
 
     settings.set_input_resolution(Resolution::_2560x1440p);

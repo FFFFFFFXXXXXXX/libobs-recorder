@@ -18,6 +18,7 @@ pub enum IpcCommand {
     Encoders,
     StartRecording,
     StopRecording,
+    IsRecording,
     Shutdown,
     Exit,
 }
@@ -26,6 +27,7 @@ pub enum IpcCommand {
 pub enum IpcResponse {
     Ok,
     Encoders { available: Vec<Encoder>, selected: Encoder },
+    Recording(bool),
     Err(String),
 }
 
@@ -64,7 +66,9 @@ impl IpcLinkMaster {
 
         let logging = self.logging_enabled;
         loop {
-            let Ok(line) = self.read_line() else { return IpcResponse::Err("failed to read from recorder".into())};
+            let Ok(line) = self.read_line() else {
+                return IpcResponse::Err("failed to read from recorder".into());
+            };
             match serde_json::from_str::<IpcResponse>(line) {
                 Ok(response) => return response,
                 Err(_) if logging => print!("ipc_link: {line}"),

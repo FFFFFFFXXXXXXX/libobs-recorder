@@ -43,7 +43,7 @@ impl Recorder {
         match rec.send(cmd) {
             IpcResponse::Ok => Ok(Self { recorder: rec }),
             IpcResponse::Err(e) => Err(Error::RecorderError(e)),
-            IpcResponse::Encoders { .. } => Err(Error::ShouldNeverHappenNotifyMe),
+            _ => Err(Error::ShouldNeverHappenNotifyMe),
         }
     }
 
@@ -51,7 +51,7 @@ impl Recorder {
         match self.recorder.send(IpcCommand::Configure(settings.clone())) {
             IpcResponse::Ok => Ok(()),
             IpcResponse::Err(e) => Err(Error::RecorderError(e)),
-            IpcResponse::Encoders { .. } => Err(Error::ShouldNeverHappenNotifyMe),
+            _ => Err(Error::ShouldNeverHappenNotifyMe),
         }
     }
 
@@ -59,7 +59,7 @@ impl Recorder {
         match self.recorder.send(IpcCommand::Encoders) {
             IpcResponse::Encoders { available, .. } => Ok(available),
             IpcResponse::Err(e) => Err(Error::RecorderError(e)),
-            IpcResponse::Ok => Err(Error::ShouldNeverHappenNotifyMe),
+            _ => Err(Error::ShouldNeverHappenNotifyMe),
         }
     }
 
@@ -67,7 +67,7 @@ impl Recorder {
         match self.recorder.send(IpcCommand::Encoders) {
             IpcResponse::Encoders { selected, .. } => Ok(selected),
             IpcResponse::Err(e) => Err(Error::RecorderError(e)),
-            IpcResponse::Ok => Err(Error::ShouldNeverHappenNotifyMe),
+            _ => Err(Error::ShouldNeverHappenNotifyMe),
         }
     }
 
@@ -75,7 +75,7 @@ impl Recorder {
         match self.recorder.send(IpcCommand::StartRecording) {
             IpcResponse::Ok => Ok(()),
             IpcResponse::Err(e) => Err(Error::RecorderError(e)),
-            IpcResponse::Encoders { .. } => Err(Error::ShouldNeverHappenNotifyMe),
+            _ => Err(Error::ShouldNeverHappenNotifyMe),
         }
     }
 
@@ -83,7 +83,15 @@ impl Recorder {
         match self.recorder.send(IpcCommand::StopRecording) {
             IpcResponse::Ok => Ok(()),
             IpcResponse::Err(e) => Err(Error::RecorderError(e)),
-            IpcResponse::Encoders { .. } => Err(Error::ShouldNeverHappenNotifyMe),
+            _ => Err(Error::ShouldNeverHappenNotifyMe),
+        }
+    }
+
+    pub fn is_recording(&mut self) -> Result<bool> {
+        match self.recorder.send(IpcCommand::StopRecording) {
+            IpcResponse::Recording(recording) => Ok(recording),
+            IpcResponse::Err(e) => Err(Error::RecorderError(e)),
+            _ => Err(Error::ShouldNeverHappenNotifyMe),
         }
     }
 
@@ -91,7 +99,7 @@ impl Recorder {
         match self.recorder.send(IpcCommand::Shutdown) {
             IpcResponse::Ok => { /* OK continue */ }
             IpcResponse::Err(e) => return Err(Error::ShutdownFailed(self, e)),
-            IpcResponse::Encoders { .. } => return Err(Error::ShouldNeverHappenNotifyMe),
+            _ => return Err(Error::ShouldNeverHappenNotifyMe),
         }
         match self.recorder.send(IpcCommand::Exit) {
             IpcResponse::Ok => {
@@ -99,7 +107,7 @@ impl Recorder {
                 Ok(())
             }
             IpcResponse::Err(e) => Err(Error::ShutdownFailed(self, e)),
-            IpcResponse::Encoders { .. } => Err(Error::ShouldNeverHappenNotifyMe),
+            _ => Err(Error::ShouldNeverHappenNotifyMe),
         }
     }
 }

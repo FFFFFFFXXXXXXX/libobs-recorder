@@ -55,7 +55,7 @@ fn main() {
         IpcCommand::StartRecording => {
             if let Some(recorder) = recorder.as_mut() {
                 if recorder.is_recording() {
-                    Some(IpcResponse::Err("already recording".into()))
+                    Some(IpcResponse::Ok)
                 } else if recorder.start_recording() {
                     Some(IpcResponse::Ok)
                 } else {
@@ -69,10 +69,15 @@ fn main() {
             if let Some(recorder) = recorder.as_mut() {
                 if recorder.is_recording() {
                     recorder.stop_recording();
-                    Some(IpcResponse::Ok)
-                } else {
-                    Some(IpcResponse::Err("currently not recording".into()))
                 }
+                Some(IpcResponse::Ok)
+            } else {
+                Some(IpcResponse::Err("recorder not initialized".into()))
+            }
+        }
+        IpcCommand::IsRecording => {
+            if let Some(recorder) = recorder.as_mut() {
+                Some(IpcResponse::Recording(recorder.is_recording()))
             } else {
                 Some(IpcResponse::Err("recorder not initialized".into()))
             }

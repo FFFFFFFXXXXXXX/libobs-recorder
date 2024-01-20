@@ -1,5 +1,5 @@
 /******************************************************************************
-    Copyright (C) 2013 by Hugh Bailey <obs.jim@gmail.com>
+    Copyright (C) 2023 by Lain Bailey <lain@obsproject.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -312,6 +312,7 @@ struct gs_exports {
 	float (*gs_duplicator_get_sdr_white_level)(gs_duplicator_t *duplicator);
 
 	uint32_t (*gs_get_adapter_count)(void);
+	bool (*device_can_adapter_fast_clear)(gs_device_t *device);
 
 	gs_texture_t *(*device_texture_create_gdi)(gs_device_t *device,
 						   uint32_t width,

@@ -1,5 +1,5 @@
 /******************************************************************************
-    Copyright (C) 2013 by Hugh Bailey <obs.jim@gmail.com>
+    Copyright (C) 2023 by Lain Bailey <lain@obsproject.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -924,6 +924,7 @@ gs_duplicator_get_color_space(gs_duplicator_t *duplicator);
 EXPORT float gs_duplicator_get_sdr_white_level(gs_duplicator_t *duplicator);
 
 EXPORT uint32_t gs_get_adapter_count(void);
+EXPORT bool gs_can_adapter_fast_clear(void);
 
 /** creates a windows GDI-lockable texture */
 EXPORT gs_texture_t *gs_texture_create_gdi(uint32_t width, uint32_t height);

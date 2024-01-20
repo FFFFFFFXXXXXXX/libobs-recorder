@@ -1,5 +1,5 @@
 /******************************************************************************
-    Copyright (C) 2013-2014 by Hugh Bailey <obs.jim@gmail.com>
+    Copyright (C) 2023 by Lain Bailey <lain@obsproject.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -38,6 +38,7 @@
 
 #include "obs.h"
 
+#include <obsversion.h>
 #include <caption/caption.h>
 
 /* Custom helpers for the UUID hash table */
@@ -309,6 +310,9 @@ struct obs_core_video_mix {
 	float conversion_height_i;
 
 	float color_matrix[16];
+
+	bool encoder_only_mix;
+	long encoder_refs;
 };
 
 extern struct obs_core_video_mix *
@@ -457,14 +461,17 @@ struct obs_core_hotkeys {
 	char *sceneitem_hide;
 };
 
+typedef DARRAY(struct obs_source_info) obs_source_info_array_t;
+
 struct obs_core {
 	struct obs_module *first_module;
 	DARRAY(struct obs_module_path) module_paths;
+	DARRAY(char *) safe_modules;
 
-	DARRAY(struct obs_source_info) source_types;
-	DARRAY(struct obs_source_info) input_types;
-	DARRAY(struct obs_source_info) filter_types;
-	DARRAY(struct obs_source_info) transition_types;
+	obs_source_info_array_t source_types;
+	obs_source_info_array_t input_types;
+	obs_source_info_array_t filter_types;
+	obs_source_info_array_t transition_types;
 	DARRAY(struct obs_output_info) output_types;
 	DARRAY(struct obs_encoder_info) encoder_types;
 	DARRAY(struct obs_service_info) service_types;
@@ -520,6 +527,7 @@ extern struct obs_core_video_mix *get_mix_for_video(video_t *video);
 
 extern void
 start_raw_video(video_t *video, const struct video_scale_info *conversion,
+		uint32_t frame_rate_divisor,
 		void (*callback)(void *param, struct video_data *frame),
 		void *param);
 extern void stop_raw_video(video_t *video,
@@ -955,6 +963,7 @@ convert_video_format(enum video_format format, enum video_trc trc)
 		case VIDEO_FORMAT_P216:
 		case VIDEO_FORMAT_P416:
 		case VIDEO_FORMAT_V210:
+		case VIDEO_FORMAT_R10L:
 			return GS_RGBA16F;
 		default:
 			return GS_BGRX;
@@ -1065,14 +1074,14 @@ struct obs_output {
 	/* indicates ownership of the info.id buffer */
 	bool owns_info_id;
 
-	bool received_video;
+	bool received_video[MAX_OUTPUT_VIDEO_ENCODERS];
 	bool received_audio;
 	volatile bool data_active;
 	volatile bool end_data_capture_thread_active;
-	int64_t video_offset;
+	int64_t video_offsets[MAX_OUTPUT_VIDEO_ENCODERS];
 	int64_t audio_offsets[MAX_OUTPUT_AUDIO_ENCODERS];
 	int64_t highest_audio_ts;
-	int64_t highest_video_ts;
+	int64_t highest_video_ts[MAX_OUTPUT_VIDEO_ENCODERS];
 	pthread_t end_data_capture_thread;
 	os_event_t *stopping_event;
 	pthread_mutex_t interleaved_mutex;
@@ -1091,7 +1100,6 @@ struct obs_output {
 
 	uint32_t starting_drawn_count;
 	uint32_t starting_lagged_count;
-	uint32_t starting_frame_count;
 
 	int total_frames;
 
@@ -1099,7 +1107,7 @@ struct obs_output {
 	volatile bool paused;
 	video_t *video;
 	audio_t *audio;
-	obs_encoder_t *video_encoder;
+	obs_encoder_t *video_encoders[MAX_OUTPUT_VIDEO_ENCODERS];
 	obs_encoder_t *audio_encoders[MAX_OUTPUT_AUDIO_ENCODERS];
 	obs_service_t *service;
 	size_t mixer_mask;
@@ -1205,6 +1213,9 @@ struct obs_encoder {
 
 	size_t mixer_idx;
 
+	/* OBS_SCALE_DISABLE indicates GPU scaling is disabled */
+	enum obs_scale_type gpu_scale_type;
+
 	uint32_t scaled_width;
 	uint32_t scaled_height;
 	enum video_format preferred_format;
@@ -1218,6 +1229,17 @@ struct obs_encoder {
 
 	uint32_t timebase_num;
 	uint32_t timebase_den;
+
+	// allow outputting at fractions of main composition FPS,
+	// e.g. 60 FPS with frame_rate_divisor = 1 turns into 30 FPS
+	//
+	// a separate counter is used in favor of using remainder calculations
+	// to allow "inputs" started at the same time to start on the same frame
+	// whereas with remainder calculation the frame alignment would depend on
+	// the total frame count at the time the encoder was started
+	uint32_t frame_rate_divisor;
+	uint32_t frame_rate_divisor_counter; // only used for GPU encoders
+	video_t *fps_override;
 
 	int64_t cur_pts;
 

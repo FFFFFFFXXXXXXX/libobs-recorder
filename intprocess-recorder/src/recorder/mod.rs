@@ -376,8 +376,8 @@ impl InpRecorder {
     fn check_thread_initialized() -> Result<(), &'static str> {
         match LIBOBS_THREAD.get() {
             Some(thread_id) if thread_id == &thread::current().id() => Ok(()),
-            Some(_) => return Err("wrong thread - libobs was initialized in another thread"),
-            None => return Err("libos has not been initialized yet"),
+            Some(_) => Err("wrong thread - libobs was initialized in another thread"),
+            None => Err("libos has not been initialized yet"),
         }
     }
 
@@ -391,7 +391,7 @@ impl InpRecorder {
     }
 
     fn set_current_encoder(encoder: Encoder) {
-        CURRENT_ENCODER.with(|cell| cell.set(encoder));
+        CURRENT_ENCODER.set(encoder);
     }
 
     fn get_current_encoder() -> Encoder {

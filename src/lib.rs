@@ -12,6 +12,35 @@ const EXECUTABLE: &str = "./extprocess_recorder.exe";
 const EXECUTABLE: &str = "./extprocess_recorder";
 
 #[derive(Debug)]
+pub enum Error {
+    IoError(std::io::Error),
+    RecorderError(String),
+    ShutdownFailed(Recorder, String),
+    ShouldNeverHappenNotifyMe,
+}
+
+impl std::fmt::Display for Error {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Error::IoError(e) => f.write_fmt(format_args!("{e:?}")),
+            Error::RecorderError(e) | Error::ShutdownFailed(_, e) => f.write_str(e),
+            Error::ShouldNeverHappenNotifyMe => f.write_str("This error should never happen - please notify me"),
+        }
+    }
+}
+
+impl std::error::Error for Error {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        match self {
+            Error::IoError(e) => Some(e),
+            _ => None,
+        }
+    }
+}
+
+pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Debug)]
 pub struct Recorder {
     recorder: IpcLinkMaster,
 }
@@ -111,32 +140,3 @@ impl Recorder {
         }
     }
 }
-
-#[derive(Debug)]
-pub enum Error {
-    IoError(std::io::Error),
-    RecorderError(String),
-    ShutdownFailed(Recorder, String),
-    ShouldNeverHappenNotifyMe,
-}
-
-impl std::fmt::Display for Error {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            Error::IoError(e) => f.write_fmt(format_args!("{e:?}")),
-            Error::RecorderError(e) | Error::ShutdownFailed(_, e) => f.write_str(e),
-            Error::ShouldNeverHappenNotifyMe => f.write_str("This error should never happen - please notify me"),
-        }
-    }
-}
-
-impl std::error::Error for Error {
-    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
-        match self {
-            Error::IoError(e) => Some(e),
-            _ => None,
-        }
-    }
-}
-
-pub type Result<T> = std::result::Result<T, Error>;

@@ -54,9 +54,7 @@ fn main() {
         }
         IpcCommand::StartRecording => {
             if let Some(recorder) = recorder.as_mut() {
-                if recorder.is_recording() {
-                    Some(IpcResponse::Ok)
-                } else if recorder.start_recording() {
+                if recorder.is_recording() || recorder.start_recording() {
                     Some(IpcResponse::Ok)
                 } else {
                     Some(IpcResponse::Err("failed to start recording".into()))

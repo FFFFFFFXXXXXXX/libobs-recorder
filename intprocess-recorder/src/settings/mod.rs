@@ -12,7 +12,7 @@ mod framerate;
 mod rate_control;
 mod window;
 
-#[cfg_attr(all(test, feature = "specta"), derive(specta::Type))]
+#[cfg_attr(feature = "specta", derive(specta::Type))]
 #[derive(serde::Serialize, serde::Deserialize, Clone, Debug, PartialEq, Default)]
 pub struct RecorderSettings {
     pub(crate) window: Option<Window>,

@@ -2,7 +2,7 @@ use crate::{recorder::obs_data::ObsData, settings::RateControl};
 
 // the encoders are sorted by their priority
 #[allow(non_camel_case_types)]
-#[cfg_attr(all(test, feature = "specta"), derive(specta::Type))]
+#[cfg_attr(feature = "specta", derive(specta::Type))]
 #[derive(serde::Serialize, serde::Deserialize, Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Encoder {
     /// NVIDIA h264 encoder

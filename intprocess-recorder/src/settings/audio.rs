@@ -1,4 +1,4 @@
-#[cfg_attr(all(test, feature = "specta"), derive(specta::Type))]
+#[cfg_attr(feature = "specta", derive(specta::Type))]
 #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq)]
 pub enum AudioSource {
     /// no audio

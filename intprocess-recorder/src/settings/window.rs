@@ -1,4 +1,4 @@
-#[cfg_attr(all(test, feature = "specta"), derive(specta::Type))]
+#[cfg_attr(feature = "specta", derive(specta::Type))]
 #[derive(serde::Serialize, serde::Deserialize, Debug, Clone, PartialEq)]
 pub struct Window {
     name: String,
@@ -31,7 +31,7 @@ impl Window {
 }
 
 /// most common resolutions for the aspect ratios 4:3, 5:4, 16:9, 16:10, 21:9, 43:18, 24:10, 32:9, 32:10
-#[cfg_attr(all(test, feature = "specta"), derive(specta::Type))]
+#[cfg_attr(feature = "specta", derive(specta::Type))]
 #[derive(serde::Serialize, serde::Deserialize, Copy, Clone, Debug, PartialEq)]
 pub enum Resolution {
     /// 4:3 1024x768p
@@ -120,7 +120,7 @@ pub enum Resolution {
     _3840x1200p,
 }
 
-#[cfg_attr(all(test, feature = "specta"), derive(specta::Type))]
+#[cfg_attr(feature = "specta", derive(specta::Type))]
 #[derive(serde::Serialize, serde::Deserialize, Copy, Clone, Debug, PartialEq)]
 pub struct Size {
     width: u32,

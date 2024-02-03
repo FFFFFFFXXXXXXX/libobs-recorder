@@ -1,3 +1,4 @@
+#[cfg_attr(all(test, feature = "specta"), derive(specta::Type))]
 #[derive(serde::Serialize, serde::Deserialize, Debug, Copy, Clone, PartialEq)]
 pub enum RateControl {
     CBR(u32),

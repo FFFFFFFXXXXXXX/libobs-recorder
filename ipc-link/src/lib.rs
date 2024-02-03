@@ -134,7 +134,7 @@ impl IpcLinkSlave<'_> {
         }
     }
 
-    pub fn respond<>(&mut self, mut handler: impl FnMut(IpcCommand) -> Option<IpcResponse>) {
+    pub fn respond(&mut self, mut handler: impl FnMut(IpcCommand) -> Option<IpcResponse>) {
         loop {
             let cmd = serde_json::from_str(self.read_line()).unwrap();
 
@@ -158,7 +158,7 @@ impl IpcLinkSlave<'_> {
 }
 
 impl Default for IpcLinkSlave<'_> {
-     fn default() -> Self {
-         Self::new()
-     }
- }
+    fn default() -> Self {
+        Self::new()
+    }
+}

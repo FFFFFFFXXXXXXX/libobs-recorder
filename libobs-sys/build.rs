@@ -1,24 +1,28 @@
-const CURRENT_VERSION: &str = "30.0.2";
-
 fn main() {
-    let version = std::env::var("LIBOBS_RECORDER_VERSION").unwrap_or(CURRENT_VERSION.to_string());
-
     // always link libobs
     println!("cargo:rustc-link-search=native={}", env!("CARGO_MANIFEST_DIR"));
-    println!("cargo:rustc-link-lib=obs_{version}");
+    println!("cargo:rustc-link-lib=obs_{}", build_helper::VERSION);
 
     #[cfg(feature = "bindgen")]
-    gen_bindings(version);
+    gen_bindings();
 }
 
 #[cfg(feature = "bindgen")]
-fn gen_bindings(version: String) {
+fn gen_bindings() {
     let bindings_path = std::path::Path::new(concat!(env!("CARGO_MANIFEST_DIR"), "/src/bindings.rs"));
 
     let bindings = bindgen::builder()
-        .header(format!("libobs_headers_{version}/obs.h"))
-        .blocklist_type("_bindgen_ty_1")
-        .blocklist_type("_bindgen_ty_2")
+        .header(format!("libobs_headers_{}/obs.h", build_helper::VERSION))
+        .blocklist_function("_+.*")
+        .derive_copy(true)
+        .derive_debug(true)
+        .derive_default(true)
+        .derive_partialeq(true)
+        .derive_eq(true)
+        .derive_partialord(true)
+        .derive_ord(true)
+        .layout_tests(false)
+        .merge_extern_blocks(true)
         .generate()
         .expect("Error generating bindings");
 

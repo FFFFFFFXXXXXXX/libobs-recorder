@@ -1,7 +1,7 @@
 use std::{
     cell::Cell,
     ffi::CStr,
-    os::raw::c_char,
+    os::raw::{c_char, c_int},
     ptr::{addr_of_mut, null_mut, NonNull},
     sync::{Once, OnceLock},
     thread::{self, ThreadId},
@@ -335,7 +335,8 @@ impl InpRecorder {
                 scale_type: obs_scale_type_OBS_SCALE_LANCZOS,
             };
 
-            if obs_reset_video(addr_of_mut!(ovi)) != OBS_VIDEO_SUCCESS.try_into().unwrap() {
+            // OBS_VIDEO_SUCCESS is 0, so casting it to c_int should be fine
+            if obs_reset_video(addr_of_mut!(ovi)) != OBS_VIDEO_SUCCESS as c_int {
                 return Err("error on libobs reset video");
             }
         }

@@ -14,8 +14,20 @@ pub const VERSION: &str = {
 pub type Error = Box<dyn std::error::Error>;
 
 pub fn build() -> Result<(), Error> {
-    let this_crate_dir = path::PathBuf::from(env!("CARGO_MANIFEST_DIR")); // compile time
-    let consumer_crate_output_dir = get_cargo_target_dir()?; // run time
+    build_internal(None::<&path::Path>)
+}
+pub fn build_to_path(path: impl AsRef<path::Path>) -> Result<(), Error> {
+    build_internal(Some(path))
+}
+
+fn build_internal(path: Option<impl AsRef<path::Path>>) -> Result<(), Error> {
+    // compile time
+    let this_crate_dir = path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    // run time;
+    let consumer_crate_output_dir = match path {
+        Some(path) => path::PathBuf::from(path.as_ref()),
+        None => get_cargo_target_dir()?,
+    };
 
     let bin_res_dir = this_crate_dir.join(format!("libobs_{}", VERSION));
     dir::copy(

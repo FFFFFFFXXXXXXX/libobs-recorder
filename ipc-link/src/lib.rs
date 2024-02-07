@@ -37,11 +37,10 @@ pub struct IpcLinkMaster {
     rx: BufReader<ChildStdout>,
     buffer: String,
     child_process: Child,
-    logging_enabled: bool,
 }
 
 impl IpcLinkMaster {
-    pub fn new(executable: impl AsRef<Path>, enable_logging: bool) -> io::Result<Self> {
+    pub fn new(executable: impl AsRef<Path>) -> io::Result<Self> {
         let executable = executable.as_ref().canonicalize()?;
 
         let mut child_process = Command::new(executable.as_os_str())
@@ -55,7 +54,6 @@ impl IpcLinkMaster {
             rx: BufReader::new(child_process.stdout.take().unwrap()),
             buffer: String::with_capacity(512),
             child_process,
-            logging_enabled: enable_logging,
         })
     }
 
@@ -64,26 +62,20 @@ impl IpcLinkMaster {
         _ = self.tx.write(&[b'\n']);
         _ = self.tx.flush();
 
-        let logging = self.logging_enabled;
         loop {
             let Ok(line) = self.read_line() else {
                 return IpcResponse::Err("failed to read from recorder".into());
             };
             match serde_json::from_str::<IpcResponse>(line) {
                 Ok(response) => return response,
-                Err(_) if logging => print!("ipc_link: {line}"),
-                Err(_) => { /* do nothing */ }
+                Err(_) => log::error!("[rec]: {line}"),
             }
         }
     }
 
     pub fn drain_logs(&mut self) {
-        if !self.logging_enabled {
-            return;
-        }
-
         while let Ok(log) = self.read_line() {
-            print!("ipc_link: {log}");
+            log::info!("[rec]: {log}");
         }
     }
 

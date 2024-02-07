@@ -2,7 +2,7 @@ use intprocess_recorder::settings::{AudioSource, Framerate, RateControl, Resolut
 use libobs_recorder::{Recorder, RecorderSettings};
 
 fn main() {
-    let mut rec = Recorder::new(true).unwrap();
+    let mut rec = Recorder::new().unwrap();
 
     println!("configured: {:?}", rec.configure(&settings()));
 

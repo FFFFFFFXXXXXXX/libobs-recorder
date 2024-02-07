@@ -9,16 +9,16 @@ use std::{
 };
 
 use libobs_sys::{
-    base_set_log_handler, bnum_allocs, obs_add_data_path, obs_add_module_path, obs_audio_encoder_create,
-    obs_audio_info, obs_encoder, obs_encoder_release, obs_encoder_set_audio, obs_encoder_set_video, obs_encoder_update,
-    obs_enum_encoder_types, obs_get_audio, obs_get_encoder_by_name, obs_get_output_by_name, obs_get_source_by_name,
-    obs_get_video, obs_get_video_info, obs_load_all_modules, obs_log_loaded_modules, obs_output, obs_output_active,
-    obs_output_create, obs_output_force_stop, obs_output_release, obs_output_set_audio_encoder,
-    obs_output_set_video_encoder, obs_output_start, obs_output_stop, obs_output_update, obs_post_load_modules,
-    obs_reset_audio, obs_reset_video, obs_scale_type_OBS_SCALE_LANCZOS, obs_set_output_source, obs_shutdown,
-    obs_source, obs_source_create, obs_source_release, obs_source_update, obs_startup, obs_video_encoder_create,
-    obs_video_info, speaker_layout_SPEAKERS_STEREO, va_list, video_colorspace_VIDEO_CS_709,
-    video_format_VIDEO_FORMAT_NV12, video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
+    bnum_allocs, obs_add_data_path, obs_add_module_path, obs_audio_encoder_create, obs_audio_info, obs_encoder,
+    obs_encoder_release, obs_encoder_set_audio, obs_encoder_set_video, obs_encoder_update, obs_enum_encoder_types,
+    obs_get_audio, obs_get_encoder_by_name, obs_get_output_by_name, obs_get_source_by_name, obs_get_video,
+    obs_get_video_info, obs_load_all_modules, obs_log_loaded_modules, obs_output, obs_output_active, obs_output_create,
+    obs_output_force_stop, obs_output_release, obs_output_set_audio_encoder, obs_output_set_video_encoder,
+    obs_output_start, obs_output_stop, obs_output_update, obs_post_load_modules, obs_reset_audio, obs_reset_video,
+    obs_scale_type_OBS_SCALE_LANCZOS, obs_set_output_source, obs_shutdown, obs_source, obs_source_create,
+    obs_source_release, obs_source_update, obs_startup, obs_video_encoder_create, obs_video_info,
+    speaker_layout_SPEAKERS_STEREO, video_colorspace_VIDEO_CS_709, video_format_VIDEO_FORMAT_NV12,
+    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
 
 use crate::settings::{AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Size};
@@ -27,11 +27,6 @@ use self::{get::Get, obs_data::ObsData};
 
 mod get;
 pub(crate) mod obs_data;
-
-#[cfg(feature = "disable_logging")]
-const LOGGING: bool = false;
-#[cfg(not(feature = "disable_logging"))]
-const LOGGING: bool = true;
 
 #[cfg(target_os = "windows")]
 const GRAPHICS_MODULE: &str = "libobs-d3d11.dll";
@@ -114,15 +109,14 @@ impl InpRecorder {
             let plugin_bin_path = plugin_bin_path.unwrap_or(DEFAULT_PLUGIN_BIN_PATH);
             let plugin_data_path = plugin_data_path.unwrap_or(DEFAULT_PLUGIN_DATA_PATH);
             if let Err(e) = Self::init_internal(libobs_data_path, plugin_bin_path, plugin_data_path) {
+                println!("Error initializing libobs: {e}");
                 panic!("Error initializing libobs: {e}");
             }
 
             thread::current().id()
         });
 
-        if LOGGING {
-            println!("libobs initialized");
-        }
+        println!("libobs initialized");
 
         Ok(())
     }
@@ -135,9 +129,6 @@ impl InpRecorder {
         unsafe {
             // INITIALIZE
             let mut get = Get::new();
-            if !LOGGING {
-                base_set_log_handler(Some(Self::empty_log_handler), null_mut());
-            }
 
             if !obs_startup(get.c_str("en-US"), null_mut(), null_mut()) {
                 return Err("libobs startup failed");
@@ -152,9 +143,7 @@ impl InpRecorder {
             obs_add_module_path(get.c_str(plugin_bin_path), get.c_str(plugin_data_path));
             obs_load_all_modules();
             obs_post_load_modules();
-            if LOGGING {
-                obs_log_loaded_modules();
-            }
+            obs_log_loaded_modules();
 
             // CREATE OUTPUT
             let mut data = ObsData::new();
@@ -382,15 +371,6 @@ impl InpRecorder {
         }
     }
 
-    unsafe extern "C" fn empty_log_handler(
-        _lvl: ::std::os::raw::c_int,
-        _msg: *const ::std::os::raw::c_char,
-        _args: va_list,
-        _p: *mut ::std::os::raw::c_void,
-    ) {
-        // empty function to block logs
-    }
-
     fn set_current_encoder(encoder: Encoder) {
         CURRENT_ENCODER.set(encoder);
     }
@@ -410,9 +390,7 @@ impl InpRecorder {
 
 impl InpRecorder {
     pub fn start_recording(&mut self) -> bool {
-        if LOGGING {
-            println!("Recording Start: {}", unsafe { bnum_allocs() });
-        }
+        println!("Recording Start: {}", unsafe { bnum_allocs() });
         if self.is_recording() {
             true // return true if already recording
         } else {
@@ -423,9 +401,7 @@ impl InpRecorder {
     pub fn stop_recording(&mut self) {
         if self.is_recording() {
             unsafe { obs_output_stop(self.output.as_ptr()) }
-            if LOGGING {
-                println!("Recording Stop: {}", unsafe { bnum_allocs() });
-            }
+            println!("Recording Stop: {}", unsafe { bnum_allocs() });
         }
 
         let now = std::time::Instant::now();
@@ -443,10 +419,6 @@ impl InpRecorder {
     pub fn configure(&self, settings: &RecorderSettings) -> Result<(), &'static str> {
         if self.is_recording() {
             return Err("can't change settings while recording");
-        }
-
-        if LOGGING {
-            println!("before get: {}", unsafe { bnum_allocs() });
         }
 
         // RESET VIDEO
@@ -555,9 +527,7 @@ impl InpRecorder {
                 obs_set_output_source(AUDIO_CHANNEL3, audio_source3);
             }
 
-            if LOGGING {
-                println!("after get: {}", bnum_allocs());
-            }
+            println!("configured");
         }
 
         Ok(())
@@ -593,9 +563,7 @@ impl Drop for InpRecorder {
             obs_source_release(self.audio_source2.as_ptr());
             obs_source_release(self.audio_source3.as_ptr());
 
-            if LOGGING {
-                println!("bnum_allocs: {}", bnum_allocs());
-            }
+            println!("drop bnum_allocs: {}", bnum_allocs());
         }
 
         Self::decrement_refcount();

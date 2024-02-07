@@ -12,7 +12,7 @@ const WINDOW_CLASS: &'static str = "RiotWindowClass";
 const WINDOW_PROCESS: &'static str = "League of Legends.exe";
 
 fn main() {
-    let mut link = IpcLinkMaster::new(format!("./libobs/{EXECUTABLE}"), true).unwrap();
+    let mut link = IpcLinkMaster::new(format!("./libobs/{EXECUTABLE}")).unwrap();
 
     link.send(IpcCommand::Init {
         libobs_data_path: None,

@@ -48,8 +48,8 @@ pub struct Recorder {
 }
 
 impl Recorder {
-    pub fn new(enable_logging: bool) -> Result<Self> {
-        Self::new_with_paths(None::<&str>, None, None, None, enable_logging)
+    pub fn new() -> Result<Self> {
+        Self::new_with_paths(None::<&str>, None, None, None)
     }
 
     pub fn new_with_paths(
@@ -57,13 +57,12 @@ impl Recorder {
         libobs_data_path: Option<&str>,
         plugin_bin_path: Option<&str>,
         plugin_data_path: Option<&str>,
-        enable_logging: bool,
     ) -> Result<Self> {
         let executable_path = match &executable_path {
             Some(p) => p.as_ref(),
             None => path::Path::new(EXECUTABLE),
         };
-        let mut rec = IpcLinkMaster::new(executable_path, enable_logging).map_err(Error::Io)?;
+        let mut rec = IpcLinkMaster::new(executable_path).map_err(Error::Io)?;
 
         let cmd = IpcCommand::Init {
             libobs_data_path: libobs_data_path.map(ToString::to_string),

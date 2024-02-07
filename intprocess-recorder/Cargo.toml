@@ -12,6 +12,5 @@ serde = { workspace = true, features = ["derive"] }
 specta = { workspace = true, optional = true }
 
 [features]
-disable_logging = []
 bindgen = ["libobs-sys/bindgen"]
 specta = ["dep:specta"]

@@ -68,14 +68,16 @@ impl IpcLinkMaster {
             };
             match serde_json::from_str::<IpcResponse>(line) {
                 Ok(response) => return response,
-                Err(_) => log::error!("[rec]: {line}"),
+                // trim newlines from the end because log::info!() adds one
+                Err(_) => log::info!("[rec]: {}", line.trim_end()),
             }
         }
     }
 
     pub fn drain_logs(&mut self) {
-        while let Ok(log) = self.read_line() {
-            log::info!("[rec]: {log}");
+        while let Ok(line) = self.read_line() {
+            // trim newlines from the end because log::info!() adds one
+            log::info!("[rec]: {}", line.trim_end());
         }
     }
 

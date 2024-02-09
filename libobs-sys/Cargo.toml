@@ -11,5 +11,4 @@ bindgen = { workspace = true, optional = true }
 build-helper = { workspace = true }
 
 [features]
-default = ["bindgen"]
 bindgen = ["dep:bindgen"]

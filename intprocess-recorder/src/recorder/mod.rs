@@ -104,10 +104,6 @@ impl InpRecorder {
         }
 
         LIBOBS_THREAD.get_or_init(|| {
-            // set defaults in case no arguments were provided
-            let libobs_data_path = libobs_data_path.unwrap_or(DEFAULT_LIBOBS_DATA_PATH);
-            let plugin_bin_path = plugin_bin_path.unwrap_or(DEFAULT_PLUGIN_BIN_PATH);
-            let plugin_data_path = plugin_data_path.unwrap_or(DEFAULT_PLUGIN_DATA_PATH);
             if let Err(e) = Self::init_internal(libobs_data_path, plugin_bin_path, plugin_data_path) {
                 println!("Error initializing libobs: {e}");
                 panic!("Error initializing libobs: {e}");
@@ -122,108 +118,127 @@ impl InpRecorder {
     }
 
     fn init_internal(
-        libobs_data_path: &str,
-        plugin_bin_path: &str,
-        plugin_data_path: &str,
+        libobs_data_path: Option<&str>,
+        plugin_bin_path: Option<&str>,
+        plugin_data_path: Option<&str>,
     ) -> Result<(), &'static str> {
+        // set defaults in case no arguments were provided
+        let libobs_data_path = libobs_data_path.unwrap_or(DEFAULT_LIBOBS_DATA_PATH);
+        let plugin_bin_path = plugin_bin_path.unwrap_or(DEFAULT_PLUGIN_BIN_PATH);
+        let plugin_data_path = plugin_data_path.unwrap_or(DEFAULT_PLUGIN_DATA_PATH);
+
+        // INITIALIZE
+        let mut get = Get::new();
+
+        if unsafe { !obs_startup(get.c_str("en-US"), null_mut(), null_mut()) } {
+            return Err("libobs startup failed");
+        }
+
+        let default_fps = Framerate::new(30, 1);
+        let default_size = Size::new(1920, 1080);
+        unsafe { obs_add_data_path(get.c_str(libobs_data_path)) };
+        Self::reset_video(default_size, default_size, default_fps).expect("unable to initialize video");
+        Self::reset_audio().expect("unable to initialize audio");
+
         unsafe {
-            // INITIALIZE
-            let mut get = Get::new();
-
-            if !obs_startup(get.c_str("en-US"), null_mut(), null_mut()) {
-                return Err("libobs startup failed");
-            }
-
-            let default_fps = Framerate::new(30, 1);
-            let default_size = Size::new(1920, 1080);
-            obs_add_data_path(get.c_str(libobs_data_path));
-            Self::reset_video(default_size, default_size, default_fps).expect("unable to initialize video");
-            Self::reset_audio().expect("unable to initialize audio");
-
             obs_add_module_path(get.c_str(plugin_bin_path), get.c_str(plugin_data_path));
             obs_load_all_modules();
             obs_post_load_modules();
             obs_log_loaded_modules();
+        }
 
-            // CREATE OUTPUT
-            let mut data = ObsData::new();
-            data.set_string("path", "./recording.mp4");
-            let output = obs_output_create(get.c_str("ffmpeg_muxer"), OUTPUT, data.as_ptr(), null_mut());
+        // CREATE OUTPUT
+        let mut data = ObsData::new();
+        data.set_string("path", "./recording.mp4");
+        let output = unsafe { obs_output_create(get.c_str("ffmpeg_muxer"), OUTPUT, data.as_ptr(), null_mut()) };
 
-            // choose 'best' encoder
-            let encoders = Self::get_available_encoders_internal();
-            if encoders.is_empty() {
-                return Err("no encoder available");
-            }
-            let current_encoder = *encoders.first().unwrap();
-            Self::set_current_encoder(current_encoder);
+        // choose 'best' encoder
+        let encoders = Self::get_available_encoders_internal();
+        if encoders.is_empty() {
+            return Err("no encoder available");
+        }
+        let current_encoder = *encoders.first().unwrap();
+        Self::set_current_encoder(current_encoder);
 
-            // CREATE VIDEO ENCODER
-            let mut get = Get::new();
-            let data: ObsData = current_encoder.settings(RateControl::default());
-            let video_encoder = obs_video_encoder_create(
+        // CREATE VIDEO ENCODER
+        let mut get = Get::new();
+        let data: ObsData = current_encoder.settings(RateControl::default());
+        let video_encoder = unsafe {
+            obs_video_encoder_create(
                 get.c_str(current_encoder.id()),
                 VIDEO_ENCODER,
                 data.as_ptr(),
                 null_mut(),
-            );
+            )
+        };
+        unsafe {
             obs_encoder_set_video(video_encoder, obs_get_video());
             obs_output_set_video_encoder(output, video_encoder);
+        }
 
-            // CREATE VIDEO SOURCE
-            let mut data = ObsData::new();
-            data.set_string("capture_mode", "window");
-            data.set_string("window", "");
-            data.set_bool("capture_cursor", true);
-            let video_source = obs_source_create(
+        // CREATE VIDEO SOURCE
+        let mut data = ObsData::new();
+        data.set_string("capture_mode", "window");
+        data.set_string("window", "");
+        data.set_bool("capture_cursor", true);
+        let video_source = unsafe {
+            obs_source_create(
                 get.c_str("game_capture"),
                 VIDEO_SOURCE,
                 data.as_ptr(),
                 std::ptr::null_mut(),
-            );
-            obs_set_output_source(VIDEO_CHANNEL, video_source);
+            )
+        };
+        unsafe { obs_set_output_source(VIDEO_CHANNEL, video_source) };
 
-            // CREATE AUDIO ENCODER
-            let mut data = ObsData::new();
-            data.set_int("bitrate", 160);
-            let audio_encoder =
-                obs_audio_encoder_create(get.c_str("ffmpeg_aac"), AUDIO_ENCODER, data.as_ptr(), 0, null_mut());
+        // CREATE AUDIO ENCODER
+        let mut data = ObsData::new();
+        data.set_int("bitrate", 160);
+        let audio_encoder =
+            unsafe { obs_audio_encoder_create(get.c_str("ffmpeg_aac"), AUDIO_ENCODER, data.as_ptr(), 0, null_mut()) };
+        unsafe {
             obs_encoder_set_audio(audio_encoder, obs_get_audio());
             obs_output_set_audio_encoder(
                 output,
                 audio_encoder,
                 0, // ignored since we only have 1 output
             );
+        }
 
-            // CREATE AUDIO SOURCE 1
+        // CREATE AUDIO SOURCE 1
+        unsafe {
             obs_source_create(
                 get.c_str("wasapi_process_output_capture"),
                 AUDIO_SOURCE1,
                 null_mut(),
                 null_mut(),
-            );
+            )
+        };
 
-            // CREATE AUDIO SOURCE 2
-            let mut data = ObsData::new();
-            data.set_string("device_id", "default");
-            let audio_source2 = obs_source_create(
+        // CREATE AUDIO SOURCE 2
+        let mut data = ObsData::new();
+        data.set_string("device_id", "default");
+        let audio_source2 = unsafe {
+            obs_source_create(
                 get.c_str("wasapi_output_capture"),
                 AUDIO_SOURCE2,
                 data.as_ptr(),
                 null_mut(),
-            );
-            obs_set_output_source(AUDIO_CHANNEL2, audio_source2);
+            )
+        };
+        unsafe { obs_set_output_source(AUDIO_CHANNEL2, audio_source2) };
 
-            // CREATE AUDIO SOURCE 3
-            let mut data = ObsData::new();
-            data.set_string("device_id", "default");
+        // CREATE AUDIO SOURCE 3
+        let mut data = ObsData::new();
+        data.set_string("device_id", "default");
+        unsafe {
             obs_source_create(
                 get.c_str("wasapi_input_capture"),
                 AUDIO_SOURCE3,
                 data.as_ptr(),
                 null_mut(),
-            );
-        }
+            )
+        };
 
         Ok(())
     }

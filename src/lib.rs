@@ -42,7 +42,7 @@ impl error::Error for Error {
     }
 }
 
-pub type Result<T> = std::result::Result<T, Error>;
+pub type Result<T> = std::result::Result<T, Box<Error>>;
 
 #[derive(Debug)]
 pub struct Recorder {
@@ -74,72 +74,72 @@ impl Recorder {
 
         match rec.send(cmd) {
             IpcResponse::Ok => Ok(Self { recorder: rec }),
-            IpcResponse::Err(e) => Err(Error::Recorder(e)),
-            _ => Err(Error::ShouldNeverHappenNotifyMe),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }
 
     pub fn configure(&mut self, settings: &RecorderSettings) -> Result<()> {
         match self.recorder.send(IpcCommand::Configure(settings.clone())) {
             IpcResponse::Ok => Ok(()),
-            IpcResponse::Err(e) => Err(Error::Recorder(e)),
-            _ => Err(Error::ShouldNeverHappenNotifyMe),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }
 
     pub fn available_encoders(&mut self) -> Result<Vec<Encoder>> {
         match self.recorder.send(IpcCommand::Encoders) {
             IpcResponse::Encoders { available, .. } => Ok(available),
-            IpcResponse::Err(e) => Err(Error::Recorder(e)),
-            _ => Err(Error::ShouldNeverHappenNotifyMe),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }
 
     pub fn selected_encoder(&mut self) -> Result<Encoder> {
         match self.recorder.send(IpcCommand::Encoders) {
             IpcResponse::Encoders { selected, .. } => Ok(selected),
-            IpcResponse::Err(e) => Err(Error::Recorder(e)),
-            _ => Err(Error::ShouldNeverHappenNotifyMe),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }
 
     pub fn start_recording(&mut self) -> Result<()> {
         match self.recorder.send(IpcCommand::StartRecording) {
             IpcResponse::Ok => Ok(()),
-            IpcResponse::Err(e) => Err(Error::Recorder(e)),
-            _ => Err(Error::ShouldNeverHappenNotifyMe),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }
 
     pub fn stop_recording(&mut self) -> Result<()> {
         match self.recorder.send(IpcCommand::StopRecording) {
             IpcResponse::Ok => Ok(()),
-            IpcResponse::Err(e) => Err(Error::Recorder(e)),
-            _ => Err(Error::ShouldNeverHappenNotifyMe),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }
 
     pub fn is_recording(&mut self) -> Result<bool> {
         match self.recorder.send(IpcCommand::StopRecording) {
             IpcResponse::Recording(recording) => Ok(recording),
-            IpcResponse::Err(e) => Err(Error::Recorder(e)),
-            _ => Err(Error::ShouldNeverHappenNotifyMe),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }
 
     pub fn shutdown(mut self) -> Result<()> {
         match self.recorder.send(IpcCommand::Shutdown) {
             IpcResponse::Ok => { /* OK continue */ }
-            IpcResponse::Err(e) => return Err(Error::ShutdownFailed(self, e)),
-            _ => return Err(Error::ShouldNeverHappenNotifyMe),
+            IpcResponse::Err(e) => return Err(Box::new(Error::ShutdownFailed(self, e))),
+            _ => return Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
         match self.recorder.send(IpcCommand::Exit) {
             IpcResponse::Ok => {
                 self.recorder.drain_logs();
                 Ok(())
             }
-            IpcResponse::Err(e) => Err(Error::ShutdownFailed(self, e)),
-            _ => Err(Error::ShouldNeverHappenNotifyMe),
+            IpcResponse::Err(e) => Err(Box::new(Error::ShutdownFailed(self, e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }
 }

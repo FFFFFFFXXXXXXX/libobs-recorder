@@ -1,4 +1,4 @@
-use intprocess_recorder::settings::{AudioSource, Framerate, RateControl, Resolution, Window};
+use intprocess_recorder::settings::{AudioSource, Framerate, RateControl, StdResolution, Window};
 use libobs_recorder::{Recorder, RecorderSettings};
 
 fn main() {
@@ -27,8 +27,8 @@ fn settings() -> RecorderSettings {
         Some(WINDOW_PROCESS.into()),
     ));
 
-    settings.set_input_resolution(Resolution::_2560x1440p);
-    settings.set_output_resolution(Resolution::_2560x1440p);
+    settings.set_input_resolution(StdResolution::_2560x1440p);
+    settings.set_output_resolution(StdResolution::_2560x1440p);
     settings.set_framerate(Framerate::new(60, 1));
     settings.set_rate_control(RateControl::CBR(10000));
     settings.record_audio(AudioSource::ALL);

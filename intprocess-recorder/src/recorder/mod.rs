@@ -21,7 +21,7 @@ use libobs_sys::{
     video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
 
-use crate::settings::{AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Size};
+use crate::settings::{AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Resolution};
 
 use self::{get::Get, obs_data::ObsData};
 
@@ -135,7 +135,7 @@ impl InpRecorder {
         }
 
         let default_fps = Framerate::new(30, 1);
-        let default_size = Size::new(1920, 1080);
+        let default_size = Resolution::new(1920, 1080);
         unsafe { obs_add_data_path(get.c_str(libobs_data_path)) };
         Self::reset_video(default_size, default_size, default_fps).expect("unable to initialize video");
         Self::reset_audio().expect("unable to initialize audio");
@@ -320,7 +320,7 @@ impl InpRecorder {
         }
     }
 
-    fn reset_video(input_size: Size, output_size: Size, framerate: Framerate) -> Result<(), &'static str> {
+    fn reset_video(input_size: Resolution, output_size: Resolution, framerate: Framerate) -> Result<(), &'static str> {
         unsafe {
             let mut get = Get::new();
             let mut ovi = obs_video_info {
@@ -440,11 +440,11 @@ impl InpRecorder {
         let ovi = Self::get_video_info()?;
         let input_size = match settings.input_resolution {
             Some(size) => size,
-            None => Size::new(ovi.base_width, ovi.base_height),
+            None => Resolution::new(ovi.base_width, ovi.base_height),
         };
         let output_size = match settings.output_resolution {
             Some(size) => size,
-            None => Size::new(ovi.output_width, ovi.output_height),
+            None => Resolution::new(ovi.output_width, ovi.output_height),
         };
         let framerate = match settings.framerate {
             Some(framerate) => framerate,

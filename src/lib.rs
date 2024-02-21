@@ -1,6 +1,8 @@
 pub use intprocess_recorder::{settings::RecorderSettings, InpRecorder as SingletonRecorder};
 pub mod settings {
-    pub use intprocess_recorder::settings::{AudioSource, Encoder, Framerate, RateControl, Resolution, Size, Window};
+    pub use intprocess_recorder::settings::{
+        AudioSource, Encoder, Framerate, RateControl, Resolution, StdResolution, Window,
+    };
 }
 
 use intprocess_recorder::settings::Encoder;

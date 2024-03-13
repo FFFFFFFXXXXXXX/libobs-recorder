@@ -5,4 +5,4 @@
 #[allow(clippy::approx_constant)]
 #[allow(clippy::unreadable_literal)]
 #[allow(rustdoc::bare_urls)]
-include!(build_helper::BINDINGS_FILE);
+include!(env!("BINDINGS_FILE"));

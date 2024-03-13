@@ -3,15 +3,11 @@ fn main() {
     println!("cargo:rustc-link-search=native={}", env!("CARGO_MANIFEST_DIR"));
     println!("cargo:rustc-link-lib=obs_{}", build_helper::VERSION);
 
+    let bindings_file = format!("bindings_{}.rs", build_helper::VERSION);
+    println!("cargo:rustc-env=BINDINGS_FILE={bindings_file}");
+
     #[cfg(feature = "bindgen")]
-    gen_bindings();
-}
-
-#[cfg(feature = "bindgen")]
-fn gen_bindings() {
-    let bindings_path = std::path::Path::new(concat!(env!("CARGO_MANIFEST_DIR"), "/src/", build_helper::BINDINGS_FILE));
-
-    let bindings = bindgen::builder()
+    bindgen::builder()
         .header(format!("libobs_headers_{}/obs.h", build_helper::VERSION))
         .blocklist_function("_+.*")
         .derive_copy(true)
@@ -24,9 +20,7 @@ fn gen_bindings() {
         .layout_tests(false)
         .merge_extern_blocks(true)
         .generate()
-        .expect("Error generating bindings");
-
-    bindings
-        .write_to_file(bindings_path)
+        .expect("Error generating bindings")
+        .write_to_file(&format!("{}/src/{bindings_file}", env!("CARGO_MANIFEST_DIR")))
         .expect("Error outputting bindings");
 }

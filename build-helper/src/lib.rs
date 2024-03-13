@@ -1,15 +1,22 @@
-use fs_extra::dir;
 use std::{env, path};
 
+use fs_extra::dir;
+
 const NEWEST_VERSION: &str = "30.0.2";
-pub const VERSION: &str = option_env!("LIBOBS_RECORDER_VERSION").unwrap_or(NEWEST_VERSION);
-pub const BINDINGS_FILE: &str = concat!("bindings_", VERSION, ".rs");
+pub const VERSION: &str = {
+    if let Some(version) = option_env!("LIBOBS_RECORDER_VERSION") {
+        version
+    } else {
+        NEWEST_VERSION
+    }
+};
 
 pub type Error = Box<dyn std::error::Error>;
 
 pub fn build() -> Result<(), Error> {
     build_internal(None::<&path::Path>)
 }
+
 pub fn build_to_path(path: impl AsRef<path::Path>) -> Result<(), Error> {
     build_internal(Some(path))
 }

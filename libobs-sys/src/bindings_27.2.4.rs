@@ -214,6 +214,120 @@ pub const _MAX_DIR: u32 = 256;
 pub const _MAX_FNAME: u32 = 256;
 pub const _MAX_EXT: u32 = 256;
 pub const _MAX_ENV: u32 = 32767;
+pub const KBC_ESCAPE: u32 = 0;
+pub const KBC_1: u32 = 1;
+pub const KBC_2: u32 = 2;
+pub const KBC_3: u32 = 3;
+pub const KBC_4: u32 = 4;
+pub const KBC_5: u32 = 5;
+pub const KBC_6: u32 = 6;
+pub const KBC_7: u32 = 7;
+pub const KBC_8: u32 = 8;
+pub const KBC_9: u32 = 9;
+pub const KBC_0: u32 = 10;
+pub const KBC_MINUS: u32 = 11;
+pub const KBC_EQUALS: u32 = 12;
+pub const KBC_BACK: u32 = 13;
+pub const KBC_TAB: u32 = 14;
+pub const KBC_Q: u32 = 15;
+pub const KBC_W: u32 = 16;
+pub const KBC_E: u32 = 17;
+pub const KBC_R: u32 = 18;
+pub const KBC_T: u32 = 19;
+pub const KBC_Y: u32 = 20;
+pub const KBC_U: u32 = 21;
+pub const KBC_I: u32 = 22;
+pub const KBC_O: u32 = 23;
+pub const KBC_P: u32 = 24;
+pub const KBC_LBRACKET: u32 = 25;
+pub const KBC_RBRACKET: u32 = 26;
+pub const KBC_RETURN: u32 = 27;
+pub const KBC_LCONTROL: u32 = 28;
+pub const KBC_A: u32 = 29;
+pub const KBC_S: u32 = 30;
+pub const KBC_D: u32 = 31;
+pub const KBC_F: u32 = 32;
+pub const KBC_G: u32 = 33;
+pub const KBC_H: u32 = 34;
+pub const KBC_J: u32 = 35;
+pub const KBC_K: u32 = 36;
+pub const KBC_L: u32 = 37;
+pub const KBC_SEMICOLON: u32 = 38;
+pub const KBC_APOSTROPHE: u32 = 39;
+pub const KBC_TILDE: u32 = 40;
+pub const KBC_LSHIFT: u32 = 41;
+pub const KBC_BACKSLASH: u32 = 42;
+pub const KBC_Z: u32 = 43;
+pub const KBC_X: u32 = 44;
+pub const KBC_C: u32 = 45;
+pub const KBC_V: u32 = 46;
+pub const KBC_B: u32 = 47;
+pub const KBC_N: u32 = 48;
+pub const KBC_M: u32 = 49;
+pub const KBC_COMMA: u32 = 50;
+pub const KBC_PERIOD: u32 = 51;
+pub const KBC_SLASH: u32 = 52;
+pub const KBC_RSHIFT: u32 = 53;
+pub const KBC_MULTIPLY: u32 = 54;
+pub const KBC_LALT: u32 = 55;
+pub const KBC_SPACE: u32 = 56;
+pub const KBC_CAPSLOCK: u32 = 57;
+pub const KBC_F1: u32 = 58;
+pub const KBC_F2: u32 = 59;
+pub const KBC_F3: u32 = 60;
+pub const KBC_F4: u32 = 61;
+pub const KBC_F5: u32 = 62;
+pub const KBC_F6: u32 = 63;
+pub const KBC_F7: u32 = 64;
+pub const KBC_F8: u32 = 65;
+pub const KBC_F9: u32 = 66;
+pub const KBC_F10: u32 = 67;
+pub const KBC_NUMLOCK: u32 = 68;
+pub const KBC_SCROLLLOCK: u32 = 69;
+pub const KBC_NUMPAD7: u32 = 70;
+pub const KBC_NUMPAD8: u32 = 71;
+pub const KBC_NUMPAD9: u32 = 72;
+pub const KBC_SUBTRACT: u32 = 73;
+pub const KBC_NUMPAD4: u32 = 74;
+pub const KBC_NUMPAD5: u32 = 75;
+pub const KBC_NUMPAD6: u32 = 76;
+pub const KBC_ADD: u32 = 77;
+pub const KBC_NUMPAD1: u32 = 78;
+pub const KBC_NUMPAD2: u32 = 79;
+pub const KBC_NUMPAD3: u32 = 80;
+pub const KBC_NUMPAD0: u32 = 81;
+pub const KBC_DECIMAL: u32 = 82;
+pub const KBC_F11: u32 = 83;
+pub const KBC_F12: u32 = 84;
+pub const KBC_NUMPADENTER: u32 = 85;
+pub const KBC_RCONTROL: u32 = 86;
+pub const KBC_DIVIDE: u32 = 87;
+pub const KBC_SYSRQ: u32 = 88;
+pub const KBC_RALT: u32 = 89;
+pub const KBC_PAUSE: u32 = 90;
+pub const KBC_HOME: u32 = 91;
+pub const KBC_UP: u32 = 92;
+pub const KBC_PAGEDOWN: u32 = 93;
+pub const KBC_LEFT: u32 = 94;
+pub const KBC_RIGHT: u32 = 95;
+pub const KBC_END: u32 = 96;
+pub const KBC_DOWN: u32 = 97;
+pub const KBC_PAGEUP: u32 = 98;
+pub const KBC_INSERT: u32 = 99;
+pub const KBC_DELETE: u32 = 100;
+pub const MOUSE_LEFTBUTTON: u32 = 101;
+pub const MOUSE_MIDDLEBUTTON: u32 = 102;
+pub const MOUSE_RIGHTBUTTON: u32 = 103;
+pub const MOUSE_WHEEL: u32 = 104;
+pub const MOUSE_MOVE: u32 = 105;
+pub const KBC_CONTROL: u32 = 4294967294;
+pub const KBC_ALT: u32 = 4294967293;
+pub const KBC_SHIFT: u32 = 4294967292;
+pub const STATE_LBUTTONDOWN: u32 = 1;
+pub const STATE_RBUTTONDOWN: u32 = 2;
+pub const STATE_MBUTTONDOWN: u32 = 4;
+pub const STATE_X4BUTTONDOWN: u32 = 8;
+pub const STATE_X5BUTTONDOWN: u32 = 16;
 pub const GS_MAX_TEXTURES: u32 = 8;
 pub const GS_BUILD_MIPMAPS: u32 = 1;
 pub const GS_DYNAMIC: u32 = 2;
@@ -434,15 +548,23 @@ pub const VIDEO_OUTPUT_INVALIDPARAM: i32 = -1;
 pub const VIDEO_OUTPUT_FAIL: i32 = -2;
 pub const CALL_PARAM_IN: u32 = 1;
 pub const CALL_PARAM_OUT: u32 = 2;
-pub const LIBOBS_API_MAJOR_VER: u32 = 30;
-pub const LIBOBS_API_MINOR_VER: u32 = 0;
-pub const LIBOBS_API_PATCH_VER: u32 = 2;
+pub const LIBOBS_API_MAJOR_VER: u32 = 27;
+pub const LIBOBS_API_MINOR_VER: u32 = 2;
+pub const LIBOBS_API_PATCH_VER: u32 = 4;
 pub const OBS_VERSION: &[u8; 8] = b"unknown\0";
 pub const OBS_DATA_PATH: &[u8; 11] = b"../../data\0";
 pub const OBS_INSTALL_PREFIX: &[u8; 1] = b"\0";
 pub const OBS_PLUGIN_DESTINATION: &[u8; 12] = b"obs-plugins\0";
 pub const OBS_RELATIVE_PREFIX: &[u8; 7] = b"../../\0";
+pub const OBS_RELEASE_CANDIDATE_MAJOR: u32 = 0;
+pub const OBS_RELEASE_CANDIDATE_MINOR: u32 = 0;
+pub const OBS_RELEASE_CANDIDATE_PATCH: u32 = 0;
+pub const OBS_RELEASE_CANDIDATE_VER: u32 = 0;
 pub const OBS_RELEASE_CANDIDATE: u32 = 0;
+pub const OBS_BETA_MAJOR: u32 = 0;
+pub const OBS_BETA_MINOR: u32 = 0;
+pub const OBS_BETA_PATCH: u32 = 0;
+pub const OBS_BETA_VER: u32 = 0;
 pub const OBS_BETA: u32 = 0;
 pub const OBS_INSTALL_DATA_PATH: &[u8; 11] = b"../../data\0";
 pub const MAX_CHANNELS: u32 = 64;
@@ -456,7 +578,6 @@ pub const MODULE_ERROR: i32 = -1;
 pub const MODULE_FILE_NOT_FOUND: i32 = -2;
 pub const MODULE_MISSING_EXPORTS: i32 = -3;
 pub const MODULE_INCOMPATIBLE_VER: i32 = -4;
-pub const MODULE_HARDCODED_SKIP: i32 = -5;
 pub const OBS_OUTPUT_SUCCESS: u32 = 0;
 pub const OBS_OUTPUT_BAD_PATH: i32 = -1;
 pub const OBS_OUTPUT_CONNECT_FAILED: i32 = -2;
@@ -466,7 +587,6 @@ pub const OBS_OUTPUT_DISCONNECTED: i32 = -5;
 pub const OBS_OUTPUT_UNSUPPORTED: i32 = -6;
 pub const OBS_OUTPUT_NO_SPACE: i32 = -7;
 pub const OBS_OUTPUT_ENCODE_ERROR: i32 = -8;
-pub const OBS_OUTPUT_HDR_DISABLED: i32 = -9;
 pub const OBS_VIDEO_SUCCESS: u32 = 0;
 pub const OBS_VIDEO_FAIL: i32 = -1;
 pub const OBS_VIDEO_NOT_SUPPORTED: i32 = -2;
@@ -510,11 +630,6 @@ pub const OBS_OUTPUT_ENCODED: u32 = 4;
 pub const OBS_OUTPUT_SERVICE: u32 = 8;
 pub const OBS_OUTPUT_MULTI_TRACK: u32 = 16;
 pub const OBS_OUTPUT_CAN_PAUSE: u32 = 32;
-pub const OBS_OUTPUT_MULTI_TRACK_AUDIO: u32 = 16;
-pub const OBS_OUTPUT_MULTI_TRACK_VIDEO: u32 = 64;
-pub const OBS_OUTPUT_MULTI_TRACK_AV: u32 = 80;
-pub const MAX_OUTPUT_AUDIO_ENCODERS: u32 = 6;
-pub const MAX_OUTPUT_VIDEO_ENCODERS: u32 = 6;
 pub const XINPUT_MOUSE_LEN: u32 = 33;
 pub const OBS_MOUSE_BUTTON_DEFAULT: u32 = 1;
 pub const OBS_SOURCE_FRAME_LINEAR_ALPHA: u32 = 1;
@@ -1022,11 +1137,6 @@ pub const gs_color_format_GS_BGRX_UNORM: gs_color_format = 20;
 pub const gs_color_format_GS_BGRA_UNORM: gs_color_format = 21;
 pub const gs_color_format_GS_RG16: gs_color_format = 22;
 pub type gs_color_format = ::std::os::raw::c_int;
-pub const gs_color_space_GS_CS_SRGB: gs_color_space = 0;
-pub const gs_color_space_GS_CS_SRGB_16F: gs_color_space = 1;
-pub const gs_color_space_GS_CS_709_EXTENDED: gs_color_space = 2;
-pub const gs_color_space_GS_CS_709_SCRGB: gs_color_space = 3;
-pub type gs_color_space = ::std::os::raw::c_int;
 pub const gs_zstencil_format_GS_ZS_NONE: gs_zstencil_format = 0;
 pub const gs_zstencil_format_GS_Z16: gs_zstencil_format = 1;
 pub const gs_zstencil_format_GS_Z24_S8: gs_zstencil_format = 2;
@@ -2297,7 +2407,6 @@ pub struct audio_convert_info {
     pub samples_per_sec: u32,
     pub format: audio_format,
     pub speakers: speaker_layout,
-    pub allow_clipping: bool,
 }
 impl Default for audio_convert_info {
     fn default() -> Self {
@@ -2339,27 +2448,11 @@ pub const video_format_VIDEO_FORMAT_I40A: video_format = 13;
 pub const video_format_VIDEO_FORMAT_I42A: video_format = 14;
 pub const video_format_VIDEO_FORMAT_YUVA: video_format = 15;
 pub const video_format_VIDEO_FORMAT_AYUV: video_format = 16;
-pub const video_format_VIDEO_FORMAT_I010: video_format = 17;
-pub const video_format_VIDEO_FORMAT_P010: video_format = 18;
-pub const video_format_VIDEO_FORMAT_I210: video_format = 19;
-pub const video_format_VIDEO_FORMAT_I412: video_format = 20;
-pub const video_format_VIDEO_FORMAT_YA2L: video_format = 21;
-pub const video_format_VIDEO_FORMAT_P216: video_format = 22;
-pub const video_format_VIDEO_FORMAT_P416: video_format = 23;
-pub const video_format_VIDEO_FORMAT_V210: video_format = 24;
-pub const video_format_VIDEO_FORMAT_R10L: video_format = 25;
 pub type video_format = ::std::os::raw::c_int;
-pub const video_trc_VIDEO_TRC_DEFAULT: video_trc = 0;
-pub const video_trc_VIDEO_TRC_SRGB: video_trc = 1;
-pub const video_trc_VIDEO_TRC_PQ: video_trc = 2;
-pub const video_trc_VIDEO_TRC_HLG: video_trc = 3;
-pub type video_trc = ::std::os::raw::c_int;
 pub const video_colorspace_VIDEO_CS_DEFAULT: video_colorspace = 0;
 pub const video_colorspace_VIDEO_CS_601: video_colorspace = 1;
 pub const video_colorspace_VIDEO_CS_709: video_colorspace = 2;
 pub const video_colorspace_VIDEO_CS_SRGB: video_colorspace = 3;
-pub const video_colorspace_VIDEO_CS_2100_PQ: video_colorspace = 4;
-pub const video_colorspace_VIDEO_CS_2100_HLG: video_colorspace = 5;
 pub type video_colorspace = ::std::os::raw::c_int;
 pub const video_range_type_VIDEO_RANGE_DEFAULT: video_range_type = 0;
 pub const video_range_type_VIDEO_RANGE_PARTIAL: video_range_type = 1;
@@ -2580,12 +2673,10 @@ pub const obs_combo_format_OBS_COMBO_FORMAT_INVALID: obs_combo_format = 0;
 pub const obs_combo_format_OBS_COMBO_FORMAT_INT: obs_combo_format = 1;
 pub const obs_combo_format_OBS_COMBO_FORMAT_FLOAT: obs_combo_format = 2;
 pub const obs_combo_format_OBS_COMBO_FORMAT_STRING: obs_combo_format = 3;
-pub const obs_combo_format_OBS_COMBO_FORMAT_BOOL: obs_combo_format = 4;
 pub type obs_combo_format = ::std::os::raw::c_int;
 pub const obs_combo_type_OBS_COMBO_TYPE_INVALID: obs_combo_type = 0;
 pub const obs_combo_type_OBS_COMBO_TYPE_EDITABLE: obs_combo_type = 1;
 pub const obs_combo_type_OBS_COMBO_TYPE_LIST: obs_combo_type = 2;
-pub const obs_combo_type_OBS_COMBO_TYPE_RADIO: obs_combo_type = 3;
 pub type obs_combo_type = ::std::os::raw::c_int;
 pub const obs_editable_list_type_OBS_EDITABLE_LIST_TYPE_STRINGS: obs_editable_list_type = 0;
 pub const obs_editable_list_type_OBS_EDITABLE_LIST_TYPE_FILES: obs_editable_list_type = 1;
@@ -2598,12 +2689,7 @@ pub type obs_path_type = ::std::os::raw::c_int;
 pub const obs_text_type_OBS_TEXT_DEFAULT: obs_text_type = 0;
 pub const obs_text_type_OBS_TEXT_PASSWORD: obs_text_type = 1;
 pub const obs_text_type_OBS_TEXT_MULTILINE: obs_text_type = 2;
-pub const obs_text_type_OBS_TEXT_INFO: obs_text_type = 3;
 pub type obs_text_type = ::std::os::raw::c_int;
-pub const obs_text_info_type_OBS_TEXT_INFO_NORMAL: obs_text_info_type = 0;
-pub const obs_text_info_type_OBS_TEXT_INFO_WARNING: obs_text_info_type = 1;
-pub const obs_text_info_type_OBS_TEXT_INFO_ERROR: obs_text_info_type = 2;
-pub type obs_text_info_type = ::std::os::raw::c_int;
 pub const obs_number_type_OBS_NUMBER_SCROLLER: obs_number_type = 0;
 pub const obs_number_type_OBS_NUMBER_SLIDER: obs_number_type = 1;
 pub type obs_number_type = ::std::os::raw::c_int;
@@ -2840,7 +2926,6 @@ pub const obs_icon_type_OBS_ICON_TYPE_TEXT: obs_icon_type = 10;
 pub const obs_icon_type_OBS_ICON_TYPE_MEDIA: obs_icon_type = 11;
 pub const obs_icon_type_OBS_ICON_TYPE_BROWSER: obs_icon_type = 12;
 pub const obs_icon_type_OBS_ICON_TYPE_CUSTOM: obs_icon_type = 13;
-pub const obs_icon_type_OBS_ICON_TYPE_PROCESS_AUDIO_OUTPUT: obs_icon_type = 14;
 pub type obs_icon_type = ::std::os::raw::c_int;
 pub const obs_media_state_OBS_MEDIA_STATE_NONE: obs_media_state = 0;
 pub const obs_media_state_OBS_MEDIA_STATE_PLAYING: obs_media_state = 1;
@@ -3028,17 +3113,6 @@ pub struct obs_source_info {
     #[doc = " Missing files"]
     pub missing_files:
         ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut obs_missing_files_t>,
-    #[doc = " Get color space"]
-    pub video_get_color_space: ::std::option::Option<
-        unsafe extern "C" fn(
-            data: *mut ::std::os::raw::c_void,
-            count: usize,
-            preferred_spaces: *const gs_color_space,
-        ) -> gs_color_space,
-    >,
-    #[doc = " Called when the filter is added to a source\n\n @param  data    Filter data\n @param  source  Source that the filter is being added to"]
-    pub filter_add:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, source: *mut obs_source_t)>,
 }
 impl Default for obs_source_info {
     fn default() -> Self {
@@ -3244,7 +3318,6 @@ pub struct obs_output_info {
     pub raw_audio2: ::std::option::Option<
         unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, idx: usize, frames: *mut audio_data),
     >,
-    pub protocols: *const ::std::os::raw::c_char,
 }
 impl Default for obs_output_info {
     fn default() -> Self {
@@ -3261,14 +3334,6 @@ pub struct obs_service_resolution {
     pub cx: ::std::os::raw::c_int,
     pub cy: ::std::os::raw::c_int,
 }
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_SERVER_URL: obs_service_connect_info = 0;
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_STREAM_ID: obs_service_connect_info = 2;
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_STREAM_KEY: obs_service_connect_info = 2;
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_USERNAME: obs_service_connect_info = 4;
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_PASSWORD: obs_service_connect_info = 6;
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_ENCRYPT_PASSPHRASE: obs_service_connect_info = 8;
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_BEARER_TOKEN: obs_service_connect_info = 10;
-pub type obs_service_connect_info = ::std::os::raw::c_int;
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
 pub struct obs_service_info {
@@ -3328,18 +3393,6 @@ pub struct obs_service_info {
             audio_bitrate: *mut ::std::os::raw::c_int,
         ),
     >,
-    pub get_supported_video_codecs: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut *const ::std::os::raw::c_char,
-    >,
-    pub get_protocol:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char>,
-    pub get_supported_audio_codecs: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> *mut *const ::std::os::raw::c_char,
-    >,
-    pub get_connect_info: ::std::option::Option<
-        unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, type_: u32) -> *const ::std::os::raw::c_char,
-    >,
-    pub can_try_to_connect: ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void) -> bool>,
 }
 impl Default for obs_service_info {
     fn default() -> Self {
@@ -4147,9 +4200,6 @@ pub const obs_scale_type_OBS_SCALE_BILINEAR: obs_scale_type = 3;
 pub const obs_scale_type_OBS_SCALE_LANCZOS: obs_scale_type = 4;
 pub const obs_scale_type_OBS_SCALE_AREA: obs_scale_type = 5;
 pub type obs_scale_type = ::std::os::raw::c_int;
-pub const obs_blending_method_OBS_BLEND_METHOD_DEFAULT: obs_blending_method = 0;
-pub const obs_blending_method_OBS_BLEND_METHOD_SRGB_OFF: obs_blending_method = 1;
-pub type obs_blending_method = ::std::os::raw::c_int;
 pub const obs_blending_type_OBS_BLEND_NORMAL: obs_blending_type = 0;
 pub const obs_blending_type_OBS_BLEND_ADDITIVE: obs_blending_type = 1;
 pub const obs_blending_type_OBS_BLEND_SUBTRACT: obs_blending_type = 2;
@@ -4250,23 +4300,6 @@ impl Default for obs_audio_info {
         }
     }
 }
-#[repr(C)]
-#[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
-pub struct obs_audio_info2 {
-    pub samples_per_sec: u32,
-    pub speakers: speaker_layout,
-    pub max_buffering_ms: u32,
-    pub fixed_buffering: bool,
-}
-impl Default for obs_audio_info2 {
-    fn default() -> Self {
-        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
 #[doc = " Sent to source filters via the filter_audio callback to allow filtering of\n audio data"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
@@ -4332,12 +4365,10 @@ pub struct obs_source_frame {
     pub format: video_format,
     pub color_matrix: [f32; 16usize],
     pub full_range: bool,
-    pub max_luminance: u16,
     pub color_range_min: [f32; 3usize],
     pub color_range_max: [f32; 3usize],
     pub flip: bool,
     pub flags: u8,
-    pub trc: u8,
     pub refs: ::std::os::raw::c_long,
     pub prev_frame: bool,
 }
@@ -4365,7 +4396,6 @@ pub struct obs_source_frame2 {
     pub color_range_max: [f32; 3usize],
     pub flip: bool,
     pub flags: u8,
-    pub trc: u8,
 }
 impl Default for obs_source_frame2 {
     fn default() -> Self {
@@ -4394,21 +4424,6 @@ impl Default for obs_cmdline_args {
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
-pub struct obs_module_failure_info {
-    pub failed_modules: *mut *mut ::std::os::raw::c_char,
-    pub count: usize,
-}
-impl Default for obs_module_failure_info {
-    fn default() -> Self {
-        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
 pub struct obs_module_info {
     pub bin_path: *const ::std::os::raw::c_char,
     pub data_path: *const ::std::os::raw::c_char,
@@ -4424,24 +4439,6 @@ impl Default for obs_module_info {
 }
 pub type obs_find_module_callback_t =
     ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, info: *const obs_module_info)>;
-#[repr(C)]
-#[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
-pub struct obs_module_info2 {
-    pub bin_path: *const ::std::os::raw::c_char,
-    pub data_path: *const ::std::os::raw::c_char,
-    pub name: *const ::std::os::raw::c_char,
-}
-impl Default for obs_module_info2 {
-    fn default() -> Self {
-        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
-pub type obs_find_module_callback2_t =
-    ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, info: *const obs_module_info2)>;
 pub type obs_enum_module_callback_t =
     ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, module: *mut obs_module_t)>;
 #[doc = "< RGB/YUV"]
@@ -5217,16 +5214,9 @@ extern "C" {
     pub fn gs_texrender_create(format: gs_color_format, zsformat: gs_zstencil_format) -> *mut gs_texrender_t;
     pub fn gs_texrender_destroy(texrender: *mut gs_texrender_t);
     pub fn gs_texrender_begin(texrender: *mut gs_texrender_t, cx: u32, cy: u32) -> bool;
-    pub fn gs_texrender_begin_with_color_space(
-        texrender: *mut gs_texrender_t,
-        cx: u32,
-        cy: u32,
-        space: gs_color_space,
-    ) -> bool;
     pub fn gs_texrender_end(texrender: *mut gs_texrender_t);
     pub fn gs_texrender_reset(texrender: *mut gs_texrender_t);
     pub fn gs_texrender_get_texture(texrender: *const gs_texrender_t) -> *mut gs_texture_t;
-    pub fn gs_texrender_get_format(texrender: *const gs_texrender_t) -> gs_color_format;
     pub fn gs_get_device_name() -> *const ::std::os::raw::c_char;
     pub fn gs_get_device_type() -> ::std::os::raw::c_int;
     pub fn gs_enum_adapters(
@@ -5309,14 +5299,6 @@ extern "C" {
         cx: *mut u32,
         cy: *mut u32,
     ) -> *mut u8;
-    pub fn gs_create_texture_file_data3(
-        file: *const ::std::os::raw::c_char,
-        alpha_mode: gs_image_alpha_mode,
-        format: *mut gs_color_format,
-        cx: *mut u32,
-        cy: *mut u32,
-        space: *mut gs_color_space,
-    ) -> *mut u8;
     #[doc = " Draws a 2D sprite\n\n   If width or height is 0, the width or height of the texture will be used.\n The flip value specifies whether the texture should be flipped on the U or V\n axis with GS_FLIP_U and GS_FLIP_V."]
     pub fn gs_draw_sprite(tex: *mut gs_texture_t, flip: u32, width: u32, height: u32);
     pub fn gs_draw_sprite_subregion(tex: *mut gs_texture_t, flip: u32, x: u32, y: u32, cx: u32, cy: u32);
@@ -5351,7 +5333,6 @@ extern "C" {
     pub fn gs_reset_blend_state();
     pub fn gs_swapchain_create(data: *const gs_init_data) -> *mut gs_swapchain_t;
     pub fn gs_resize(x: u32, y: u32);
-    pub fn gs_update_color_space();
     pub fn gs_get_size(x: *mut u32, y: *mut u32);
     pub fn gs_get_width() -> u32;
     pub fn gs_get_height() -> u32;
@@ -5411,15 +5392,9 @@ extern "C" {
     pub fn gs_load_default_samplerstate(b_3d: bool, unit: ::std::os::raw::c_int);
     pub fn gs_get_vertex_shader() -> *mut gs_shader_t;
     pub fn gs_get_pixel_shader() -> *mut gs_shader_t;
-    pub fn gs_get_color_space() -> gs_color_space;
     pub fn gs_get_render_target() -> *mut gs_texture_t;
     pub fn gs_get_zstencil_target() -> *mut gs_zstencil_t;
     pub fn gs_set_render_target(tex: *mut gs_texture_t, zstencil: *mut gs_zstencil_t);
-    pub fn gs_set_render_target_with_color_space(
-        tex: *mut gs_texture_t,
-        zstencil: *mut gs_zstencil_t,
-        space: gs_color_space,
-    );
     pub fn gs_set_cube_render_target(
         cubetex: *mut gs_texture_t,
         side: ::std::os::raw::c_int,
@@ -5447,7 +5422,6 @@ extern "C" {
     pub fn gs_end_scene();
     pub fn gs_load_swapchain(swapchain: *mut gs_swapchain_t);
     pub fn gs_clear(clear_flags: u32, color: *const vec4, depth: f32, stencil: u8);
-    pub fn gs_is_present_ready() -> bool;
     pub fn gs_present();
     pub fn gs_flush();
     pub fn gs_set_cull_mode(mode: gs_cull_mode);
@@ -5531,8 +5505,6 @@ extern "C" {
     pub fn gs_timer_range_end(range: *mut gs_timer_range_t);
     pub fn gs_timer_range_get_data(range: *mut gs_timer_range_t, disjoint: *mut bool, frequency: *mut u64) -> bool;
     pub fn gs_nv12_available() -> bool;
-    pub fn gs_p010_available() -> bool;
-    pub fn gs_is_monitor_hdr(monitor: *mut ::std::os::raw::c_void) -> bool;
     pub fn gs_debug_marker_begin(color: *const f32, markername: *const ::std::os::raw::c_char);
     pub fn gs_debug_marker_begin_format(color: *const f32, format: *const ::std::os::raw::c_char, ...);
     pub fn gs_debug_marker_end();
@@ -5549,10 +5521,7 @@ extern "C" {
     pub fn gs_duplicator_destroy(duplicator: *mut gs_duplicator_t);
     pub fn gs_duplicator_update_frame(duplicator: *mut gs_duplicator_t) -> bool;
     pub fn gs_duplicator_get_texture(duplicator: *mut gs_duplicator_t) -> *mut gs_texture_t;
-    pub fn gs_duplicator_get_color_space(duplicator: *mut gs_duplicator_t) -> gs_color_space;
-    pub fn gs_duplicator_get_sdr_white_level(duplicator: *mut gs_duplicator_t) -> f32;
     pub fn gs_get_adapter_count() -> u32;
-    pub fn gs_can_adapter_fast_clear() -> bool;
     #[doc = " creates a windows GDI-lockable texture"]
     pub fn gs_texture_create_gdi(width: u32, height: u32) -> *mut gs_texture_t;
     pub fn gs_texture_get_dc(gdi_tex: *mut gs_texture_t) -> *mut ::std::os::raw::c_void;
@@ -5573,15 +5542,7 @@ extern "C" {
         height: u32,
         flags: u32,
     ) -> bool;
-    pub fn gs_texture_create_p010(
-        tex_y: *mut *mut gs_texture_t,
-        tex_uv: *mut *mut gs_texture_t,
-        width: u32,
-        height: u32,
-        flags: u32,
-    ) -> bool;
     pub fn gs_stagesurface_create_nv12(width: u32, height: u32) -> *mut gs_stagesurf_t;
-    pub fn gs_stagesurface_create_p010(width: u32, height: u32) -> *mut gs_stagesurf_t;
     pub fn gs_register_loss_callbacks(callbacks: *const gs_device_loss);
     pub fn gs_unregister_loss_callbacks(data: *mut ::std::os::raw::c_void);
     pub static _HUGE: f64;
@@ -5806,28 +5767,11 @@ extern "C" {
         min_range: *mut f32,
         max_range: *mut f32,
     ) -> bool;
-    pub fn video_format_get_parameters_for_format(
-        color_space: video_colorspace,
-        range: video_range_type,
-        format: video_format,
-        matrix: *mut f32,
-        min_range: *mut f32,
-        max_range: *mut f32,
-    ) -> bool;
     pub fn video_output_open(video: *mut *mut video_t, info: *mut video_output_info) -> ::std::os::raw::c_int;
     pub fn video_output_close(video: *mut video_t);
     pub fn video_output_connect(
         video: *mut video_t,
         conversion: *const video_scale_info,
-        callback: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, frame: *mut video_data),
-        >,
-        param: *mut ::std::os::raw::c_void,
-    ) -> bool;
-    pub fn video_output_connect2(
-        video: *mut video_t,
-        conversion: *const video_scale_info,
-        frame_rate_divisor: u32,
         callback: ::std::option::Option<
             unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, frame: *mut video_data),
         >,
@@ -5862,8 +5806,6 @@ extern "C" {
     pub fn video_output_dec_texture_encoders(video: *mut video_t);
     pub fn video_output_inc_texture_frames(video: *mut video_t);
     pub fn video_output_inc_texture_skipped_frames(video: *mut video_t);
-    pub fn video_output_create_with_frame_rate_divisor(video: *mut video_t, divisor: u32) -> *mut video_t;
-    pub fn video_output_free_frame_rate_divisor(video: *mut video_t);
     pub fn calldata_get_data(
         data: *const calldata_t,
         name: *const ::std::os::raw::c_char,
@@ -5942,16 +5884,9 @@ extern "C" {
     pub fn obs_data_addref(data: *mut obs_data_t);
     pub fn obs_data_release(data: *mut obs_data_t);
     pub fn obs_data_get_json(data: *mut obs_data_t) -> *const ::std::os::raw::c_char;
-    pub fn obs_data_get_json_pretty(data: *mut obs_data_t) -> *const ::std::os::raw::c_char;
     pub fn obs_data_get_last_json(data: *mut obs_data_t) -> *const ::std::os::raw::c_char;
     pub fn obs_data_save_json(data: *mut obs_data_t, file: *const ::std::os::raw::c_char) -> bool;
     pub fn obs_data_save_json_safe(
-        data: *mut obs_data_t,
-        file: *const ::std::os::raw::c_char,
-        temp_ext: *const ::std::os::raw::c_char,
-        backup_ext: *const ::std::os::raw::c_char,
-    ) -> bool;
-    pub fn obs_data_save_json_pretty_safe(
         data: *mut obs_data_t,
         file: *const ::std::os::raw::c_char,
         temp_ext: *const ::std::os::raw::c_char,
@@ -6296,7 +6231,7 @@ extern "C" {
         description: *const ::std::os::raw::c_char,
         type_: obs_text_type,
     ) -> *mut obs_property_t;
-    #[doc = " Adds a 'path' property.  Can be a directory or a file.\n\n If target is a file path, the filters should be this format, separated by\n double semicolons, and extensions separated by space:\n   \"Example types 1 and 2 (*.ex1 *.ex2);;Example type 3 (*.ex3)\"\n\n @param  props        Properties object\n @param  name         Settings name\n @param  description  Description (display name) of the property\n @param  type         Type of path (directory or file)\n @param  filter       If type is a file path, then describes the file filter\n                      that the user can browse.  Items are separated via\n                      double semicolons.  If multiple file types in a\n                      filter, separate with space."]
+    #[doc = " Adds a 'path' property.  Can be a directory or a file.\n\n If target is a file path, the filters should be this format, separated by\n double semi-colens, and extensions separated by space:\n   \"Example types 1 and 2 (*.ex1 *.ex2);;Example type 3 (*.ex3)\"\n\n @param  props        Properties object\n @param  name         Settings name\n @param  description  Description (display name) of the property\n @param  type         Type of path (directory or file)\n @param  filter       If type is a file path, then describes the file filter\n                      that the user can browse.  Items are separated via\n                      double semi-colens.  If multiple file types in a\n                      filter, separate with space."]
     pub fn obs_properties_add_path(
         props: *mut obs_properties_t,
         name: *const ::std::os::raw::c_char,
@@ -6392,8 +6327,6 @@ extern "C" {
     pub fn obs_property_float_suffix(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
     pub fn obs_property_text_type(p: *mut obs_property_t) -> obs_text_type;
     pub fn obs_property_text_monospace(p: *mut obs_property_t) -> bool;
-    pub fn obs_property_text_info_type(p: *mut obs_property_t) -> obs_text_info_type;
-    pub fn obs_property_text_info_word_wrap(p: *mut obs_property_t) -> bool;
     pub fn obs_property_path_type(p: *mut obs_property_t) -> obs_path_type;
     pub fn obs_property_path_filter(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
     pub fn obs_property_path_default_path(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
@@ -6409,8 +6342,6 @@ extern "C" {
     pub fn obs_property_int_set_suffix(p: *mut obs_property_t, suffix: *const ::std::os::raw::c_char);
     pub fn obs_property_float_set_suffix(p: *mut obs_property_t, suffix: *const ::std::os::raw::c_char);
     pub fn obs_property_text_set_monospace(p: *mut obs_property_t, monospace: bool);
-    pub fn obs_property_text_set_info_type(p: *mut obs_property_t, type_: obs_text_info_type);
-    pub fn obs_property_text_set_info_word_wrap(p: *mut obs_property_t, word_wrap: bool);
     pub fn obs_property_button_set_type(p: *mut obs_property_t, type_: obs_button_type);
     pub fn obs_property_button_set_url(p: *mut obs_property_t, url: *mut ::std::os::raw::c_char);
     pub fn obs_property_list_clear(p: *mut obs_property_t);
@@ -6425,7 +6356,6 @@ extern "C" {
         val: ::std::os::raw::c_longlong,
     ) -> usize;
     pub fn obs_property_list_add_float(p: *mut obs_property_t, name: *const ::std::os::raw::c_char, val: f64) -> usize;
-    pub fn obs_property_list_add_bool(p: *mut obs_property_t, name: *const ::std::os::raw::c_char, val: bool) -> usize;
     pub fn obs_property_list_insert_string(
         p: *mut obs_property_t,
         idx: usize,
@@ -6444,12 +6374,6 @@ extern "C" {
         name: *const ::std::os::raw::c_char,
         val: f64,
     );
-    pub fn obs_property_list_insert_bool(
-        p: *mut obs_property_t,
-        idx: usize,
-        name: *const ::std::os::raw::c_char,
-        val: bool,
-    );
     pub fn obs_property_list_item_disable(p: *mut obs_property_t, idx: usize, disabled: bool);
     pub fn obs_property_list_item_disabled(p: *mut obs_property_t, idx: usize) -> bool;
     pub fn obs_property_list_item_remove(p: *mut obs_property_t, idx: usize);
@@ -6458,7 +6382,6 @@ extern "C" {
     pub fn obs_property_list_item_string(p: *mut obs_property_t, idx: usize) -> *const ::std::os::raw::c_char;
     pub fn obs_property_list_item_int(p: *mut obs_property_t, idx: usize) -> ::std::os::raw::c_longlong;
     pub fn obs_property_list_item_float(p: *mut obs_property_t, idx: usize) -> f64;
-    pub fn obs_property_list_item_bool(p: *mut obs_property_t, idx: usize) -> bool;
     pub fn obs_property_editable_list_type(p: *mut obs_property_t) -> obs_editable_list_type;
     pub fn obs_property_editable_list_filter(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
     pub fn obs_property_editable_list_default_path(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
@@ -6776,15 +6699,8 @@ extern "C" {
     pub fn obs_reset_video(ovi: *mut obs_video_info) -> ::std::os::raw::c_int;
     #[doc = " Sets base audio output format/channels/samples/etc\n\n @note Cannot reset base audio if an output is currently active."]
     pub fn obs_reset_audio(oai: *const obs_audio_info) -> bool;
-    pub fn obs_reset_audio2(oai: *const obs_audio_info2) -> bool;
     #[doc = " Gets the current video settings, returns false if no video"]
     pub fn obs_get_video_info(ovi: *mut obs_video_info) -> bool;
-    #[doc = " Gets the SDR white level, returns 300.f if no video"]
-    pub fn obs_get_video_sdr_white_level() -> f32;
-    #[doc = " Gets the HDR nominal peak level, returns 1000.f if no video"]
-    pub fn obs_get_video_hdr_nominal_peak_level() -> f32;
-    #[doc = " Sets the video levels"]
-    pub fn obs_set_video_levels(sdr_white_level: f32, hdr_nominal_peak_level: f32);
     #[doc = " Gets the current audio settings, returns false if no audio"]
     pub fn obs_get_audio_info(oai: *mut obs_audio_info) -> bool;
     #[doc = " Opens a plugin module directly from a specific path.\n\n If the module already exists then the function will return successful, and\n the module parameter will be given the pointer to the existing module.\n\n This does not initialize the module, it only loads the module image.  To\n initialize the module, call obs_init_module.\n\n @param  module     The pointer to the created module.\n @param  path       Specifies the path to the module library file.  If the\n                    extension is not specified, it will use the extension\n                    appropriate to the operating system.\n @param  data_path  Specifies the path to the directory where the module's\n                    data files are stored.\n @returns           MODULE_SUCCESS if successful\n                    MODULE_ERROR if a generic error occurred\n                    MODULE_FILE_NOT_FOUND if the module was not found\n                    MODULE_MISSING_EXPORTS if required exports are missing\n                    MODULE_INCOMPATIBLE_VER if incompatible version"]
@@ -6825,18 +6741,12 @@ extern "C" {
     pub fn obs_get_module_data_path(module: *mut obs_module_t) -> *const ::std::os::raw::c_char;
     #[doc = " Adds a module search path to be used with obs_find_modules.  If the search\n path strings contain %module%, that text will be replaced with the module\n name when used.\n\n @param  bin   Specifies the module's binary directory search path.\n @param  data  Specifies the module's data directory search path."]
     pub fn obs_add_module_path(bin: *const ::std::os::raw::c_char, data: *const ::std::os::raw::c_char);
-    #[doc = " Adds a module to the list of modules allowed to load in Safe Mode.\n If the list is empty, all modules are allowed.\n\n @param  name  Specifies the module's name (filename sans extension)."]
-    pub fn obs_add_safe_module(name: *const ::std::os::raw::c_char);
     #[doc = " Automatically loads all modules from module paths (convenience function)"]
     pub fn obs_load_all_modules();
-    pub fn obs_module_failure_info_free(mfi: *mut obs_module_failure_info);
-    pub fn obs_load_all_modules2(mfi: *mut obs_module_failure_info);
     #[doc = " Notifies modules that all modules have been loaded.  This function should\n be called after all modules have been loaded."]
     pub fn obs_post_load_modules();
     #[doc = " Finds all modules within the search paths added by obs_add_module_path."]
     pub fn obs_find_modules(callback: obs_find_module_callback_t, param: *mut ::std::os::raw::c_void);
-    #[doc = " Finds all modules within the search paths added by obs_add_module_path."]
-    pub fn obs_find_modules2(callback: obs_find_module_callback2_t, param: *mut ::std::os::raw::c_void);
     #[doc = " Enumerates all loaded modules"]
     pub fn obs_enum_modules(callback: obs_enum_module_callback_t, param: *mut ::std::os::raw::c_void);
     #[doc = " Helper function for using default module locale"]
@@ -6934,12 +6844,8 @@ extern "C" {
     );
     #[doc = " Gets a source by its name.\n\n   Increments the source reference counter, use obs_source_release to\n release it when complete."]
     pub fn obs_get_source_by_name(name: *const ::std::os::raw::c_char) -> *mut obs_source_t;
-    #[doc = " Gets a source by its UUID.\n\n   Increments the source reference counter, use obs_source_release to\n release it when complete."]
-    pub fn obs_get_source_by_uuid(uuid: *const ::std::os::raw::c_char) -> *mut obs_source_t;
     #[doc = " Get a transition source by its name."]
     pub fn obs_get_transition_by_name(name: *const ::std::os::raw::c_char) -> *mut obs_source_t;
-    #[doc = " Get a transition source by its UUID."]
-    pub fn obs_get_transition_by_uuid(uuid: *const ::std::os::raw::c_char) -> *mut obs_source_t;
     #[doc = " Gets an output by its name."]
     pub fn obs_get_output_by_name(name: *const ::std::os::raw::c_char) -> *mut obs_output_t;
     #[doc = " Gets an encoder by its name."]
@@ -6969,8 +6875,6 @@ extern "C" {
     pub fn obs_save_source(source: *mut obs_source_t) -> *mut obs_data_t;
     #[doc = " Loads a source from settings data"]
     pub fn obs_load_source(data: *mut obs_data_t) -> *mut obs_source_t;
-    #[doc = " Loads a private source from settings data"]
-    pub fn obs_load_private_source(data: *mut obs_data_t) -> *mut obs_source_t;
     #[doc = " Send a save signal to sources"]
     pub fn obs_source_save(source: *mut obs_source_t);
     #[doc = " Send a load signal to sources (soft deprecated; does not load filters)"]
@@ -6989,8 +6893,6 @@ extern "C" {
         cb: obs_save_source_filter_cb,
         data: *mut ::std::os::raw::c_void,
     ) -> *mut obs_data_array_t;
-    #[doc = " Reset source UUIDs. NOTE: this function is only to be used by the UI and\n  will be removed in a future version!"]
-    pub fn obs_reset_source_uuids();
     pub fn obs_obj_get_type(obj: *mut ::std::os::raw::c_void) -> obs_obj_type;
     pub fn obs_obj_get_id(obj: *mut ::std::os::raw::c_void) -> *const ::std::os::raw::c_char;
     pub fn obs_obj_invalid(obj: *mut ::std::os::raw::c_void) -> bool;
@@ -7022,24 +6924,8 @@ extern "C" {
         draw: ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, cx: u32, cy: u32)>,
         param: *mut ::std::os::raw::c_void,
     );
-    pub fn obs_add_main_rendered_callback(
-        rendered: ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void)>,
-        param: *mut ::std::os::raw::c_void,
-    );
-    pub fn obs_remove_main_rendered_callback(
-        rendered: ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void)>,
-        param: *mut ::std::os::raw::c_void,
-    );
     pub fn obs_add_raw_video_callback(
         conversion: *const video_scale_info,
-        callback: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, frame: *mut video_data),
-        >,
-        param: *mut ::std::os::raw::c_void,
-    );
-    pub fn obs_add_raw_video_callback2(
-        conversion: *const video_scale_info,
-        frame_rate_divisor: u32,
         callback: ::std::option::Option<
             unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, frame: *mut video_data),
         >,
@@ -7069,7 +6955,6 @@ extern "C" {
     pub fn obs_get_total_frames() -> u32;
     pub fn obs_get_lagged_frames() -> u32;
     pub fn obs_nv12_tex_active() -> bool;
-    pub fn obs_p010_tex_active() -> bool;
     pub fn obs_apply_private_data(settings: *mut obs_data_t);
     pub fn obs_set_private_data(settings: *mut obs_data_t);
     pub fn obs_get_private_data() -> *mut obs_data_t;
@@ -7095,22 +6980,12 @@ extern "C" {
     pub fn obs_view_get_source(view: *mut obs_view_t, channel: u32) -> *mut obs_source_t;
     #[doc = " Renders the sources of this view context"]
     pub fn obs_view_render(view: *mut obs_view_t);
-    #[doc = " Adds a view to the main render loop, with current obs_get_video_info state"]
-    pub fn obs_view_add(view: *mut obs_view_t) -> *mut video_t;
-    #[doc = " Adds a view to the main render loop, with custom video settings"]
-    pub fn obs_view_add2(view: *mut obs_view_t, ovi: *mut obs_video_info) -> *mut video_t;
-    #[doc = " Removes a view from the main render loop"]
-    pub fn obs_view_remove(view: *mut obs_view_t);
-    #[doc = " Gets the video settings currently in use for this view context, returns false if no video"]
-    pub fn obs_view_get_video_info(view: *mut obs_view_t, ovi: *mut obs_video_info) -> bool;
     #[doc = " Adds a new window display linked to the main render pipeline.  This creates\n a new swap chain which updates every frame.\n\n @param  graphics_data  The swap chain initialization data.\n @return                The new display context, or NULL if failed."]
     pub fn obs_display_create(graphics_data: *const gs_init_data, backround_color: u32) -> *mut obs_display_t;
     #[doc = " Destroys a display context"]
     pub fn obs_display_destroy(display: *mut obs_display_t);
     #[doc = " Changes the size of this display"]
     pub fn obs_display_resize(display: *mut obs_display_t, cx: u32, cy: u32);
-    #[doc = " Updates the color space of this display"]
-    pub fn obs_display_update_color_space(display: *mut obs_display_t);
     #[doc = " Adds a draw callback for this display context\n\n @param  display  The display context.\n @param  draw     The draw callback which is called each time a frame\n                  updates.\n @param  param    The user data to be associated with this draw callback."]
     pub fn obs_display_add_draw_callback(
         display: *mut obs_display_t,
@@ -7193,12 +7068,6 @@ extern "C" {
     pub fn obs_source_get_width(source: *mut obs_source_t) -> u32;
     #[doc = " Gets the height of a source (if it has video)"]
     pub fn obs_source_get_height(source: *mut obs_source_t) -> u32;
-    #[doc = " Gets the color space of a source (if it has video)"]
-    pub fn obs_source_get_color_space(
-        source: *mut obs_source_t,
-        count: usize,
-        preferred_spaces: *const gs_color_space,
-    ) -> gs_color_space;
     #[doc = " Hints whether or not the source will blend texels"]
     pub fn obs_source_get_texcoords_centered(source: *mut obs_source_t) -> bool;
     #[doc = " If the source is a filter, returns the parent source of the filter.  Only\n guaranteed to be valid inside of the video_render, filter_audio,\n filter_video, and filter_remove callbacks."]
@@ -7217,18 +7086,12 @@ extern "C" {
         filter: *mut obs_source_t,
         movement: obs_order_movement,
     );
-    #[doc = " Gets filter index"]
-    pub fn obs_source_filter_get_index(source: *mut obs_source_t, filter: *mut obs_source_t) -> ::std::os::raw::c_int;
-    #[doc = " Sets filter index"]
-    pub fn obs_source_filter_set_index(source: *mut obs_source_t, filter: *mut obs_source_t, index: usize);
     #[doc = " Gets the settings string for a source"]
     pub fn obs_source_get_settings(source: *const obs_source_t) -> *mut obs_data_t;
     #[doc = " Gets the name of a source"]
     pub fn obs_source_get_name(source: *const obs_source_t) -> *const ::std::os::raw::c_char;
     #[doc = " Sets the name of a source"]
     pub fn obs_source_set_name(source: *mut obs_source_t, name: *const ::std::os::raw::c_char);
-    #[doc = " Gets the UUID of a source"]
-    pub fn obs_source_get_uuid(source: *const obs_source_t) -> *const ::std::os::raw::c_char;
     #[doc = " Gets the source type"]
     pub fn obs_source_get_type(source: *const obs_source_t) -> obs_source_type;
     #[doc = " Gets the source identifier"]
@@ -7315,16 +7178,6 @@ extern "C" {
     pub fn obs_source_enable_push_to_talk(source: *mut obs_source_t, enabled: bool);
     pub fn obs_source_get_push_to_talk_delay(source: *mut obs_source_t) -> u64;
     pub fn obs_source_set_push_to_talk_delay(source: *mut obs_source_t, delay: u64);
-    pub fn obs_source_add_audio_pause_callback(
-        source: *mut obs_source_t,
-        callback: signal_callback_t,
-        param: *mut ::std::os::raw::c_void,
-    );
-    pub fn obs_source_remove_audio_pause_callback(
-        source: *mut obs_source_t,
-        callback: signal_callback_t,
-        param: *mut ::std::os::raw::c_void,
-    );
     pub fn obs_source_add_audio_capture_callback(
         source: *mut obs_source_t,
         callback: obs_source_audio_capture_t,
@@ -7396,12 +7249,6 @@ extern "C" {
     pub fn obs_source_process_filter_begin(
         filter: *mut obs_source_t,
         format: gs_color_format,
-        allow_direct: obs_allow_direct_render,
-    ) -> bool;
-    pub fn obs_source_process_filter_begin_with_color_space(
-        filter: *mut obs_source_t,
-        format: gs_color_format,
-        space: gs_color_space,
         allow_direct: obs_allow_direct_render,
     ) -> bool;
     #[doc = " Draws the filter.\n\n Before calling this function, first call obs_source_process_filter_begin and\n then set the effect parameters, and then call this function to finalize the\n filter."]
@@ -7495,12 +7342,6 @@ extern "C" {
     pub fn obs_transition_get_time(transition: *mut obs_source_t) -> f32;
     pub fn obs_transition_force_stop(transition: *mut obs_source_t);
     pub fn obs_transition_video_render(transition: *mut obs_source_t, callback: obs_transition_video_render_callback_t);
-    pub fn obs_transition_video_render2(
-        transition: *mut obs_source_t,
-        callback: obs_transition_video_render_callback_t,
-        placeholder_texture: *mut gs_texture_t,
-    );
-    pub fn obs_transition_video_get_color_space(transition: *mut obs_source_t) -> gs_color_space;
     #[doc = " Directly renders its sub-source instead of to texture.  Returns false if no\n longer transitioning"]
     pub fn obs_transition_video_render_direct(transition: *mut obs_source_t, target: obs_transition_target) -> bool;
     pub fn obs_transition_audio_render(
@@ -7622,8 +7463,6 @@ extern "C" {
     pub fn obs_sceneitem_get_crop(item: *const obs_sceneitem_t, crop: *mut obs_sceneitem_crop);
     pub fn obs_sceneitem_set_scale_filter(item: *mut obs_sceneitem_t, filter: obs_scale_type);
     pub fn obs_sceneitem_get_scale_filter(item: *mut obs_sceneitem_t) -> obs_scale_type;
-    pub fn obs_sceneitem_set_blending_method(item: *mut obs_sceneitem_t, method: obs_blending_method);
-    pub fn obs_sceneitem_get_blending_method(item: *mut obs_sceneitem_t) -> obs_blending_method;
     pub fn obs_sceneitem_set_blending_mode(item: *mut obs_sceneitem_t, type_: obs_blending_type);
     pub fn obs_sceneitem_get_blending_mode(item: *mut obs_sceneitem_t) -> obs_blending_type;
     pub fn obs_sceneitem_force_update_transform(item: *mut obs_sceneitem_t);
@@ -7683,10 +7522,6 @@ extern "C" {
     pub fn obs_sceneitem_set_hide_transition_duration(item: *mut obs_sceneitem_t, duration_ms: u32);
     pub fn obs_sceneitem_get_hide_transition(item: *mut obs_sceneitem_t) -> *mut obs_source_t;
     pub fn obs_sceneitem_get_hide_transition_duration(item: *mut obs_sceneitem_t) -> u32;
-    pub fn obs_sceneitem_set_transition(item: *mut obs_sceneitem_t, show: bool, transition: *mut obs_source_t);
-    pub fn obs_sceneitem_get_transition(item: *mut obs_sceneitem_t, show: bool) -> *mut obs_source_t;
-    pub fn obs_sceneitem_set_transition_duration(item: *mut obs_sceneitem_t, show: bool, duration_ms: u32);
-    pub fn obs_sceneitem_get_transition_duration(item: *mut obs_sceneitem_t, show: bool) -> u32;
     pub fn obs_sceneitem_do_transition(item: *mut obs_sceneitem_t, visible: bool);
     pub fn obs_sceneitem_transition_load(item: *mut obs_scene_item, data: *mut obs_data_t, show: bool);
     pub fn obs_sceneitem_transition_save(item: *mut obs_scene_item, show: bool) -> *mut obs_data_t;
@@ -7762,14 +7597,10 @@ extern "C" {
     pub fn obs_output_get_mixers(output: *const obs_output_t) -> usize;
     #[doc = " Sets the current video encoder associated with this output,\n required for encoded outputs"]
     pub fn obs_output_set_video_encoder(output: *mut obs_output_t, encoder: *mut obs_encoder_t);
-    #[doc = " Sets the current video encoder associated with this output,\n required for encoded outputs.\n\n The idx parameter specifies the video encoder index.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise the parameter is ignored."]
-    pub fn obs_output_set_video_encoder2(output: *mut obs_output_t, encoder: *mut obs_encoder_t, idx: usize);
     #[doc = " Sets the current audio encoder associated with this output,\n required for encoded outputs.\n\n The idx parameter specifies the audio encoder index to set the encoder to.\n Only used with outputs that have multiple audio outputs (RTMP typically),\n otherwise the parameter is ignored."]
     pub fn obs_output_set_audio_encoder(output: *mut obs_output_t, encoder: *mut obs_encoder_t, idx: usize);
     #[doc = " Returns the current video encoder associated with this output"]
     pub fn obs_output_get_video_encoder(output: *const obs_output_t) -> *mut obs_encoder_t;
-    #[doc = " Returns the current video encoder associated with this output.\n\n The idx parameter specifies the video encoder index.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise specifying an idx > 0 returns a NULL."]
-    pub fn obs_output_get_video_encoder2(output: *const obs_output_t, idx: usize) -> *mut obs_encoder_t;
     #[doc = " Returns the current audio encoder associated with this output\n\n The idx parameter specifies the audio encoder index.  Only used with\n outputs that have multiple audio outputs, otherwise the parameter is\n ignored."]
     pub fn obs_output_get_audio_encoder(output: *const obs_output_t, idx: usize) -> *mut obs_encoder_t;
     #[doc = " Sets the current service associated with this output."]
@@ -7787,16 +7618,10 @@ extern "C" {
     pub fn obs_output_get_total_frames(output: *const obs_output_t) -> ::std::os::raw::c_int;
     #[doc = " Sets the preferred scaled resolution for this output.  Set width and height\n to 0 to disable scaling.\n\n If this output uses an encoder, it will call obs_encoder_set_scaled_size on\n the encoder before the stream is started.  If the encoder is already active,\n then this function will trigger a warning and do nothing."]
     pub fn obs_output_set_preferred_size(output: *mut obs_output_t, width: u32, height: u32);
-    #[doc = " Sets the preferred scaled resolution for this output.  Set width and height\n to 0 to disable scaling.\n\n If this output uses an encoder, it will call obs_encoder_set_scaled_size on\n the encoder before the stream is started.  If the encoder is already active,\n then this function will trigger a warning and do nothing.\n\n The idx parameter specifies the video encoder index to apply the scaling to.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise the parameter is ignored."]
-    pub fn obs_output_set_preferred_size2(output: *mut obs_output_t, width: u32, height: u32, idx: usize);
     #[doc = " For video outputs, returns the width of the encoded image"]
     pub fn obs_output_get_width(output: *const obs_output_t) -> u32;
-    #[doc = " For video outputs, returns the width of the encoded image.\n\n The idx parameter specifies the video encoder index.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise the parameter is ignored and returns 0."]
-    pub fn obs_output_get_width2(output: *const obs_output_t, idx: usize) -> u32;
     #[doc = " For video outputs, returns the height of the encoded image"]
     pub fn obs_output_get_height(output: *const obs_output_t) -> u32;
-    #[doc = " For video outputs, returns the height of the encoded image.\n\n The idx parameter specifies the video encoder index.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise the parameter is ignored and returns 0."]
-    pub fn obs_output_get_height2(output: *const obs_output_t, idx: usize) -> u32;
     pub fn obs_output_get_id(output: *const obs_output_t) -> *const ::std::os::raw::c_char;
     pub fn obs_output_caption(output: *mut obs_output_t, captions: *const obs_source_cea_708);
     pub fn obs_output_output_caption_text1(output: *mut obs_output_t, text: *const ::std::os::raw::c_char);
@@ -7813,30 +7638,16 @@ extern "C" {
     pub fn obs_output_get_last_error(output: *mut obs_output_t) -> *const ::std::os::raw::c_char;
     pub fn obs_output_get_supported_video_codecs(output: *const obs_output_t) -> *const ::std::os::raw::c_char;
     pub fn obs_output_get_supported_audio_codecs(output: *const obs_output_t) -> *const ::std::os::raw::c_char;
-    pub fn obs_output_get_protocols(output: *const obs_output_t) -> *const ::std::os::raw::c_char;
-    pub fn obs_is_output_protocol_registered(protocol: *const ::std::os::raw::c_char) -> bool;
-    pub fn obs_enum_output_protocols(idx: usize, protocol: *mut *mut ::std::os::raw::c_char) -> bool;
-    pub fn obs_enum_output_types_with_protocol(
-        protocol: *const ::std::os::raw::c_char,
-        data: *mut ::std::os::raw::c_void,
-        enum_cb: ::std::option::Option<
-            unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, id: *const ::std::os::raw::c_char) -> bool,
-        >,
-    );
-    pub fn obs_get_output_supported_video_codecs(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
-    pub fn obs_get_output_supported_audio_codecs(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
     pub fn obs_output_get_type_data(output: *mut obs_output_t) -> *mut ::std::os::raw::c_void;
-    #[doc = " Gets the video conversion info.  Used only for raw output"]
-    pub fn obs_output_get_video_conversion(output: *mut obs_output_t) -> *const video_scale_info;
     #[doc = " Optionally sets the video conversion info.  Used only for raw output"]
     pub fn obs_output_set_video_conversion(output: *mut obs_output_t, conversion: *const video_scale_info);
     #[doc = " Optionally sets the audio conversion info.  Used only for raw output"]
     pub fn obs_output_set_audio_conversion(output: *mut obs_output_t, conversion: *const audio_convert_info);
-    #[doc = " Returns whether data capture can begin"]
+    #[doc = " Returns whether data capture can begin with the specified flags"]
     pub fn obs_output_can_begin_data_capture(output: *const obs_output_t, flags: u32) -> bool;
     #[doc = " Initializes encoders (if any)"]
     pub fn obs_output_initialize_encoders(output: *mut obs_output_t, flags: u32) -> bool;
-    #[doc = " Begins data capture from media/encoders.\n\n @param  output  Output context\n @return         true if successful, false otherwise."]
+    #[doc = " Begins data capture from media/encoders.\n\n @param  output  Output context\n @param  flags   Set this to 0 to use default output flags set in the\n                 obs_output_info structure, otherwise set to a either\n                 OBS_OUTPUT_VIDEO or OBS_OUTPUT_AUDIO to specify whether to\n                 connect audio or video.  This is useful for things like\n                 ffmpeg which may or may not always want to use both audio\n                 and video.\n @return         true if successful, false otherwise."]
     pub fn obs_output_begin_data_capture(output: *mut obs_output_t, flags: u32) -> bool;
     #[doc = " Ends data capture from media/encoders"]
     pub fn obs_output_end_data_capture(output: *mut obs_output_t);
@@ -7880,22 +7691,12 @@ extern "C" {
     pub fn obs_encoder_get_type(encoder: *const obs_encoder_t) -> obs_encoder_type;
     #[doc = " Sets the scaled resolution for a video encoder.  Set width and height to 0\n to disable scaling.  If the encoder is active, this function will trigger\n a warning, and do nothing."]
     pub fn obs_encoder_set_scaled_size(encoder: *mut obs_encoder_t, width: u32, height: u32);
-    #[doc = " Enable/disable GPU based scaling for a video encoder.\n OBS_SCALE_DISABLE disables GPU based scaling (default),\n any other value enables GPU based scaling. If the encoder\n is active, this function will trigger a warning, and do nothing."]
-    pub fn obs_encoder_set_gpu_scale_type(encoder: *mut obs_encoder_t, gpu_scale_type: obs_scale_type);
-    #[doc = " Set frame rate divisor for a video encoder. This allows recording at\n a partial frame rate compared to the base frame rate, e.g. 60 FPS with\n divisor = 2 will record at 30 FPS, with divisor = 3 at 20, etc.\n\n Can only be called on stopped encoders, changing this on the fly is not supported"]
-    pub fn obs_encoder_set_frame_rate_divisor(encoder: *mut obs_encoder_t, divisor: u32) -> bool;
     #[doc = " For video encoders, returns true if pre-encode scaling is enabled"]
     pub fn obs_encoder_scaling_enabled(encoder: *const obs_encoder_t) -> bool;
     #[doc = " For video encoders, returns the width of the encoded image"]
     pub fn obs_encoder_get_width(encoder: *const obs_encoder_t) -> u32;
     #[doc = " For video encoders, returns the height of the encoded image"]
     pub fn obs_encoder_get_height(encoder: *const obs_encoder_t) -> u32;
-    #[doc = " For video encoders, returns whether GPU scaling is enabled"]
-    pub fn obs_encoder_gpu_scaling_enabled(encoder: *mut obs_encoder_t) -> bool;
-    #[doc = " For video encoders, returns GPU scaling type"]
-    pub fn obs_encoder_get_scale_type(encoder: *mut obs_encoder_t) -> obs_scale_type;
-    #[doc = " For video encoders, returns the frame rate divisor (default is 1)"]
-    pub fn obs_encoder_get_frame_rate_divisor(encoder: *const obs_encoder_t) -> u32;
     #[doc = " For audio encoders, returns the sample rate of the audio"]
     pub fn obs_encoder_get_sample_rate(encoder: *const obs_encoder_t) -> u32;
     #[doc = " For audio encoders, returns the frame size of the audio packet"]
@@ -7947,7 +7748,6 @@ extern "C" {
     pub fn obs_encoder_paused(output: *const obs_encoder_t) -> bool;
     pub fn obs_encoder_get_last_error(encoder: *mut obs_encoder_t) -> *const ::std::os::raw::c_char;
     pub fn obs_encoder_set_last_error(encoder: *mut obs_encoder_t, message: *const ::std::os::raw::c_char);
-    pub fn obs_encoder_get_pause_offset(encoder: *const obs_encoder_t) -> u64;
     pub fn obs_service_get_display_name(id: *const ::std::os::raw::c_char) -> *const ::std::os::raw::c_char;
     pub fn obs_service_create(
         id: *const ::std::os::raw::c_char,
@@ -8009,14 +7809,7 @@ extern "C" {
         video_bitrate: *mut ::std::os::raw::c_int,
         audio_bitrate: *mut ::std::os::raw::c_int,
     );
-    pub fn obs_service_get_supported_video_codecs(service: *const obs_service_t) -> *mut *const ::std::os::raw::c_char;
-    pub fn obs_service_get_supported_audio_codecs(service: *const obs_service_t) -> *mut *const ::std::os::raw::c_char;
     pub fn obs_service_get_output_type(service: *const obs_service_t) -> *const ::std::os::raw::c_char;
-    #[doc = " Returns the protocol for this service context"]
-    pub fn obs_service_get_protocol(service: *const obs_service_t) -> *const ::std::os::raw::c_char;
-    pub fn obs_service_get_preferred_output_type(service: *const obs_service_t) -> *const ::std::os::raw::c_char;
-    pub fn obs_service_get_connect_info(service: *const obs_service_t, type_: u32) -> *const ::std::os::raw::c_char;
-    pub fn obs_service_can_try_to_connect(service: *const obs_service_t) -> bool;
     pub fn obs_source_frame_init(frame: *mut obs_source_frame, format: video_format, width: u32, height: u32);
     pub fn obs_source_frame_copy(dst: *mut obs_source_frame, src: *const obs_source_frame);
     pub fn obs_source_get_icon_type(id: *const ::std::os::raw::c_char) -> obs_icon_type;

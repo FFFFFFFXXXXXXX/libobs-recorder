@@ -1,6 +1,6 @@
 # libobs-recorder
 
-**CURRENTLY TIED TO OBS VERSION: 30.0.2**  
+**CURRENTLY TIED TO OBS VERSION: 30.1.0**  
 **OLD VERSIONS ARE AVAILABLE AS RELEASES**
 
 This is a rust library for recording using the [libobs library]("https://github.com/obsproject/obs-studio").

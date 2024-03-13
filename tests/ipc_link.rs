@@ -7,9 +7,9 @@ const EXECUTABLE: &str = "./extprocess_recorder.exe";
 #[cfg(target_family = "unix")]
 const EXECUTABLE: &str = "./extprocess_recorder";
 
-const WINDOW_TITLE: &'static str = "League of Legends (TM) Client";
-const WINDOW_CLASS: &'static str = "RiotWindowClass";
-const WINDOW_PROCESS: &'static str = "League of Legends.exe";
+const WINDOW_TITLE: &str = "League of Legends (TM) Client";
+const WINDOW_CLASS: &str = "RiotWindowClass";
+const WINDOW_PROCESS: &str = "League of Legends.exe";
 
 fn main() {
     let mut link = IpcLinkMaster::new(format!("./libobs/{EXECUTABLE}")).unwrap();

@@ -4,7 +4,7 @@ fn main() {
     println!("cargo:rustc-link-lib=obs_{}", build_helper::VERSION);
 
     let bindings_file = format!("bindings_{}.rs", build_helper::VERSION);
-    println!("cargo:rustc-env=BINDINGS_FILE={bindings_file}");
+    println!("cargo:rustc-env=LIBOBS_BINDINGS_FILE={bindings_file}");
 
     #[cfg(feature = "bindgen")]
     bindgen::builder()

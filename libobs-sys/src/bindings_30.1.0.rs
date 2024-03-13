@@ -425,6 +425,7 @@ pub const _MM_PERMUTE2_ZEROIF1: u32 = 2;
 pub const _MM_PERMUTE2_ZEROIF0: u32 = 3;
 pub const MAX_AUDIO_MIXES: u32 = 6;
 pub const MAX_AUDIO_CHANNELS: u32 = 8;
+pub const MAX_DEVICE_INPUT_CHANNELS: u32 = 64;
 pub const AUDIO_OUTPUT_FRAMES: u32 = 1024;
 pub const AUDIO_OUTPUT_SUCCESS: u32 = 0;
 pub const AUDIO_OUTPUT_INVALIDPARAM: i32 = -1;
@@ -435,8 +436,8 @@ pub const VIDEO_OUTPUT_FAIL: i32 = -2;
 pub const CALL_PARAM_IN: u32 = 1;
 pub const CALL_PARAM_OUT: u32 = 2;
 pub const LIBOBS_API_MAJOR_VER: u32 = 30;
-pub const LIBOBS_API_MINOR_VER: u32 = 0;
-pub const LIBOBS_API_PATCH_VER: u32 = 2;
+pub const LIBOBS_API_MINOR_VER: u32 = 1;
+pub const LIBOBS_API_PATCH_VER: u32 = 0;
 pub const OBS_VERSION: &[u8; 8] = b"unknown\0";
 pub const OBS_DATA_PATH: &[u8; 11] = b"../../data\0";
 pub const OBS_INSTALL_PREFIX: &[u8; 1] = b"\0";
@@ -473,9 +474,6 @@ pub const OBS_VIDEO_NOT_SUPPORTED: i32 = -2;
 pub const OBS_VIDEO_INVALID_PARAM: i32 = -3;
 pub const OBS_VIDEO_CURRENTLY_ACTIVE: i32 = -4;
 pub const OBS_VIDEO_MODULE_NOT_FOUND: i32 = -5;
-pub const OBS_UI_SUCCESS: u32 = 0;
-pub const OBS_UI_CANCEL: i32 = -1;
-pub const OBS_UI_NOTFOUND: i32 = -2;
 pub const OBS_PROPERTIES_DEFER_UPDATE: u32 = 1;
 pub const OBS_FONT_BOLD: u32 = 1;
 pub const OBS_FONT_ITALIC: u32 = 2;
@@ -503,6 +501,7 @@ pub const OBS_ENCODER_CAP_DEPRECATED: u32 = 1;
 pub const OBS_ENCODER_CAP_PASS_TEXTURE: u32 = 2;
 pub const OBS_ENCODER_CAP_DYN_BITRATE: u32 = 4;
 pub const OBS_ENCODER_CAP_INTERNAL: u32 = 8;
+pub const OBS_ENCODER_CAP_ROI: u32 = 16;
 pub const OBS_OUTPUT_VIDEO: u32 = 1;
 pub const OBS_OUTPUT_AUDIO: u32 = 2;
 pub const OBS_OUTPUT_AV: u32 = 3;
@@ -2506,61 +2505,6 @@ pub const obs_data_number_type_OBS_DATA_NUM_INVALID: obs_data_number_type = 0;
 pub const obs_data_number_type_OBS_DATA_NUM_INT: obs_data_number_type = 1;
 pub const obs_data_number_type_OBS_DATA_NUM_DOUBLE: obs_data_number_type = 2;
 pub type obs_data_number_type = ::std::os::raw::c_int;
-#[doc = " Modal UI definition structure"]
-#[repr(C)]
-#[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
-pub struct obs_modal_ui {
-    #[doc = "< Identifier associated with this UI"]
-    pub id: *const ::std::os::raw::c_char,
-    #[doc = "< Task of the UI"]
-    pub task: *const ::std::os::raw::c_char,
-    #[doc = "< UI target (UI toolkit or program name)"]
-    pub target: *const ::std::os::raw::c_char,
-    #[doc = " Callback to execute modal interface.\n\n The @b object variable points to the input/output/encoder/etc.  The\n @b ui_data variable points to the UI parent or UI-specific data to\n be used with the custom user interface.\n\n What @b ui_data points to differs depending on the target, and you\n should use discretion and consistency when using this variable to\n relay information to the UI function.  For example, it would be\n ideal to have @b ui_data point to a parent, QWidget for Qt, or a\n wxWindow for wxWidgets, etc., though it's up to the discretion of\n the developer to define that value.  Because of the nature of void\n pointers, discretion and consistency is advised.\n\n @param  object   Pointer/handle to the data associated with this\n                  call.\n @param  ui_data  UI data to pass associated with this specific\n                  target, if any.\n @return          @b true if user completed the task, or\n                  @b false if user cancelled the task."]
-    pub exec: ::std::option::Option<
-        unsafe extern "C" fn(object: *mut ::std::os::raw::c_void, ui_data: *mut ::std::os::raw::c_void) -> bool,
-    >,
-    pub type_data: *mut ::std::os::raw::c_void,
-    pub free_type_data: ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
-}
-impl Default for obs_modal_ui {
-    fn default() -> Self {
-        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
-#[doc = " Modeless UI definition structure"]
-#[repr(C)]
-#[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
-pub struct obs_modeless_ui {
-    #[doc = "< Identifier associated with this UI"]
-    pub id: *const ::std::os::raw::c_char,
-    #[doc = "< Task of the UI"]
-    pub task: *const ::std::os::raw::c_char,
-    #[doc = "< UI target (UI toolkit or program name)"]
-    pub target: *const ::std::os::raw::c_char,
-    #[doc = " Callback to create modeless interface.\n\n This function is almost identical to the modal exec function,\n except modeless UI calls return immediately, and typically are\n supposed to return a pointer or handle to the specific UI object\n that was created.  For example, a Qt object would ideally return a\n pointer to a QWidget.  Again, discretion and consistency is advised\n for the return value.\n\n @param   object  Pointer/handle to the data associated with this\n                  call.\n @param  ui_data  UI data to pass associated with this specific\n                  target, if any.\n @return          Pointer/handle to the modeless UI associated with\n                  the specific target."]
-    pub create: ::std::option::Option<
-        unsafe extern "C" fn(
-            object: *mut ::std::os::raw::c_void,
-            ui_data: *mut ::std::os::raw::c_void,
-        ) -> *mut ::std::os::raw::c_void,
-    >,
-    pub type_data: *mut ::std::os::raw::c_void,
-    pub free_type_data: ::std::option::Option<unsafe extern "C" fn(type_data: *mut ::std::os::raw::c_void)>,
-}
-impl Default for obs_modeless_ui {
-    fn default() -> Self {
-        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
-        unsafe {
-            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
-            s.assume_init()
-        }
-    }
-}
 pub const obs_property_type_OBS_PROPERTY_INVALID: obs_property_type = 0;
 pub const obs_property_type_OBS_PROPERTY_BOOL: obs_property_type = 1;
 pub const obs_property_type_OBS_PROPERTY_INT: obs_property_type = 2;
@@ -3117,6 +3061,34 @@ impl Default for encoder_frame {
         }
     }
 }
+#[doc = " Encoder region of interest"]
+#[repr(C)]
+#[derive(Debug, Default, Copy, Clone, PartialOrd, PartialEq)]
+pub struct obs_encoder_roi {
+    pub top: u32,
+    pub bottom: u32,
+    pub left: u32,
+    pub right: u32,
+    pub priority: f32,
+}
+#[doc = " Encoder input texture"]
+#[repr(C)]
+#[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
+pub struct encoder_texture {
+    #[doc = " Shared texture handle, only set on Windows"]
+    pub handle: u32,
+    #[doc = " Textures, length determined by format"]
+    pub tex: [*mut gs_texture; 4usize],
+}
+impl Default for encoder_texture {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
 #[doc = " Encoder interface\n\n Encoders have a limited usage with OBS.  You are not generally supposed to\n implement every encoder out there.  Generally, these are limited or specific\n encoders for h264/aac for streaming and recording.  It doesn't have to be\n *just* h264 or aac of course, but generally those are the expected encoders.\n\n That being said, other encoders will be kept in mind for future use."]
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
@@ -3188,6 +3160,17 @@ pub struct obs_encoder_info {
         unsafe extern "C" fn(
             data: *mut ::std::os::raw::c_void,
             handle: u32,
+            pts: i64,
+            lock_key: u64,
+            next_key: *mut u64,
+            packet: *mut encoder_packet,
+            received_packet: *mut bool,
+        ) -> bool,
+    >,
+    pub encode_texture2: ::std::option::Option<
+        unsafe extern "C" fn(
+            data: *mut ::std::os::raw::c_void,
+            texture: *mut encoder_texture,
             pts: i64,
             lock_key: u64,
             next_key: *mut u64,
@@ -4184,6 +4167,7 @@ pub struct obs_transform_info {
     pub bounds_type: obs_bounds_type,
     pub bounds_alignment: u32,
     pub bounds: vec2,
+    pub crop_to_bounds: bool,
 }
 impl Default for obs_transform_info {
     fn default() -> Self {
@@ -5229,6 +5213,7 @@ extern "C" {
     pub fn gs_texrender_get_format(texrender: *const gs_texrender_t) -> gs_color_format;
     pub fn gs_get_device_name() -> *const ::std::os::raw::c_char;
     pub fn gs_get_device_type() -> ::std::os::raw::c_int;
+    pub fn gs_get_adapter_count() -> u32;
     pub fn gs_enum_adapters(
         callback: ::std::option::Option<
             unsafe extern "C" fn(
@@ -5532,6 +5517,20 @@ extern "C" {
     pub fn gs_timer_range_get_data(range: *mut gs_timer_range_t, disjoint: *mut bool, frequency: *mut u64) -> bool;
     pub fn gs_nv12_available() -> bool;
     pub fn gs_p010_available() -> bool;
+    pub fn gs_texture_create_nv12(
+        tex_y: *mut *mut gs_texture_t,
+        tex_uv: *mut *mut gs_texture_t,
+        width: u32,
+        height: u32,
+        flags: u32,
+    ) -> bool;
+    pub fn gs_texture_create_p010(
+        tex_y: *mut *mut gs_texture_t,
+        tex_uv: *mut *mut gs_texture_t,
+        width: u32,
+        height: u32,
+        flags: u32,
+    ) -> bool;
     pub fn gs_is_monitor_hdr(monitor: *mut ::std::os::raw::c_void) -> bool;
     pub fn gs_debug_marker_begin(color: *const f32, markername: *const ::std::os::raw::c_char);
     pub fn gs_debug_marker_begin_format(color: *const f32, format: *const ::std::os::raw::c_char, ...);
@@ -5551,7 +5550,6 @@ extern "C" {
     pub fn gs_duplicator_get_texture(duplicator: *mut gs_duplicator_t) -> *mut gs_texture_t;
     pub fn gs_duplicator_get_color_space(duplicator: *mut gs_duplicator_t) -> gs_color_space;
     pub fn gs_duplicator_get_sdr_white_level(duplicator: *mut gs_duplicator_t) -> f32;
-    pub fn gs_get_adapter_count() -> u32;
     pub fn gs_can_adapter_fast_clear() -> bool;
     #[doc = " creates a windows GDI-lockable texture"]
     pub fn gs_texture_create_gdi(width: u32, height: u32) -> *mut gs_texture_t;
@@ -5566,20 +5564,6 @@ extern "C" {
     pub fn gs_texture_acquire_sync(tex: *mut gs_texture_t, key: u64, ms: u32) -> ::std::os::raw::c_int;
     #[doc = " releases a lock on a keyed mutex texture to another device.\n return 0 on success, -1 on error"]
     pub fn gs_texture_release_sync(tex: *mut gs_texture_t, key: u64) -> ::std::os::raw::c_int;
-    pub fn gs_texture_create_nv12(
-        tex_y: *mut *mut gs_texture_t,
-        tex_uv: *mut *mut gs_texture_t,
-        width: u32,
-        height: u32,
-        flags: u32,
-    ) -> bool;
-    pub fn gs_texture_create_p010(
-        tex_y: *mut *mut gs_texture_t,
-        tex_uv: *mut *mut gs_texture_t,
-        width: u32,
-        height: u32,
-        flags: u32,
-    ) -> bool;
     pub fn gs_stagesurface_create_nv12(width: u32, height: u32) -> *mut gs_stagesurf_t;
     pub fn gs_stagesurface_create_p010(width: u32, height: u32) -> *mut gs_stagesurf_t;
     pub fn gs_register_loss_callbacks(callbacks: *const gs_device_loss);
@@ -6010,6 +5994,11 @@ extern "C" {
         name: *const ::std::os::raw::c_char,
         obj: *mut obs_data_t,
     );
+    pub fn obs_data_set_autoselect_array(
+        data: *mut obs_data_t,
+        name: *const ::std::os::raw::c_char,
+        arr: *mut obs_data_array_t,
+    );
     pub fn obs_data_get_string(
         data: *mut obs_data_t,
         name: *const ::std::os::raw::c_char,
@@ -6209,26 +6198,6 @@ extern "C" {
         fps: *mut media_frames_per_second,
         option: *mut *const ::std::os::raw::c_char,
     ) -> bool;
-    #[doc = " Registers a modal UI definition to the current obs context.  This should be\n used in obs_module_load.\n\n @param  info  Pointer to the modal definition structure"]
-    pub fn obs_register_modal_ui(info: *const obs_modal_ui);
-    #[doc = " Registers a modeless UI definition to the current obs context.  This should\n be used in obs_module_load.\n\n @param  info  Pointer to the modal definition structure"]
-    pub fn obs_register_modeless_ui(info: *const obs_modeless_ui);
-    #[doc = " Requests modal UI to be displayed.  Returns when user is complete.\n\n @param    name  Name of the input/output/etc type that UI was requested for\n @param    task  Task of the user interface (usually \"config\")\n @param  target  Desired target (i.e. \"qt\", \"wx\", \"gtk3\", \"win32\", etc)\n @param    data  Pointer to the obs input/output/etc\n @param ui_data  UI-specific data, usually a parent pointer/handle (if any)\n\n @return         OBS_UI_SUCCESS if the UI was successful,\n                 OBS_UI_CANCEL if the UI was cancelled by the user, or\n                 OBS_UI_NOTFOUND if the UI callback was not found"]
-    pub fn obs_exec_ui(
-        id: *const ::std::os::raw::c_char,
-        task: *const ::std::os::raw::c_char,
-        target: *const ::std::os::raw::c_char,
-        data: *mut ::std::os::raw::c_void,
-        ui_data: *mut ::std::os::raw::c_void,
-    ) -> ::std::os::raw::c_int;
-    #[doc = " Requests modeless UI to be created.  Returns immediately.\n\n @param    name  Name of the input/output/etc type that UI was requested for\n @param    task  Task of the user interface\n @param  target  Desired target (i.e. \"qt\", \"wx\", \"gtk3\", \"win32\", etc)\n @param    data  Pointer to the obs input/output/etc\n @param ui_data  UI-specific data, usually a parent pointer/handle (if any)\n\n @return         Pointer/handle to the target-specific modeless object, or\n                 NULL if not found or failed."]
-    pub fn obs_create_ui(
-        id: *const ::std::os::raw::c_char,
-        task: *const ::std::os::raw::c_char,
-        target: *const ::std::os::raw::c_char,
-        data: *mut ::std::os::raw::c_void,
-        ui_data: *mut ::std::os::raw::c_void,
-    ) -> *mut ::std::os::raw::c_void;
     pub fn obs_properties_create() -> *mut obs_properties_t;
     pub fn obs_properties_create_param(
         param: *mut ::std::os::raw::c_void,
@@ -6997,6 +6966,7 @@ extern "C" {
     pub fn obs_obj_get_data(obj: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void;
     pub fn obs_obj_is_private(obj: *mut ::std::os::raw::c_void) -> bool;
     pub fn obs_audio_monitoring_available() -> bool;
+    pub fn obs_reset_audio_monitoring();
     pub fn obs_enum_audio_monitoring_devices(cb: obs_enum_audio_device_cb, data: *mut ::std::os::raw::c_void);
     pub fn obs_set_audio_monitoring_device(
         name: *const ::std::os::raw::c_char,
@@ -7103,6 +7073,14 @@ extern "C" {
     pub fn obs_view_remove(view: *mut obs_view_t);
     #[doc = " Gets the video settings currently in use for this view context, returns false if no video"]
     pub fn obs_view_get_video_info(view: *mut obs_view_t, ovi: *mut obs_video_info) -> bool;
+    #[doc = " Enumerate the video info of all mixes using the specified view context"]
+    pub fn obs_view_enum_video_info(
+        view: *mut obs_view_t,
+        enum_proc: ::std::option::Option<
+            unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut obs_video_info) -> bool,
+        >,
+        param: *mut ::std::os::raw::c_void,
+    );
     #[doc = " Adds a new window display linked to the main render pipeline.  This creates\n a new swap chain which updates every frame.\n\n @param  graphics_data  The swap chain initialization data.\n @return                The new display context, or NULL if failed."]
     pub fn obs_display_create(graphics_data: *const gs_init_data, backround_color: u32) -> *mut obs_display_t;
     #[doc = " Destroys a display context"]
@@ -7602,6 +7580,7 @@ extern "C" {
     pub fn obs_sceneitem_set_order_position(item: *mut obs_sceneitem_t, position: ::std::os::raw::c_int);
     pub fn obs_sceneitem_set_bounds_type(item: *mut obs_sceneitem_t, type_: obs_bounds_type);
     pub fn obs_sceneitem_set_bounds_alignment(item: *mut obs_sceneitem_t, alignment: u32);
+    pub fn obs_sceneitem_set_bounds_crop(item: *mut obs_sceneitem_t, crop: bool);
     pub fn obs_sceneitem_set_bounds(item: *mut obs_sceneitem_t, bounds: *const vec2);
     pub fn obs_sceneitem_get_id(item: *const obs_sceneitem_t) -> i64;
     pub fn obs_sceneitem_get_pos(item: *const obs_sceneitem_t, pos: *mut vec2);
@@ -7610,9 +7589,12 @@ extern "C" {
     pub fn obs_sceneitem_get_alignment(item: *const obs_sceneitem_t) -> u32;
     pub fn obs_sceneitem_get_bounds_type(item: *const obs_sceneitem_t) -> obs_bounds_type;
     pub fn obs_sceneitem_get_bounds_alignment(item: *const obs_sceneitem_t) -> u32;
+    pub fn obs_sceneitem_get_bounds_crop(item: *const obs_sceneitem_t) -> bool;
     pub fn obs_sceneitem_get_bounds(item: *const obs_sceneitem_t, bounds: *mut vec2);
     pub fn obs_sceneitem_get_info(item: *const obs_sceneitem_t, info: *mut obs_transform_info);
     pub fn obs_sceneitem_set_info(item: *mut obs_sceneitem_t, info: *const obs_transform_info);
+    pub fn obs_sceneitem_get_info2(item: *const obs_sceneitem_t, info: *mut obs_transform_info);
+    pub fn obs_sceneitem_set_info2(item: *mut obs_sceneitem_t, info: *const obs_transform_info);
     pub fn obs_sceneitem_get_draw_transform(item: *const obs_sceneitem_t, transform: *mut matrix4);
     pub fn obs_sceneitem_get_box_transform(item: *const obs_sceneitem_t, transform: *mut matrix4);
     pub fn obs_sceneitem_get_box_scale(item: *const obs_sceneitem_t, scale: *mut vec2);
@@ -7884,6 +7866,22 @@ extern "C" {
     pub fn obs_encoder_set_gpu_scale_type(encoder: *mut obs_encoder_t, gpu_scale_type: obs_scale_type);
     #[doc = " Set frame rate divisor for a video encoder. This allows recording at\n a partial frame rate compared to the base frame rate, e.g. 60 FPS with\n divisor = 2 will record at 30 FPS, with divisor = 3 at 20, etc.\n\n Can only be called on stopped encoders, changing this on the fly is not supported"]
     pub fn obs_encoder_set_frame_rate_divisor(encoder: *mut obs_encoder_t, divisor: u32) -> bool;
+    #[doc = " Adds region of interest (ROI) for an encoder. This allows prioritizing\n quality of regions of the frame.\n If regions overlap, regions added earlier take precedence.\n\n Returns false if the encoder does not support ROI or region is invalid."]
+    pub fn obs_encoder_add_roi(encoder: *mut obs_encoder_t, roi: *const obs_encoder_roi) -> bool;
+    #[doc = " For video encoders, returns true if any ROIs were set"]
+    pub fn obs_encoder_has_roi(encoder: *const obs_encoder_t) -> bool;
+    #[doc = " Clear all regions"]
+    pub fn obs_encoder_clear_roi(encoder: *mut obs_encoder_t);
+    #[doc = " Enumerate regions with callback (reverse order of addition)"]
+    pub fn obs_encoder_enum_roi(
+        encoder: *mut obs_encoder_t,
+        enum_proc: ::std::option::Option<
+            unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void, arg2: *mut obs_encoder_roi),
+        >,
+        param: *mut ::std::os::raw::c_void,
+    );
+    #[doc = " Get ROI increment, encoders must rebuild their ROI map if it has changed"]
+    pub fn obs_encoder_get_roi_increment(encoder: *const obs_encoder_t) -> u32;
     #[doc = " For video encoders, returns true if pre-encode scaling is enabled"]
     pub fn obs_encoder_scaling_enabled(encoder: *const obs_encoder_t) -> bool;
     #[doc = " For video encoders, returns the width of the encoded image"]

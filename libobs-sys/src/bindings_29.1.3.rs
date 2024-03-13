@@ -434,15 +434,23 @@ pub const VIDEO_OUTPUT_INVALIDPARAM: i32 = -1;
 pub const VIDEO_OUTPUT_FAIL: i32 = -2;
 pub const CALL_PARAM_IN: u32 = 1;
 pub const CALL_PARAM_OUT: u32 = 2;
-pub const LIBOBS_API_MAJOR_VER: u32 = 30;
-pub const LIBOBS_API_MINOR_VER: u32 = 0;
-pub const LIBOBS_API_PATCH_VER: u32 = 2;
+pub const LIBOBS_API_MAJOR_VER: u32 = 29;
+pub const LIBOBS_API_MINOR_VER: u32 = 1;
+pub const LIBOBS_API_PATCH_VER: u32 = 1;
 pub const OBS_VERSION: &[u8; 8] = b"unknown\0";
 pub const OBS_DATA_PATH: &[u8; 11] = b"../../data\0";
 pub const OBS_INSTALL_PREFIX: &[u8; 1] = b"\0";
 pub const OBS_PLUGIN_DESTINATION: &[u8; 12] = b"obs-plugins\0";
 pub const OBS_RELATIVE_PREFIX: &[u8; 7] = b"../../\0";
+pub const OBS_RELEASE_CANDIDATE_MAJOR: u32 = 0;
+pub const OBS_RELEASE_CANDIDATE_MINOR: u32 = 0;
+pub const OBS_RELEASE_CANDIDATE_PATCH: u32 = 0;
+pub const OBS_RELEASE_CANDIDATE_VER: u32 = 0;
 pub const OBS_RELEASE_CANDIDATE: u32 = 0;
+pub const OBS_BETA_MAJOR: u32 = 0;
+pub const OBS_BETA_MINOR: u32 = 0;
+pub const OBS_BETA_PATCH: u32 = 0;
+pub const OBS_BETA_VER: u32 = 0;
 pub const OBS_BETA: u32 = 0;
 pub const OBS_INSTALL_DATA_PATH: &[u8; 11] = b"../../data\0";
 pub const MAX_CHANNELS: u32 = 64;
@@ -510,11 +518,7 @@ pub const OBS_OUTPUT_ENCODED: u32 = 4;
 pub const OBS_OUTPUT_SERVICE: u32 = 8;
 pub const OBS_OUTPUT_MULTI_TRACK: u32 = 16;
 pub const OBS_OUTPUT_CAN_PAUSE: u32 = 32;
-pub const OBS_OUTPUT_MULTI_TRACK_AUDIO: u32 = 16;
-pub const OBS_OUTPUT_MULTI_TRACK_VIDEO: u32 = 64;
-pub const OBS_OUTPUT_MULTI_TRACK_AV: u32 = 80;
 pub const MAX_OUTPUT_AUDIO_ENCODERS: u32 = 6;
-pub const MAX_OUTPUT_VIDEO_ENCODERS: u32 = 6;
 pub const XINPUT_MOUSE_LEN: u32 = 33;
 pub const OBS_MOUSE_BUTTON_DEFAULT: u32 = 1;
 pub const OBS_SOURCE_FRAME_LINEAR_ALPHA: u32 = 1;
@@ -2347,7 +2351,6 @@ pub const video_format_VIDEO_FORMAT_YA2L: video_format = 21;
 pub const video_format_VIDEO_FORMAT_P216: video_format = 22;
 pub const video_format_VIDEO_FORMAT_P416: video_format = 23;
 pub const video_format_VIDEO_FORMAT_V210: video_format = 24;
-pub const video_format_VIDEO_FORMAT_R10L: video_format = 25;
 pub type video_format = ::std::os::raw::c_int;
 pub const video_trc_VIDEO_TRC_DEFAULT: video_trc = 0;
 pub const video_trc_VIDEO_TRC_SRGB: video_trc = 1;
@@ -2580,12 +2583,10 @@ pub const obs_combo_format_OBS_COMBO_FORMAT_INVALID: obs_combo_format = 0;
 pub const obs_combo_format_OBS_COMBO_FORMAT_INT: obs_combo_format = 1;
 pub const obs_combo_format_OBS_COMBO_FORMAT_FLOAT: obs_combo_format = 2;
 pub const obs_combo_format_OBS_COMBO_FORMAT_STRING: obs_combo_format = 3;
-pub const obs_combo_format_OBS_COMBO_FORMAT_BOOL: obs_combo_format = 4;
 pub type obs_combo_format = ::std::os::raw::c_int;
 pub const obs_combo_type_OBS_COMBO_TYPE_INVALID: obs_combo_type = 0;
 pub const obs_combo_type_OBS_COMBO_TYPE_EDITABLE: obs_combo_type = 1;
 pub const obs_combo_type_OBS_COMBO_TYPE_LIST: obs_combo_type = 2;
-pub const obs_combo_type_OBS_COMBO_TYPE_RADIO: obs_combo_type = 3;
 pub type obs_combo_type = ::std::os::raw::c_int;
 pub const obs_editable_list_type_OBS_EDITABLE_LIST_TYPE_STRINGS: obs_editable_list_type = 0;
 pub const obs_editable_list_type_OBS_EDITABLE_LIST_TYPE_FILES: obs_editable_list_type = 1;
@@ -3036,9 +3037,6 @@ pub struct obs_source_info {
             preferred_spaces: *const gs_color_space,
         ) -> gs_color_space,
     >,
-    #[doc = " Called when the filter is added to a source\n\n @param  data    Filter data\n @param  source  Source that the filter is being added to"]
-    pub filter_add:
-        ::std::option::Option<unsafe extern "C" fn(data: *mut ::std::os::raw::c_void, source: *mut obs_source_t)>,
 }
 impl Default for obs_source_info {
     fn default() -> Self {
@@ -3267,7 +3265,6 @@ pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_STREAM_KEY: obs_serv
 pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_USERNAME: obs_service_connect_info = 4;
 pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_PASSWORD: obs_service_connect_info = 6;
 pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_ENCRYPT_PASSPHRASE: obs_service_connect_info = 8;
-pub const obs_service_connect_info_OBS_SERVICE_CONNECT_INFO_BEARER_TOKEN: obs_service_connect_info = 10;
 pub type obs_service_connect_info = ::std::os::raw::c_int;
 #[repr(C)]
 #[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
@@ -5552,7 +5549,6 @@ extern "C" {
     pub fn gs_duplicator_get_color_space(duplicator: *mut gs_duplicator_t) -> gs_color_space;
     pub fn gs_duplicator_get_sdr_white_level(duplicator: *mut gs_duplicator_t) -> f32;
     pub fn gs_get_adapter_count() -> u32;
-    pub fn gs_can_adapter_fast_clear() -> bool;
     #[doc = " creates a windows GDI-lockable texture"]
     pub fn gs_texture_create_gdi(width: u32, height: u32) -> *mut gs_texture_t;
     pub fn gs_texture_get_dc(gdi_tex: *mut gs_texture_t) -> *mut ::std::os::raw::c_void;
@@ -5824,15 +5820,6 @@ extern "C" {
         >,
         param: *mut ::std::os::raw::c_void,
     ) -> bool;
-    pub fn video_output_connect2(
-        video: *mut video_t,
-        conversion: *const video_scale_info,
-        frame_rate_divisor: u32,
-        callback: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, frame: *mut video_data),
-        >,
-        param: *mut ::std::os::raw::c_void,
-    ) -> bool;
     pub fn video_output_disconnect(
         video: *mut video_t,
         callback: ::std::option::Option<
@@ -5862,8 +5849,6 @@ extern "C" {
     pub fn video_output_dec_texture_encoders(video: *mut video_t);
     pub fn video_output_inc_texture_frames(video: *mut video_t);
     pub fn video_output_inc_texture_skipped_frames(video: *mut video_t);
-    pub fn video_output_create_with_frame_rate_divisor(video: *mut video_t, divisor: u32) -> *mut video_t;
-    pub fn video_output_free_frame_rate_divisor(video: *mut video_t);
     pub fn calldata_get_data(
         data: *const calldata_t,
         name: *const ::std::os::raw::c_char,
@@ -6425,7 +6410,6 @@ extern "C" {
         val: ::std::os::raw::c_longlong,
     ) -> usize;
     pub fn obs_property_list_add_float(p: *mut obs_property_t, name: *const ::std::os::raw::c_char, val: f64) -> usize;
-    pub fn obs_property_list_add_bool(p: *mut obs_property_t, name: *const ::std::os::raw::c_char, val: bool) -> usize;
     pub fn obs_property_list_insert_string(
         p: *mut obs_property_t,
         idx: usize,
@@ -6444,12 +6428,6 @@ extern "C" {
         name: *const ::std::os::raw::c_char,
         val: f64,
     );
-    pub fn obs_property_list_insert_bool(
-        p: *mut obs_property_t,
-        idx: usize,
-        name: *const ::std::os::raw::c_char,
-        val: bool,
-    );
     pub fn obs_property_list_item_disable(p: *mut obs_property_t, idx: usize, disabled: bool);
     pub fn obs_property_list_item_disabled(p: *mut obs_property_t, idx: usize) -> bool;
     pub fn obs_property_list_item_remove(p: *mut obs_property_t, idx: usize);
@@ -6458,7 +6436,6 @@ extern "C" {
     pub fn obs_property_list_item_string(p: *mut obs_property_t, idx: usize) -> *const ::std::os::raw::c_char;
     pub fn obs_property_list_item_int(p: *mut obs_property_t, idx: usize) -> ::std::os::raw::c_longlong;
     pub fn obs_property_list_item_float(p: *mut obs_property_t, idx: usize) -> f64;
-    pub fn obs_property_list_item_bool(p: *mut obs_property_t, idx: usize) -> bool;
     pub fn obs_property_editable_list_type(p: *mut obs_property_t) -> obs_editable_list_type;
     pub fn obs_property_editable_list_filter(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
     pub fn obs_property_editable_list_default_path(p: *mut obs_property_t) -> *const ::std::os::raw::c_char;
@@ -6825,8 +6802,6 @@ extern "C" {
     pub fn obs_get_module_data_path(module: *mut obs_module_t) -> *const ::std::os::raw::c_char;
     #[doc = " Adds a module search path to be used with obs_find_modules.  If the search\n path strings contain %module%, that text will be replaced with the module\n name when used.\n\n @param  bin   Specifies the module's binary directory search path.\n @param  data  Specifies the module's data directory search path."]
     pub fn obs_add_module_path(bin: *const ::std::os::raw::c_char, data: *const ::std::os::raw::c_char);
-    #[doc = " Adds a module to the list of modules allowed to load in Safe Mode.\n If the list is empty, all modules are allowed.\n\n @param  name  Specifies the module's name (filename sans extension)."]
-    pub fn obs_add_safe_module(name: *const ::std::os::raw::c_char);
     #[doc = " Automatically loads all modules from module paths (convenience function)"]
     pub fn obs_load_all_modules();
     pub fn obs_module_failure_info_free(mfi: *mut obs_module_failure_info);
@@ -7037,14 +7012,6 @@ extern "C" {
         >,
         param: *mut ::std::os::raw::c_void,
     );
-    pub fn obs_add_raw_video_callback2(
-        conversion: *const video_scale_info,
-        frame_rate_divisor: u32,
-        callback: ::std::option::Option<
-            unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, frame: *mut video_data),
-        >,
-        param: *mut ::std::os::raw::c_void,
-    );
     pub fn obs_remove_raw_video_callback(
         callback: ::std::option::Option<
             unsafe extern "C" fn(param: *mut ::std::os::raw::c_void, frame: *mut video_data),
@@ -7217,10 +7184,6 @@ extern "C" {
         filter: *mut obs_source_t,
         movement: obs_order_movement,
     );
-    #[doc = " Gets filter index"]
-    pub fn obs_source_filter_get_index(source: *mut obs_source_t, filter: *mut obs_source_t) -> ::std::os::raw::c_int;
-    #[doc = " Sets filter index"]
-    pub fn obs_source_filter_set_index(source: *mut obs_source_t, filter: *mut obs_source_t, index: usize);
     #[doc = " Gets the settings string for a source"]
     pub fn obs_source_get_settings(source: *const obs_source_t) -> *mut obs_data_t;
     #[doc = " Gets the name of a source"]
@@ -7315,16 +7278,6 @@ extern "C" {
     pub fn obs_source_enable_push_to_talk(source: *mut obs_source_t, enabled: bool);
     pub fn obs_source_get_push_to_talk_delay(source: *mut obs_source_t) -> u64;
     pub fn obs_source_set_push_to_talk_delay(source: *mut obs_source_t, delay: u64);
-    pub fn obs_source_add_audio_pause_callback(
-        source: *mut obs_source_t,
-        callback: signal_callback_t,
-        param: *mut ::std::os::raw::c_void,
-    );
-    pub fn obs_source_remove_audio_pause_callback(
-        source: *mut obs_source_t,
-        callback: signal_callback_t,
-        param: *mut ::std::os::raw::c_void,
-    );
     pub fn obs_source_add_audio_capture_callback(
         source: *mut obs_source_t,
         callback: obs_source_audio_capture_t,
@@ -7762,14 +7715,10 @@ extern "C" {
     pub fn obs_output_get_mixers(output: *const obs_output_t) -> usize;
     #[doc = " Sets the current video encoder associated with this output,\n required for encoded outputs"]
     pub fn obs_output_set_video_encoder(output: *mut obs_output_t, encoder: *mut obs_encoder_t);
-    #[doc = " Sets the current video encoder associated with this output,\n required for encoded outputs.\n\n The idx parameter specifies the video encoder index.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise the parameter is ignored."]
-    pub fn obs_output_set_video_encoder2(output: *mut obs_output_t, encoder: *mut obs_encoder_t, idx: usize);
     #[doc = " Sets the current audio encoder associated with this output,\n required for encoded outputs.\n\n The idx parameter specifies the audio encoder index to set the encoder to.\n Only used with outputs that have multiple audio outputs (RTMP typically),\n otherwise the parameter is ignored."]
     pub fn obs_output_set_audio_encoder(output: *mut obs_output_t, encoder: *mut obs_encoder_t, idx: usize);
     #[doc = " Returns the current video encoder associated with this output"]
     pub fn obs_output_get_video_encoder(output: *const obs_output_t) -> *mut obs_encoder_t;
-    #[doc = " Returns the current video encoder associated with this output.\n\n The idx parameter specifies the video encoder index.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise specifying an idx > 0 returns a NULL."]
-    pub fn obs_output_get_video_encoder2(output: *const obs_output_t, idx: usize) -> *mut obs_encoder_t;
     #[doc = " Returns the current audio encoder associated with this output\n\n The idx parameter specifies the audio encoder index.  Only used with\n outputs that have multiple audio outputs, otherwise the parameter is\n ignored."]
     pub fn obs_output_get_audio_encoder(output: *const obs_output_t, idx: usize) -> *mut obs_encoder_t;
     #[doc = " Sets the current service associated with this output."]
@@ -7787,16 +7736,10 @@ extern "C" {
     pub fn obs_output_get_total_frames(output: *const obs_output_t) -> ::std::os::raw::c_int;
     #[doc = " Sets the preferred scaled resolution for this output.  Set width and height\n to 0 to disable scaling.\n\n If this output uses an encoder, it will call obs_encoder_set_scaled_size on\n the encoder before the stream is started.  If the encoder is already active,\n then this function will trigger a warning and do nothing."]
     pub fn obs_output_set_preferred_size(output: *mut obs_output_t, width: u32, height: u32);
-    #[doc = " Sets the preferred scaled resolution for this output.  Set width and height\n to 0 to disable scaling.\n\n If this output uses an encoder, it will call obs_encoder_set_scaled_size on\n the encoder before the stream is started.  If the encoder is already active,\n then this function will trigger a warning and do nothing.\n\n The idx parameter specifies the video encoder index to apply the scaling to.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise the parameter is ignored."]
-    pub fn obs_output_set_preferred_size2(output: *mut obs_output_t, width: u32, height: u32, idx: usize);
     #[doc = " For video outputs, returns the width of the encoded image"]
     pub fn obs_output_get_width(output: *const obs_output_t) -> u32;
-    #[doc = " For video outputs, returns the width of the encoded image.\n\n The idx parameter specifies the video encoder index.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise the parameter is ignored and returns 0."]
-    pub fn obs_output_get_width2(output: *const obs_output_t, idx: usize) -> u32;
     #[doc = " For video outputs, returns the height of the encoded image"]
     pub fn obs_output_get_height(output: *const obs_output_t) -> u32;
-    #[doc = " For video outputs, returns the height of the encoded image.\n\n The idx parameter specifies the video encoder index.\n Only used with outputs that have multiple video outputs (FFmpeg typically),\n otherwise the parameter is ignored and returns 0."]
-    pub fn obs_output_get_height2(output: *const obs_output_t, idx: usize) -> u32;
     pub fn obs_output_get_id(output: *const obs_output_t) -> *const ::std::os::raw::c_char;
     pub fn obs_output_caption(output: *mut obs_output_t, captions: *const obs_source_cea_708);
     pub fn obs_output_output_caption_text1(output: *mut obs_output_t, text: *const ::std::os::raw::c_char);
@@ -7832,11 +7775,11 @@ extern "C" {
     pub fn obs_output_set_video_conversion(output: *mut obs_output_t, conversion: *const video_scale_info);
     #[doc = " Optionally sets the audio conversion info.  Used only for raw output"]
     pub fn obs_output_set_audio_conversion(output: *mut obs_output_t, conversion: *const audio_convert_info);
-    #[doc = " Returns whether data capture can begin"]
+    #[doc = " Returns whether data capture can begin with the specified flags"]
     pub fn obs_output_can_begin_data_capture(output: *const obs_output_t, flags: u32) -> bool;
     #[doc = " Initializes encoders (if any)"]
     pub fn obs_output_initialize_encoders(output: *mut obs_output_t, flags: u32) -> bool;
-    #[doc = " Begins data capture from media/encoders.\n\n @param  output  Output context\n @return         true if successful, false otherwise."]
+    #[doc = " Begins data capture from media/encoders.\n\n @param  output  Output context\n @param  flags   Set this to 0 to use default output flags set in the\n                 obs_output_info structure, otherwise set to a either\n                 OBS_OUTPUT_VIDEO or OBS_OUTPUT_AUDIO to specify whether to\n                 connect audio or video.  This is useful for things like\n                 ffmpeg which may or may not always want to use both audio\n                 and video.\n @return         true if successful, false otherwise."]
     pub fn obs_output_begin_data_capture(output: *mut obs_output_t, flags: u32) -> bool;
     #[doc = " Ends data capture from media/encoders"]
     pub fn obs_output_end_data_capture(output: *mut obs_output_t);
@@ -7880,22 +7823,12 @@ extern "C" {
     pub fn obs_encoder_get_type(encoder: *const obs_encoder_t) -> obs_encoder_type;
     #[doc = " Sets the scaled resolution for a video encoder.  Set width and height to 0\n to disable scaling.  If the encoder is active, this function will trigger\n a warning, and do nothing."]
     pub fn obs_encoder_set_scaled_size(encoder: *mut obs_encoder_t, width: u32, height: u32);
-    #[doc = " Enable/disable GPU based scaling for a video encoder.\n OBS_SCALE_DISABLE disables GPU based scaling (default),\n any other value enables GPU based scaling. If the encoder\n is active, this function will trigger a warning, and do nothing."]
-    pub fn obs_encoder_set_gpu_scale_type(encoder: *mut obs_encoder_t, gpu_scale_type: obs_scale_type);
-    #[doc = " Set frame rate divisor for a video encoder. This allows recording at\n a partial frame rate compared to the base frame rate, e.g. 60 FPS with\n divisor = 2 will record at 30 FPS, with divisor = 3 at 20, etc.\n\n Can only be called on stopped encoders, changing this on the fly is not supported"]
-    pub fn obs_encoder_set_frame_rate_divisor(encoder: *mut obs_encoder_t, divisor: u32) -> bool;
     #[doc = " For video encoders, returns true if pre-encode scaling is enabled"]
     pub fn obs_encoder_scaling_enabled(encoder: *const obs_encoder_t) -> bool;
     #[doc = " For video encoders, returns the width of the encoded image"]
     pub fn obs_encoder_get_width(encoder: *const obs_encoder_t) -> u32;
     #[doc = " For video encoders, returns the height of the encoded image"]
     pub fn obs_encoder_get_height(encoder: *const obs_encoder_t) -> u32;
-    #[doc = " For video encoders, returns whether GPU scaling is enabled"]
-    pub fn obs_encoder_gpu_scaling_enabled(encoder: *mut obs_encoder_t) -> bool;
-    #[doc = " For video encoders, returns GPU scaling type"]
-    pub fn obs_encoder_get_scale_type(encoder: *mut obs_encoder_t) -> obs_scale_type;
-    #[doc = " For video encoders, returns the frame rate divisor (default is 1)"]
-    pub fn obs_encoder_get_frame_rate_divisor(encoder: *const obs_encoder_t) -> u32;
     #[doc = " For audio encoders, returns the sample rate of the audio"]
     pub fn obs_encoder_get_sample_rate(encoder: *const obs_encoder_t) -> u32;
     #[doc = " For audio encoders, returns the frame size of the audio packet"]

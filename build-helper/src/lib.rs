@@ -2,7 +2,7 @@ use std::{env, path};
 
 use fs_extra::dir;
 
-const NEWEST_VERSION: &str = "30.0.2";
+const NEWEST_VERSION: &str = "30.1.0";
 pub const VERSION: &str = {
     if let Some(version) = option_env!("LIBOBS_RECORDER_VERSION") {
         version

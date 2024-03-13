@@ -6,6 +6,9 @@ description = "FFI bindings for libobs"
 links = "obs"
 build = "build.rs"
 
+[dependencies]
+build-helper = { workspace = true }
+
 [build-dependencies]
 bindgen = { workspace = true, optional = true }
 build-helper = { workspace = true }

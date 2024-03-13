@@ -1,5 +1,5 @@
 fn main() {
-    // always link libobs
+    // link obs.dll
     println!("cargo:rustc-link-search=native={}", env!("CARGO_MANIFEST_DIR"));
     println!("cargo:rustc-link-lib=obs_{}", build_helper::VERSION);
 
@@ -9,7 +9,7 @@ fn main() {
 
 #[cfg(feature = "bindgen")]
 fn gen_bindings() {
-    let bindings_path = std::path::Path::new(concat!(env!("CARGO_MANIFEST_DIR"), "/src/bindings.rs"));
+    let bindings_path = std::path::Path::new(concat!(env!("CARGO_MANIFEST_DIR"), "/src/", build_helper::BINDINGS_FILE));
 
     let bindings = bindgen::builder()
         .header(format!("libobs_headers_{}/obs.h", build_helper::VERSION))

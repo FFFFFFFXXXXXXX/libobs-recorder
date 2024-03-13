@@ -1,15 +1,9 @@
 use fs_extra::dir;
 use std::{env, path};
 
-const CURRENT_VERSION: &str = "30.0.2";
-
-pub const VERSION: &str = {
-    if let Some(version) = option_env!("LIBOBS_RECORDER_VERSION") {
-        version
-    } else {
-        CURRENT_VERSION
-    }
-};
+const NEWEST_VERSION: &str = "30.0.2";
+pub const VERSION: &str = option_env!("LIBOBS_RECORDER_VERSION").unwrap_or(NEWEST_VERSION);
+pub const BINDINGS_FILE: &str = concat!("bindings_", VERSION, ".rs");
 
 pub type Error = Box<dyn std::error::Error>;
 

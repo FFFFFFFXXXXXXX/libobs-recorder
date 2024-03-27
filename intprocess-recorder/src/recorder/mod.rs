@@ -61,8 +61,8 @@ static LIBOBS_SHUTDOWN: Once = Once::new();
 //
 // these are thread local so I don't have to make them thread-safe
 thread_local! {
-    static REF_COUNT: Cell<u32> = Cell::new(0);
-    static CURRENT_ENCODER: Cell<Encoder> = Cell::new(Encoder::OBS_X264);
+    static REF_COUNT: Cell<u32> = const { Cell::new(0) };
+    static CURRENT_ENCODER: Cell<Encoder> = const { Cell::new(Encoder::OBS_X264) };
 }
 
 type PhantomUnsync = std::marker::PhantomData<Cell<()>>;

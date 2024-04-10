@@ -1,19 +1,19 @@
+use std::{env, error, fmt, io, path};
+
+use intprocess_recorder::settings::Encoder;
 pub use intprocess_recorder::{settings::RecorderSettings, InpRecorder as SingletonRecorder};
+use ipc_link::{IpcCommand, IpcLinkMaster, IpcResponse};
+
 pub mod settings {
     pub use intprocess_recorder::settings::{
         AudioSource, Encoder, Framerate, RateControl, Resolution, StdResolution, Window,
     };
 }
 
-use intprocess_recorder::settings::Encoder;
-use ipc_link::{IpcCommand, IpcLinkMaster, IpcResponse};
-
-use std::{error, fmt, io, path};
-
 #[cfg(target_family = "windows")]
-const EXECUTABLE: &str = "./extprocess_recorder.exe";
+const EXECUTABLE: &str = "./libobs/extprocess_recorder.exe";
 #[cfg(target_family = "unix")]
-const EXECUTABLE: &str = "./extprocess_recorder";
+const EXECUTABLE: &str = "./libobs/extprocess_recorder";
 
 #[derive(Debug)]
 pub enum Error {
@@ -60,11 +60,17 @@ impl Recorder {
         plugin_bin_path: Option<&str>,
         plugin_data_path: Option<&str>,
     ) -> Result<Self> {
-        let executable_path = match &executable_path {
-            Some(p) => p.as_ref(),
-            None => path::Path::new(EXECUTABLE),
-        };
-        let mut rec = IpcLinkMaster::new(executable_path).map_err(Error::Io)?;
+        let mut rec = match &executable_path {
+            Some(p) => IpcLinkMaster::new(p),
+            None => {
+                let exe_path = env::current_exe().map_err(Error::Io)?;
+                let pwd = exe_path
+                    .parent()
+                    .expect("current exe should always have a parent directory");
+                IpcLinkMaster::new(pwd.join(EXECUTABLE))
+            }
+        }
+        .map_err(Error::Io)?;
 
         let cmd = IpcCommand::Init {
             libobs_data_path: libobs_data_path.map(ToString::to_string),

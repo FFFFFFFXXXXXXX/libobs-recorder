@@ -1,7 +1,10 @@
 [package]
 name = "ipc-link"
 version = "0.1.0"
-edition = "2021"
+description = "serde/json based protocol for communicating between parent process and intproces-recorder process"
+authors = { workspace = true }
+edition = { workspace = true }
+license = { workspace = true }
 
 [dependencies]
 intprocess-recorder = { workspace = true }

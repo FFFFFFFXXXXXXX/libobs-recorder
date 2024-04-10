@@ -1,0 +1,13 @@
+[package]
+name = "demo"
+version = "0.1.0"
+description = "Demo for using the libobs-recorder crate"
+authors = ["FX"]
+edition = "2021"
+
+[dependencies]
+libobs-recorder = { path = ".." }
+
+[build-dependencies]
+libobs-recorder = { path = "..", artifact = "bin:extprocess_recorder" }
+build-helper = { path = "../build-helper" }

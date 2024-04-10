@@ -1,4 +1,5 @@
-use std::{env, path};
+use std::fmt::{Display, Formatter};
+use std::{env, error, fs, path};
 
 use fs_extra::dir;
 
@@ -13,29 +14,63 @@ pub const VERSION: &str = {
 
 pub type Error = Box<dyn std::error::Error>;
 
+#[derive(Debug)]
+struct NoExtprocessRecorder;
+impl error::Error for NoExtprocessRecorder {}
+impl Display for NoExtprocessRecorder {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        f.write_str("CARGO_BIN_FILE_LIBOBS_RECORDER_extprocess_recorder environment variable not found! Make sure you correctly added the artifact-dependency to your 'Cargo.toml' file")
+    }
+}
+
 pub fn build() -> Result<(), Error> {
-    build_internal(None::<&path::Path>)
+    build_internal(None)
 }
 
 pub fn build_to_path(path: impl AsRef<path::Path>) -> Result<(), Error> {
-    build_internal(Some(path))
+    build_internal(Some(path.as_ref()))
 }
 
-fn build_internal(path: Option<impl AsRef<path::Path>>) -> Result<(), Error> {
+fn build_internal(path: Option<&path::Path>) -> Result<(), Error> {
     // compile time
     let this_crate_dir = path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     // run time;
     let consumer_crate_output_dir = match path {
-        Some(path) => path::PathBuf::from(path.as_ref()),
+        Some(path) => path::PathBuf::from(path),
         None => get_cargo_target_dir()?,
     };
 
     let bin_res_dir = this_crate_dir.join(format!("libobs_{}", VERSION));
-    dir::copy(
-        bin_res_dir,
-        consumer_crate_output_dir.join("libobs"),
-        &dir::CopyOptions::new().overwrite(true).content_only(true),
-    )?;
+    let target_path = consumer_crate_output_dir.join("libobs");
+
+    fs::create_dir_all(target_path.parent().unwrap())?;
+
+    let copy_options = dir::CopyOptions::new().overwrite(true).content_only(true);
+    dir::copy(bin_res_dir, target_path, &copy_options)?;
+
+    Ok(())
+}
+
+pub fn copy_artifact_dependency() -> Result<(), Error> {
+    copy_artifact_dependency_internal(None)
+}
+
+pub fn copy_artifact_dependency_to_path(path: impl AsRef<path::Path>) -> Result<(), Error> {
+    copy_artifact_dependency_internal(Some(path.as_ref()))
+}
+
+fn copy_artifact_dependency_internal(path: Option<&path::Path>) -> Result<(), Error> {
+    let consumer_crate_output_dir = match path {
+        Some(path) => path::PathBuf::from(path),
+        None => get_cargo_target_dir()?,
+    };
+
+    let artifact_path =
+        env::var_os("CARGO_BIN_FILE_LIBOBS_RECORDER_extprocess_recorder").ok_or(NoExtprocessRecorder)?;
+    let target_path = consumer_crate_output_dir.join("libobs/extprocess_recorder.exe");
+
+    fs::create_dir_all(target_path.parent().unwrap())?;
+    fs::copy(artifact_path, target_path)?;
 
     Ok(())
 }

@@ -1,10 +1,12 @@
 [package]
 name = "libobs-sys"
 version = "0.1.0"
-authors = ["FX"]
 description = "FFI bindings for libobs"
-links = "obs"
 build = "build.rs"
+links = "obs"
+authors = { workspace = true }
+edition = { workspace = true }
+license = { workspace = true }
 
 [build-dependencies]
 bindgen = { workspace = true, optional = true }

@@ -1,5 +1,5 @@
-use intprocess_recorder::settings::{AudioSource, Framerate, RateControl, StdResolution, Window};
 use libobs_recorder::{Recorder, RecorderSettings};
+use libobs_recorder::settings::{AudioSource, Framerate, RateControl, StdResolution, Window};
 
 fn main() {
     let mut rec = Recorder::new().unwrap();

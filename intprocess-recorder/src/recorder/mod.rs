@@ -13,11 +13,11 @@ use libobs_sys::{
     obs_encoder_release, obs_encoder_set_audio, obs_encoder_set_video, obs_encoder_update, obs_enum_encoder_types,
     obs_get_audio, obs_get_encoder_by_name, obs_get_output_by_name, obs_get_source_by_name, obs_get_video,
     obs_get_video_info, obs_load_all_modules, obs_log_loaded_modules, obs_output, obs_output_active, obs_output_create,
-    obs_output_force_stop, obs_output_release, obs_output_set_audio_encoder, obs_output_set_video_encoder,
-    obs_output_start, obs_output_stop, obs_output_update, obs_post_load_modules, obs_reset_audio, obs_reset_video,
-    obs_scale_type_OBS_SCALE_LANCZOS, obs_set_output_source, obs_shutdown, obs_source, obs_source_create,
-    obs_source_release, obs_source_update, obs_startup, obs_video_encoder_create, obs_video_info,
-    speaker_layout_SPEAKERS_STEREO, video_colorspace_VIDEO_CS_709, video_format_VIDEO_FORMAT_NV12,
+    obs_output_force_stop, obs_output_get_last_error, obs_output_release, obs_output_set_audio_encoder,
+    obs_output_set_video_encoder, obs_output_start, obs_output_stop, obs_output_update, obs_post_load_modules,
+    obs_reset_audio, obs_reset_video, obs_scale_type_OBS_SCALE_LANCZOS, obs_set_output_source, obs_shutdown,
+    obs_source, obs_source_create, obs_source_release, obs_source_update, obs_startup, obs_video_encoder_create,
+    obs_video_info, speaker_layout_SPEAKERS_STEREO, video_colorspace_VIDEO_CS_709, video_format_VIDEO_FORMAT_NV12,
     video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
 };
 
@@ -404,12 +404,24 @@ impl InpRecorder {
 }
 
 impl InpRecorder {
-    pub fn start_recording(&mut self) -> bool {
+    pub fn start_recording(&mut self) -> Result<(), String> {
         println!("Recording Start: {}", unsafe { bnum_allocs() });
         if self.is_recording() {
-            true // return true if already recording
+            Ok(()) // already recording
         } else {
-            unsafe { obs_output_start(self.output.as_ptr()) }
+            if unsafe { obs_output_start(self.output.as_ptr()) } {
+                return Ok(());
+            }
+
+            let error = unsafe {
+                let err = obs_output_get_last_error(self.output.as_ptr());
+                if err.is_null() {
+                    c"no error message"
+                } else {
+                    CStr::from_ptr(err)
+                }
+            };
+            Err(error.to_str().unwrap_or("error message is invalid UTF-8").to_string())
         }
     }
 

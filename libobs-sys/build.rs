@@ -5,6 +5,7 @@ fn main() {
 
     let bindings_file = format!("bindings_{}.rs", build_helper::VERSION);
     println!("cargo:rustc-env=LIBOBS_BINDINGS_FILE={bindings_file}");
+    println!("cargo:rustc-env=LIBOBS_BINDINGS_VERSION={}", build_helper::VERSION);
 
     #[cfg(feature = "bindgen")]
     bindgen::builder()

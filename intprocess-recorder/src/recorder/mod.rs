@@ -112,7 +112,7 @@ impl InpRecorder {
             thread::current().id()
         });
 
-        println!("libobs initialized");
+        println!("libobs {} initialized", libobs_sys::VERSION);
 
         Ok(())
     }

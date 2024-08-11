@@ -15,11 +15,11 @@ const EXECUTABLE: &str = "./libobs/extprocess_recorder.exe";
 #[cfg(target_family = "unix")]
 const EXECUTABLE: &str = "./libobs/extprocess_recorder";
 
-#[derive(Debug)]
 pub enum Error {
     Io(io::Error),
     Recorder(String),
     ShutdownFailed(Recorder, String),
+    ExitFailed(Recorder, String),
     ShouldNeverHappenNotifyMe,
 }
 
@@ -27,9 +27,15 @@ impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Error::Io(e) => f.write_fmt(format_args!("{e:?}")),
-            Error::Recorder(e) | Error::ShutdownFailed(_, e) => f.write_str(e),
+            Error::Recorder(e) | Error::ShutdownFailed(_, e) | Error::ExitFailed(_, e) => f.write_str(e),
             Error::ShouldNeverHappenNotifyMe => f.write_str("This error should never happen - please notify me"),
         }
+    }
+}
+
+impl fmt::Debug for Error {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self)
     }
 }
 
@@ -144,7 +150,7 @@ impl Recorder {
                 self.recorder.drain_logs();
                 Ok(())
             }
-            IpcResponse::Err(e) => Err(Box::new(Error::ShutdownFailed(self, e))),
+            IpcResponse::Err(e) => Err(Box::new(Error::ExitFailed(self, e))),
             _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }

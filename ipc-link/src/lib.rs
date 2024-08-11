@@ -58,13 +58,20 @@ impl IpcLinkMaster {
     }
 
     pub fn send(&mut self, cmd: IpcCommand) -> IpcResponse {
-        _ = serde_json::to_writer(&mut self.tx, &cmd);
-        _ = self.tx.write(&[b'\n']);
-        _ = self.tx.flush();
+        if let Err(e) = serde_json::to_writer(&mut self.tx, &cmd) {
+            return IpcResponse::Err(format!("{e:?}"));
+        }
+        if let Err(e) = self.tx.write(&[b'\n']) {
+            return IpcResponse::Err(format!("{e:?}"));
+        }
+        if let Err(e) = self.tx.flush() {
+            return IpcResponse::Err(format!("{e:?}"));
+        }
 
         loop {
-            let Ok(line) = self.read_line() else {
-                return IpcResponse::Err("failed to read from recorder".into());
+            let line = match self.read_line() {
+                Ok(line) => line,
+                Err(e) => return IpcResponse::Err(format!("failed to read from recorder: {e}")),
             };
             match serde_json::from_str::<IpcResponse>(line) {
                 Ok(response) => return response,
@@ -81,11 +88,12 @@ impl IpcLinkMaster {
         }
     }
 
-    fn read_line(&mut self) -> Result<&str, ()> {
+    fn read_line(&mut self) -> Result<&str, String> {
         self.buffer.clear();
 
         match self.rx.read_line(&mut self.buffer) {
-            Ok(0) | Err(_) => Err(()),
+            Ok(0) => Err("EOF".into()),
+            Err(e) => Err(format!("{e:?}")),
             Ok(_) => Ok(&self.buffer),
         }
     }

@@ -1,29 +1,15 @@
-use std::{
-    cell::Cell,
-    ffi::CStr,
-    os::raw::{c_char, c_int},
-    ptr::{addr_of_mut, null_mut, NonNull},
-    sync::{Once, OnceLock},
-    thread::{self, ThreadId},
-    time::Duration,
-};
-
-use libobs_sys::{
-    bnum_allocs, obs_add_data_path, obs_add_module_path, obs_audio_encoder_create, obs_audio_info, obs_encoder,
-    obs_encoder_release, obs_encoder_set_audio, obs_encoder_set_video, obs_encoder_update, obs_enum_encoder_types,
-    obs_get_audio, obs_get_encoder_by_name, obs_get_output_by_name, obs_get_source_by_name, obs_get_video,
-    obs_get_video_info, obs_load_all_modules, obs_log_loaded_modules, obs_output, obs_output_active, obs_output_create,
-    obs_output_force_stop, obs_output_get_last_error, obs_output_release, obs_output_set_audio_encoder,
-    obs_output_set_video_encoder, obs_output_start, obs_output_stop, obs_output_update, obs_post_load_modules,
-    obs_reset_audio, obs_reset_video, obs_scale_type_OBS_SCALE_LANCZOS, obs_set_output_source, obs_shutdown,
-    obs_source, obs_source_create, obs_source_release, obs_source_update, obs_startup, obs_video_encoder_create,
-    obs_video_info, speaker_layout_SPEAKERS_STEREO, video_colorspace_VIDEO_CS_709, video_format_VIDEO_FORMAT_NV12,
-    video_range_type_VIDEO_RANGE_DEFAULT, OBS_VIDEO_SUCCESS,
-};
+use std::cell::Cell;
+use std::ffi::CStr;
+use std::os::raw::{c_char, c_int};
+use std::ptr::{addr_of_mut, null_mut, NonNull};
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::OnceLock;
+use std::thread::{self, ThreadId};
+use std::time::Duration;
 
 use crate::settings::{AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Resolution};
-
-use self::{get::Get, obs_data::ObsData};
+use get::Get;
+use obs_data::ObsData;
 
 mod get;
 pub(crate) mod obs_data;
@@ -54,7 +40,7 @@ const AUDIO_CHANNEL2: u32 = 2;
 const AUDIO_CHANNEL3: u32 = 3;
 
 static LIBOBS_THREAD: OnceLock<ThreadId> = OnceLock::new();
-static LIBOBS_SHUTDOWN: Once = Once::new();
+static LIBOBS_SHUTDOWN: AtomicBool = AtomicBool::new(false);
 
 // stores how many instances of Recorder exist in each thread
 // it is only possible to create instances of Recorder on one thread due to LIBOBS_THREAD
@@ -69,13 +55,13 @@ type PhantomUnsync = std::marker::PhantomData<Cell<()>>;
 type PhantomUnsend = std::marker::PhantomData<*mut ()>;
 
 pub struct InpRecorder {
-    output: NonNull<obs_output>,
-    video_encoder: Cell<NonNull<obs_encoder>>,
-    audio_encoder: NonNull<obs_encoder>,
-    video_source: NonNull<obs_source>,
-    audio_source1: NonNull<obs_source>,
-    audio_source2: NonNull<obs_source>,
-    audio_source3: NonNull<obs_source>,
+    output: NonNull<libobs_sys::obs_output>,
+    video_encoder: Cell<NonNull<libobs_sys::obs_encoder>>,
+    audio_encoder: NonNull<libobs_sys::obs_encoder>,
+    video_source: NonNull<libobs_sys::obs_source>,
+    audio_source1: NonNull<libobs_sys::obs_source>,
+    audio_source2: NonNull<libobs_sys::obs_source>,
+    audio_source3: NonNull<libobs_sys::obs_source>,
 
     _phantom: std::marker::PhantomData<(PhantomUnsend, PhantomUnsync)>,
 }
@@ -95,7 +81,7 @@ impl InpRecorder {
     ) -> Result<(), &'static str> {
         // libobs currently cant be reinitialized after being shutdown
         // I assume this is a limitation of libobs
-        if LIBOBS_SHUTDOWN.is_completed() {
+        if LIBOBS_SHUTDOWN.load(Ordering::Acquire) {
             return Err("libobs has already been shut down");
         }
 
@@ -130,27 +116,28 @@ impl InpRecorder {
         // INITIALIZE
         let mut get = Get::new();
 
-        if unsafe { !obs_startup(get.c_str("en-US"), null_mut(), null_mut()) } {
+        if unsafe { !libobs_sys::obs_startup(get.c_str("en-US"), null_mut(), null_mut()) } {
             return Err("libobs startup failed");
         }
 
         let default_fps = Framerate::new(30, 1);
         let default_size = Resolution::new(1920, 1080);
-        unsafe { obs_add_data_path(get.c_str(libobs_data_path)) };
+        unsafe { libobs_sys::obs_add_data_path(get.c_str(libobs_data_path)) };
         Self::reset_video(default_size, default_size, default_fps).expect("unable to initialize video");
         Self::reset_audio().expect("unable to initialize audio");
 
         unsafe {
-            obs_add_module_path(get.c_str(plugin_bin_path), get.c_str(plugin_data_path));
-            obs_load_all_modules();
-            obs_post_load_modules();
-            obs_log_loaded_modules();
+            libobs_sys::obs_add_module_path(get.c_str(plugin_bin_path), get.c_str(plugin_data_path));
+            libobs_sys::obs_load_all_modules();
+            libobs_sys::obs_post_load_modules();
+            libobs_sys::obs_log_loaded_modules();
         }
 
         // CREATE OUTPUT
         let mut data = ObsData::new();
         data.set_string("path", "./recording.mp4");
-        let output = unsafe { obs_output_create(get.c_str("ffmpeg_muxer"), OUTPUT, data.as_ptr(), null_mut()) };
+        let output =
+            unsafe { libobs_sys::obs_output_create(get.c_str("ffmpeg_muxer"), OUTPUT, data.as_ptr(), null_mut()) };
 
         // choose 'best' encoder
         let encoders = Self::get_available_encoders_internal();
@@ -164,7 +151,7 @@ impl InpRecorder {
         let mut get = Get::new();
         let data: ObsData = current_encoder.settings(RateControl::default());
         let video_encoder = unsafe {
-            obs_video_encoder_create(
+            libobs_sys::obs_video_encoder_create(
                 get.c_str(current_encoder.id()),
                 VIDEO_ENCODER,
                 data.as_ptr(),
@@ -172,8 +159,8 @@ impl InpRecorder {
             )
         };
         unsafe {
-            obs_encoder_set_video(video_encoder, obs_get_video());
-            obs_output_set_video_encoder(output, video_encoder);
+            libobs_sys::obs_encoder_set_video(video_encoder, libobs_sys::obs_get_video());
+            libobs_sys::obs_output_set_video_encoder(output, video_encoder);
         }
 
         // CREATE VIDEO SOURCE
@@ -182,23 +169,24 @@ impl InpRecorder {
         data.set_string("window", "");
         data.set_bool("capture_cursor", true);
         let video_source = unsafe {
-            obs_source_create(
+            libobs_sys::obs_source_create(
                 get.c_str("game_capture"),
                 VIDEO_SOURCE,
                 data.as_ptr(),
                 std::ptr::null_mut(),
             )
         };
-        unsafe { obs_set_output_source(VIDEO_CHANNEL, video_source) };
+        unsafe { libobs_sys::obs_set_output_source(VIDEO_CHANNEL, video_source) };
 
         // CREATE AUDIO ENCODER
         let mut data = ObsData::new();
         data.set_int("bitrate", 160);
-        let audio_encoder =
-            unsafe { obs_audio_encoder_create(get.c_str("ffmpeg_aac"), AUDIO_ENCODER, data.as_ptr(), 0, null_mut()) };
+        let audio_encoder = unsafe {
+            libobs_sys::obs_audio_encoder_create(get.c_str("ffmpeg_aac"), AUDIO_ENCODER, data.as_ptr(), 0, null_mut())
+        };
         unsafe {
-            obs_encoder_set_audio(audio_encoder, obs_get_audio());
-            obs_output_set_audio_encoder(
+            libobs_sys::obs_encoder_set_audio(audio_encoder, libobs_sys::obs_get_audio());
+            libobs_sys::obs_output_set_audio_encoder(
                 output,
                 audio_encoder,
                 0, // ignored since we only have 1 output
@@ -207,7 +195,7 @@ impl InpRecorder {
 
         // CREATE AUDIO SOURCE 1
         unsafe {
-            obs_source_create(
+            libobs_sys::obs_source_create(
                 get.c_str("wasapi_process_output_capture"),
                 AUDIO_SOURCE1,
                 null_mut(),
@@ -219,20 +207,20 @@ impl InpRecorder {
         let mut data = ObsData::new();
         data.set_string("device_id", "default");
         let audio_source2 = unsafe {
-            obs_source_create(
+            libobs_sys::obs_source_create(
                 get.c_str("wasapi_output_capture"),
                 AUDIO_SOURCE2,
                 data.as_ptr(),
                 null_mut(),
             )
         };
-        unsafe { obs_set_output_source(AUDIO_CHANNEL2, audio_source2) };
+        unsafe { libobs_sys::obs_set_output_source(AUDIO_CHANNEL2, audio_source2) };
 
         // CREATE AUDIO SOURCE 3
         let mut data = ObsData::new();
         data.set_string("device_id", "default");
         unsafe {
-            obs_source_create(
+            libobs_sys::obs_source_create(
                 get.c_str("wasapi_input_capture"),
                 AUDIO_SOURCE3,
                 data.as_ptr(),
@@ -247,20 +235,21 @@ impl InpRecorder {
         Self::check_thread_initialized()?;
 
         unsafe {
-            let output = NonNull::new(obs_get_output_by_name(OUTPUT)).ok_or("got nullpointer instead of output")?;
+            let output =
+                NonNull::new(libobs_sys::obs_get_output_by_name(OUTPUT)).ok_or("got nullpointer instead of output")?;
             let video_encoder = Cell::new(
-                NonNull::new(obs_get_encoder_by_name(VIDEO_ENCODER))
+                NonNull::new(libobs_sys::obs_get_encoder_by_name(VIDEO_ENCODER))
                     .ok_or("got nullpointer instead of video encoder")?,
             );
-            let audio_encoder = NonNull::new(obs_get_encoder_by_name(AUDIO_ENCODER))
+            let audio_encoder = NonNull::new(libobs_sys::obs_get_encoder_by_name(AUDIO_ENCODER))
                 .ok_or("got nullpointer instead of audio encoder")?;
-            let video_source =
-                NonNull::new(obs_get_source_by_name(VIDEO_SOURCE)).ok_or("got nullpointer instead of video source")?;
-            let audio_source1 = NonNull::new(obs_get_source_by_name(AUDIO_SOURCE1))
+            let video_source = NonNull::new(libobs_sys::obs_get_source_by_name(VIDEO_SOURCE))
+                .ok_or("got nullpointer instead of video source")?;
+            let audio_source1 = NonNull::new(libobs_sys::obs_get_source_by_name(AUDIO_SOURCE1))
                 .ok_or("got nullpointer instead of audio source 1")?;
-            let audio_source2 = NonNull::new(obs_get_source_by_name(AUDIO_SOURCE2))
+            let audio_source2 = NonNull::new(libobs_sys::obs_get_source_by_name(AUDIO_SOURCE2))
                 .ok_or("got nullpointer instead of audio source2")?;
-            let audio_source3 = NonNull::new(obs_get_source_by_name(AUDIO_SOURCE3))
+            let audio_source3 = NonNull::new(libobs_sys::obs_get_source_by_name(AUDIO_SOURCE3))
                 .ok_or("got nullpointer instead of audio source3")?;
 
             Self::increment_refcount();
@@ -279,25 +268,24 @@ impl InpRecorder {
     }
 
     pub fn shutdown() -> Result<(), &'static str> {
-        if LIBOBS_SHUTDOWN.is_completed() {
+        Self::check_thread_initialized()?;
+
+        if LIBOBS_SHUTDOWN.load(Ordering::Acquire) {
             return Ok(());
         }
-
-        Self::check_thread_initialized()?;
 
         if REF_COUNT.get() > 0 {
             return Err("libobs can't be shut down due to existing Recorder instances");
         }
 
-        unsafe {
-            obs_shutdown();
-            LIBOBS_SHUTDOWN.call_once(|| ());
-        }
+        unsafe { libobs_sys::obs_shutdown() };
+        LIBOBS_SHUTDOWN.store(true, Ordering::Release);
+
         Ok(())
     }
 
-    fn get_video_info() -> Result<obs_video_info, &'static str> {
-        let mut ovi = obs_video_info {
+    fn get_video_info() -> Result<libobs_sys::obs_video_info, &'static str> {
+        let mut ovi = libobs_sys::obs_video_info {
             adapter: 0,
             graphics_module: null_mut(),
             fps_num: 0,
@@ -313,7 +301,7 @@ impl InpRecorder {
             scale_type: -1,
         };
 
-        if unsafe { obs_get_video_info(addr_of_mut!(ovi)) } {
+        if unsafe { libobs_sys::obs_get_video_info(addr_of_mut!(ovi)) } {
             Ok(ovi)
         } else {
             Err("Error video was not set! Maybe Recorder was not initialized?")
@@ -323,7 +311,7 @@ impl InpRecorder {
     fn reset_video(input_size: Resolution, output_size: Resolution, framerate: Framerate) -> Result<(), &'static str> {
         unsafe {
             let mut get = Get::new();
-            let mut ovi = obs_video_info {
+            let mut ovi = libobs_sys::obs_video_info {
                 adapter: 0,
                 graphics_module: get.c_str(GRAPHICS_MODULE),
                 fps_num: framerate.num(),
@@ -332,15 +320,15 @@ impl InpRecorder {
                 base_height: input_size.height(),
                 output_width: output_size.width(),
                 output_height: output_size.height(),
-                output_format: video_format_VIDEO_FORMAT_NV12,
+                output_format: libobs_sys::video_format_VIDEO_FORMAT_NV12,
                 gpu_conversion: true,
-                colorspace: video_colorspace_VIDEO_CS_709,
-                range: video_range_type_VIDEO_RANGE_DEFAULT,
-                scale_type: obs_scale_type_OBS_SCALE_LANCZOS,
+                colorspace: libobs_sys::video_colorspace_VIDEO_CS_709,
+                range: libobs_sys::video_range_type_VIDEO_RANGE_DEFAULT,
+                scale_type: libobs_sys::obs_scale_type_OBS_SCALE_LANCZOS,
             };
 
             // OBS_VIDEO_SUCCESS is 0, so casting it to c_int should be fine
-            if obs_reset_video(addr_of_mut!(ovi)) != OBS_VIDEO_SUCCESS as c_int {
+            if libobs_sys::obs_reset_video(addr_of_mut!(ovi)) != libobs_sys::OBS_VIDEO_SUCCESS as c_int {
                 return Err("error on libobs reset video");
             }
         }
@@ -350,11 +338,11 @@ impl InpRecorder {
     /// only call this function once on startup
     /// resetting audio after initialisation crashes libobs
     fn reset_audio() -> Result<(), String> {
-        let ai = obs_audio_info {
+        let ai = libobs_sys::obs_audio_info {
             samples_per_sec: 44100,
-            speakers: speaker_layout_SPEAKERS_STEREO,
+            speakers: libobs_sys::speaker_layout_SPEAKERS_STEREO,
         };
-        let ok = unsafe { obs_reset_audio(&ai) };
+        let ok = unsafe { libobs_sys::obs_reset_audio(&ai) };
         if !ok {
             return Err(String::from("error on libobs reset audio"));
         }
@@ -366,7 +354,7 @@ impl InpRecorder {
         let mut n = 0;
         let mut encoders = Vec::new();
         let mut ptr: *const c_char = unsafe { std::mem::zeroed() };
-        while unsafe { obs_enum_encoder_types(n, &mut ptr) } {
+        while unsafe { libobs_sys::obs_enum_encoder_types(n, &mut ptr) } {
             n += 1;
             let cstring = unsafe { CStr::from_ptr(ptr) };
             if let Ok(enc) = cstring.to_str() {
@@ -405,16 +393,16 @@ impl InpRecorder {
 
 impl InpRecorder {
     pub fn start_recording(&mut self) -> Result<(), String> {
-        println!("Recording Start: {}", unsafe { bnum_allocs() });
+        println!("Recording Start: {}", unsafe { libobs_sys::bnum_allocs() });
         if self.is_recording() {
             Ok(()) // already recording
         } else {
-            if unsafe { obs_output_start(self.output.as_ptr()) } {
+            if unsafe { libobs_sys::obs_output_start(self.output.as_ptr()) } {
                 return Ok(());
             }
 
             let error = unsafe {
-                let err = obs_output_get_last_error(self.output.as_ptr());
+                let err = libobs_sys::obs_output_get_last_error(self.output.as_ptr());
                 if err.is_null() {
                     c"no error message"
                 } else {
@@ -427,8 +415,8 @@ impl InpRecorder {
 
     pub fn stop_recording(&mut self) {
         if self.is_recording() {
-            unsafe { obs_output_stop(self.output.as_ptr()) }
-            println!("Recording Stop: {}", unsafe { bnum_allocs() });
+            unsafe { libobs_sys::obs_output_stop(self.output.as_ptr()) }
+            println!("Recording Stop: {}", unsafe { libobs_sys::bnum_allocs() });
         }
 
         let now = std::time::Instant::now();
@@ -437,7 +425,7 @@ impl InpRecorder {
             if !self.is_recording() {
                 return;
             } else if now.elapsed().as_millis() > 3000 {
-                unsafe { obs_output_force_stop(self.output.as_ptr()) };
+                unsafe { libobs_sys::obs_output_force_stop(self.output.as_ptr()) };
                 return;
             }
         }
@@ -474,9 +462,9 @@ impl InpRecorder {
 
             unsafe {
                 // reconfigure video output pipeline after resetting the video backend
-                obs_encoder_set_video(self.video_encoder.get().as_ptr(), obs_get_video());
-                obs_output_set_video_encoder(self.output.as_ptr(), self.video_encoder.get().as_ptr());
-                obs_set_output_source(VIDEO_CHANNEL, self.video_source.as_ptr());
+                libobs_sys::obs_encoder_set_video(self.video_encoder.get().as_ptr(), libobs_sys::obs_get_video());
+                libobs_sys::obs_output_set_video_encoder(self.output.as_ptr(), self.video_encoder.get().as_ptr());
+                libobs_sys::obs_set_output_source(VIDEO_CHANNEL, self.video_source.as_ptr());
             }
         }
 
@@ -486,7 +474,7 @@ impl InpRecorder {
             if let Some(output_path) = &settings.output_path {
                 let mut data = ObsData::new();
                 data.set_string("path", output_path);
-                obs_output_update(self.output.as_ptr(), data.as_ptr());
+                libobs_sys::obs_output_update(self.output.as_ptr(), data.as_ptr());
             }
 
             // VIDEO ENCODER
@@ -498,7 +486,7 @@ impl InpRecorder {
 
                     // create new encoder
                     let data = new_encoder.settings(settings.rate_control.unwrap_or_default());
-                    let new_video_encoder = NonNull::new(obs_video_encoder_create(
+                    let new_video_encoder = NonNull::new(libobs_sys::obs_video_encoder_create(
                         get.c_str(new_encoder.id()),
                         get.c_str("video_encoder"),
                         data.as_ptr(),
@@ -506,22 +494,22 @@ impl InpRecorder {
                     ))
                     .expect("unable to create video encoder");
 
-                    obs_encoder_set_video(new_video_encoder.as_ptr(), obs_get_video());
-                    obs_output_set_video_encoder(self.output.as_ptr(), new_video_encoder.as_ptr());
+                    libobs_sys::obs_encoder_set_video(new_video_encoder.as_ptr(), libobs_sys::obs_get_video());
+                    libobs_sys::obs_output_set_video_encoder(self.output.as_ptr(), new_video_encoder.as_ptr());
 
                     // replace and release old encoder
-                    obs_encoder_release(self.video_encoder.replace(new_video_encoder).as_ptr());
+                    libobs_sys::obs_encoder_release(self.video_encoder.replace(new_video_encoder).as_ptr());
                 }
             } else if let Some(rate_control) = settings.rate_control {
                 let data = Self::get_current_encoder().settings(rate_control);
-                obs_encoder_update(self.video_encoder.get().as_ptr(), data.as_ptr());
+                libobs_sys::obs_encoder_update(self.video_encoder.get().as_ptr(), data.as_ptr());
             }
 
             // VIDEO SOURCE
             if let Some(window) = settings.window.as_ref() {
                 let mut data = ObsData::new();
                 data.set_string("window", window.get_libobs_window_id());
-                obs_source_update(self.video_source.as_ptr(), data.as_ptr());
+                libobs_sys::obs_source_update(self.video_source.as_ptr(), data.as_ptr());
             }
 
             if let Some(audio_setting) = settings.record_audio {
@@ -531,27 +519,27 @@ impl InpRecorder {
                         if let Some(window) = settings.window.as_ref() {
                             let mut data = ObsData::new();
                             data.set_string("window", window.get_libobs_window_id());
-                            obs_source_update(self.audio_source1.as_ptr(), data.as_ptr());
+                            libobs_sys::obs_source_update(self.audio_source1.as_ptr(), data.as_ptr());
                         };
                         self.audio_source1.as_ptr()
                     }
                     _ => null_mut(),
                 };
-                obs_set_output_source(AUDIO_CHANNEL1, audio_source1);
+                libobs_sys::obs_set_output_source(AUDIO_CHANNEL1, audio_source1);
 
                 // AUDIO SOURCE 2
                 let audio_source2 = match audio_setting {
                     AudioSource::SYSTEM | AudioSource::ALL => self.audio_source2.as_ptr(),
                     _ => null_mut(),
                 };
-                obs_set_output_source(AUDIO_CHANNEL2, audio_source2);
+                libobs_sys::obs_set_output_source(AUDIO_CHANNEL2, audio_source2);
 
                 // AUDIO SOURCE 3
                 let audio_source3 = match audio_setting {
                     AudioSource::ALL => self.audio_source3.as_ptr(),
                     _ => null_mut(),
                 };
-                obs_set_output_source(AUDIO_CHANNEL3, audio_source3);
+                libobs_sys::obs_set_output_source(AUDIO_CHANNEL3, audio_source3);
             }
 
             println!("configured");
@@ -561,7 +549,7 @@ impl InpRecorder {
     }
 
     pub fn is_recording(&self) -> bool {
-        unsafe { obs_output_active(self.output.as_ptr()) }
+        unsafe { libobs_sys::obs_output_active(self.output.as_ptr()) }
     }
 
     pub fn get_available_encoders(&self) -> Vec<Encoder> {
@@ -580,17 +568,17 @@ impl Drop for InpRecorder {
     fn drop(&mut self) {
         unsafe {
             // output
-            obs_output_release(self.output.as_ptr());
+            libobs_sys::obs_output_release(self.output.as_ptr());
             // video
-            obs_encoder_release(self.video_encoder.get().as_ptr());
-            obs_source_release(self.video_source.as_ptr());
+            libobs_sys::obs_encoder_release(self.video_encoder.get().as_ptr());
+            libobs_sys::obs_source_release(self.video_source.as_ptr());
             // audio
-            obs_encoder_release(self.audio_encoder.as_ptr());
-            obs_source_release(self.audio_source1.as_ptr());
-            obs_source_release(self.audio_source2.as_ptr());
-            obs_source_release(self.audio_source3.as_ptr());
+            libobs_sys::obs_encoder_release(self.audio_encoder.as_ptr());
+            libobs_sys::obs_source_release(self.audio_source1.as_ptr());
+            libobs_sys::obs_source_release(self.audio_source2.as_ptr());
+            libobs_sys::obs_source_release(self.audio_source3.as_ptr());
 
-            println!("drop bnum_allocs: {}", bnum_allocs());
+            println!("drop bnum_allocs: {}", libobs_sys::bnum_allocs());
         }
 
         Self::decrement_refcount();

@@ -147,8 +147,6 @@ pub enum StdResolution {
 
 impl StdResolution {
     pub fn closest_std_resolution(window_size: &Resolution) -> Self {
-        use std::cmp::Ordering;
-
         const DEFAULT_RESOLUTIONS_FOR_ASPECT_RATIOS: [(StdResolution, f64); 9] = [
             (StdResolution::_1600x1200p, 4.0 / 3.0),
             (StdResolution::_1280x1024p, 5.0 / 4.0),
@@ -162,10 +160,11 @@ impl StdResolution {
         ];
 
         let aspect_ratio = f64::from(window_size.width()) / f64::from(window_size.height());
+
         // sort difference of aspect_ratio to comparison by absolute values => most similar aspect ratio is at index 0
         let mut aspect_ratios =
             DEFAULT_RESOLUTIONS_FOR_ASPECT_RATIOS.map(|(res, ratio)| (res, f64::abs(ratio - aspect_ratio)));
-        aspect_ratios.sort_by(|(_, ratio1), (_, ratio2)| ratio1.partial_cmp(ratio2).unwrap_or(Ordering::Equal));
+        aspect_ratios.sort_by(|(_, ratio1), (_, ratio2)| ratio1.total_cmp(ratio2));
         aspect_ratios.first().unwrap().0
     }
 }

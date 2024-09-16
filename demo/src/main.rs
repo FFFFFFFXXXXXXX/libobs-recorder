@@ -1,13 +1,17 @@
-use libobs_recorder::settings::{AudioSource, Framerate, RateControl, StdResolution, Window};
-use libobs_recorder::{Recorder, RecorderSettings};
+use libobs_recorder::settings::{AudioSource, Framerate, RateControl, RecorderSettings, StdResolution, Window};
+use libobs_recorder::Recorder;
 
 fn main() {
     let mut rec = Recorder::new().unwrap();
+    println!("created recorder");
 
-    println!("configured: {:?}", rec.configure(&settings()));
+    println!("configured recorder: {:?}\n", rec.configure(&settings()));
 
-    println!("available encoders: {:?}", rec.available_encoders());
-    println!("selected encoder: {:?}", rec.selected_encoder());
+    println!("available adapters: {:?}", rec.available_adapters());
+    println!("selected adapter: {:?}\n", rec.selected_adapter());
+
+    println!("available encoders for adapter: {:?}", rec.available_encoders());
+    println!("selected encoder: {:?}\n", rec.selected_encoder());
 
     println!("started recording: {:?}", rec.start_recording());
     std::thread::sleep(std::time::Duration::from_secs(15));
@@ -19,20 +23,17 @@ fn settings() -> RecorderSettings {
     const WINDOW_CLASS: &str = "RiotWindowClass";
     const WINDOW_PROCESS: &str = "League of Legends.exe";
 
-    let mut settings = RecorderSettings::new();
+    let mut settings = RecorderSettings::new(
+        Window::new(WINDOW_TITLE, Some(WINDOW_CLASS.into()), Some(WINDOW_PROCESS.into())),
+        StdResolution::_2560x1440p,
+        StdResolution::_2560x1440p,
+        "./output.mp4",
+    );
 
-    settings.set_window(Window::new(
-        WINDOW_TITLE,
-        Some(WINDOW_CLASS.into()),
-        Some(WINDOW_PROCESS.into()),
-    ));
-
-    settings.set_input_resolution(StdResolution::_2560x1440p);
-    settings.set_output_resolution(StdResolution::_2560x1440p);
+    settings.set_adapter_id(0);
     settings.set_framerate(Framerate::new(60, 1));
     settings.set_rate_control(RateControl::CBR(10000));
     settings.set_audio_source(AudioSource::ALL);
-    settings.set_output_path("./output.mp4");
 
     settings
 }

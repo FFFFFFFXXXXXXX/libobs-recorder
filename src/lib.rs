@@ -110,6 +110,22 @@ impl Recorder {
         }
     }
 
+    pub fn available_adapters(&mut self) -> Result<Vec<settings::Adapter>> {
+        match self.recorder.send(IpcCommand::Adapters) {
+            IpcResponse::Adapters { available, .. } => Ok(available),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
+        }
+    }
+
+    pub fn selected_adapter(&mut self) -> Result<settings::Adapter> {
+        match self.recorder.send(IpcCommand::Adapters) {
+            IpcResponse::Adapters { selected, .. } => Ok(selected),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
+        }
+    }
+
     pub fn start_recording(&mut self) -> Result<()> {
         match self.recorder.send(IpcCommand::StartRecording) {
             IpcResponse::Ok => Ok(()),

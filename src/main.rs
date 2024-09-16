@@ -52,6 +52,16 @@ fn main() {
                 Some(IpcResponse::Err("recorder not initialized".into()))
             }
         }
+        IpcCommand::Adapters => {
+            if let Some(recorder) = recorder.as_mut() {
+                Some(IpcResponse::Adapters {
+                    available: recorder.get_available_adapters(),
+                    selected: recorder.selected_adapter(),
+                })
+            } else {
+                Some(IpcResponse::Err("recorder not initialized".into()))
+            }
+        }
         IpcCommand::StartRecording => {
             if let Some(recorder) = recorder.as_mut() {
                 if let Err(e) = recorder.start_recording() {

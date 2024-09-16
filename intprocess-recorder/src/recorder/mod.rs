@@ -48,6 +48,7 @@ static LIBOBS_SHUTDOWN: AtomicBool = AtomicBool::new(false);
 // these are thread local so I don't have to make them thread-safe
 thread_local! {
     static REF_COUNT: Cell<u32> = const { Cell::new(0) };
+    static CURRENT_ADAPTER: Cell<AdapterId> = const { Cell::new(0) };
     static CURRENT_ENCODER: Cell<Encoder> = const { Cell::new(Encoder::OBS_X264) };
 }
 
@@ -409,6 +410,14 @@ impl InpRecorder {
         }
     }
 
+    fn set_current_adapter_id(adapter_id: AdapterId) {
+        CURRENT_ADAPTER.set(adapter_id);
+    }
+
+    fn get_current_adapter_id() -> AdapterId {
+        CURRENT_ADAPTER.with(Cell::get)
+    }
+
     fn set_current_encoder(encoder: Encoder) {
         CURRENT_ENCODER.set(encoder);
     }
@@ -471,31 +480,28 @@ impl InpRecorder {
             return Err("can't change settings while recording");
         }
 
-        // RESET VIDEO
+        // set adapter, input_resolution, output_resolution, framerate
         let ovi = Self::get_video_info()?;
+
         let adapter_id = settings.adapter_id.unwrap_or_default();
-        let input_size = match settings.input_resolution {
-            Some(size) => size,
-            None => Resolution::new(ovi.base_width, ovi.base_height),
-        };
-        let output_size = match settings.output_resolution {
-            Some(size) => size,
-            None => Resolution::new(ovi.output_width, ovi.output_height),
-        };
-        let framerate = match settings.framerate {
-            Some(framerate) => framerate,
-            None => Framerate::new(ovi.fps_num, ovi.fps_den),
-        };
+        Self::set_current_adapter_id(adapter_id);
+
+        let framerate = settings.framerate.unwrap_or(Framerate::new(30, 1));
 
         let video_reset_necessary = adapter_id != ovi.adapter
-            || input_size.width() != ovi.base_width
-            || input_size.height() != ovi.base_height
-            || output_size.width() != ovi.output_width
-            || output_size.height() != ovi.output_height
+            || settings.input_resolution.width() != ovi.base_width
+            || settings.input_resolution.height() != ovi.base_height
+            || settings.output_resolution.width() != ovi.output_width
+            || settings.output_resolution.height() != ovi.output_height
             || framerate.num() != ovi.fps_num
             || framerate.den() != ovi.fps_den;
         if video_reset_necessary {
-            Self::reset_video(adapter_id, input_size, output_size, framerate)?;
+            Self::reset_video(
+                adapter_id,
+                settings.input_resolution,
+                settings.output_resolution,
+                framerate,
+            )?;
 
             unsafe {
                 // reconfigure video output pipeline after resetting the video backend
@@ -505,88 +511,107 @@ impl InpRecorder {
             }
         }
 
-        let mut get = Get::new();
-        unsafe {
-            // OUTPUT
-            if let Some(output_path) = &settings.output_path {
-                let mut data = ObsData::new();
-                data.set_string("path", output_path);
-                libobs_sys::obs_output_update(self.output.as_ptr(), data.as_ptr());
+        let available_encoders = Self::get_available_encoders_internal(Some(adapter_id));
+        if let Some(encoder) = settings.encoder {
+            // check if the given encoder is even available on this adapter
+            if !available_encoders.contains(&encoder) {
+                return Err("encoder not available");
             }
-
-            // VIDEO ENCODER
-            // create a new encoder if there is none or if it is different from the previously selected encoder
-            // or update the encoder if rate_control is Some()
-            if let Some(new_encoder) = settings.encoder {
-                if new_encoder != Self::get_current_encoder() {
-                    Self::set_current_encoder(new_encoder);
-
-                    // create new encoder
-                    let data = new_encoder.settings(settings.rate_control.unwrap_or_default());
-                    let new_video_encoder = NonNull::new(libobs_sys::obs_video_encoder_create(
-                        get.c_str(new_encoder.id()),
-                        get.c_str("video_encoder"),
-                        data.as_ptr(),
-                        null_mut(),
-                    ))
-                    .expect("unable to create video encoder");
-
-                    libobs_sys::obs_encoder_set_video(new_video_encoder.as_ptr(), libobs_sys::obs_get_video());
-                    libobs_sys::obs_output_set_video_encoder(self.output.as_ptr(), new_video_encoder.as_ptr());
-
-                    // replace and release old encoder
-                    libobs_sys::obs_encoder_release(self.video_encoder.replace(new_video_encoder).as_ptr());
-                }
-            } else if let Some(rate_control) = settings.rate_control {
-                let data = Self::get_current_encoder().settings(rate_control);
-                libobs_sys::obs_encoder_update(self.video_encoder.get().as_ptr(), data.as_ptr());
-            }
-
-            // VIDEO SOURCE
-            if let Some(window) = settings.window.as_ref() {
-                let mut data = ObsData::new();
-                data.set_string("window", window.get_libobs_window_id());
-                libobs_sys::obs_source_update(self.video_source.as_ptr(), data.as_ptr());
-            }
-
-            if let Some(audio_setting) = settings.audio_source {
-                // AUDIO SOURCE 1
-                let audio_source1 = match audio_setting {
-                    AudioSource::APPLICATION => {
-                        if let Some(window) = settings.window.as_ref() {
-                            let mut data = ObsData::new();
-                            data.set_string("window", window.get_libobs_window_id());
-                            libobs_sys::obs_source_update(self.audio_source1.as_ptr(), data.as_ptr());
-                        };
-                        self.audio_source1.as_ptr()
-                    }
-                    _ => null_mut(),
-                };
-                libobs_sys::obs_set_output_source(AUDIO_CHANNEL1, audio_source1);
-
-                // AUDIO SOURCE 2
-                let audio_source2 = match audio_setting {
-                    AudioSource::SYSTEM | AudioSource::ALL => self.audio_source2.as_ptr(),
-                    _ => null_mut(),
-                };
-                libobs_sys::obs_set_output_source(AUDIO_CHANNEL2, audio_source2);
-
-                // AUDIO SOURCE 3
-                let audio_source3 = match audio_setting {
-                    AudioSource::ALL => self.audio_source3.as_ptr(),
-                    _ => null_mut(),
-                };
-                libobs_sys::obs_set_output_source(AUDIO_CHANNEL3, audio_source3);
-            }
-
-            println!("configured");
         }
+
+        // if no encoder was explicitly set, choose an available encoder
+        let encoder = match settings.encoder {
+            Some(encoder) => encoder,
+            None => *available_encoders.first().ok_or("no encoders available")?,
+        };
+
+        let mut get = Get::new();
+
+        // set output_path
+        let mut data = ObsData::new();
+        data.set_string("path", &settings.output_path);
+        unsafe { libobs_sys::obs_output_update(self.output.as_ptr(), data.as_ptr()) };
+
+        // set video encoder
+        Self::set_current_encoder(encoder);
+
+        let data = encoder.settings(settings.rate_control.unwrap_or_default());
+        let new_video_encoder = NonNull::new(unsafe {
+            libobs_sys::obs_video_encoder_create(
+                get.c_str(encoder.id()),
+                get.c_str("video_encoder"),
+                data.as_ptr(),
+                null_mut(),
+            )
+        })
+        .ok_or("unable to create video encoder")?;
+
+        unsafe {
+            libobs_sys::obs_encoder_set_video(new_video_encoder.as_ptr(), libobs_sys::obs_get_video());
+            libobs_sys::obs_output_set_video_encoder(self.output.as_ptr(), new_video_encoder.as_ptr());
+        }
+
+        // replace and release old encoder
+        let old_encoder = self.video_encoder.replace(new_video_encoder);
+        unsafe { libobs_sys::obs_encoder_release(old_encoder.as_ptr()) };
+
+        // set video source (window)
+        let mut data = ObsData::new();
+        data.set_string("window", settings.window.get_libobs_window_id());
+        unsafe { libobs_sys::obs_source_update(self.video_source.as_ptr(), data.as_ptr()) };
+
+        // set audio sources
+        let audio_setting = settings.audio_source.unwrap_or(AudioSource::APPLICATION);
+
+        // audio source 1
+        let audio_source1 = match audio_setting {
+            AudioSource::APPLICATION => {
+                let mut data = ObsData::new();
+                data.set_string("window", settings.window.get_libobs_window_id());
+                unsafe { libobs_sys::obs_source_update(self.audio_source1.as_ptr(), data.as_ptr()) };
+
+                self.audio_source1.as_ptr()
+            }
+            _ => null_mut(),
+        };
+        unsafe { libobs_sys::obs_set_output_source(AUDIO_CHANNEL1, audio_source1) };
+
+        // audio source 2
+        let audio_source2 = match audio_setting {
+            AudioSource::SYSTEM | AudioSource::ALL => self.audio_source2.as_ptr(),
+            _ => null_mut(),
+        };
+        unsafe { libobs_sys::obs_set_output_source(AUDIO_CHANNEL2, audio_source2) };
+
+        // audio source 3
+        let audio_source3 = match audio_setting {
+            AudioSource::ALL => self.audio_source3.as_ptr(),
+            _ => null_mut(),
+        };
+        unsafe { libobs_sys::obs_set_output_source(AUDIO_CHANNEL3, audio_source3) };
+
+        println!("configured");
 
         Ok(())
     }
 
     pub fn is_recording(&self) -> bool {
         unsafe { libobs_sys::obs_output_active(self.output.as_ptr()) }
+    }
+
+    pub fn get_available_adapters(&self) -> Vec<Adapter> {
+        // public version of internal function that is only available after libobs is initialized
+        // due to requiring &self
+        Self::get_adapters_internal()
+    }
+
+    pub fn selected_adapter(&self) -> Adapter {
+        // only available after libobs is initialized due to requiring &self
+        let current_adapter_id = Self::get_current_adapter_id();
+        Self::get_adapters_internal()
+            .into_iter()
+            .find(|ad| ad.id() == current_adapter_id)
+            .expect("previously selected adapter disappeared?!?!")
     }
 
     pub fn get_available_encoders(&self) -> Vec<Encoder> {
@@ -599,12 +624,6 @@ impl InpRecorder {
         // public version of internal function that is only available after libobs is initialized
         // due to requiring &self
         Self::get_available_encoders_internal(Some(adapter_id))
-    }
-
-    pub fn get_available_adapters(&self) -> Vec<Adapter> {
-        // public version of internal function that is only available after libobs is initialized
-        // due to requiring &self
-        Self::get_adapters_internal()
     }
 
     // re-export function as only available through a reference to a Recorder

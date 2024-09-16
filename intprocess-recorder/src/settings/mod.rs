@@ -1,12 +1,10 @@
-pub use self::{
-    adapter::{Adapter, AdapterId, AdapterType},
-    audio::AudioSource,
-    encoders::Encoder,
-    framerate::Framerate,
-    rate_control::RateControl,
-    resolution::{Resolution, StdResolution},
-    window::Window,
-};
+pub use adapter::{Adapter, AdapterId, AdapterType};
+pub use audio::AudioSource;
+pub use encoders::Encoder;
+pub use framerate::Framerate;
+pub use rate_control::RateControl;
+pub use resolution::{Resolution, StdResolution};
+pub use window::Window;
 
 mod adapter;
 mod audio;

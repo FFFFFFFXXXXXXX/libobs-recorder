@@ -1,14 +1,9 @@
 use std::{env, error, fmt, io, path};
 
-use intprocess_recorder::settings::Encoder;
-pub use intprocess_recorder::{settings::RecorderSettings, InpRecorder as SingletonRecorder};
 use ipc_link::{IpcCommand, IpcLinkMaster, IpcResponse};
 
-pub mod settings {
-    pub use intprocess_recorder::settings::{
-        AudioSource, Encoder, Framerate, RateControl, Resolution, StdResolution, Window,
-    };
-}
+pub use intprocess_recorder::settings;
+pub use intprocess_recorder::InpRecorder as SingletonRecorder;
 
 #[cfg(target_family = "windows")]
 const EXECUTABLE: &str = "./libobs/extprocess_recorder.exe";
@@ -91,7 +86,7 @@ impl Recorder {
         }
     }
 
-    pub fn configure(&mut self, settings: &RecorderSettings) -> Result<()> {
+    pub fn configure(&mut self, settings: &settings::RecorderSettings) -> Result<()> {
         match self.recorder.send(IpcCommand::Configure(settings.clone())) {
             IpcResponse::Ok => Ok(()),
             IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
@@ -99,7 +94,7 @@ impl Recorder {
         }
     }
 
-    pub fn available_encoders(&mut self) -> Result<Vec<Encoder>> {
+    pub fn available_encoders(&mut self) -> Result<Vec<settings::Encoder>> {
         match self.recorder.send(IpcCommand::Encoders) {
             IpcResponse::Encoders { available, .. } => Ok(available),
             IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
@@ -107,7 +102,7 @@ impl Recorder {
         }
     }
 
-    pub fn selected_encoder(&mut self) -> Result<Encoder> {
+    pub fn selected_encoder(&mut self) -> Result<settings::Encoder> {
         match self.recorder.send(IpcCommand::Encoders) {
             IpcResponse::Encoders { selected, .. } => Ok(selected),
             IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),

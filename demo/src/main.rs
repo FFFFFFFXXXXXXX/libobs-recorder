@@ -1,5 +1,5 @@
-use libobs_recorder::{Recorder, RecorderSettings};
 use libobs_recorder::settings::{AudioSource, Framerate, RateControl, StdResolution, Window};
+use libobs_recorder::{Recorder, RecorderSettings};
 
 fn main() {
     let mut rec = Recorder::new().unwrap();
@@ -31,7 +31,7 @@ fn settings() -> RecorderSettings {
     settings.set_output_resolution(StdResolution::_2560x1440p);
     settings.set_framerate(Framerate::new(60, 1));
     settings.set_rate_control(RateControl::CBR(10000));
-    settings.record_audio(AudioSource::ALL);
+    settings.set_audio_source(AudioSource::ALL);
     settings.set_output_path("./output.mp4");
 
     settings

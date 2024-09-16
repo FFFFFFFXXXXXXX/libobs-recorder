@@ -1,5 +1,7 @@
 use crate::{recorder::obs_data::ObsData, settings::RateControl};
 
+use super::{adapter::AdapterType, Adapter};
+
 // the encoders are sorted by their priority
 #[allow(non_camel_case_types)]
 #[cfg_attr(feature = "specta", derive(specta::Type))]
@@ -47,6 +49,15 @@ impl Encoder {
             Self::OBS_QSV11_H264 => intel_quicksync_h264_settings(rate_control),
             Self::OBS_QSV11_AV1 => intel_quicksync_av1_settings(rate_control),
             Self::OBS_X264 => obs_x264_settings(rate_control),
+        }
+    }
+
+    pub(crate) fn matches_adapter(&self, adapter: &Adapter) -> bool {
+        match self {
+            Self::OBS_X264 => true,
+            Self::JIM_NVENC | Self::FFMPEG_NVENC | Self::JIM_AV1 => adapter.adapter_type() == AdapterType::Nvidia,
+            Self::AMD_AMF_H264 | Self::AMD_AMF_AV1 => adapter.adapter_type() == AdapterType::Amd,
+            Self::OBS_QSV11_H264 | Self::OBS_QSV11_AV1 => adapter.adapter_type() == AdapterType::Intel,
         }
     }
 }

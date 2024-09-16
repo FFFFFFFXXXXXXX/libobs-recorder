@@ -48,7 +48,7 @@ fn settings() -> RecorderSettings {
     settings.set_output_resolution(StdResolution::_2560x1440p);
     settings.set_framerate(Framerate::new(45, 1));
     settings.set_rate_control(RateControl::CQP(25));
-    settings.record_audio(AudioSource::ALL);
+    settings.set_audio_source(AudioSource::ALL);
     settings.set_output_path("./output.mp4");
 
     settings

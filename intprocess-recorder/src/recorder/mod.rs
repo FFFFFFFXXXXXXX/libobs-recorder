@@ -1,13 +1,13 @@
 use std::cell::Cell;
 use std::ffi::CStr;
 use std::os::raw::{c_char, c_int};
-use std::ptr::{addr_of_mut, null_mut, NonNull};
+use std::ptr::{null_mut, NonNull};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::OnceLock;
 use std::thread::{self, ThreadId};
 use std::time::Duration;
 
-use crate::settings::{AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Resolution};
+use crate::settings::{Adapter, AdapterId, AudioSource, Encoder, Framerate, RateControl, RecorderSettings, Resolution};
 use get::Get;
 use obs_data::ObsData;
 
@@ -120,10 +120,11 @@ impl InpRecorder {
             return Err("libobs startup failed");
         }
 
+        let adapter_id = AdapterId::default();
         let default_fps = Framerate::new(30, 1);
         let default_size = Resolution::new(1920, 1080);
         unsafe { libobs_sys::obs_add_data_path(get.c_str(libobs_data_path)) };
-        Self::reset_video(default_size, default_size, default_fps).expect("unable to initialize video");
+        Self::reset_video(adapter_id, default_size, default_size, default_fps).expect("unable to initialize video");
         Self::reset_audio().expect("unable to initialize audio");
 
         unsafe {
@@ -140,7 +141,7 @@ impl InpRecorder {
             unsafe { libobs_sys::obs_output_create(get.c_str("ffmpeg_muxer"), OUTPUT, data.as_ptr(), null_mut()) };
 
         // choose 'best' encoder
-        let encoders = Self::get_available_encoders_internal();
+        let encoders = Self::get_available_encoders_internal(Some(adapter_id));
         if encoders.is_empty() {
             return Err("no encoder available");
         }
@@ -285,34 +286,24 @@ impl InpRecorder {
     }
 
     fn get_video_info() -> Result<libobs_sys::obs_video_info, &'static str> {
-        let mut ovi = libobs_sys::obs_video_info {
-            adapter: 0,
-            graphics_module: null_mut(),
-            fps_num: 0,
-            fps_den: 0,
-            base_width: 0,
-            base_height: 0,
-            output_width: 0,
-            output_height: 0,
-            output_format: -1,
-            gpu_conversion: false,
-            colorspace: -1,
-            range: -1,
-            scale_type: -1,
-        };
-
-        if unsafe { libobs_sys::obs_get_video_info(addr_of_mut!(ovi)) } {
+        let mut ovi = libobs_sys::obs_video_info::default();
+        if unsafe { libobs_sys::obs_get_video_info(&mut ovi) } {
             Ok(ovi)
         } else {
             Err("Error video was not set! Maybe Recorder was not initialized?")
         }
     }
 
-    fn reset_video(input_size: Resolution, output_size: Resolution, framerate: Framerate) -> Result<(), &'static str> {
+    fn reset_video(
+        adapter: AdapterId,
+        input_size: Resolution,
+        output_size: Resolution,
+        framerate: Framerate,
+    ) -> Result<(), &'static str> {
         unsafe {
             let mut get = Get::new();
             let mut ovi = libobs_sys::obs_video_info {
-                adapter: 0,
+                adapter,
                 graphics_module: get.c_str(GRAPHICS_MODULE),
                 fps_num: framerate.num(),
                 fps_den: framerate.den(),
@@ -328,10 +319,11 @@ impl InpRecorder {
             };
 
             // OBS_VIDEO_SUCCESS is 0, so casting it to c_int should be fine
-            if libobs_sys::obs_reset_video(addr_of_mut!(ovi)) != libobs_sys::OBS_VIDEO_SUCCESS as c_int {
+            if libobs_sys::obs_reset_video(&mut ovi) != libobs_sys::OBS_VIDEO_SUCCESS as c_int {
                 return Err("error on libobs reset video");
             }
         }
+
         Ok(())
     }
 
@@ -349,7 +341,17 @@ impl InpRecorder {
         Ok(())
     }
 
-    fn get_available_encoders_internal() -> Vec<Encoder> {
+    fn get_available_encoders_internal(adapter_id: Option<AdapterId>) -> Vec<Encoder> {
+        let adapter = if let Some(adapter_id) = adapter_id {
+            let result = Self::get_adapters_internal().into_iter().find(|e| e.id() == adapter_id);
+            if result.is_none() {
+                return vec![];
+            }
+            result
+        } else {
+            None
+        };
+
         // GET AVAILABLE ENCODERS
         let mut n = 0;
         let mut encoders = Vec::new();
@@ -359,11 +361,44 @@ impl InpRecorder {
             let cstring = unsafe { CStr::from_ptr(ptr) };
             if let Ok(enc) = cstring.to_str() {
                 let Ok(enc) = Encoder::try_from(enc) else { continue };
-                encoders.push(enc);
+
+                if let Some(adapter) = adapter.as_ref() {
+                    if enc.matches_adapter(adapter) {
+                        encoders.push(enc);
+                    }
+                } else {
+                    encoders.push(enc);
+                }
             }
         }
         encoders.sort();
         encoders
+    }
+
+    fn get_adapters_internal() -> Vec<Adapter> {
+        let mut adapters: Vec<Adapter> = Vec::new();
+
+        unsafe extern "C" fn callback(
+            vec: *mut ::std::os::raw::c_void,
+            name: *const ::std::os::raw::c_char,
+            id: u32,
+        ) -> bool {
+            let adapters = &mut *(vec as *mut Vec<Adapter>);
+            adapters.push(Adapter::new(id, CStr::from_ptr(name).to_string_lossy().to_string()));
+
+            true
+        }
+
+        unsafe {
+            libobs_sys::obs_enter_graphics();
+            libobs_sys::gs_enum_adapters(
+                Some(callback),
+                &mut adapters as *mut Vec<Adapter> as *mut ::std::os::raw::c_void,
+            );
+            libobs_sys::obs_leave_graphics();
+        }
+
+        adapters
     }
 
     fn check_thread_initialized() -> Result<(), &'static str> {
@@ -438,6 +473,7 @@ impl InpRecorder {
 
         // RESET VIDEO
         let ovi = Self::get_video_info()?;
+        let adapter_id = settings.adapter_id.unwrap_or_default();
         let input_size = match settings.input_resolution {
             Some(size) => size,
             None => Resolution::new(ovi.base_width, ovi.base_height),
@@ -451,14 +487,15 @@ impl InpRecorder {
             None => Framerate::new(ovi.fps_num, ovi.fps_den),
         };
 
-        let video_reset_necessary = input_size.width() != ovi.base_width
+        let video_reset_necessary = adapter_id != ovi.adapter
+            || input_size.width() != ovi.base_width
             || input_size.height() != ovi.base_height
             || output_size.width() != ovi.output_width
             || output_size.height() != ovi.output_height
             || framerate.num() != ovi.fps_num
             || framerate.den() != ovi.fps_den;
         if video_reset_necessary {
-            Self::reset_video(input_size, output_size, framerate)?;
+            Self::reset_video(adapter_id, input_size, output_size, framerate)?;
 
             unsafe {
                 // reconfigure video output pipeline after resetting the video backend
@@ -512,7 +549,7 @@ impl InpRecorder {
                 libobs_sys::obs_source_update(self.video_source.as_ptr(), data.as_ptr());
             }
 
-            if let Some(audio_setting) = settings.record_audio {
+            if let Some(audio_setting) = settings.audio_source {
                 // AUDIO SOURCE 1
                 let audio_source1 = match audio_setting {
                     AudioSource::APPLICATION => {
@@ -555,7 +592,19 @@ impl InpRecorder {
     pub fn get_available_encoders(&self) -> Vec<Encoder> {
         // public version of internal function that is only available after libobs is initialized
         // due to requiring &self
-        Self::get_available_encoders_internal()
+        Self::get_available_encoders_internal(None)
+    }
+
+    pub fn get_available_encoders_for_adapter(&self, adapter_id: AdapterId) -> Vec<Encoder> {
+        // public version of internal function that is only available after libobs is initialized
+        // due to requiring &self
+        Self::get_available_encoders_internal(Some(adapter_id))
+    }
+
+    pub fn get_available_adapters(&self) -> Vec<Adapter> {
+        // public version of internal function that is only available after libobs is initialized
+        // due to requiring &self
+        Self::get_adapters_internal()
     }
 
     // re-export function as only available through a reference to a Recorder

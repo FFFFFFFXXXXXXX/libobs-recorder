@@ -7,10 +7,14 @@ fn main() {
 
     println!("configured recorder: {:?}\n", rec.configure(&settings()));
 
+    let selected_adapter = rec.selected_adapter().unwrap();
     println!("available adapters: {:?}", rec.available_adapters());
-    println!("selected adapter: {:?}\n", rec.selected_adapter());
+    println!("selected adapter: {:?}\n", selected_adapter);
 
-    println!("available encoders for adapter: {:?}", rec.available_encoders());
+    println!(
+        "available encoders for adapter: {:?}",
+        rec.available_encoders_for_adapter(selected_adapter.id())
+    );
     println!("selected encoder: {:?}\n", rec.selected_encoder());
 
     println!("started recording: {:?}", rec.start_recording());

@@ -46,7 +46,7 @@ fn main() {
             if let Some(recorder) = recorder.as_mut() {
                 let available = match adapter_id {
                     Some(adapter_id) => recorder.get_available_encoders_for_adapter(adapter_id),
-                    None => recorder.get_available_adapters(),
+                    None => recorder.get_available_encoders(),
                 };
 
                 Some(IpcResponse::Encoders {
@@ -57,7 +57,7 @@ fn main() {
                 Some(IpcResponse::Err("recorder not initialized".into()))
             }
         }
-        IpcCommand::Adapters(adapter_id) => {
+        IpcCommand::Adapters => {
             if let Some(recorder) = recorder.as_mut() {
                 Some(IpcResponse::Adapters {
                     available: recorder.get_available_adapters(),

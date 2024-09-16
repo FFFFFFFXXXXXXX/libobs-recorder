@@ -1,5 +1,5 @@
 pub use self::{
-    adapter::{Adapter, AdapterId},
+    adapter::{Adapter, AdapterId, AdapterType},
     audio::AudioSource,
     encoders::Encoder,
     framerate::Framerate,

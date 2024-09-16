@@ -42,17 +42,22 @@ fn main() {
                 Some(IpcResponse::Err("recorder not initialized".into()))
             }
         }
-        IpcCommand::Encoders => {
+        IpcCommand::Encoders(adapter_id) => {
             if let Some(recorder) = recorder.as_mut() {
+                let available = match adapter_id {
+                    Some(adapter_id) => recorder.get_available_encoders_for_adapter(adapter_id),
+                    None => recorder.get_available_adapters(),
+                };
+
                 Some(IpcResponse::Encoders {
-                    available: recorder.get_available_encoders(),
+                    available,
                     selected: recorder.selected_encoder(),
                 })
             } else {
                 Some(IpcResponse::Err("recorder not initialized".into()))
             }
         }
-        IpcCommand::Adapters => {
+        IpcCommand::Adapters(adapter_id) => {
             if let Some(recorder) = recorder.as_mut() {
                 Some(IpcResponse::Adapters {
                     available: recorder.get_available_adapters(),

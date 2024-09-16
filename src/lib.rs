@@ -1,5 +1,6 @@
 use std::{env, error, fmt, io, path};
 
+use intprocess_recorder::settings::AdapterId;
 use ipc_link::{IpcCommand, IpcLinkMaster, IpcResponse};
 
 pub use intprocess_recorder::settings;
@@ -95,7 +96,15 @@ impl Recorder {
     }
 
     pub fn available_encoders(&mut self) -> Result<Vec<settings::Encoder>> {
-        match self.recorder.send(IpcCommand::Encoders) {
+        match self.recorder.send(IpcCommand::Encoders(None)) {
+            IpcResponse::Encoders { available, .. } => Ok(available),
+            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
+            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
+        }
+    }
+
+    pub fn available_encoders_for_adapter(&mut self, adapter_id: AdapterId) -> Result<Vec<settings::Encoder>> {
+        match self.recorder.send(IpcCommand::Encoders(Some(adapter_id))) {
             IpcResponse::Encoders { available, .. } => Ok(available),
             IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
             _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
@@ -103,7 +112,7 @@ impl Recorder {
     }
 
     pub fn selected_encoder(&mut self) -> Result<settings::Encoder> {
-        match self.recorder.send(IpcCommand::Encoders) {
+        match self.recorder.send(IpcCommand::Encoders(None)) {
             IpcResponse::Encoders { selected, .. } => Ok(selected),
             IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
             _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),

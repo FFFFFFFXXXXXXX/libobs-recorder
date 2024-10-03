@@ -26,11 +26,9 @@ pub struct RecorderSettings {
     pub(crate) rate_control: Option<RateControl>,
     pub(crate) audio_source: Option<AudioSource>,
     pub(crate) encoder: Option<Encoder>,
-    pub(crate) adapter_id: Option<AdapterId>,
 }
 
 impl RecorderSettings {
-    #[must_use]
     pub fn new(
         window: Window,
         input_resolution: impl Into<Resolution>,
@@ -54,7 +52,6 @@ impl RecorderSettings {
             rate_control: None,
             audio_source: None,
             encoder: None,
-            adapter_id: None,
         }
     }
 
@@ -120,13 +117,5 @@ impl RecorderSettings {
 
     pub fn get_encoder(&self) -> Option<&Encoder> {
         self.encoder.as_ref()
-    }
-
-    pub fn set_adapter_id(&mut self, adapter_id: AdapterId) {
-        self.adapter_id = Some(adapter_id);
-    }
-
-    pub fn get_adapter_id(&self) -> Option<&AdapterId> {
-        self.adapter_id.as_ref()
     }
 }

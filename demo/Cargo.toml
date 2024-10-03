@@ -9,5 +9,5 @@ edition = "2021"
 libobs-recorder = { path = ".." }
 
 [build-dependencies]
-libobs-recorder = { path = "..", artifact = "bin:extprocess_recorder" }
 build-helper = { path = "../build-helper" }
+libobs-recorder = { path = "..", artifact = "bin:extprocess_recorder" }

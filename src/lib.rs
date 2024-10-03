@@ -1,6 +1,5 @@
 use std::{env, error, fmt, io, path};
 
-use intprocess_recorder::settings::AdapterId;
 use ipc_link::{IpcCommand, IpcLinkMaster, IpcResponse};
 
 pub use intprocess_recorder::settings;
@@ -96,15 +95,7 @@ impl Recorder {
     }
 
     pub fn available_encoders(&mut self) -> Result<Vec<settings::Encoder>> {
-        match self.recorder.send(IpcCommand::Encoders(None)) {
-            IpcResponse::Encoders { available, .. } => Ok(available),
-            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
-            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
-        }
-    }
-
-    pub fn available_encoders_for_adapter(&mut self, adapter_id: AdapterId) -> Result<Vec<settings::Encoder>> {
-        match self.recorder.send(IpcCommand::Encoders(Some(adapter_id))) {
+        match self.recorder.send(IpcCommand::Encoders) {
             IpcResponse::Encoders { available, .. } => Ok(available),
             IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
             _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
@@ -112,24 +103,16 @@ impl Recorder {
     }
 
     pub fn selected_encoder(&mut self) -> Result<settings::Encoder> {
-        match self.recorder.send(IpcCommand::Encoders(None)) {
+        match self.recorder.send(IpcCommand::Encoders) {
             IpcResponse::Encoders { selected, .. } => Ok(selected),
             IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
             _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }
     }
 
-    pub fn available_adapters(&mut self) -> Result<Vec<settings::Adapter>> {
-        match self.recorder.send(IpcCommand::Adapters) {
-            IpcResponse::Adapters { available, .. } => Ok(available),
-            IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
-            _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
-        }
-    }
-
-    pub fn selected_adapter(&mut self) -> Result<settings::Adapter> {
-        match self.recorder.send(IpcCommand::Adapters) {
-            IpcResponse::Adapters { selected, .. } => Ok(selected),
+    pub fn adapter_info(&mut self) -> Result<settings::Adapter> {
+        match self.recorder.send(IpcCommand::Adapter) {
+            IpcResponse::Adapter(adapter) => Ok(adapter),
             IpcResponse::Err(e) => Err(Box::new(Error::Recorder(e))),
             _ => Err(Box::new(Error::ShouldNeverHappenNotifyMe)),
         }

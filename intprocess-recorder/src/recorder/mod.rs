@@ -48,7 +48,6 @@ static LIBOBS_SHUTDOWN: AtomicBool = AtomicBool::new(false);
 // these are thread local so I don't have to make them thread-safe
 thread_local! {
     static REF_COUNT: Cell<u32> = const { Cell::new(0) };
-    static CURRENT_ADAPTER: Cell<AdapterId> = const { Cell::new(0) };
     static CURRENT_ENCODER: Cell<Encoder> = const { Cell::new(Encoder::OBS_X264) };
 }
 
@@ -121,11 +120,10 @@ impl InpRecorder {
             return Err("libobs startup failed");
         }
 
-        let adapter_id = AdapterId::default();
         let default_fps = Framerate::new(30, 1);
         let default_size = Resolution::new(1920, 1080);
         unsafe { libobs_sys::obs_add_data_path(get.c_str(libobs_data_path)) };
-        Self::reset_video(adapter_id, default_size, default_size, default_fps).expect("unable to initialize video");
+        Self::reset_video(default_size, default_size, default_fps).expect("unable to initialize video");
         Self::reset_audio().expect("unable to initialize audio");
 
         unsafe {
@@ -142,7 +140,7 @@ impl InpRecorder {
             unsafe { libobs_sys::obs_output_create(get.c_str("ffmpeg_muxer"), OUTPUT, data.as_ptr(), null_mut()) };
 
         // choose 'best' encoder
-        let encoders = Self::get_available_encoders_internal(Some(adapter_id));
+        let encoders = Self::get_available_encoders_internal();
         if encoders.is_empty() {
             return Err("no encoder available");
         }
@@ -295,16 +293,11 @@ impl InpRecorder {
         }
     }
 
-    fn reset_video(
-        adapter: AdapterId,
-        input_size: Resolution,
-        output_size: Resolution,
-        framerate: Framerate,
-    ) -> Result<(), &'static str> {
+    fn reset_video(input_size: Resolution, output_size: Resolution, framerate: Framerate) -> Result<(), &'static str> {
         unsafe {
             let mut get = Get::new();
             let mut ovi = libobs_sys::obs_video_info {
-                adapter,
+                adapter: AdapterId::default(),
                 graphics_module: get.c_str(GRAPHICS_MODULE),
                 fps_num: framerate.num(),
                 fps_den: framerate.den(),
@@ -342,16 +335,11 @@ impl InpRecorder {
         Ok(())
     }
 
-    fn get_available_encoders_internal(adapter_id: Option<AdapterId>) -> Vec<Encoder> {
-        let adapter = if let Some(adapter_id) = adapter_id {
-            let result = Self::get_adapters_internal().into_iter().find(|e| e.id() == adapter_id);
-            if result.is_none() {
-                return vec![];
-            }
-            result
-        } else {
-            None
-        };
+    fn get_available_encoders_internal() -> Vec<Encoder> {
+        let adapter = Self::get_adapters_internal()
+            .into_iter()
+            .find(|e| e.id() == AdapterId::default())
+            .expect("no adapters found?");
 
         // GET AVAILABLE ENCODERS
         let mut n = 0;
@@ -363,11 +351,7 @@ impl InpRecorder {
             if let Ok(enc) = cstring.to_str() {
                 let Ok(enc) = Encoder::try_from(enc) else { continue };
 
-                if let Some(adapter) = adapter.as_ref() {
-                    if enc.matches_adapter(adapter) {
-                        encoders.push(enc);
-                    }
-                } else {
+                if enc.matches_adapter(&adapter) {
                     encoders.push(enc);
                 }
             }
@@ -408,14 +392,6 @@ impl InpRecorder {
             Some(_) => Err("wrong thread - libobs was initialized in another thread"),
             None => Err("libos has not been initialized yet"),
         }
-    }
-
-    fn set_current_adapter_id(adapter_id: AdapterId) {
-        CURRENT_ADAPTER.set(adapter_id);
-    }
-
-    fn get_current_adapter_id() -> AdapterId {
-        CURRENT_ADAPTER.with(Cell::get)
     }
 
     fn set_current_encoder(encoder: Encoder) {
@@ -483,25 +459,16 @@ impl InpRecorder {
         // set adapter, input_resolution, output_resolution, framerate
         let ovi = Self::get_video_info()?;
 
-        let adapter_id = settings.adapter_id.unwrap_or_default();
-        Self::set_current_adapter_id(adapter_id);
-
         let framerate = settings.framerate.unwrap_or(Framerate::new(30, 1));
 
-        let video_reset_necessary = adapter_id != ovi.adapter
-            || settings.input_resolution.width() != ovi.base_width
+        let video_reset_necessary = settings.input_resolution.width() != ovi.base_width
             || settings.input_resolution.height() != ovi.base_height
             || settings.output_resolution.width() != ovi.output_width
             || settings.output_resolution.height() != ovi.output_height
             || framerate.num() != ovi.fps_num
             || framerate.den() != ovi.fps_den;
         if video_reset_necessary {
-            Self::reset_video(
-                adapter_id,
-                settings.input_resolution,
-                settings.output_resolution,
-                framerate,
-            )?;
+            Self::reset_video(settings.input_resolution, settings.output_resolution, framerate)?;
 
             unsafe {
                 // reconfigure video output pipeline after resetting the video backend
@@ -511,9 +478,9 @@ impl InpRecorder {
             }
         }
 
-        let available_encoders = Self::get_available_encoders_internal(Some(adapter_id));
+        let available_encoders = Self::get_available_encoders_internal();
         if let Some(encoder) = settings.encoder {
-            // check if the given encoder is even available on this adapter
+            // check if the given encoder is available on the current adapter
             if !available_encoders.contains(&encoder) {
                 return Err("encoder not available");
             }
@@ -599,31 +566,19 @@ impl InpRecorder {
         unsafe { libobs_sys::obs_output_active(self.output.as_ptr()) }
     }
 
-    pub fn get_available_adapters(&self) -> Vec<Adapter> {
+    pub fn get_adapter_info(&self) -> Adapter {
         // public version of internal function that is only available after libobs is initialized
         // due to requiring &self
         Self::get_adapters_internal()
-    }
-
-    pub fn selected_adapter(&self) -> Adapter {
-        // only available after libobs is initialized due to requiring &self
-        let current_adapter_id = Self::get_current_adapter_id();
-        Self::get_adapters_internal()
             .into_iter()
-            .find(|ad| ad.id() == current_adapter_id)
-            .expect("previously selected adapter disappeared?!?!")
+            .find(|e| e.id() == AdapterId::default())
+            .expect("no adapters found?")
     }
 
     pub fn get_available_encoders(&self) -> Vec<Encoder> {
         // public version of internal function that is only available after libobs is initialized
         // due to requiring &self
-        Self::get_available_encoders_internal(None)
-    }
-
-    pub fn get_available_encoders_for_adapter(&self, adapter_id: AdapterId) -> Vec<Encoder> {
-        // public version of internal function that is only available after libobs is initialized
-        // due to requiring &self
-        Self::get_available_encoders_internal(Some(adapter_id))
+        Self::get_available_encoders_internal()
     }
 
     // re-export function as only available through a reference to a Recorder

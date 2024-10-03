@@ -4,17 +4,10 @@ use libobs_recorder::Recorder;
 fn main() {
     let mut rec = Recorder::new().unwrap();
     println!("created recorder");
-
     println!("configured recorder: {:?}\n", rec.configure(&settings()));
 
-    let selected_adapter = rec.selected_adapter().unwrap();
-    println!("available adapters: {:?}", rec.available_adapters());
-    println!("selected adapter: {:?}\n", selected_adapter);
-
-    println!(
-        "available encoders for adapter: {:?}",
-        rec.available_encoders_for_adapter(selected_adapter.id())
-    );
+    println!("selected adapter: {:?}\n", rec.adapter_info());
+    println!("available encoders for adapter: {:?}", rec.available_encoders());
     println!("selected encoder: {:?}\n", rec.selected_encoder());
 
     println!("started recording: {:?}", rec.start_recording());
@@ -34,7 +27,6 @@ fn settings() -> RecorderSettings {
         "./output.mp4",
     );
 
-    settings.set_adapter_id(0);
     settings.set_framerate(Framerate::new(60, 1));
     settings.set_rate_control(RateControl::CBR(10000));
     settings.set_audio_source(AudioSource::ALL);

@@ -5,7 +5,7 @@ use std::{
     time::Duration,
 };
 
-use intprocess_recorder::settings::{Adapter, AdapterId, Encoder, RecorderSettings};
+use intprocess_recorder::settings::{Adapter, Encoder, RecorderSettings};
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub enum IpcCommand {
@@ -15,8 +15,8 @@ pub enum IpcCommand {
         plugin_data_path: Option<String>,
     },
     Configure(RecorderSettings),
-    Encoders(Option<AdapterId>),
-    Adapters,
+    Encoders,
+    Adapter,
     StartRecording,
     StopRecording,
     IsRecording,
@@ -28,7 +28,7 @@ pub enum IpcCommand {
 pub enum IpcResponse {
     Ok,
     Encoders { available: Vec<Encoder>, selected: Encoder },
-    Adapters { available: Vec<Adapter>, selected: Adapter },
+    Adapter(Adapter),
     Recording(bool),
     Err(String),
 }

@@ -1,6 +1,6 @@
 # libobs-recorder
 
-**NEWEST VERSION AVAILABLE: 30.1.2**  
+**NEWEST VERSION AVAILABLE: 31.0.1**  
 **OLD VERSIONS ARE AVAILABLE BY COMPILING WITH THE LIBOBS_RECORDER_VERSION ENVIRONMENT VARIABLE SET TO THE DESIRED VERSION**
 
 This is a rust library for recording using the [libobs library]("https://github.com/obsproject/obs-studio").

@@ -25,13 +25,13 @@ const DEFAULT_PLUGIN_BIN_PATH: &str = "./obs-plugins/64bit/";
 const DEFAULT_PLUGIN_DATA_PATH: &str = "./data/obs-plugins/%module%/";
 
 // define null terminated libobs object names for ffi
-const OUTPUT: *const i8 = b"output\0".as_ptr().cast();
-const VIDEO_ENCODER: *const i8 = b"video_encoder\0".as_ptr().cast();
-const AUDIO_ENCODER: *const i8 = b"audio_encoder\0".as_ptr().cast();
-const VIDEO_SOURCE: *const i8 = b"video_source\0".as_ptr().cast();
-const AUDIO_SOURCE1: *const i8 = b"audio_source1\0".as_ptr().cast();
-const AUDIO_SOURCE2: *const i8 = b"audio_source2\0".as_ptr().cast();
-const AUDIO_SOURCE3: *const i8 = b"audio_source3\0".as_ptr().cast();
+const OUTPUT: *const i8 = c"output".as_ptr().cast();
+const VIDEO_ENCODER: *const i8 = c"video_encoder".as_ptr().cast();
+const AUDIO_ENCODER: *const i8 = c"audio_encoder".as_ptr().cast();
+const VIDEO_SOURCE: *const i8 = c"video_source".as_ptr().cast();
+const AUDIO_SOURCE1: *const i8 = c"audio_source1".as_ptr().cast();
+const AUDIO_SOURCE2: *const i8 = c"audio_source2".as_ptr().cast();
+const AUDIO_SOURCE3: *const i8 = c"audio_source3".as_ptr().cast();
 
 // libobs output channel assignments
 const VIDEO_CHANNEL: u32 = 0;

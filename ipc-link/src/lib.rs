@@ -63,7 +63,7 @@ impl IpcLinkMaster {
         if let Err(e) = serde_json::to_writer(&mut self.tx, &cmd) {
             return IpcResponse::Err(format!("{e:?}"));
         }
-        if let Err(e) = self.tx.write(&[b'\n']) {
+        if let Err(e) = self.tx.write(b"\n") {
             return IpcResponse::Err(format!("{e:?}"));
         }
         if let Err(e) = self.tx.flush() {
@@ -108,11 +108,11 @@ impl Drop for IpcLinkMaster {
         // the normal self.send function waits indefinitely for an answer that might not come if the subprocess
         // has already been stopped with IpcCommand::Exit
         _ = serde_json::to_writer(&mut self.tx, &IpcCommand::StopRecording);
-        _ = self.tx.write(&[b'\n']);
+        _ = self.tx.write(b"\n");
         _ = serde_json::to_writer(&mut self.tx, &IpcCommand::Shutdown);
-        _ = self.tx.write(&[b'\n']);
+        _ = self.tx.write(b"\n");
         _ = serde_json::to_writer(&mut self.tx, &IpcCommand::Exit);
-        _ = self.tx.write(&[b'\n']);
+        _ = self.tx.write(b"\n");
         _ = self.tx.flush();
 
         match self.child_process.wait_timeout(Duration::from_secs(3)) {
@@ -144,13 +144,13 @@ impl IpcLinkSlave<'_> {
 
             let Some(response) = handler(cmd) else { break };
             _ = serde_json::to_writer::<_, IpcResponse>(&mut self.tx, &response);
-            _ = self.tx.write(&[b'\n']);
+            _ = self.tx.write(b"\n");
             _ = self.tx.flush();
         }
 
         // Send one last IpcResponse::Ok because the other side is waiting for a response to IpcCommand::Exit
         _ = serde_json::to_writer::<_, IpcResponse>(&mut self.tx, &IpcResponse::Ok);
-        _ = self.tx.write(&[b'\n']);
+        _ = self.tx.write(b"\n");
         _ = self.tx.flush();
     }
 

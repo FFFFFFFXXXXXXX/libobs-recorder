@@ -12,26 +12,38 @@ pub const VERSION: &str = {
     }
 };
 
-pub type Error = Box<dyn std::error::Error>;
+#[derive(Debug, Default)]
+pub struct Builder {
+    version: Option<String>,
+    path: Option<path::PathBuf>,
+}
 
-#[derive(Debug)]
-struct NoExtprocessRecorder;
-impl error::Error for NoExtprocessRecorder {}
-impl Display for NoExtprocessRecorder {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        f.write_str("CARGO_BIN_FILE_LIBOBS_RECORDER_extprocess_recorder environment variable not found! Make sure you correctly added the artifact-dependency to your 'Cargo.toml' file")
+impl Builder {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    pub fn with_version<'a>(mut self, version: impl Into<&'a str>) -> Self {
+        self.version = Some(version.into().to_string());
+        self
+    }
+
+    pub fn with_path(mut self, path: impl AsRef<path::Path>) -> Self {
+        self.path = Some(path.as_ref().to_path_buf());
+        self
+    }
+
+    pub fn build(&self) -> Result<(), Error> {
+        let path = self.path.as_deref();
+        let version = self.version.as_deref().unwrap_or(VERSION);
+
+        build(path, version)?;
+        copy_artifact_dependencies(path)?;
+        Ok(())
     }
 }
 
-pub fn build() -> Result<(), Error> {
-    build_internal(None)
-}
-
-pub fn build_to_path(path: impl AsRef<path::Path>) -> Result<(), Error> {
-    build_internal(Some(path.as_ref()))
-}
-
-fn build_internal(path: Option<&path::Path>) -> Result<(), Error> {
+fn build(path: Option<&path::Path>, version: &str) -> Result<(), Error> {
     // compile time
     let this_crate_dir = path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     // run time;
@@ -40,7 +52,7 @@ fn build_internal(path: Option<&path::Path>) -> Result<(), Error> {
         None => get_cargo_target_dir()?,
     };
 
-    let bin_res_dir = this_crate_dir.join(format!("libobs_{}", VERSION));
+    let bin_res_dir = this_crate_dir.join(format!("libobs_{}", version));
     let target_path = consumer_crate_output_dir.join("libobs");
 
     fs::create_dir_all(target_path.parent().unwrap())?;
@@ -51,15 +63,7 @@ fn build_internal(path: Option<&path::Path>) -> Result<(), Error> {
     Ok(())
 }
 
-pub fn copy_artifact_dependency() -> Result<(), Error> {
-    copy_artifact_dependency_internal(None)
-}
-
-pub fn copy_artifact_dependency_to_path(path: impl AsRef<path::Path>) -> Result<(), Error> {
-    copy_artifact_dependency_internal(Some(path.as_ref()))
-}
-
-fn copy_artifact_dependency_internal(path: Option<&path::Path>) -> Result<(), Error> {
+fn copy_artifact_dependencies(path: Option<&path::Path>) -> Result<(), Error> {
     let consumer_crate_output_dir = match path {
         Some(path) => path::PathBuf::from(path),
         None => get_cargo_target_dir()?,
@@ -90,4 +94,15 @@ fn get_cargo_target_dir() -> Result<path::PathBuf, Error> {
     }
     let target_dir = target_dir.ok_or("not found")?;
     Ok(target_dir.to_path_buf())
+}
+
+pub type Error = Box<dyn std::error::Error>;
+
+#[derive(Debug)]
+struct NoExtprocessRecorder;
+impl error::Error for NoExtprocessRecorder {}
+impl Display for NoExtprocessRecorder {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        f.write_str("CARGO_BIN_FILE_LIBOBS_RECORDER_extprocess_recorder environment variable not found! Make sure you correctly added the artifact-dependency to your 'Cargo.toml' file")
+    }
 }

@@ -1,4 +1,7 @@
 fn main() {
-    build_helper::build().unwrap();
-    build_helper::copy_artifact_dependency().unwrap()
+    build_helper::Builder::new()
+        .with_version("31.0.1")
+        // .with_path("path")
+        .build()
+        .unwrap();
 }

@@ -52,7 +52,7 @@ fn build(path: Option<&path::Path>, version: &str) -> Result<(), Error> {
         None => get_cargo_target_dir()?,
     };
 
-    let bin_res_dir = this_crate_dir.join(format!("libobs_{}", version));
+    let bin_res_dir = this_crate_dir.join(format!("libobs_{version}"));
     let target_path = consumer_crate_output_dir.join("libobs");
 
     fs::create_dir_all(target_path.parent().unwrap())?;

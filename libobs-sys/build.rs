@@ -22,6 +22,6 @@ fn main() {
         .merge_extern_blocks(true)
         .generate()
         .expect("Error generating bindings")
-        .write_to_file(&format!("{}/src/{bindings_file}", env!("CARGO_MANIFEST_DIR")))
+        .write_to_file(format!("{}/src/{bindings_file}", env!("CARGO_MANIFEST_DIR")))
         .expect("Error outputting bindings");
 }
